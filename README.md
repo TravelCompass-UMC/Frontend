@@ -1,3 +1,55 @@
+npm이 아닌 yarn으로 진행합니다.
+
+자신이 작업하는 devlop브랜치 아래에
+feature/[폴더명]으로 브랜치를 파서 커밋하고,
+깃허브에 푸쉬할 때에도 전체 푸쉬(git add .)가 아닌
+해당 폴더만 푸쉬해주세요.
+
+[풀/푸쉬]는 develop에서만 진행해주세요. main에서 하시면 안됩니다!
+현재는 develop 브랜치가 만들어지지 않아 우선 pull만 main에서 해주세요!
+
+강제푸쉬는 하지 말아주세요.
+
+yarn.lock, package.json README.md 등 작업과 관련 없는 파일은 [수정/푸쉬]하지 말아주세요!
+
+index.html, app.js, index.js는 우선 담당자 이외에는 수정하지 말아주세요!
+
+# 폴더 설명
+
+components
+재사용 가능한 컴포넌트들 폴더.
+컴포넌트가 많아지면 폴더를 추가해 분류 후
+경로 수정 바랍니다.
+
+assets
+이미지 혹은 폰트와 같은 파일들이 저장되는 폴더입니다.
+파비콘과 같이 index.html내부에서 직접 사용하여 컴파일 단계에서 필요하지 않은 파일들은 public에,
+컴포넌트 내부에서 사용하는 이미지 파일인 경우 이 assets 폴더에 위치시켜주세요.
+
+hooks (= hoc)
+커스텀 훅이 위치하는 폴더
+
+pages
+react router등을 이용하여 라우팅을 적용할 때 페이지 컴포넌트들
+
+constants
+공통적으로 사용되는 상수들을 정의한 파일들
+
+config
+config 파일이 많지 않은 경우 보통 최상위에 위치시켜놓지만 여러개의 config 파일이 있을 경우 폴더로 분리
+
+styles
+css 파일들
+
+services (= api)
+api관련 로직의 모듈 파일, auth와 같이 인증과 관련된 파일
+
+utils
+정규표현식 패턴이나 공통함수 등 공통으로 사용하는 유틸 파일들
+
+contexts
+contextAPI를 사용할 때 관련 파일들
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
