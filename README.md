@@ -1,5 +1,6 @@
 npm이 아닌 yarn으로 진행합니다.
 
+커밋 규칙: [TYPE]#branch issue 닉네임
 자신이 작업하는 devlop브랜치 아래에
 feature/[폴더명]으로 브랜치를 파서 커밋하고,
 깃허브에 푸쉬할 때에도 전체 푸쉬(git add .)가 아닌
