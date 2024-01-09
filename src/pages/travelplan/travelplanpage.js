@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import classes from "../../styles/travelplanpage.css";
+import "../../styles/travelplanpage.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
-locale = { ko };
+import { Link } from "react-router-dom";
+import Modal from "../../components/Modal";
+import { format } from "date-fns";
 class trvlplan extends Component {
   constructor(props) {
     super(props);
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
+      modalOpen: false,
     };
   }
 
@@ -25,7 +28,18 @@ class trvlplan extends Component {
     });
   };
 
+  openModal = () => {
+    this.setState({ modalOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalOpen: false });
+  };
+
   render() {
+    const formattedStartDate = format(this.state.startDate, "yyyy년 MM월 dd일");
+    const formattedEndDate = format(this.state.endDate, "yyyy년 MM월 dd일");
+
     return (
       <div>
         <form>
@@ -44,6 +58,10 @@ class trvlplan extends Component {
           <div>
             <h2>여행 시작일:</h2>
             <DatePicker
+              className="datepicker"
+              locale={ko}
+              dateFormat="yyyy년 MM월 dd일"
+              minDate={new Date()}
               selected={this.state.startDate}
               onChange={this.handleStartDateChange}
               selectsStart
@@ -54,6 +72,9 @@ class trvlplan extends Component {
           <div>
             <h2>여행 종료일:</h2>
             <DatePicker
+              className="datepicker"
+              locale={ko}
+              dateFormat="yyyy년 MM월 dd일"
               selected={this.state.endDate}
               onChange={this.handleEndDateChange}
               selectsEnd
@@ -63,6 +84,19 @@ class trvlplan extends Component {
             />
           </div>
         </div>
+        <React.Fragment>
+          <button onClick={this.openModal}>계획 만들기</button>
+          <Modal
+            open={this.state.modalOpen}
+            close={this.closeModal}
+            title="Create a chat room"
+          >
+            {/* Modal.js <main> {this.props.children} </main>에 내용이 입력된다. */}
+
+            <div>여행 시작일: {formattedStartDate}</div>
+            <div>여행 종료일: {formattedEndDate}</div>
+          </Modal>
+        </React.Fragment>
       </div>
     );
   }
