@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import MapImage from "@/assets/images/Place/Map.svg";
+import MapImage from "../../assets/images/Place/Map.svg";
+import SearchIcon from "../../assets/images/Place/searchIcon.svg";
 
 // 페이지별로 용도 나눠주세요
 
@@ -20,6 +21,16 @@ export const Page = styled.div`
 
 /**  장소검색 페이지 스타일 **/
 
+export const SearchBtn = styled.div`
+  margin-top: 104px;
+  width: 155px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  background-image: url(${SearchIcon});
+  background-repeat: no-repeat;
+
+`;
 
 export const Map = styled.div`
   margin-top: 104px;

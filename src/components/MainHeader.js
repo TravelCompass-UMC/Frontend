@@ -1,8 +1,10 @@
 import { NavLink, Link } from "react-router-dom";
 import classes from "../styles/MainHeader.module.css";
+import ResponsiveAppBar from '../components/Navbars';
 
 const MainHeader = () => {
   return (
+    <ResponsiveAppBar>
     <header className={classes.header}>
       <nav>
         <ul>
@@ -39,6 +41,7 @@ const MainHeader = () => {
         </ul>
       </nav>
     </header>
+    </ResponsiveAppBar>
   );
 };
 
