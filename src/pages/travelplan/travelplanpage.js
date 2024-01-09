@@ -1,12 +1,24 @@
 import React, { Component } from "react";
-
+import classes from "../../styles/travelplanpage.css";
+import DatePicker from "react-datepicker";
 class trvlplan extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
-        <h3> 여행 설계 페이지입니다.</h3>
-        <h3> 여행지, 날짜 선택: 계획 설계 창으로 이동</h3>
-        <h3> 날짜 확인, 숙소 설정, 장소 선택 과정을 거친 후 일정 생성</h3>
+        <form>
+          <input
+            type="text"
+            maxLength="20"
+            className="search_input"
+            name="search"
+            placeholder="어디로 가고싶나요?"
+          />
+          <input type="submit" value="검색" className="serach_submit" />
+        </form>
       </div>
     );
   }
