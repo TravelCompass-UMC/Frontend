@@ -1,13 +1,4 @@
 import React, { Component } from "react";
-
-import classes from "../../styles/travelplanpage.css";
-import DatePicker from "react-datepicker";
-class trvlplan extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-
 import "../../styles/travelplanpage.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -45,7 +36,6 @@ class trvlplan extends Component {
     this.setState({ modalOpen: false });
   };
 
-
   render() {
     const formattedStartDate = format(this.state.startDate, "yyyy년 MM월 dd일");
     const formattedEndDate = format(this.state.endDate, "yyyy년 MM월 dd일");
@@ -62,7 +52,6 @@ class trvlplan extends Component {
           />
           <input type="submit" value="검색" className="serach_submit" />
         </form>
-
         <div>
           <h1>여행 기간</h1>
           <p>기간을 선택해주세요</p>
@@ -108,7 +97,7 @@ class trvlplan extends Component {
             <div>여행 종료일: {formattedEndDate}</div>
           </Modal>
         </React.Fragment>
-</div>
+      </div>
     );
   }
 }
