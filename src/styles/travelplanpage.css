@@ -11,6 +11,7 @@
   cursor: pointer;
 }
 
+
 .datepicker {
   text-align: center;
   width: 320px;
@@ -20,3 +21,4 @@
   border-bottom-right-radius: 4px;
   margin-right: 15px;
 }
+
