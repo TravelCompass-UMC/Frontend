@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { NavLink, Link } from 'react-router-dom';
 
 const pages = ['장소 검색', '여행 일지', '여행 계획 설계','마이페이지'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
