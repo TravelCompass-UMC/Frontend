@@ -1,6 +1,6 @@
 npm이 아닌 yarn으로 진행합니다.
 
-커밋 규칙: [TYPE]#branch issue 닉네임
+커밋 규칙: [TYPE] #branch - issue (닉네임)
 
 작업하기 전 항상 devlop에서 풀 받아서(작업시간이 길어지면 주기적으로)
 [feature/기능]으로 브랜치를 파서 작업합니다.
