@@ -1,4 +1,3 @@
-
 // import { NavLink, Link } from "react-router-dom";
 // import classes from "../styles/MainHeader.module.css";
 
@@ -47,14 +46,13 @@
 
 // components/MainHeader.js
 
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import classes from '../styles/MainHeader.module.css';
-
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import classes from "../styles/MainHeader.module.css";
 
 const MainHeader = () => {
   return (
-    <ResponsiveAppBar>
+    // <ResponsiveAppBar>
     <header className={classes.header}>
       <h1>
         <Link to="/" className={classes.logo}>
@@ -91,7 +89,7 @@ const MainHeader = () => {
         </ul>
       </nav>
     </header>
-    </ResponsiveAppBar>
+    // </ResponsiveAppBar>
   );
 };
 
