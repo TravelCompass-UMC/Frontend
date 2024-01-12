@@ -4,12 +4,6 @@ import classes from '../styles/MainHeader.module.css';
 
 const MainHeader = () => {
   return (
-
-import { NavLink, Link } from "react-router-dom";
-import classes from "../styles/MainHeader.module.css";
-
-const MainHeader = () => {
-  return (
     <header className={classes.header}>
       <nav>
         <ul>
