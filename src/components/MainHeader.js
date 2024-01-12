@@ -1,10 +1,4 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import classes from '../styles/MainHeader.module.css';
-
-const MainHeader = () => {
-  return (
-
+import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import classes from "../styles/MainHeader.module.css";
 
@@ -50,4 +44,3 @@ const MainHeader = () => {
 };
 
 export default MainHeader;
-
