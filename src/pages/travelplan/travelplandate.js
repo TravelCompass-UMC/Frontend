@@ -42,16 +42,6 @@ class trvlplan extends Component {
 
     return (
       <div>
-        <form>
-          <input
-            type="text"
-            maxLength="20"
-            className="search_input"
-            name="search"
-            placeholder="어디로 가고싶나요?"
-          />
-          <input type="submit" value="검색" className="serach_submit" />
-        </form>
         <div>
           <h1>여행 기간</h1>
           <p>기간을 선택해주세요</p>
