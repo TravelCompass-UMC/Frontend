@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import '../../styles/Home.css';
-import Sidebar from "../../components/Sidebar";
 import GoogleMapComponent from "../../components/Map";
+import SidebarR from "../../components/SidebarR";
+
 
 class home extends Component {
   render() {
@@ -9,7 +10,7 @@ class home extends Component {
       <div className="container">
         <div className="map">배경 이미지 지도</div>
         <input type="text" className="searchbox" placeholder="궁금한 지역을 검색해보세요"></input>
-        <Sidebar width={320}>
+        <SidebarR width={320}>
           <p>대한민국</p>
           <p>지금 대한민국의 가장 인기 많은 지역</p>
           <ul>
@@ -25,7 +26,8 @@ class home extends Component {
           {/* <a href="#">제주도</a>
           <a href="#">부산</a>
           <a href="#">여수</a> */}
-          </Sidebar>
+          </SidebarR>
+
         <div className="writtenplan">
           <p>국내 인기 여행계획</p>
           <a href ="#">창덕궁 기타 등등</a>
