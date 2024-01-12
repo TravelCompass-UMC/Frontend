@@ -1,4 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Switch,
+} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/login_and_signin/login";
 import MyPag from "./pages/mapages/MyPage";
@@ -7,6 +13,7 @@ import TravelPlandes from "./pages/travelplan/travelplandestination";
 import TravelPlandate from "./pages/travelplan/travelplandate";
 import Searchdiary from "./pages/searchdiarypage/searchdiarypage";
 import Searchplace from "./pages/searchplacepage/searchplace";
+import SearchPlaceInfo from "./pages/searchplacepage/placeinfo";
 import MainHeader from "./components/MainHeader";
 import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
@@ -26,6 +33,7 @@ function App() {
           <Route path="/travelplandate" element={<TravelPlandate />} />
           <Route path="/searchdiary" element={<Searchdiary />} />
           <Route path="/searchplace" element={<Searchplace />} />
+          <Route path="/placeinfo1" element={<SearchPlaceInfo />} />
           <Route path="/travelplandetail" element={<Plandetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
