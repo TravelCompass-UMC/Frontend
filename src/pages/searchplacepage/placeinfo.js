@@ -18,12 +18,10 @@ const SearchResults = () => {
             <li>TOP3 부산</li>
             <li>TOP4 여수</li>
           </ul>
-          <a href="#">서울</a>
           <div className="popularplace">
             <p>선택하신 도시의 가장 인기 많은 장소</p>
           </div>
-          <button className="side-bar_button">사이드바 닫기 버튼</button>
-          </SidebarL>      {/* Add your logic to display search results here */}
+          </SidebarL>     
     </div>
   );
 };
