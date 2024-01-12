@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../styles/travelplanpage.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { ko } from "date-fns/esm/locale";
+import { ko } from "date-fns/locale"; // 변경된 부분
 import { Link } from "react-router-dom";
 import Modal from "../../components/Modal";
 import { format } from "date-fns";
@@ -50,7 +50,7 @@ class trvlplan extends Component {
             <h2>여행 시작일:</h2>
             <DatePicker
               className="datepicker"
-              locale={ko}
+              locale={ko} // 변경된 부분
               dateFormat="yyyy년 MM월 dd일"
               minDate={new Date()}
               selected={this.state.startDate}
@@ -64,7 +64,7 @@ class trvlplan extends Component {
             <h2>여행 종료일:</h2>
             <DatePicker
               className="datepicker"
-              locale={ko}
+              locale={ko} // 변경된 부분
               dateFormat="yyyy년 MM월 dd일"
               selected={this.state.endDate}
               onChange={this.handleEndDateChange}
@@ -82,8 +82,6 @@ class trvlplan extends Component {
             close={this.closeModal}
             title="Create a chat room"
           >
-            {/* Modal.js <main> {this.props.children} </main>에 내용이 입력된다. */}
-
             <div>여행 시작일: {formattedStartDate}</div>
             <div>여행 종료일: {formattedEndDate}</div>
           </Modal>
