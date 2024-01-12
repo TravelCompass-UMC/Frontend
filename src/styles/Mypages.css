@@ -1,0 +1,20 @@
+/* Mypages.css */
+
+.join-button {
+    display: inline;
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+  }
+
+.user {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user p {
+  font-size: 28px;
+}
+.profile-button {
+  margin-left: auto; /* 버튼을 오른쪽으로 이동시킵니다. */
+}
