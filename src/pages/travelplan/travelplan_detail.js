@@ -1,46 +1,17 @@
-// import React, { useState } from "react";
-// import "../../
-// const toggle = () => {
-//   const [isOpen, setMenu] = useState(false); // 메뉴의 초기값을 false로 설정
+import React from "react";
+import Sidebar from "../../components/Sidebar";
 
-//   const toggleMenu = () => {
-//     setMenu((isOpen) => !isOpen); // on,off 개념 boolean
-//   };
+const ExamplePage = () => {
+  return (
+    <div>
+      {/* 다른 컨텐츠들... */}
 
-//   return (
-//     <div className="header">
-//       <ul className="header-wrapper">
-//         <li>
-//           <MenuIcon onClick={() => toggleMenu()}></MenuIcon>
-//         </li>{" "}
-//         // 클릭되었을 때 준비한 함수 호출! on off 개념
-//         <li>
-//           <img
-//             width="45px"
-//             src="https://www.burgerking.co.kr/dist/img/logo_titleBar.e89f6852.png"
-//           ></img>
-//         </li>
-//         <li>
-//           <Button
-//             variant="contained"
-//             color="secondary"
-//             size="small"
-//             style={buttonStyles}
-//           >
-//             딜리버리주문
-//           </Button>
-//         </li>
-//       </ul>
-//       <ul className={isOpen ? "show-menu" : "hide-menu"}>
-//         {" "}
-//         // 삼항연산자 true 일 때 클래스명 show-menu, false일때 hide-menu
-//         <li>1</li>
-//         <li>2</li>
-//         <li>3</li>
-//         <li>4</li>
-//       </ul>
-//     </div>
-//   );
-// };
+      <Sidebar width={300}>
+        <p>여기에 사이드바 내용을 작성합니다.</p>
+        <p>더 많은 텍스트나 다른 React 컴포넌트도 추가할 수 있습니다.</p>
+      </Sidebar>
+    </div>
+  );
+};
 
-// export default toggle;
+export default ExamplePage;

@@ -10,6 +10,7 @@ import Searchplace from "./pages/searchplacepage/searchplace";
 import MainHeader from "./components/MainHeader";
 import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
+import Plandetail from "./pages/travelplan/travelplan_detail";
 function App() {
   return (
     <div>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/travelplandate" element={<TravelPlandate />} />
           <Route path="/searchdiary" element={<Searchdiary />} />
           <Route path="/searchplace" element={<Searchplace />} />
+          <Route path="/travelplandetail" element={<Plandetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
