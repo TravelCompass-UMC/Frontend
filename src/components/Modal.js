@@ -1,12 +1,16 @@
+// Modal.js
 import React from "react";
-import "..//styles/Modal.css";
+import "../styles/Modal.css";
 
-const Modal = (props) => {
-  // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header } = props;
-
+const Modal = ({
+  open,
+  close,
+  header,
+  buttonText = "이대로 계획 만들기!",
+  onButtonClick,
+  children,
+}) => {
   return (
-    // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
         <section>
@@ -16,10 +20,11 @@ const Modal = (props) => {
               &times;
             </button>
           </header>
-          <main>{props.children}</main>
+          <main>{children}</main>{" "}
+          {/* 여기서 props.children을 직접 children으로 변경 */}
           <footer>
-            <button className="close" onClick={close}>
-              이대로 계획 만들기!
+            <button className="close" onClick={onButtonClick || close}>
+              {buttonText}
             </button>
           </footer>
         </section>
