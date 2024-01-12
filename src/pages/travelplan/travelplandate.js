@@ -36,24 +36,12 @@ class trvlplan extends Component {
     this.setState({ modalOpen: false });
   };
 
-
   render() {
     const formattedStartDate = format(this.state.startDate, "yyyy년 MM월 dd일");
     const formattedEndDate = format(this.state.endDate, "yyyy년 MM월 dd일");
 
     return (
       <div>
-        <form>
-          <input
-            type="text"
-            maxLength="20"
-            className="search_input"
-            name="search"
-            placeholder="어디로 가고싶나요?"
-          />
-          <input type="submit" value="검색" className="serach_submit" />
-        </form>
-
         <div>
           <h1>여행 기간</h1>
           <p>기간을 선택해주세요</p>
@@ -99,10 +87,9 @@ class trvlplan extends Component {
             <div>여행 종료일: {formattedEndDate}</div>
           </Modal>
         </React.Fragment>
-</div>
+      </div>
     );
   }
 }
 
 export default trvlplan;
-

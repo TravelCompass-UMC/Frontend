@@ -23,7 +23,7 @@ const MainHeader = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName={classes.active} to="/travelplan">
+            <NavLink activeClassName={classes.active} to="/travelplandes">
               여행계획 설계
             </NavLink>
           </li>
