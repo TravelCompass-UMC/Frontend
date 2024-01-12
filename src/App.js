@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Switch,
+} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/login_and_signin/login";
 import MyPag from "./pages/mapages/MyPage";
@@ -12,6 +17,7 @@ import SearchPlaceInfo from "./pages/searchplacepage/placeinfo";
 import MainHeader from "./components/MainHeader";
 import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
+import Plandetail from "./pages/travelplan/travelplan_detail";
 function App() {
   return (
     <div>
@@ -28,6 +34,7 @@ function App() {
           <Route path="/searchdiary" element={<Searchdiary />} />
           <Route path="/searchplace" element={<Searchplace />} />
           <Route path="/placeinfo1" element={<SearchPlaceInfo />} />
+          <Route path="/travelplandetail" element={<Plandetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

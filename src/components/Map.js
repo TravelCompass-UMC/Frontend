@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import "../styles/Place.css"; 
+import React, { useState } from "react";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import "../styles/Place.css";
 
 const containerStyle = {
-  position: 'absolute',
+  position: "absolute",
   top: 0,
   left: 0,
-  width: '100vw',
-  height: '100vh',
+  width: "100vw",
+  height: "100vh",
 };
 
 const Center = {
@@ -16,7 +16,7 @@ const Center = {
 };
 
 const GoogleMapComponent = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [mapCenter, setMapCenter] = useState(Center);
   const [zoomLevel, setZoomLevel] = useState(7);
 
@@ -29,10 +29,8 @@ const GoogleMapComponent = () => {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
-      <LoadScript
-        googleMapsApiKey="AIzaSyDrDh7WbZV2PvkmqmJJDc1Gr6QGygvS0Mg"
-      >
+    <div style={{ position: "relative" }}>
+      <LoadScript googleMapsApiKey="AIzaSyDrDh7WbZV2PvkmqmJJDc1Gr6QGygvS0Mg">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={mapCenter}
