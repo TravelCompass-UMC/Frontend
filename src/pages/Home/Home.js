@@ -1,16 +1,37 @@
 import React, { Component } from "react";
+import '../../styles/Home.css';
+import SidebarR from "../../components/SidebarR";
 
 class home extends Component {
   render() {
     return (
-      <div>
-        <h3> 검색창: 어디로 갈까요? </h3>
-        <h3> 현재 인기있는지역 TOP4 </h3>
-        <h3> 인기지역 클릭시 그 지역의 유명 장소 제공 </h3>
-        <h3> 장소 클릭시 장소 정보페이지로 이동 </h3>
+      <div className="container">
+        <div className="map">지도 배경 이미지</div>
+        <input type="text" className="searchbox" placeholder="궁금한 지역을 검색해보세요"></input>
+        <SidebarR width={320}>
+          <p>대한민국</p>
+          <p>지금 대한민국의 가장 인기 많은 지역</p>
+          <ul>
+            <li>TOP1 서울</li>
+            <li>TOP2 제주도</li>
+            <li>TOP3 부산</li>
+            <li>TOP4 여수</li>
+          </ul>
+          <a href="#">서울</a>
+          <div className="popularplace">
+            <p>선택하신 도시의 가장 인기 많은 장소</p>
+          </div>
+          <button className="side-bar_button">사이드바 닫기 버튼</button>
+          </SidebarR>
+        <div className="writtenplan">
+          <p>국내 인기 여행계획</p>
+          <a href ="#">창덕궁 기타 등등</a>
+        </div>      
       </div>
+
     );
   }
 }
 
 export default home;
+
