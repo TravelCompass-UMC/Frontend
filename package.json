@@ -16,7 +16,7 @@
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-hook-geolocation": "^1.1.0",
     "react-is": "^18.3.0-next-fecc288b7-20221025",
-    "react-router-dom": "^6.21.1",
+    "react-router-dom": "^6.21.2",
     "react-scripts": "^5.0.1",
     "styled-components": "^6.1.8",
     "web-vitals": "^2.1.0"
