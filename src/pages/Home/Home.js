@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import '../../styles/Home.css';
 import Sidebar from "../../components/Sidebar";
+import GoogleMapComponent from "../../components/Map";
 
 class home extends Component {
   render() {
     return (
       <div className="container">
-        <div className="map">지도 배경 이미지</div>
+        <div className="map">배경 이미지 지도</div>
         <input type="text" className="searchbox" placeholder="궁금한 지역을 검색해보세요"></input>
         <Sidebar width={320}>
           <p>대한민국</p>
@@ -24,7 +25,6 @@ class home extends Component {
           {/* <a href="#">제주도</a>
           <a href="#">부산</a>
           <a href="#">여수</a> */}
-          <button className="side-bar_button">사이드바 닫기 버튼</button>
           </Sidebar>
         <div className="writtenplan">
           <p>국내 인기 여행계획</p>
