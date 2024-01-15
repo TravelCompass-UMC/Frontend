@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import SidebarL from "../../components/SidebarL";
@@ -6,102 +7,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { eachDayOfInterval, format } from "date-fns";
 import "../../styles/travelplan_detail.css";
-
-const renderSidebarContent = (
-  sidebarContent,
-  dates,
-  times,
-  handleTimeChange,
-  hashtag,
-  hashArr,
-  onChangeHashtag,
-  onKeyUp,
-  transportation, // transportation 변수 추가
-  handleTransportationChange // handleTransportationChange 변수 추가
-) => {
-  const renderTransportationButtons = () => {
-    return (
-      <div className="transportation-buttons">
-        <button
-          className={transportation === "자가용" ? "selected" : ""}
-          onClick={() => handleTransportationChange("자가용")}
-        >
-          자가용
-        </button>
-        <button
-          className={transportation === "대중교통" ? "selected" : ""}
-          onClick={() => handleTransportationChange("대중교통")}
-        >
-          대중교통
-        </button>
-      </div>
-    );
-  };
-
-  switch (sidebarContent) {
-    case "일정":
-      return dates.map((date) => {
-        const formattedDate = format(date, "yyyy-MM-dd");
-        const { startTime, endTime } = times[formattedDate] || {};
-        return (
-          <div key={formattedDate}>
-            <h3>{format(date, "yyyy년 MM월 dd일")}</h3>
-            <div>
-              <label>시작 시간: </label>
-              <DatePicker
-                selected={startTime}
-                onChange={(date) => handleTimeChange(date, formattedDate, true)}
-                showTimeSelect
-                showTimeSelectOnly
-                timeIntervals={15}
-                timeCaption="Time"
-                dateFormat="h:mm aa"
-              />
-            </div>
-            <div>
-              <label>종료 시간: </label>
-              <DatePicker
-                selected={endTime}
-                onChange={(date) =>
-                  handleTimeChange(date, formattedDate, false)
-                }
-                showTimeSelect
-                showTimeSelectOnly
-                timeIntervals={15}
-                timeCaption="Time"
-                dateFormat="h:mm aa"
-              />
-            </div>
-            {renderTransportationButtons()}
-            <div className="HashWrap">
-              <div className="HashWrapOuter">
-                {hashArr.map((tag, index) => (
-                  <div key={index} className="HashWrapInner">
-                    #{tag}
-                  </div>
-                ))}
-              </div>
-              <input
-                className="HashInput"
-                type="text"
-                value={hashtag}
-                onChange={onChangeHashtag}
-                onKeyUp={onKeyUp}
-                placeholder="해시태그 입력"
-              />
-            </div>
-          </div>
-        );
-      });
-
-    case "숙소":
-      return <p>숙소 선택 내용이 여기에 표시됩니다.</p>;
-    case "장소":
-      return <p>장소 선택 내용이 여기에 표시됩니다.</p>;
-    default:
-      return <p>내용을 선택해 주세요.</p>;
-  }
-};
 
 const ExamplePage = () => {
   const location = useLocation();
@@ -177,18 +82,78 @@ const ExamplePage = () => {
           장소선택
         </button>
 
-        {renderSidebarContent(
-          sidebarContent,
-          eachDayOfInterval({ start: startDate, end: endDate }),
-          times,
-          handleTimeChange,
-          hashtag,
-          hashArr,
-          onChangeHashtag,
-          onKeyUp,
-          transportation, // transportation 전달
-          handleTransportationChange // handleTransportationChange 전달
-        )}
+        <div>
+          {eachDayOfInterval({ start: startDate, end: endDate }).map((date) => {
+            const formattedDate = format(date, "yyyy-MM-dd");
+            const { startTime, endTime } = times[formattedDate] || {};
+            return (
+              <div key={formattedDate}>
+                <h3>{format(date, "yyyy년 MM월 dd일")}</h3>
+                <div>
+                  <label>시작 시간: </label>
+                  <DatePicker
+                    selected={startTime}
+                    onChange={(date) =>
+                      handleTimeChange(date, formattedDate, true)
+                    }
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={15}
+                    timeCaption="Time"
+                    dateFormat="h:mm aa"
+                  />
+                </div>
+                <div>
+                  <label>종료 시간: </label>
+                  <DatePicker
+                    selected={endTime}
+                    onChange={(date) =>
+                      handleTimeChange(date, formattedDate, false)
+                    }
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={15}
+                    timeCaption="Time"
+                    dateFormat="h:mm aa"
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="transportation-buttons">
+          <button
+            className={transportation === "자가용" ? "selected" : ""}
+            onClick={() => handleTransportationChange("자가용")}
+          >
+            자가용
+          </button>
+          <button
+            className={transportation === "대중교통" ? "selected" : ""}
+            onClick={() => handleTransportationChange("대중교통")}
+          >
+            대중교통
+          </button>
+        </div>
+
+        <div className="HashWrap">
+          <div className="HashWrapOuter">
+            {hashArr.map((tag, index) => (
+              <div key={index} className="HashWrapInner">
+                #{tag}
+              </div>
+            ))}
+          </div>
+          <input
+            className="HashInput"
+            type="text"
+            value={hashtag}
+            onChange={onChangeHashtag}
+            onKeyUp={onKeyUp}
+            placeholder="해시태그 입력"
+          />
+        </div>
       </SidebarL>
       <Map />
     </div>
