@@ -63,3 +63,4 @@ const SidebarL = ({ width = 280, isOpen: externalIsOpen, children }) => {
 };
 
 export default SidebarL;
+
