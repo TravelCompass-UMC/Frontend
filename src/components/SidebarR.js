@@ -15,17 +15,17 @@
       }
     };
     
-    // 사이드바 외부 클릭시 닫히는 함수
-    const handleClose = async (e) => {
-      let sideArea = side.current;
-      let sideCildren = side.current.contains(e.target);
-      let closeButtonClicked = e.target.classList.contains(styles.button);
-    
-      if (isOpen && (!sideArea || !sideCildren) && !closeButtonClicked) {
-        await setX(-width);
-        await setOpen(false);
-      }
-    };
+ // 사이드바 외부 클릭시 닫히는 함수
+const handleClose = async (e) => {
+  let sideArea = side.current;
+  let sideCildren = side.current.contains(e.target);
+  let closeButtonClicked = e.target.classList.contains(styles.button);
+
+  if (isOpen && (!sideArea || !sideCildren) && closeButtonClicked) {
+    await setX(-width);
+    await setOpen(false);
+  }
+};
 
   useEffect(()=> {
     window.addEventListener('click', handleClose);
