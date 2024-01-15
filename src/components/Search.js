@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../styles/Place.css";
 
-const SearchComponent = ({ onSearch }) => {
+const SearchComponent = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
-
+  
   // 가상의 추천 단어 목록
   const allDestinations = [
     "서울",
@@ -37,8 +37,8 @@ const SearchComponent = ({ onSearch }) => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    // 검색어를 상위 컴포넌트로 전달
-    onSearch(searchQuery);
+    // 실제 검색 로직을 여기에 추가
+    console.log("검색어:", searchQuery);
   };
 
   const selectSuggestion = (suggestion) => {

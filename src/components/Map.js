@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import Geocode from "react-geocode";
 import "../styles/Place.css";
 
 const containerStyle = {
@@ -11,30 +10,27 @@ const containerStyle = {
   height: "100vh",
 };
 
-const GoogleMapComponent = ({ location }) => {
-  const [mapCenter, setMapCenter] = useState({ lat: 35.8714, lng: 128.6014 });
+const Center = {
+  lat: 35.8714,
+  lng: 128.6014,
+};
+
+const GoogleMapComponent = () => {
+  const [mapCenter, setMapCenter] = useState(Center);
   const [zoomLevel, setZoomLevel] = useState(7);
 
-  useEffect(() => {
-    if (location) {
-      // TODO: Replace YOUR_GOOGLE_MAP_API_KEY with your actual API key
-      Geocode.setApiKey("AIzaSyDrDh7WbZV2PvkmqmJJDc1Gr6QGygvS0Mg");
-      // Get latidude & longitude from address.
-      Geocode.fromAddress(location).then(
-        (response) => {
-          const { lat, lng } = response.results[0].geometry.location;
-          setMapCenter({ lat, lng });
-          setZoomLevel(11);
-        },
-        (error) => {
-          console.error("Error fetching coordinates:", error);
-        }
-      );
-    }
-  }, [location]);
+  const handleSearch = (event) => {
+    event.preventDefault();
+    // TODO: Implement geocoding or use an external API to get location coordinates based on the search query.
+    // For simplicity, here we are just updating the map center with a predefined location.
+    setMapCenter(Center);
+    setZoomLevel(7); // You can adjust the zoom level as needed.
+  };
 
   return (
     <div style={{ position: "relative" }}>
+      <form onSubmit={handleSearch}>
+        </form>
       <LoadScript googleMapsApiKey="AIzaSyDrDh7WbZV2PvkmqmJJDc1Gr6QGygvS0Mg">
         <GoogleMap
           mapContainerStyle={containerStyle}
