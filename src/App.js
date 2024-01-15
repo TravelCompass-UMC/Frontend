@@ -18,6 +18,11 @@ import MainHeader from "./components/MainHeader";
 import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
 import Plandetail from "./pages/travelplan/travelplan_detail";
+import Myplanpage from "./pages/mapages/Myplanpage";
+import Otherplanpage from "./pages/mapages/Otherplanpage";
+import Myplacepage from "./pages/mapages/Myplacepage";
+
+
 function App() {
   return (
     <div>
@@ -36,6 +41,9 @@ function App() {
           <Route path="/placeinfo1" element={<SearchPlaceInfo />} />
           <Route path="/travelplandetail" element={<Plandetail />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/myplan" element={<Myplanpage/>}/>
+          <Route path="/otherplan" element={<Otherplanpage/>}/>
+          <Route path="/myplace" element={<Myplacepage/>}/>
         </Routes>
       </main>
     </div>

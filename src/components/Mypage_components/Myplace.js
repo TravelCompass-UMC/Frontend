@@ -7,7 +7,15 @@ const Myplace = () => {
     return (
         <div className="myplace-container">
             {/* 관심 있는 장소 컴포넌트의 내용을 작성 */}
-            <p>관심 있는 장소</p>
+            <div className="mypage_navbar">
+        <div>관심 있는 장소</div>
+        <div style={{flexGrow: "1"}}></div>
+        <div>
+            <Link to="/myplace">
+                더보기
+            </Link>
+        </div>
+      </div>
             <table>
                 <thead></thead>
                 <tbody>
