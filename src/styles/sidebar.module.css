@@ -4,6 +4,7 @@
   }
   .sidebar {
     background-color: #E3ECF1;
+    border-left: 4px solid #202020;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -38,5 +39,3 @@
     margin: 0;
     color: #202020;
   }
-
-  

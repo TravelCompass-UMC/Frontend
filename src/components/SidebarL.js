@@ -1,4 +1,3 @@
-// SidebarL.js
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/sidebarL.css";
 

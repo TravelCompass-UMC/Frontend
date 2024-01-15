@@ -1,96 +1,20 @@
+/* Mypages.css */
+
+.join-button {
+    display: inline;
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+  }
+
 .user {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0px;
-  height: 200px;
-  background-color: aqua;
-}
-
-.profile-info {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.profile-info img {
-  width: 50px; /* 프로필 아이콘 크기 조절 */
-  height: 50px;
-  margin-right: 10px;
+.user p {
+  font-size: 28px;
 }
-
-.user-details p {
-  margin: 0;
-}
-
-.my-plans,
-.interest-plans,
-.interest-places {
-  margin-top: 20px;
-}
-
-/* 여기서부터 작업 */
-
-.mypage-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.myplan-container,
-.myplace-container,
-.otherplan-container {
-  background-color: #f0f0f0; /* 회색 배경색 */
-  padding: 20px; /* 간격 조절 */
-  margin-bottom: 20px; /* 하단 여백 조절 */
-  height: 300px;
-}
-
-.myplanpage-container {
-  background-color: orange;
-  height: auto; /* 높이 자동으로 설정 */
-}
-
-.myplanpage-container .myplan-container {
-  background-color: yellow; /* 노란색으로 설정 */
-}
-
-.mypage_navbar {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.myplan_img, 
-.myplace_img, 
-.otherplan_img {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.thumbnailGroup {
-  display: flex;
-}
-
-.myplan_images {
-  display: flex;
-  margin-bottom: 20px; /* 아래 여백 추가 */
-}
-
-.myplan_img {
-  background-color: yellow;
-  padding: 20px;
-  text-align: center;
-  width: 300px;
-  height: 250px;
-  text-align: center;
-  margin-right: 10px; /* 각 썸네일 간의 간격 설정 */
-  margin-bottom: 10px;
-}
-
-.mypage_navbar {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.otherplan_img {
-  background-color: green;
-  width: 300px;
+.profile-button {
+  margin-left: auto; /* 버튼을 오른쪽으로 이동시킵니다. */
 }
