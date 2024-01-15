@@ -1,96 +1,89 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/travelplanpage.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { ko } from "date-fns/esm/locale";
-import { Link } from "react-router-dom";
+import { ko } from "date-fns/locale";
 import Modal from "../../components/Modal";
 import { format } from "date-fns";
 
-class trvlplan extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      startDate: new Date(),
-      endDate: new Date(),
-      modalOpen: false,
-    };
-  }
+const TrvlPlan = () => {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
 
-  handleStartDateChange = (date) => {
-    this.setState({
-      startDate: date,
-    });
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
   };
 
-  handleEndDateChange = (date) => {
-    this.setState({
-      endDate: date,
-    });
+  const handleEndDateChange = (date) => {
+    setEndDate(date);
   };
 
-  openModal = () => {
-    this.setState({ modalOpen: true });
+  const openModal = () => {
+    setModalOpen(true);
   };
 
-  closeModal = () => {
-    this.setState({ modalOpen: false });
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
-  render() {
-    const formattedStartDate = format(this.state.startDate, "yyyy년 MM월 dd일");
-    const formattedEndDate = format(this.state.endDate, "yyyy년 MM월 dd일");
+  const goToDetail = () => {
+    closeModal();
+    navigate("/travelplandetail"); // 페이지 이동
+  };
 
-    return (
+  const formattedStartDate = format(startDate, "yyyy년 MM월 dd일");
+  const formattedEndDate = format(endDate, "yyyy년 MM월 dd일");
+
+  return (
+    <div>
       <div>
+        <h1>여행 기간</h1>
+        <p>기간을 선택해주세요</p>
         <div>
-          <h1>여행 기간</h1>
-          <p>기간을 선택해주세요</p>
-          <div>
-            <h2>여행 시작일:</h2>
-            <DatePicker
-              className="datepicker"
-              locale={ko}
-              dateFormat="yyyy년 MM월 dd일"
-              minDate={new Date()}
-              selected={this.state.startDate}
-              onChange={this.handleStartDateChange}
-              selectsStart
-              startDate={this.state.startDate}
-              endDate={this.state.endDate}
-            />
-          </div>
-          <div>
-            <h2>여행 종료일:</h2>
-            <DatePicker
-              className="datepicker"
-              locale={ko}
-              dateFormat="yyyy년 MM월 dd일"
-              selected={this.state.endDate}
-              onChange={this.handleEndDateChange}
-              selectsEnd
-              startDate={this.state.startDate}
-              endDate={this.state.endDate}
-              minDate={this.state.startDate}
-            />
-          </div>
+          <h2>여행 시작일:</h2>
+          <DatePicker
+            className="datepicker"
+            locale={ko}
+            dateFormat="yyyy년 MM월 dd일"
+            minDate={new Date()}
+            selected={startDate}
+            onChange={handleStartDateChange}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+          />
         </div>
-        <React.Fragment>
-          <button onClick={this.openModal}>계획 만들기</button>
-          <Modal
-            open={this.state.modalOpen}
-            close={this.closeModal}
-            title="Create a chat room"
-          >
-            {/* Modal.js <main> {this.props.children} </main>에 내용이 입력된다. */}
-
-            <div>여행 시작일: {formattedStartDate}</div>
-            <div>여행 종료일: {formattedEndDate}</div>
-          </Modal>
-        </React.Fragment>
+        <div>
+          <h2>여행 종료일:</h2>
+          <DatePicker
+            className="datepicker"
+            locale={ko}
+            dateFormat="yyyy년 MM월 dd일"
+            selected={endDate}
+            onChange={handleEndDateChange}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+          />
+        </div>
       </div>
-    );
-  }
-}
+      <button onClick={openModal}>계획 만들기</button>
+      <Modal
+        open={modalOpen}
+        close={closeModal}
+        header="여행 계획"
+        buttonText="지금 만들기"
+        onButtonClick={goToDetail}
+      >
+        <div>여행 시작일: {formattedStartDate}</div>
+        <div>여행 종료일: {formattedEndDate}</div>
+      </Modal>
+    </div>
+  );
+};
 
-export default trvlplan;
+export default TrvlPlan;

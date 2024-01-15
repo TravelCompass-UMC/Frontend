@@ -47,5 +47,4 @@ const SidebarR = ({ width=280, children }) => {
   );
 };
 
-
 export default SidebarR;

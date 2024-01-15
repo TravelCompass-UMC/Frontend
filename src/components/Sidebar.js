@@ -1,8 +1,7 @@
-//미완성 코드
 import React, { useEffect, useRef, useState } from "react";
-import styles from "../styles/sidebarL.css";
+import styles from "../styles/sidebar.module.css";
 
-const SidebarL = ({ width = 280, children }) => {
+const Sidebar = ({ width = 280, children }) => {
   const [isOpen, setOpen] = useState(false);
   const [xPosition, setX] = useState(-width);
   const side = useRef();
@@ -19,11 +18,12 @@ const SidebarL = ({ width = 280, children }) => {
   };
 
   // 사이드바 외부 클릭시 닫히는 함수
-  const handleClose = (e) => {
+  const handleClose = async (e) => {
     let sideArea = side.current;
-    let sideChildren = side.current.contains(e.target);
-    if (isOpen && (!sideArea || !sideChildren)) {
-      setOpen(false);
+    let sideCildren = side.current.contains(e.target);
+    if (isOpen && (!sideArea || !sideCildren)) {
+      await setX(-width);
+      await setOpen(false);
     }
   };
 
@@ -32,26 +32,35 @@ const SidebarL = ({ width = 280, children }) => {
     return () => {
       window.removeEventListener("click", handleClose);
     };
-  }, [isOpen]);
+  });
 
   return (
     <div className={styles.container}>
-      <button onClick={() => toggleMenu()} className={styles.button}>
-        {isOpen ? <span>X</span> : <span>&#9776;</span>}
-      </button>
       <div
         ref={side}
         className={styles.sidebar}
         style={{
           width: `${width}px`,
           height: "100%",
-          transform: `translateX(${xPosition}px)`,
+          transform: `translatex(${-xPosition}px)`,
         }}
       >
-        <div className={styles.content}>{children}</div>
+        <button onClick={() => toggleMenu()} className={styles.button}>
+          {isOpen ? (
+            <span>X</span>
+          ) : (
+            <img
+              src="images/avatar.png"
+              alr="contact open button"
+              className={styles.openBtn}
+            />
+          )}
+        </button>
+        <div className={styles.content}>{children}</div> //사이드바 컴포넌트
+        내부 값이 구현되는 위치
       </div>
     </div>
   );
 };
 
-export default SidebarL;
+export default Sidebar;
