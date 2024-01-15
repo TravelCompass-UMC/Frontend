@@ -1,4 +1,4 @@
-//미완성 코드
+// SidebarL.js
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/sidebarL.css";
 
