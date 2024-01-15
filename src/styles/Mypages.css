@@ -1,20 +1,55 @@
-/* Mypages.css */
 
-.join-button {
-    display: inline;
-    text-decoration: none;
-    font-weight: bold;
-    color: inherit;
-  }
+.mypage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 .user {
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  height: 200px;
+  background-color: aqua;
+}
+
+.profile-info {
+  display: flex;
   align-items: center;
 }
 
-.user p {
-  font-size: 28px;
+.profile-info img {
+  width: 50px; /* 프로필 아이콘 크기 조절 */
+  height: 50px;
+  margin-right: 10px;
 }
-.profile-button {
-  margin-left: auto; /* 버튼을 오른쪽으로 이동시킵니다. */
+
+.user-details p {
+  margin: 0;
+}
+
+.my-plans,
+.interest-plans,
+.interest-places {
+  margin-top: 20px;
+}
+
+.mypage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.myplan-container,
+.myplace-container,
+.otherplan-container {
+  background-color: #f0f0f0; /* 회색 배경색 */
+  padding: 20px; /* 간격 조절 */
+  margin-bottom: 20px; /* 하단 여백 조절 */
+  height: 300px;
+}
+
+/* Add additional styling as needed for thumbnails, etc. */
+
+.mypage_navbar {
+  display: flex;
 }
