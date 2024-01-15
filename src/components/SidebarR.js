@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState } from "react";
 import styles from "../styles/sidebar.module.css";
+
 const SidebarR = ({ width=280, children }) => {
   const [isOpen, setOpen] = useState(false);
   const [xPosition, setX] = useState(-width);
@@ -48,6 +49,3 @@ const SidebarR = ({ width=280, children }) => {
 };
 
 export default SidebarR;
-=========
-export default SidebarR;
->>>>>>>>> Temporary merge branch 2
