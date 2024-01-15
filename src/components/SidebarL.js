@@ -1,4 +1,3 @@
-// SidebarL.js
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/sidebarL.css";
 
@@ -64,3 +63,4 @@ const SidebarL = ({ width = 280, isOpen: externalIsOpen, children }) => {
 };
 
 export default SidebarL;
+

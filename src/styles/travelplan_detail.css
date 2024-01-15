@@ -13,3 +13,62 @@
   left: -376px;
   transition: 1s;
 }
+
+.selected {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.transportation-buttons button {
+  margin-right: 10px;
+  padding: 5px 10px;
+}
+
+.transportation-buttons .selected {
+  background-color: #28a745;
+}
+
+.HashWrap {
+  margin-top: 24px;
+  /* color: rgb(52, 58, 64); - 제거되거나 수정됨 */
+  color: #444241; /* 원하는 색상 값으로 유지 */
+  font-size: 1.125rem;
+  display: flex;
+  flex-wrap: wrap;
+  letter-spacing: -0.6px;
+  border-bottom: 1.6px solid #cccccc;
+  padding: 2px 2px 8px 2px;
+}
+.HashWrapOuter {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.HashWrapInner {
+  margin-top: 5px;
+  background: #ffeee7;
+  border-radius: 56px;
+  padding: 8px 12px;
+  color: #ff6e35;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 20px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.HashInput {
+  width: auto;
+  margin: 10px;
+  display: inline-flex;
+  outline: none;
+  cursor: text;
+  line-height: 2rem;
+  margin-bottom: 0.75rem;
+  min-width: 8rem;
+  border: none;
+}
