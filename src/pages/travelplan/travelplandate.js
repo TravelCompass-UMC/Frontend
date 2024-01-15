@@ -31,7 +31,7 @@ const TrvlPlan = () => {
 
   const goToDetail = () => {
     closeModal();
-    navigate("/travelplandetail"); // 페이지 이동
+    navigate("/travelplandetail", { state: { startDate, endDate } });
   };
 
   const formattedStartDate = format(startDate, "yyyy년 MM월 dd일");
