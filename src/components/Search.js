@@ -1,11 +1,13 @@
+// Search.js
+
 import React, { useState } from "react";
 import "../styles/Place.css";
 
-const SearchComponent = () => {
+const SearchComponent = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
-  
+
   // 가상의 추천 단어 목록
   const allDestinations = [
     "서울",
@@ -35,10 +37,29 @@ const SearchComponent = () => {
     setShowSuggestions(filteredSuggestions.length > 0);
   };
 
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault();
-    // 실제 검색 로직을 여기에 추가
-    console.log("검색어:", searchQuery);
+
+    try {
+      // Geocoding API 호출을 위한 URL
+      const geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchQuery}&key=AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U`;
+
+      // Geocoding API 호출
+      const response = await fetch(geocodingApiUrl);
+      const data = await response.json();
+
+      // 검색어로부터 위치 좌표 가져오기
+      const location = data.results[0]?.geometry?.location;
+
+      if (location) {
+        // 검색된 위치를 부모 컴포넌트로 전달하여 지도를 업데이트
+        onSearch(location);
+      } else {
+        console.error("Location not found");
+      }
+    } catch (error) {
+      console.error("Error fetching geocoding data:", error);
+    }
   };
 
   const selectSuggestion = (suggestion) => {
