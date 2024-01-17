@@ -1,48 +1,36 @@
-// placeinfo.js 코드
+// placeinfo.js
 
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { Link, useParams } from "react-router-dom";
 import SidebarL from "../../components/SidebarL";
-import { getPlaceDetails } from "../../api/MapDetail"; // assuming you have a function to fetch place details
 
 const PlaceInfo = () => {
   const { query } = useParams();
-  const [placeDetails, setPlaceDetails] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Fetch place details from Travel Advisor API
-    getPlaceDetails(query)
-      .then((data) => {
-        setPlaceDetails(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching place details:", error);
-        setLoading(false);
-      });
-  }, [query]);
 
   return (
     <div>
       <h2>Search Results for: {query}</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : placeDetails ? (
-        <SidebarL width={320} isOpen={true}>
-          <img src={placeDetails.photo.images.large.url} alt={placeDetails.name} />
-          <h3>{placeDetails.name}</h3>
-          <p>별점: {placeDetails.rating}</p>
-          <p>북마크: {placeDetails.bookmarked ? "북마크됨" : "북마크 안됨"}</p>
-          <p>위치: {placeDetails.location_string}</p>
-          <p>운영 시간: {placeDetails.operating_hours}</p>
-          <p>전화번호: {placeDetails.phone}</p>
-          <p>리뷰: {placeDetails.review_count}개</p>
-          {/* Add more details as needed */}
-        </SidebarL>
-      ) : (
-        <p>No details available for this place.</p>
-      )}
+      <SidebarL width={320}>
+        <p>대한민국</p>
+        <p>지금 대한민국의 가장 인기 많은 지역</p>
+        <ul>
+          <li>TOP1 <br/>
+            <Link to={`/city/seoul`}>서울</Link>
+          </li>
+          <li>TOP2 <br/>
+            <Link to={`/city/jeju`}>제주도</Link>
+          </li>
+          <li>TOP3 <br/>
+            <Link to={`/city/busan`}>부산</Link>
+          </li>
+          <li>TOP4 <br/>
+            <Link to={`/city/gyeongju`}>경주</Link>
+          </li>
+        </ul>
+        <div className="popularplace">
+          <p>선택하신 도시의 가장 인기 많은 장소</p>
+        </div>
+      </SidebarL>
     </div>
   );
 };
