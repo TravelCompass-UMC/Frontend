@@ -1,13 +1,20 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import diary from "./components/searchdiary/diary";
 
 class srchdiary extends Component {
   render() {
     return (
       <div>
+        <img src="./images/Pages/Vector.png" alt="이미지 설명" />
         <h3> 원하는 조건의 계획 찾기 </h3>
         <div>
           <table>
-            <tr>일정</tr>
+            <tbody>
+              <tr>
+                <td>일정</td>
+              </tr>
+            </tbody>
           </table>
           <button
           // onClick={() => this.handleScheduleFilter("all")}
@@ -25,5 +32,12 @@ class srchdiary extends Component {
     );
   }
 }
+
+ReactDOM.render(
+  <React.StrictMode>
+    <srchdiary /> {/* Use the component name with PascalCase */}
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
 export default srchdiary;
