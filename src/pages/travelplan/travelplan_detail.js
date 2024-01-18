@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { eachDayOfInterval, format } from "date-fns";
 import "../../styles/travelplan_detail.css";
+import Searching from "../../components/Search";
 
 const renderSidebarContent = (
   sidebarContent,
@@ -63,7 +64,15 @@ const renderSidebarContent = (
       );
 
     case "숙소":
-      return <p>숙소 선택 내용이 여기에 표시됩니다.</p>;
+      return (
+        <div>
+          <div className="search-component">
+            <Searching />
+          </div>
+
+          <p>숙소 선택 내용이 여기에 표시됩니다.</p>
+        </div>
+      );
     case "장소":
       return <p>장소 선택 내용이 여기에 표시됩니다.</p>;
     default:
