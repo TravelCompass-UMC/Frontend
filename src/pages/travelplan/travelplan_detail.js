@@ -8,13 +8,15 @@ import { eachDayOfInterval, format } from "date-fns";
 import "../../styles/travelplan_detail.css";
 import Searching from "../../components/Search";
 
+const sidebarOptions = ["일정", "숙소", "장소"]; // 사이드바 옵션을 순서대로 배열로 정의합니다.
+
 const renderSidebarContent = (
   sidebarContent,
   dates,
   times,
   handleTimeChange,
   renderTransportationButtons,
-  renderPeopleCount // 인원 선택 기능 렌더링 함수를 매개변수로 추가
+  renderPeopleCount
 ) => {
   switch (sidebarContent) {
     case "일정":
@@ -82,7 +84,8 @@ const renderSidebarContent = (
 
 const Trvlpage = () => {
   const location = useLocation();
-  const { startDate, endDate } = location.state || {};
+  const { startDate, endDate, destination } = location.state || {};
+
   const [sidebarContent, setSidebarContent] = useState("일정");
   const [transportation, setTransportation] = useState("자가용");
   const [times, setTimes] = useState({});
@@ -90,6 +93,12 @@ const Trvlpage = () => {
   const [hashArr, setHashArr] = useState([]);
   const [adultCount, setAdultCount] = useState(0); // 성인 수 상태
   const [childrenCount, setChildrenCount] = useState(0); // 아이 수 상태
+  const formattedStartDate = startDate
+    ? format(new Date(startDate), "yyyy-MM-dd")
+    : "";
+  const formattedEndDate = endDate
+    ? format(new Date(endDate), "yyyy-MM-dd")
+    : "";
 
   useEffect(() => {
     if (startDate && endDate) {
@@ -215,10 +224,28 @@ const Trvlpage = () => {
       </div>
     );
   };
+  const handlePrevious = () => {
+    const currentIndex = sidebarOptions.indexOf(sidebarContent);
+    if (currentIndex > 0) {
+      setSidebarContent(sidebarOptions[currentIndex - 1]);
+    }
+  };
+
+  const handleNext = () => {
+    const currentIndex = sidebarOptions.indexOf(sidebarContent);
+    if (currentIndex < sidebarOptions.length - 1) {
+      setSidebarContent(sidebarOptions[currentIndex + 1]);
+    }
+  };
 
   return (
     <div>
       <SidebarL width={400} isOpen={true}>
+        <h2>여행지: {destination}</h2> {/* 여행지 표시 */}
+        <h3>
+          여행 기간: {formattedStartDate} ~ {formattedEndDate}
+        </h3>{" "}
+        {/* 여행 기간 표시 */}
         <button
           className={sidebarContent === "일정" ? "selected" : ""}
           onClick={() => setSidebarContent("일정")}
@@ -237,7 +264,6 @@ const Trvlpage = () => {
         >
           장소선택
         </button>
-
         {renderSidebarContent(
           sidebarContent,
           eachDayOfInterval({ start: startDate, end: endDate }),
@@ -246,7 +272,10 @@ const Trvlpage = () => {
           renderTransportationButtons,
           renderPeopleCount // 인원 선택 기능 함수 전달
         )}
+        <button onClick={handlePrevious}>이전</button>
+        <button onClick={handleNext}>다음</button>
       </SidebarL>
+
       <Map />
     </div>
   );
