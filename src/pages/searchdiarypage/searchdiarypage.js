@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import diary from "./components/searchdiary/diary";
+import DiaryList from "../../components/searchdiary/diaryList";
 
 class srchdiary extends Component {
   render() {
@@ -23,11 +23,6 @@ class srchdiary extends Component {
           </button>
           {/* oneday와 twoplus에 대한 유사한 버튼들 */}
         </div>
-
-        <h3> 정렬 필터: 추천순 조회 많은 순 최신순</h3>
-        <h3> 페이지네이션 기능 구현</h3>
-        <h3> 클릭시 여행계획서로 이동</h3>
-        <h3> 내 여행 계획서로 가져오기</h3>
       </div>
     );
   }
@@ -35,7 +30,8 @@ class srchdiary extends Component {
 
 ReactDOM.render(
   <React.StrictMode>
-    <srchdiary /> {/* Use the component name with PascalCase */}
+    {/* <srchdiary /> Use the component name with PascalCase */}
+    <diaryList />
   </React.StrictMode>,
   document.getElementById("root")
 );
