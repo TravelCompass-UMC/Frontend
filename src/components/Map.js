@@ -1,6 +1,7 @@
+// Map.js
+
 import React, { useState } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import "../styles/Place.css";
 
 const containerStyle = {
   position: "absolute",
@@ -15,27 +16,23 @@ const Center = {
   lng: 128.6014,
 };
 
-const GoogleMapComponent = () => {
+const GoogleMapComponent = ({ location }) => {
   const [mapCenter, setMapCenter] = useState(Center);
   const [zoomLevel, setZoomLevel] = useState(7);
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    // TODO: Implement geocoding or use an external API to get location coordinates based on the search query.
-    // For simplicity, here we are just updating the map center with a predefined location.
-    setMapCenter(Center);
-    setZoomLevel(7); // You can adjust the zoom level as needed.
+  // 지도 중심 및 확대 레벨 업데이트 함수
+  const updateMap = (center, zoom) => {
+    setMapCenter(center);
+    setZoomLevel(zoom);
   };
 
   return (
     <div style={{ position: "relative" }}>
-      <form onSubmit={handleSearch}>
-        </form>
-      <LoadScript googleMapsApiKey="AIzaSyDrDh7WbZV2PvkmqmJJDc1Gr6QGygvS0Mg">
+      <LoadScript googleMapsApiKey="AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U">
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={mapCenter}
-          zoom={zoomLevel}
+          center={location || mapCenter}
+          zoom={location ? 12 : zoomLevel}
         />
       </LoadScript>
     </div>
