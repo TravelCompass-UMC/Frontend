@@ -7,80 +7,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { eachDayOfInterval, format } from "date-fns";
 import "../../styles/travelplan_detail.css";
 import Searching from "../../components/Search";
+import AccommodationsData from "../../tempdata/accommodationdata";
+import Accommodation from "./accommodationcomponent";
 
-const sidebarOptions = ["일정", "숙소", "장소"]; // 사이드바 옵션을 순서대로 배열로 정의합니다.
-
-const renderSidebarContent = (
-  sidebarContent,
-  dates,
-  times,
-  handleTimeChange,
-  renderTransportationButtons,
-  renderPeopleCount
-) => {
-  switch (sidebarContent) {
-    case "일정":
-      return (
-        <>
-          {dates.map((date) => {
-            const formattedDate = format(date, "yyyy-MM-dd");
-            const { startTime, endTime } = times[formattedDate] || {};
-            return (
-              <div key={formattedDate}>
-                <h3>{format(date, "yyyy년 MM월 dd일")}</h3>
-                <div>
-                  <label>시작 시간: </label>
-                  <DatePicker
-                    selected={startTime}
-                    onChange={(date) =>
-                      handleTimeChange(date, formattedDate, true)
-                    }
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeIntervals={15}
-                    timeCaption="Time"
-                    dateFormat="h:mm aa"
-                  />
-                </div>
-                <div>
-                  <label>종료 시간: </label>
-                  <DatePicker
-                    selected={endTime}
-                    onChange={(date) =>
-                      handleTimeChange(date, formattedDate, false)
-                    }
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeIntervals={15}
-                    timeCaption="Time"
-                    dateFormat="h:mm aa"
-                  />
-                </div>
-              </div>
-            );
-          })}
-          {renderTransportationButtons()}
-          {renderPeopleCount()}
-          {/* 인원 선택 기능 렌더링 */}
-        </>
-      );
-
-    case "숙소":
-      return (
-        <div>
-          <div className="search-component">
-            <Searching />
-          </div>
-
-          <p>숙소 선택 내용이 여기에 표시됩니다.</p>
-        </div>
-      );
-    case "장소":
-      return <p>장소 선택 내용이 여기에 표시됩니다.</p>;
-    default:
-      return <p>내용을 선택해 주세요.</p>;
-  }
-};
+const sidebarOptions = ["일정", "숙소", "장소"];
 
 const Trvlpage = () => {
   const location = useLocation();
@@ -91,8 +21,10 @@ const Trvlpage = () => {
   const [times, setTimes] = useState({});
   const [hashtag, setHashtag] = useState("");
   const [hashArr, setHashArr] = useState([]);
-  const [adultCount, setAdultCount] = useState(0); // 성인 수 상태
-  const [childrenCount, setChildrenCount] = useState(0); // 아이 수 상태
+  const [adultCount, setAdultCount] = useState(0);
+  const [childrenCount, setChildrenCount] = useState(0);
+  const [selectedAccommodation, setSelectedAccommodation] = useState(null);
+
   const formattedStartDate = startDate
     ? format(new Date(startDate), "yyyy-MM-dd")
     : "";
@@ -224,6 +156,99 @@ const Trvlpage = () => {
       </div>
     );
   };
+
+  const handleSelectAccommodation = (accommodationId, formattedDate) => {
+    setSelectedAccommodation(accommodationId);
+    setSidebarContent("숙소");
+    // 여기에서 'formattedDate'를 사용하여 날짜 선택 기능을 구현할 수 있습니다.
+  };
+
+  const renderSidebarContent = (
+    sidebarContent,
+    dates,
+    times,
+    handleTimeChange,
+    renderTransportationButtons,
+    renderPeopleCount
+  ) => {
+    switch (sidebarContent) {
+      case "일정":
+        return (
+          <>
+            {dates.map((date) => {
+              const formattedDate = format(date, "yyyy-MM-dd");
+              const { startTime, endTime } = times[formattedDate] || {};
+              return (
+                <div key={formattedDate}>
+                  <h3>{format(date, "yyyy년 MM월 dd일")}</h3>
+                  <div>
+                    <label>시작 시간: </label>
+                    <DatePicker
+                      selected={startTime}
+                      onChange={(date) =>
+                        handleTimeChange(date, formattedDate, true)
+                      }
+                      showTimeSelect
+                      showTimeSelectOnly
+                      timeIntervals={15}
+                      timeCaption="Time"
+                      dateFormat="h:mm aa"
+                    />
+                  </div>
+                  <div>
+                    <label>종료 시간: </label>
+                    <DatePicker
+                      selected={endTime}
+                      onChange={(date) =>
+                        handleTimeChange(date, formattedDate, false)
+                      }
+                      showTimeSelect
+                      showTimeSelectOnly
+                      timeIntervals={15}
+                      timeCaption="Time"
+                      dateFormat="h:mm aa"
+                    />
+                  </div>
+                  {/* 숙소 선택 + 버튼 */}
+                  <button
+                    onClick={() =>
+                      handleSelectAccommodation(null, formattedDate)
+                    }
+                  >
+                    + 숙소 선택
+                  </button>
+                </div>
+              );
+            })}
+            {renderTransportationButtons()}
+            {renderPeopleCount()}
+          </>
+        );
+
+      case "숙소":
+        return (
+          <div>
+            {AccommodationsData.map((accommodation) => (
+              <Accommodation
+                key={accommodation.id}
+                name={accommodation.name}
+                address={accommodation.address}
+                imageUrl={accommodation.imageUrl}
+                onSelect={() => handleSelectAccommodation(accommodation.id)}
+                selected={selectedAccommodation === accommodation.id}
+              />
+            ))}
+          </div>
+        );
+
+      case "장소":
+        return <p>장소 선택 내용이 여기에 표시됩니다.</p>;
+
+      default:
+        return <p>내용을 선택해 주세요.</p>;
+    }
+  };
+
   const handlePrevious = () => {
     const currentIndex = sidebarOptions.indexOf(sidebarContent);
     if (currentIndex > 0) {
@@ -241,26 +266,31 @@ const Trvlpage = () => {
   return (
     <div>
       <SidebarL width={400} isOpen={true}>
-        <h2>여행지: {destination}</h2> {/* 여행지 표시 */}
+        <h2>여행지: {destination}</h2>
         <h3>
           여행 기간: {formattedStartDate} ~ {formattedEndDate}
-        </h3>{" "}
-        {/* 여행 기간 표시 */}
+        </h3>
+        <div className="search-component">
+          {sidebarContent === "숙소" && <Searching />}
+        </div>
         <button
           className={sidebarContent === "일정" ? "selected" : ""}
           onClick={() => setSidebarContent("일정")}
+          data-content="일정"
         >
           상세일정
         </button>
         <button
           className={sidebarContent === "숙소" ? "selected" : ""}
           onClick={() => setSidebarContent("숙소")}
+          data-content="숙소"
         >
           숙소선택
         </button>
         <button
           className={sidebarContent === "장소" ? "selected" : ""}
           onClick={() => setSidebarContent("장소")}
+          data-content="장소"
         >
           장소선택
         </button>
@@ -270,8 +300,9 @@ const Trvlpage = () => {
           times,
           handleTimeChange,
           renderTransportationButtons,
-          renderPeopleCount // 인원 선택 기능 함수 전달
+          renderPeopleCount
         )}
+
         <button onClick={handlePrevious}>이전</button>
         <button onClick={handleNext}>다음</button>
       </SidebarL>
