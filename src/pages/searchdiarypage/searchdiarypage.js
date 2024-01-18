@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import DiaryList from "../../components/searchdiary/diaryList";
+import DiaryList from "../../components/searchdiary/DiaryList";
 
 class srchdiary extends Component {
   render() {
@@ -31,7 +31,7 @@ class srchdiary extends Component {
 ReactDOM.render(
   <React.StrictMode>
     {/* <srchdiary /> Use the component name with PascalCase */}
-    <diaryList />
+    <DiaryList />
   </React.StrictMode>,
   document.getElementById("root")
 );
