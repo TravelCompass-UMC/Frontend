@@ -1,23 +1,26 @@
-// srchplace.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/Place.css";
-import GoogleMapComponent from "../../components/Map.js";
-import SearchComponent from "../../components/Search.js";
+import SearchComponent from '../../components/Search.js';
+import GoogleMapComponent from '../../components/Map.js';
+
 
 const SrchPlace = () => {
-  const [mapLocation, setMapLocation] = useState(null);
   const navigate = useNavigate();
+  const [searchedLocation, setSearchedLocation] = useState(null);
 
-  const handleSearch = (location, searchQuery) => {
-    setMapLocation(location);
-    navigate(`/placeinfo/${searchQuery}`); // 검색어를 URL에 포함하여 네비게이션
+  const handleSearch = (location) => {
+    // Save the searched location
+    setSearchedLocation(location);
+    
+    // Navigate to placeinfo1 with the search query
+    navigate(`/placeinfo1?q=${location.lat},${location.lng}`);
   };
 
   return (
     <div>
       <SearchComponent onSearch={handleSearch} />
-      <GoogleMapComponent location={mapLocation} />
+      <GoogleMapComponent/>
     </div>
   );
 };
