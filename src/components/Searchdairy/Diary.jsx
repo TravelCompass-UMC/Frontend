@@ -9,6 +9,7 @@ const styles = {
     background: "white",
     borderRadius: 16,
     border: "1px #EBEDF8 solid",
+    marginBottom: "20px",
   },
   imageBox: {
     width: "300px",

@@ -4,18 +4,109 @@ import Diary from "./Diary";
 const contents = [
   // 데이터를 별도의 객체와 분리
   {
-    place: "제주도",
+    place: "제주도1",
     hashtag: ["가족 여행"],
   },
   {
-    place: "울릉도",
+    place: "울릉도2",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도3",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도4",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도5",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도6",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도7",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도8",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도9",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도10",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도11",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도12",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도1",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도2",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도3",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도4",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도5",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도6",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도7",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도8",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도9",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도10",
+    hashtag: ["추억 여행", "가족 여행"],
+  },
+  {
+    place: "제주도11",
+    hashtag: ["가족 여행"],
+  },
+  {
+    place: "울릉도12",
     hashtag: ["추억 여행", "가족 여행"],
   },
   // 추가적인 데이터는 여기에 계속 추가
 ];
 
 function DiaryList(props) {
-  const itemsPerPage = 9; // 페이지당 표시될 Diary 수
+  const itemsPerRow = 3; // Number of diaries per row
+  const rowsPerPage = 3; // Number of rows per page
+  const itemsPerPage = itemsPerRow * rowsPerPage; // Total diaries per page
+
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(contents.length / itemsPerPage);
 
@@ -31,15 +122,18 @@ function DiaryList(props) {
 
   return (
     <div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-        {currentItems.map((place) => (
-          <Diary
-            key={place.place}
-            place={place.place}
-            hashtag={place.hashtag}
-          />
-        ))}
-      </div>
+      {Array.from({ length: rowsPerPage }).map((_, rowIndex) => (
+        <div
+          key={rowIndex}
+          style={{ display: "flex", justifyContent: "center", gap: "20px" }}
+        >
+          {currentItems
+            .slice(rowIndex * itemsPerRow, (rowIndex + 1) * itemsPerRow)
+            .map((place, index) => (
+              <Diary key={index} place={place.place} hashtag={place.hashtag} />
+            ))}
+        </div>
+      ))}
 
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
@@ -55,7 +149,10 @@ function DiaryList(props) {
           <button
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            style={{ margin: "0 5px" }}
+            style={{
+              margin: "0 5px",
+              fontWeight: index + 1 === currentPage ? "bold" : "normal",
+            }}
           >
             {index + 1}
           </button>
