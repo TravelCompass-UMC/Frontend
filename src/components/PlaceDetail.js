@@ -1,3 +1,4 @@
+//PlaceDetail.js code
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPlaceDetails } from "../api/MapDetail"; // assuming you have a function to fetch place details
