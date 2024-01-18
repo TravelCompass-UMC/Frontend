@@ -264,8 +264,6 @@ const Trvlpage = () => {
         >
           장소선택
         </button>
-        <button onClick={handlePrevious}>이전</button>
-        <button onClick={handleNext}>다음</button>
         {renderSidebarContent(
           sidebarContent,
           eachDayOfInterval({ start: startDate, end: endDate }),
@@ -274,7 +272,10 @@ const Trvlpage = () => {
           renderTransportationButtons,
           renderPeopleCount // 인원 선택 기능 함수 전달
         )}
+        <button onClick={handlePrevious}>이전</button>
+        <button onClick={handleNext}>다음</button>
       </SidebarL>
+
       <Map />
     </div>
   );
