@@ -20,7 +20,7 @@ const SearchComponent = ({ onSearch }) => {
 
   // 검색어에 따라 추천 단어를 필터링하는 함수
   const filterDestinations = (input) => {
-    return allDestinations.filter(destination =>
+    return allDestinations.filter((destination) =>
       destination.toLowerCase().includes(input.toLowerCase())
     );
   };

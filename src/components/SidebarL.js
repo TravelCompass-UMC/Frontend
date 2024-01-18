@@ -51,7 +51,7 @@ const SidebarL = ({ width = 280, isOpen: externalIsOpen, children }) => {
       >
         <button
           onClick={() => toggleMenu()}
-          className={"button"}
+          className={"sidebarLbutton"}
           style={{ left: `${width}px` }}
         >
           {isOpen ? <span>X</span> : <span>&#9776;</span>}

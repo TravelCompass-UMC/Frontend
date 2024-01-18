@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { eachDayOfInterval, format } from "date-fns";
 import "../../styles/travelplan_detail.css";
 
-const ExamplePage = () => {
+const Trvlpage = () => {
   const location = useLocation();
   const { startDate, endDate } = location.state || {};
   const [sidebarContent, setSidebarContent] = useState("일정");
@@ -178,4 +178,4 @@ const ExamplePage = () => {
   );
 };
 
-export default ExamplePage;
+export default Trvlpage;

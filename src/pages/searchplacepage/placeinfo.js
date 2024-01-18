@@ -1,36 +1,51 @@
-// placeinfo.js
-
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams, useLocation } from "react-router-dom";
+import GoogleMapComponent from '../../components/Map.js';
 import SidebarL from "../../components/SidebarL";
 
 const PlaceInfo = () => {
-  const { query } = useParams();
+  const { search } = useLocation();
+  const searchParams = new URLSearchParams(search);
+  const searchQuery = searchParams.get('q');
+
+  const [mapLocation, setMapLocation] = useState(null);
+
+  useEffect(() => {
+    if (searchQuery) {
+      // Extract lat and lng from the search query
+      const [lat, lng] = searchQuery.split(',');
+      // Use the searched location to set the map location
+      setMapLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
+    }
+  }, [searchQuery]);
 
   return (
     <div>
-      <h2>Search Results for: {query}</h2>
+      <h2>Search Results</h2>
       <SidebarL width={320}>
-        <p>대한민국</p>
-        <p>지금 대한민국의 가장 인기 많은 지역</p>
+        <p>추천 즐겨찾기</p>
+        <div className="popularplace">
+          <p>선택하신 지역의 가장 인기 많은 장소</p>
+          <li></li>
+          <li></li>
+        </div>
+        <p>추천 장소 목록</p>
         <ul>
-          <li>TOP1 <br/>
-            <Link to={`/city/seoul`}>서울</Link>
+          <li>
+            <Link to={'/placeinfo/place1'}>추천 장소1</Link>
           </li>
-          <li>TOP2 <br/>
-            <Link to={`/city/jeju`}>제주도</Link>
+          <li>
+            <Link to={'/placeinfo/place2'}>추천 장소2</Link>
           </li>
-          <li>TOP3 <br/>
-            <Link to={`/city/busan`}>부산</Link>
+          <li>
+            <Link to={'/placeinfo/place3'}>추천 장소3</Link>
           </li>
-          <li>TOP4 <br/>
-            <Link to={`/city/gyeongju`}>경주</Link>
+          <li>
+            <Link to={'/placeinfo/place4'}>추천 장소4</Link>
           </li>
         </ul>
-        <div className="popularplace">
-          <p>선택하신 도시의 가장 인기 많은 장소</p>
-        </div>
       </SidebarL>
+      <GoogleMapComponent location={mapLocation} />
     </div>
   );
 };

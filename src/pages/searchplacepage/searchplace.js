@@ -1,29 +1,28 @@
-import React, { Component } from "react";
-import "../../styles/Place.css"; 
-import GoogleMapComponent from '../../components/Map.js';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../../styles/Place.css";
 import SearchComponent from '../../components/Search.js';
+import GoogleMapComponent from '../../components/Map.js';
 
-class srchplace extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mapLocation: null,
-    };
-  }
 
-  handleSearch = (location) => {
-    // 검색어를 받아와서 지도의 위치를 변경하는 로직을 구현
-    this.setState({ mapLocation: location });
+const SrchPlace = () => {
+  const navigate = useNavigate();
+  const [searchedLocation, setSearchedLocation] = useState(null);
+
+  const handleSearch = (location) => {
+    // Save the searched location
+    setSearchedLocation(location);
+    
+    // Navigate to placeinfo1 with the search query
+    navigate(`/placeinfo1?q=${location.lat},${location.lng}`);
   };
 
-  render() {
-    return (
-      <div>
-        <SearchComponent onSearch={this.handleSearch} />
-        <GoogleMapComponent location={this.state.mapLocation} />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <SearchComponent onSearch={handleSearch} />
+      <GoogleMapComponent/>
+    </div>
+  );
+};
 
-export default srchplace;
+export default SrchPlace;
