@@ -1,6 +1,5 @@
 // Map.js
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 const containerStyle = {
@@ -20,11 +19,13 @@ const GoogleMapComponent = ({ location }) => {
   const [mapCenter, setMapCenter] = useState(Center);
   const [zoomLevel, setZoomLevel] = useState(7);
 
-  // 지도 중심 및 확대 레벨 업데이트 함수
-  const updateMap = (center, zoom) => {
-    setMapCenter(center);
-    setZoomLevel(zoom);
-  };
+  // Update map center and zoom when location changes
+  useEffect(() => {
+    if (location) {
+      setMapCenter(location);
+      setZoomLevel(12); // Set a specific zoom level when location is available
+    }
+  }, [location]);
 
   return (
     <div style={{ position: "relative" }}>

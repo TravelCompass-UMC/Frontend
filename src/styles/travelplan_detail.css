@@ -117,3 +117,7 @@
   border-radius: 5px;
   cursor: pointer;
 } */
+
+.search-component {
+  margin-left: -400px; /* 왼쪽으로 20px 이동 */
+}
