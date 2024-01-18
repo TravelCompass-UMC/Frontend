@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import DiaryList from "../../components/searchdiary/DiaryList";
+import DiaryList from "../../components/Searchdiary/DiaryList";
 
 class srchdiary extends Component {
   render() {
