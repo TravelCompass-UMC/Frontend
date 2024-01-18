@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import DiaryList from "../../components/Searchdiary/DiaryList";
-
 class srchdiary extends Component {
   render() {
     return (
       <div>
-        <img src="../../assets/images/Pages/Vector.png" alt="이미지 설명" />
+        <img src="../../assets/images/Pages/Vector.png" />
         <h3> 원하는 조건의 계획 찾기 </h3>
         <div>
           <table>
