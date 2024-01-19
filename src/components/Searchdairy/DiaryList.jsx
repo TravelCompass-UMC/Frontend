@@ -140,7 +140,12 @@ function DiaryList(props) {
     <>
       <div style={styles.contextBox}>
         {/* <div style={styles.imageTitle}></div>계획 둘러보기 */}
-        <img src={"../../assets/images/Pages/Vetor.png"} alt="vector" />
+        <img
+          style={styles.imageTitle}
+          src="../../assets/images/Pages/Vetor.png"
+          alt=""
+        />
+        계획 둘러보기
       </div>
       <div>
         {Array.from({ length: rowsPerPage }).map((_, rowIndex) => (
