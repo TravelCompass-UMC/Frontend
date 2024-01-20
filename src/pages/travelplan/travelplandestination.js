@@ -68,7 +68,7 @@ class TrvlPlan extends Component {
     e.preventDefault();
     const { tripTitle, searchInput, startDate, endDate } = this.state;
     if (tripTitle && searchInput) {
-      this.props.navigate("/travelplandetail", {
+      this.props.navigate("/travelplandate", {
         state: { destination: searchInput, startDate, endDate },
       });
     } else {

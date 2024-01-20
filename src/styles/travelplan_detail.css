@@ -119,4 +119,31 @@
 } */
 
 .search-component {
+  margin-left: -400px; /* 왼쪽으로 20px 이동 */
+  margin-bottom: 120px;
+}
+.travelplan-detail-container {
+  display: flex;
+}
+
+.sidebar-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.sidebar-buttons {
+  grid-column: 1 / 2;
+}
+
+.sidebar-search {
+  grid-column: 2 / 3;
+}
+
+.sidebar-info {
+  grid-column: 2 / 3;
+}
+
+.sidebar-empty {
+  grid-column: 3 / 4;
 }
