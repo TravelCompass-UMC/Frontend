@@ -1,15 +1,16 @@
-// PlaceInfo.js
+// PlaceInfo1.js
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";  // Import useNavigate
+import { useLocation } from "react-router-dom";
 import Map from "../../components/Map";
 import SidebarL from "../../components/SidebarL";
+import PlaceDetail from "../../components/PlaceDetail"; // Import the PlaceDetail component
 
-const PlaceInfo = () => {
+const PlaceInfo1 = () => {
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
   const searchQuery = searchParams.get('q');
   const [mapLocation, setMapLocation] = useState(null);
-  const navigate = useNavigate();  // Use useNavigate to navigate to other pages
+  const [selectedPlace, setSelectedPlace] = useState(null);
 
   useEffect(() => {
     if (searchQuery) {
@@ -18,28 +19,22 @@ const PlaceInfo = () => {
     }
   }, [searchQuery]);
 
-  // Handle pin click function
+  // Handle pin click to set the selected place
   const handlePinClick = (placeName) => {
-    // Navigate to /placeinfo1 when a pin is clicked
-    navigate(`/placeinfo1/${placeName}`);
+    setSelectedPlace(placeName);
   };
 
   return (
     <div>
       <h2>Search Results</h2>
       <SidebarL width={320}>
-        <p>추천 즐겨찾기</p>
-        <div className="popularplace">
-          <p>선택하신 지역의 가장 인기 많은 장소</p>
-          <li></li>
-          <li></li>
-        </div>
-        <p>추천 장소 목록</p>
+        {/* Display detailed information using PlaceDetail component */}
+        {selectedPlace && <PlaceDetail place={selectedPlace} />}
       </SidebarL>
-      {/* Pass the handlePinClick function to Map component */}
+      {/* Pass the mapLocation to Map component */}
       <Map location={mapLocation} onPinClick={handlePinClick} />
     </div>
   );
 };
 
-export default PlaceInfo;
+export default PlaceInfo1;

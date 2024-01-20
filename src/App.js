@@ -9,8 +9,9 @@ import TravelPlandate from "./pages/travelplan/travelplandate";
 import Searchdiary from "./pages/searchdiarypage/searchdiarypage";
 import Searchplace from "./pages/searchplacepage/searchplace";
 import SearchPlaceInfo from "./pages/searchplacepage/placeinfo";
+import PlaceInfo from "./pages/searchplacepage/placeinfo1"
+import PlaceDetail from "./components/PlaceDetail";
 import CityDetail from "./components/CityDetail";
-import PlaceDetail from "./components/PlaceDetail"
 import MainHeader from "./components/MainHeader";
 import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
@@ -31,8 +32,9 @@ function App() {
           <Route path="/travelplandate" element={<TravelPlandate />} />
           <Route path="/searchdiary" element={<Searchdiary />} />
           <Route path="/searchplace" element={<Searchplace />} />
-          <Route path="/placeinfo1" element={<SearchPlaceInfo />} />
+          <Route path="/placeinfo" element={<SearchPlaceInfo />} />
           <Route path="/placeinfo/:placeName" element={<PlaceDetail />} />
+          <Route path="/placeinfo1/:placeName" element={<PlaceInfo />} />
           <Route path="/city/:cityName" element={<CityDetail />} />
           <Route path="/travelplandetail" element={<Plandetail />} />
           <Route path="*" element={<NotFound />} />

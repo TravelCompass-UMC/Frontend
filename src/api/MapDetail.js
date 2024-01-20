@@ -1,49 +1,40 @@
-// MapDetail.js code
-
-import axios from 'axios';
-
-const travelAdvisorOptions = {
-  headers: {
-    'X-RapidAPI-Key': '73680bc445msh9350f7fb2ff91b4p1abe03jsnffe328ba9362',
-    'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
-  }
-};
-
-// Function to fetch place details by place_id
-export const getPlaceDetails = async (placeId) => {
-  const options = {
-    method: 'GET',
-    url: `https://travel-advisor.p.rapidapi.com/places/v1/${placeId}`,
-    ...travelAdvisorOptions
-  };
-
+// src>api>MapDetail.js
+export const getPlaceDetails = async ({ placeName }) => {
+  const apiKey = "AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U";
+  
   try {
-    const response = await axios.request(options);
-    return response.data.data;
-  } catch (error) {
-    console.error("Error fetching place details:", error);
-    throw error;
-  }
-};
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${placeName}&inputtype=textquery&fields=place_id&key=${apiKey}`
+    );
 
-// Function to perform auto-complete for place search
-export const getAutoComplete = async (query) => {
-  const options = {
-    method: 'GET',
-    url: 'https://travel-advisor.p.rapidapi.com/locations/v2/auto-complete',
-    params: {
-      query,
-      lang: 'en_US',
-      units: 'km'
-    },
-    ...travelAdvisorOptions
-  };
+    if (!response.ok) {
+      throw new Error('Failed to fetch place details');
+    }
 
-  try {
-    const response = await axios.request(options);
-    return response.data;
+    const data = await response.json();
+
+    if (data.status === 'OK' && data.candidates && data.candidates.length > 0) {
+      const placeId = data.candidates[0].place_id;
+      const detailsResponse = await fetch(
+        `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${apiKey}`
+      );
+
+      if (!detailsResponse.ok) {
+        throw new Error('Failed to fetch place details');
+      }
+
+      const detailsData = await detailsResponse.json();
+
+      if (detailsData.status === 'OK') {
+        return detailsData.result;
+      } else {
+        throw new Error('Failed to fetch place details');
+      }
+    } else {
+      throw new Error('Failed to find place ID');
+    }
   } catch (error) {
-    console.error("Error performing auto-complete:", error);
+    console.error('Error fetching place details:', error);
     throw error;
   }
 };
