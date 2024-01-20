@@ -1,9 +1,12 @@
-// Myplan.js
+//Myplan.js
 import React from "react";
 import { Link } from 'react-router-dom';
 import styles from "../../styles/Mypages.css";
 
+
 const Myplan = ({ thumbnails, showNavbar = true }) => {
+  const displayedThumbnails = thumbnails.slice(0, 3);
+
   if (thumbnails.length === 0) {
     return (
       <div className="myplan-container">
@@ -44,10 +47,11 @@ const Myplan = ({ thumbnails, showNavbar = true }) => {
       )}
       <div className="myplan_images">
         <div className="thumbnail-group">
-          {thumbnails.map((thumbnail) => (
+          {displayedThumbnails.map((thumbnail) => (
             <div key={thumbnail.id} className="myplan_img">
               <p>{thumbnail.src}</p>
-              <img src={thumbnail.src} alt={`Thumbnail ${thumbnail.id}`} />
+              {/* 이미지 컴포넌트로 교체하세요. */}
+              <img src={`url_to_your_image/${thumbnail.src}.jpg`} alt={`Thumbnail ${thumbnail.id}`} />
             </div>
           ))}
         </div>
@@ -57,4 +61,3 @@ const Myplan = ({ thumbnails, showNavbar = true }) => {
 };
 
 export default Myplan;
-
