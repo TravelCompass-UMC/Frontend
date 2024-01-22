@@ -1,10 +1,7 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from 'react-query';
+
 import Home from "./pages/Home/Home";
 import Login from "./pages/login_and_signin/login";
 import MyPag from "./pages/mapages/MyPage";
@@ -14,12 +11,21 @@ import TravelPlandate from "./pages/travelplan/travelplandate";
 import Searchdiary from "./pages/searchdiarypage/searchdiarypage";
 import Searchplace from "./pages/searchplacepage/searchplace";
 import SearchPlaceInfo from "./pages/searchplacepage/placeinfo";
+import PlaceInfo from "./pages/searchplacepage/placeinfo1"
+import PlaceDetail from "./components/PlaceDetail";
+import CityDetail from "./components/CityDetail";
 import MainHeader from "./components/MainHeader";
 import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
 import Plandetail from "./pages/travelplan/travelplan_detail";
+import Myplanpage from "./pages/mapages/Myplanpage";
+import Myplacepage from "./pages/mapages/Myplacepage";
+import Otherplanpage from "./pages/mapages/Otherplanpage";
+const queryClient = new QueryClient();
+
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
     <div>
       <MainHeader />
       <main>
@@ -33,12 +39,19 @@ function App() {
           <Route path="/travelplandate" element={<TravelPlandate />} />
           <Route path="/searchdiary" element={<Searchdiary />} />
           <Route path="/searchplace" element={<Searchplace />} />
-          <Route path="/placeinfo1" element={<SearchPlaceInfo />} />
+          <Route path="/placeinfo" element={<SearchPlaceInfo />} />
+          <Route path="/placeinfo/:placeName" element={<PlaceDetail />} />
+          <Route path="/placeinfo1/:placeName" element={<PlaceInfo />} />
+          <Route path="/city/:cityName" element={<CityDetail />} />
           <Route path="/travelplandetail" element={<Plandetail />} />
+          <Route path="/myplan" element= {<Myplanpage/>}/>
+          <Route path="/otherplan" element= {<Otherplanpage/>}/>
+          <Route path="/myplace" element= {<Myplacepage/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>
+    </QueryClientProvider>
   );
 }
 export default App;
