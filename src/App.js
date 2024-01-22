@@ -48,6 +48,9 @@ function App() {
           <Route path="/otherplan" element= {<Otherplanpage/>}/>
           <Route path="/myplace" element= {<Myplacepage/>}/>
           <Route path="*" element={<NotFound />} />
+          <Route path="/myplan" element={<Myplanpage/>}/>
+          <Route path="/otherplan" element={<Otherplanpage/>}/>
+          <Route path="/myplace" element={<Myplacepage/>}/>
         </Routes>
       </main>
     </div>
