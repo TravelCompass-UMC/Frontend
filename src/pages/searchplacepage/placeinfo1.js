@@ -1,8 +1,10 @@
+// src > pages > searchplacepage > placeinfo1.js
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SidebarL from '../../components/SidebarL';
 import SearchRecommendations from '../../components/Recommendation';
-import RecommendationCard from '../../components/RecommendationCard';
+import Map from '../../components/Map';
+import PlaceDetail from '../../components/PlaceDetail';
 
 const PlaceInfo1 = () => {
   const { search } = useLocation();
@@ -10,8 +12,7 @@ const PlaceInfo1 = () => {
   const searchQuery = searchParams.get('q');
   const [mapLocation, setMapLocation] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
-  const [placeDetails, setPlaceDetails] = useState(null);
-  const [map, setMap] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (searchQuery) {
@@ -23,41 +24,35 @@ const PlaceInfo1 = () => {
   useEffect(() => {
     const initializeMap = () => {
       if (mapLocation && mapLocation.lat !== null && mapLocation.lng !== null) {
-        const mapInstance = new window.google.maps.Map(document.getElementById('map'), {
+        new window.google.maps.Map(document.getElementById('map'), {
           center: { lat: mapLocation.lat, lng: mapLocation.lng },
           zoom: 15,
         });
-
-        setMap(mapInstance);
       }
     };
 
     if (!window.google) {
       const script = document.createElement('script');
       script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U&libraries=places&callback=initializeMap`;
+      script.async = true;
+      script.defer = true;
+
+      script.onload = () => {
+        initializeMap();
+      };
+
       document.head.appendChild(script);
     } else {
       initializeMap();
     }
   }, [mapLocation]);
 
-  const fetchPlaceDetails = (placeId) => {
-    if (map) {
-      const placesService = new window.google.maps.places.PlacesService(map);
-
-      placesService.getDetails({ placeId }, (place, status) => {
-        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-          setPlaceDetails(place);
-        } else {
-          console.error('Error fetching place details:', status);
-        }
-      });
-    }
-  };
-
   const handleRecommendationClick = (place) => {
     setSelectedPlace(place);
-    fetchPlaceDetails(place.place_id);
+  };
+
+  const handlePinClick = (placeName) => {
+    navigate(`/placeinfo1/${placeName}`);
   };
 
   return (
@@ -66,15 +61,15 @@ const PlaceInfo1 = () => {
       <SidebarL width={320}>
         <SearchRecommendations
           recommendations={[
-            { name: '비양도 봉수대', place_id: 'PLACE_ID_1' },
-            { name: '아르떼뮤지엄 제주', place_id: 'PLACE_ID_2' },
-            { name: '빛의 벙커', place_id: 'PLACE_ID_3' },
+            { name: '비양도 봉수대', placeId: 'PLACE_ID_1' },
+            { name: '아르떼뮤지엄 제주', placeId: 'PLACE_ID_2' },
+            { name: '빛의 벙커', placeId: 'PLACE_ID_3' },
           ]}
           onRecommendationClick={handleRecommendationClick}
         />
-        {selectedPlace && <RecommendationCard placeDetails={placeDetails} />}
+        {selectedPlace && <PlaceDetail placeId={selectedPlace.place_id} />}
       </SidebarL>
-      <div id="map" style={{ height: '400px' }}></div>
+      <Map location={mapLocation} onPinClick={handlePinClick} />
     </div>
   );
 };
