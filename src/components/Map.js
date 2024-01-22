@@ -1,4 +1,3 @@
-// Map.js
 import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
@@ -16,11 +15,15 @@ const defaultCenter = {
 };
 
 const Map = ({ location, onPinClick }) => {
+  const [map, setMap] = useState(null);
   const [mapCenter, setMapCenter] = useState(defaultCenter);
   const [zoomLevel, setZoomLevel] = useState(7);
   const [markers, setMarkers] = useState([]);
 
-  // Update map center and zoom when location changes
+  const onLoad = (map) => {
+    setMap(map);
+  };
+
   useEffect(() => {
     if (location && location.lat !== null && location.lng !== null) {
       setMapCenter(location);
@@ -28,7 +31,6 @@ const Map = ({ location, onPinClick }) => {
     }
   }, [location]);
 
-  // Update markers when location changes
   useEffect(() => {
     if (location && location.lat !== null && location.lng !== null) {
       setMarkers([{ position: location, label: "1" }]);
@@ -40,10 +42,10 @@ const Map = ({ location, onPinClick }) => {
       <LoadScript googleMapsApiKey="AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U">
         <GoogleMap
           mapContainerStyle={containerStyle}
+          onLoad={onLoad}
           center={location && location.lat !== null ? location : mapCenter}
           zoom={location ? 12 : zoomLevel}
         >
-          {/* Render markers on the map */}
           {markers.map((marker, index) => (
             <Marker
               key={index}
