@@ -6,7 +6,8 @@ class Otherplanpage extends Component {
     render() {
       return (
         <div>
-            마이플레이스페이지
+            관심있는 여행계획서 페이지
+            
         </div>
   
       );
