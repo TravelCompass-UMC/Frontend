@@ -1,21 +1,17 @@
-// components/PlaceDetail.js
+// src > components > PlaceDetail.js
 import React, { useEffect, useState } from 'react';
 import RecommendationCard from './RecommendationCard';
-<script
-  async
-  defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U&libraries=places&callback=initMap"
-></script>
+import { getPlaceDetails } from '../api/MapDetail';
+
 const PlaceDetail = ({ placeName, coordinates }) => {
   const [placeDetails, setPlaceDetails] = useState(null);
 
   useEffect(() => {
     const fetchPlaceDetails = async () => {
       try {
-        const response = await fetch(`/api/places/details?lat=${coordinates.lat}&lng=${coordinates.lng}`);
-        if (response.ok) {
-          const data = await response.json();
-          setPlaceDetails(data);
+        const response = await getPlaceDetails({ placeId: ['PLACE_ID_1', 'PLACE_ID_2', 'PLACE_ID_3']}); 
+        if (response) {
+          setPlaceDetails(response);
         } else {
           console.error('Failed to fetch place details');
         }
