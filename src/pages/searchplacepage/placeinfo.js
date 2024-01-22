@@ -30,11 +30,12 @@ const PlaceInfo = () => {
       <SidebarL width={320}>
         <p>추천 즐겨찾기</p>
         <div className="popularplace">
-          <p>선택하신 지역의 가장 인기 많은 장소</p>
-          <li></li>
-          <li></li>
+          <p>제주도의 가장 인기 많은 장소</p>
+          <p>추천 장소 목록</p>
+          <li>빛의 벙커</li>
+          <li>비양도 봉수대</li>
+          <li>아르떼뮤지엄 제주</li>
         </div>
-        <p>추천 장소 목록</p>
       </SidebarL>
       {/* Pass the handlePinClick function to Map component */}
       <Map location={mapLocation} onPinClick={handlePinClick} />

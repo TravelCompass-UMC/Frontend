@@ -10,27 +10,27 @@ const containerStyle = {
   height: "100vh",
 };
 
-const Center = {
+const defaultCenter = {
   lat: 35.8714,
   lng: 128.6014,
 };
 
 const Map = ({ location, onPinClick }) => {
-  const [mapCenter, setMapCenter] = useState(Center);
+  const [mapCenter, setMapCenter] = useState(defaultCenter);
   const [zoomLevel, setZoomLevel] = useState(7);
   const [markers, setMarkers] = useState([]);
 
   // Update map center and zoom when location changes
   useEffect(() => {
-    if (location) {
+    if (location && location.lat !== null && location.lng !== null) {
       setMapCenter(location);
-      setZoomLevel(12); // Set a specific zoom level when location is available
+      setZoomLevel(12);
     }
   }, [location]);
 
   // Update markers when location changes
   useEffect(() => {
-    if (location) {
+    if (location && location.lat !== null && location.lng !== null) {
       setMarkers([{ position: location, label: "1" }]);
     }
   }, [location]);
@@ -40,7 +40,7 @@ const Map = ({ location, onPinClick }) => {
       <LoadScript googleMapsApiKey="AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U">
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={location || mapCenter}
+          center={location && location.lat !== null ? location : mapCenter}
           zoom={location ? 12 : zoomLevel}
         >
           {/* Render markers on the map */}

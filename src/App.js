@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from 'react-query';
+
 import Home from "./pages/Home/Home";
 import Login from "./pages/login_and_signin/login";
 import MyPag from "./pages/mapages/MyPage";
@@ -17,8 +19,11 @@ import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
 import Plandetail from "./pages/travelplan/travelplan_detail";
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
     <div>
       <MainHeader />
       <main>
@@ -41,6 +46,7 @@ function App() {
         </Routes>
       </main>
     </div>
+    </QueryClientProvider>
   );
 }
 export default App;
