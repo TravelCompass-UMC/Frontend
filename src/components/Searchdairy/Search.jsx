@@ -23,6 +23,10 @@ const styles = {
     borderRadius: 8,
     border: "none",
   },
+  customBox: {
+    width: '300px', height: '60px', background: '#EBEDF8', borderRadius: 8, border: '1px #BFC4D8 solid'
+
+  },
 };
 
 const SearchComponent = () => {
@@ -47,7 +51,7 @@ const SearchComponent = () => {
   const handleLocationButtonClick = (location) => {
     //여행지
     if (location === "allLocation") {
-      setSelectedLocation("allLocation");
+      setSelectedLocation(selectedLocation === "allLocation" ? "" : "allLocation");
     } else if (location === "domestic") {
       setSelectedLocation(selectedLocation === "domestic" ? "" : "domestic");
     } else if (location === "foreign") {
@@ -58,7 +62,7 @@ const SearchComponent = () => {
   const handleTransportationButtonClick = (transportation) => {
     //교통수단
     if (transportation === "allTransportation") {
-      setSelectedTransportation("allTransportation");
+      selectedTransportation === "public" ? "" : "public"
     } else if (transportation === "public") {
       setSelectedTransportation(
         selectedTransportation === "public" ? "" : "public"
@@ -159,12 +163,14 @@ const SearchComponent = () => {
               2일 이상
             </div>
           </button>
+          <span style={styles.customBox}>
           <input
             type="text"
             placeholder="일 동안"
             value={customDuration}
             onChange={handleCustomDurationChange}
           />
+          </span>
         </label>
       </div>
 
