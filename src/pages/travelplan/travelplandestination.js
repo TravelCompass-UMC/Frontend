@@ -66,9 +66,11 @@ class TrvlPlan extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { tripTitle, searchInput } = this.state;
+    const { tripTitle, searchInput, startDate, endDate } = this.state;
     if (tripTitle && searchInput) {
-      this.props.navigate("/travelplandate");
+      this.props.navigate("/travelplandate", {
+        state: { destination: searchInput, startDate, endDate },
+      });
     } else {
       alert("모든 필드를 입력해주세요.");
     }
@@ -77,20 +79,28 @@ class TrvlPlan extends Component {
   renderSuggestions = () => {
     const { showSuggestions, filteredDestinations } = this.state;
 
-    if (showSuggestions && filteredDestinations.length) {
-      return (
-        <ul className="suggestions">
-          {filteredDestinations.map((destination, index) => (
-            <li key={index} onClick={() => this.selectDestination(destination)}>
-              {destination}
-            </li>
-          ))}
-        </ul>
-      );
+    if (showSuggestions) {
+      if (filteredDestinations.length) {
+        return (
+          <ul className="suggestions">
+            {filteredDestinations.map((destination, index) => (
+              <li
+                key={index}
+                onClick={() => this.selectDestination(destination)}
+              >
+                {destination}
+              </li>
+            ))}
+          </ul>
+        );
+      } else {
+        return <div className="no-suggestions">검색 결과가 없습니다.</div>;
+      }
     }
 
     return null;
   };
+
   handleInvitationCodeSubmit = (e) => {
     e.preventDefault();
     // 초대 코드 제출 로직을 여기에 구현
@@ -101,6 +111,7 @@ class TrvlPlan extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          {/* 여행 제목 입력 필드 */}
           <input
             type="text"
             maxLength="20"
@@ -110,6 +121,7 @@ class TrvlPlan extends Component {
             value={this.state.tripTitle}
             onChange={this.handleTripTitleChange}
           />
+          {/* 목적지 검색 필드 */}
           <input
             type="text"
             maxLength="20"
@@ -120,6 +132,7 @@ class TrvlPlan extends Component {
             onChange={this.handleSearchInput}
           />
           {this.renderSuggestions()}
+          {/* 초대 코드 입력 섹션 */}
           <div className="invitationCodeSection">
             <input
               type="text"
@@ -138,6 +151,7 @@ class TrvlPlan extends Component {
             </button>
           </div>
 
+          {/* 다음 버튼 */}
           <button type="submit" className="next_button">
             다음
           </button>
@@ -147,7 +161,6 @@ class TrvlPlan extends Component {
   }
 }
 
-// 클래스 컴포넌트 내에서 useNavigate 훅을 사용하기 위한 래퍼 컴포넌트
 function TrvlPlanWithNavigate(props) {
   let navigate = useNavigate();
   return <TrvlPlan {...props} navigate={navigate} />;

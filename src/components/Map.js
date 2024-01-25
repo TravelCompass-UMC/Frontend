@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+// Map.js
+import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
-import "../styles/Place.css";
 
 const containerStyle = {
   position: "absolute",
@@ -15,40 +15,27 @@ const Center = {
   lng: 128.6014,
 };
 
-const GoogleMapComponent = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+const GoogleMapComponent = ({ location }) => {
   const [mapCenter, setMapCenter] = useState(Center);
   const [zoomLevel, setZoomLevel] = useState(7);
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    // TODO: Implement geocoding or use an external API to get location coordinates based on the search query.
-    // For simplicity, here we are just updating the map center with a predefined location.
-    setMapCenter(Center);
-    setZoomLevel(7); // You can adjust the zoom level as needed.
-  };
+  // Update map center and zoom when location changes
+  useEffect(() => {
+    if (location) {
+      setMapCenter(location);
+      setZoomLevel(12); // Set a specific zoom level when location is available
+    }
+  }, [location]);
 
   return (
     <div style={{ position: "relative" }}>
-      <LoadScript googleMapsApiKey="AIzaSyDrDh7WbZV2PvkmqmJJDc1Gr6QGygvS0Mg">
+      <LoadScript googleMapsApiKey="AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U">
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={mapCenter}
-          zoom={zoomLevel}
+          center={location || mapCenter}
+          zoom={location ? 12 : zoomLevel}
         />
       </LoadScript>
-      <div className="search-container">
-        <form onSubmit={handleSearch}>
-          <input
-            type="text"
-            maxLength="20"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="궁금한 지역을 검색해보세요."
-          />
-          <button type="submit">검색</button>
-        </form>
-      </div>
     </div>
   );
 };

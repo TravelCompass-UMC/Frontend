@@ -1,32 +1,37 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import '../../styles/Home.css';
+import GoogleMapComponent from "../../components/Map";
 import SidebarR from "../../components/SidebarR";
+
 
 class home extends Component {
   render() {
     return (
       <div className="container">
-        <div className="map">지도 배경 이미지</div>
+        <div className="map">배경 이미지 지도</div>
         <input type="text" className="searchbox" placeholder="궁금한 지역을 검색해보세요"></input>
         <SidebarR width={320}>
-          <p>대한민국</p>
-          <p>지금 대한민국의 가장 인기 많은 지역</p>
-          <ul>
-            <li>TOP1 서울</li>
-            <li>TOP2 제주도</li>
-            <li>TOP3 부산</li>
-            <li>TOP4 여수</li>
-          </ul>
-          <a href="#">서울</a>
-          <div className="popularplace">
-            <p>선택하신 도시의 가장 인기 많은 장소</p>
-          </div>
-          <button className="side-bar_button">사이드바 닫기 버튼</button>
-          </SidebarR>
-        <div className="writtenplan">
-          <p>국내 인기 여행계획</p>
-          <a href ="#">창덕궁 기타 등등</a>
-        </div>      
+        <h1>대한민국</h1>
+        <p>지금 대한민국의 가장 인기 많은 지역</p>
+        <ul>
+          <li>TOP1 <br/>
+            <Link to={`/city/seoul`}>서울</Link>
+          </li>
+          <li>TOP2 <br/>
+            <Link to={`/city/jeju`}>제주도</Link>
+          </li>
+          <li>TOP3 <br/>
+            <Link to={`/city/busan`}>부산</Link>
+          </li>
+          <li>TOP4 <br/>
+            <Link to={`/city/gyeongju`}>경주</Link>
+          </li>
+        </ul>
+        <div className="popularplace">
+          <p>선택하신 도시의 가장 인기 많은 장소</p>
+        </div>
+          </SidebarR>  
       </div>
 
     );
