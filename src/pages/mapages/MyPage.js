@@ -1,147 +1,279 @@
-// import React, { Component } from "react";
-// import { Link } from 'react-router-dom';
-// import styles from "../../styles/Mypages.css";
-// import Myplan from "./Myplan";  // Myplan 컴포넌트 import
-// import Otherplan from "./Otherplan";  // Otherplan 컴포넌트 import
-// import Myplace from "./Myplace";  // Myplace 컴포넌트 import
-
-// class mypage extends Component {
-//   render() {
-//     return (
-//       <div className="mypage-container">
-//         <div className="user">
-//           <div className="profile-info">
-//             {/* 프로필 아이콘, 닉네임, 로그인 계정 이메일 표시 */}
-//             {/* 이 부분은 나중에 로그인 여부에 따라 동적으로 변경할 예정 */}
-//             <img src="path_to_profile_icon.jpg" alt="프로필 아이콘" />
-//             <div className="user-details">
-//               <p>닉네임: 홍길동</p>
-//               <p>이메일: honggildong@example.com</p>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="my-plans">
-//           {/* 내가 저장한 여행 계획들 썸네일 표시 */}
-//           {/* Myplan.js 컴포넌트를 여기서 렌더링 */}
-//           <div className="myplan-container">
-//             {/* 내 여행 계획 컴포넌트의 내용을 작성 */}
-//             <div className="mypage_navbar">
-//               <div>나의 여행계획</div>
-//               <div style={{ flexGrow: "1" }}></div>
-//               <div>
-//                 <Link to="/myplan">
-//                   더보기
-//                 </Link>
-//               </div>
-//             </div>
-//             <div className="myplan_img">썸네일 1</div>
-//             <div className="myplan_img">썸네일 2</div>
-//             <div className="myplan_img">썸네일 3</div>
-//           </div>
-//         </div>
-//         <div className="interest-plans">
-//           {/* 관심 있는 여행계획서 상위 3개만 가로로 나열 */}
-//           {/* Otherplan.js 컴포넌트를 여기서 렌더링 */}
-//           <div className="otherplan-container">
-//             {/* 관심 있는 여행 계획서 컴포넌트의 내용을 작성 */}
-//             <div className="mypage_navbar">
-//               <div>관심있는 여행계획서</div>
-//               <div style={{ flexGrow: "1" }}></div>
-//               <div>
-//                 <Link to="/otherplan">
-//                   더보기
-//                 </Link>
-//               </div>
-//             </div>
-//             <div className="ohterplan_img">썸네일1</div>
-//             <div className="ohterplan_img">썸네일2</div>
-//             <div className="ohterplan_img">썸네일3</div>
-//           </div>
-//         </div>
-//         <div className="interest-places">
-//           {/* 관심있는 장소들 2행 3열 표시 */}
-//           {/* Myplace.js 컴포넌트를 여기서 렌더링 */}
-//           <div className="myplace-container">
-//             {/* 관심 있는 장소 컴포넌트의 내용을 작성 */}
-//             <div className="mypage_navbar">
-//               <div>관심 있는 장소 </div>
-//               <div style={{ flexGrow: "1" }}></div>
-//               <div>
-//                 <Link to="/myplace">
-//                   더보기
-//                 </Link>
-//               </div>
-//             </div>
-//             <table>
-//               <thead></thead>
-//               <tbody>
-//                 <tr>
-//                   <td>내용</td>
-//                   <td>내용</td>
-//                   <td>내용</td>
-//                 </tr>
-//                 <tr>
-//                   <td>내용</td>
-//                   <td>내용</td>
-//                   <td>내용</td>
-//                 </tr>
-//               </tbody>
-//             </table>
-//           </div>
-//           <div className="log-botton">
-//             <button>로그아웃</button>
-//             <button>회원탈퇴</button>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default mypage;
-
-
 // Mypages.js
 
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import styles from "../../styles/Mypages.css";
-import Myplan from "../../components/Mypage_components/Myplan";  // Myplan 컴포넌트 import
-import Otherplan from "../../components/Mypage_components/Otherplan";  // Otherplan 컴포넌트 import
-import Myplace from "../../components/Mypage_components/Myplace";  // Myplace 컴포넌트 import
+import { Container } from "react-bootstrap";
+import myplans from "../../tempdata/myplandata";
+import { useState } from "react";
+import otherplans from "../../tempdata/otherplandata";
 
-class mypage extends Component {
-  render() {
-    return (
-      <div className="mypage-container">
-        <div className="user">
-          <div className="profile-info">
-            <img src="path_to_profile_icon.jpg" alt="프로필 아이콘" />
-            <div className="user-details">
-              <p>닉네임: 홍길동</p>
-              <p>이메일: honggildong@example.com</p>
-            </div>
-          </div>
-        </div>
-        
-        <div className="my-plans">
-          <Myplan />
-        </div>
+const Thumbnail = {
+  bigBox: {
+    width: "300px",
+    height: "210px",
+    background: "white",
+    borderRadius: 16,
+    border: "1px #EBEDF8 solid",
+    marginBottom: "20px",
+  },
+  imageBox: {
+    width: "300px",
+    height: "120px",
+    background: "#EBEDF8",
+    borderRadius: 15,
+  },
+  textBox: {
+    width: "300px",
+    height: "80px",
+    // background: "#FFFFFF",
+    borderRadius: 15,
+  },
+  placeText: {
+    color: "#191B24",
+    fontSize: 17,
+    fontFamily: "SUIT Variable",
+    fontWeight: "700",
+    wordWrap: "break-word",
+  },
+  hashtagText: {
+    color: "#7F85A3",
+    fontSize: 13,
+    fontFamily: "SUIT Variable",
+    fontWeight: "400",
+    // lineHeight: 25.5,
+    wordWrap: "break-word",
+  },
+};
 
-        <div className="interest-plans">
-          <Otherplan />
-        </div>
+function Mypage() {
+  const [plans] = useState(myplans);
+  const [others] = useState(otherplans);
 
-        <div className="interest-places">
-          <Myplace />
-          <div className="log-botton">
-            <button>로그아웃</button>
-            <button>회원탈퇴</button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  return (
+    <div className="container">
+      <ProfileSection />
+      <MyTravelPlanSection title="나의 여행계획" plans={plans} />
+      <OtherTravelPlanSection title="관심있는 여행계획" others={others} />
+      <InterestedPlacesSection title="관심있는 장소" />
+      {/* <p>{plans[0].place}</p> */}
+      <LogoutSection />
+    </div>
+  );
 }
 
-export default mypage;
+export default Mypage;
+
+export function ProfileSection({
+  userName,
+  userNickname,
+  userEmail,
+  userProfileImage,
+}) {
+  // 네이버 API에서 받아온 정보를 사용하여 프로필 섹션을 채웁니다.
+  // userName: 네이버에서 받아온 사용자 이름
+  // userNickname: 네이버에서 받아온 사용자 닉네임
+  // userEmail: 네이버에서 받아온 사용자 이메일
+  // userProfileImage: 네이버에서 받아온 사용자 프로필 사진 URL
+
+  return (
+    <div className="flex items-center mb-8">
+      <div>
+        <h2 className="user-name">{userName} 반갑습니다 !</h2>
+        <img src={userProfileImage} alt="프로필 아이콘" />
+        <p className="user-nickname">{userNickname}</p>
+        <p className="user-email">{userEmail}</p>
+      </div>
+    </div>
+  );
+}
+
+export function MyplanThumbnail(props) {
+  return (
+    <div
+      className="thumbnail-container"
+      style={{ ...Thumbnail.bigBox, margin: "0 10px" }}
+    >
+      <img
+        style={{ ...Thumbnail.imageBox, width: "100%" }}
+        src={"https://codingapple1.github.io/shop/shoes" + props.i + ".jpg"}
+        width="80%"
+      />
+      <a style={Thumbnail.placeText}>{props.plans.place}</a>
+      <p style={Thumbnail.hashtagText}>{props.plans.hashtag.join(", ")}</p>
+    </div>
+  );
+}
+
+export function MyTravelPlanSection({ title, plans }) {
+  // 처음 3개의 요소만 사용
+  const firstThreePlans = plans.slice(0, 3);
+
+  return (
+    <div className="w-full mb-8">
+      <div
+        className="nav-bar"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <h3>{title}</h3>
+        <Link to="/myplan" className="morebutton">
+          <button>더보기</button>
+        </Link>
+      </div>
+      <div className="row">
+        {firstThreePlans.map((plan, i) => (
+          <MyplanThumbnail key={i} plans={plan} i={i + 1}></MyplanThumbnail>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function OtherplanThumbnail(props) {
+  return (
+    <div className="col-md-4" style={{ ...Thumbnail.bigBox, margin: "0 10px" }}>
+      <img
+        style={{ ...Thumbnail.imageBox, width: "100%" }}
+        src={"https://codingapple1.github.io/shop/shoes" + props.i + ".jpg"}
+        width="80%"
+      />
+      <a style={Thumbnail.placeText}>{props.others.place}</a>
+      <p style={Thumbnail.hashtagText}>{props.others.hashtag.join(", ")}</p>
+    </div>
+  );
+}
+
+export function OtherTravelPlanSection({ title, others }) {
+  // 처음 3개의 요소만 사용
+  const firstThreeOthers = others.slice(0, 3);
+
+  return (
+    <div className="w-full mb-8">
+      <div
+        className="nav-bar"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <h3>{title}</h3>
+        <Link to="/otherplan" className="morebutton">
+          <button>더보기</button>
+        </Link>
+      </div>
+      <div className="row">
+        {firstThreeOthers.map((other, i) => (
+          <OtherplanThumbnail
+            key={i}
+            others={other}
+            i={i + 1}
+          ></OtherplanThumbnail>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function InteresetedPlaceThumbnail(props) {
+  return (
+    <div className="col-md-4">
+      <img src={""} alt="장소이미지" width="80%" />
+      <h4>{props.others.place}</h4>
+      <p>{props.others.hashtag.join(", ")}</p>
+    </div>
+  );
+}
+
+export function InterestedPlacesSection({ title }) {
+  return (
+    <div className="w-full">
+      <div
+        className="nav-bar"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <h3>{title}</h3>
+        <Link to="/myplace" className="morebutton">
+          <button>더보기</button>
+        </Link>
+      </div>
+      <div className="row">
+        <div className="col-md-4">
+          <img
+            src="https://codingapple1.github.io/shop/shoes1.jpg"
+            width="60%"
+          />
+          <h4>상품명</h4>
+          <p>상품정보</p>
+        </div>
+        <div className="col-md-4">
+          <img
+            src="https://codingapple1.github.io/shop/shoes2.jpg"
+            width="60%"
+          />
+          <h4>상품명</h4>
+          <p>상품정보</p>
+        </div>
+        <div className="col-md-4">
+          <img
+            src="https://codingapple1.github.io/shop/shoes3.jpg"
+            width="60%"
+          />
+          <h4>상품명</h4>
+          <p>상품정보</p>
+        </div>
+        <div className="col-md-4">
+          <img
+            src="https://codingapple1.github.io/shop/shoes3.jpg"
+            width="60%"
+          />
+          <h4>상품명</h4>
+          <p>상품정보</p>
+        </div>
+        <div className="col-md-4">
+          <img
+            src="https://codingapple1.github.io/shop/shoes3.jpg"
+            width="60%"
+          />
+          <h4>상품명</h4>
+          <p>상품정보</p>
+        </div>
+        <div className="col-md-4">
+          <img
+            src="https://codingapple1.github.io/shop/shoes3.jpg"
+            width="60%"
+          />
+          <h4>상품명</h4>
+          <p>상품정보</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function LogoutSection() {
+  const handleLogout = () => {
+    // 로그아웃 로직을 여기에 구현하세요
+    console.log("로그아웃 처리");
+  };
+
+  const handleWithdrawal = () => {
+    // 회원탈퇴 로직을 여기에 구현하세요
+    console.log("회원탈퇴 처리");
+  };
+
+  return (
+    <div className="logout-section">
+      <button onClick={handleLogout}>로그아웃</button>
+      <button onClick={handleWithdrawal}>회원탈퇴</button>
+    </div>
+  );
+}
