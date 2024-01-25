@@ -1,17 +1,15 @@
-// src/api/MapDetail.js
+//src > api > MapDetail.js
+import axios from 'axios';
+
 export const getPlaceDetails = async ({ placeId }) => {
-  const apiKey = "AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U"; // Replace with your actual API key
+  const apiKey = "AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U";
 
   try {
-    const detailsResponse = await fetch(
+    const detailsResponse = await axios.get(
       `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${apiKey}`
     );
 
-    if (!detailsResponse.ok) {
-      throw new Error('Failed to fetch place details');
-    }
-
-    const detailsData = await detailsResponse.json();
+    const detailsData = detailsResponse.data;
 
     if (detailsData.status === 'OK') {
       return detailsData.result;
@@ -23,3 +21,4 @@ export const getPlaceDetails = async ({ placeId }) => {
     throw error;
   }
 };
+

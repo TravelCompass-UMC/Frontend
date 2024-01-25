@@ -1,9 +1,9 @@
 // components/SearchRecommendations.js
 import React, { useState } from 'react';
 import { List, ListItem, ListItemText } from '@material-ui/core';
-import PlaceDetails from './PlaceDetail';
+import PlaceDetail from './PlaceDetail';
 
-const SearchRecommendations = ({ onRecommendationClick }) => {
+const SearchRecommendations = ({ onRecommendationClick, getPlaceDetails, setPlaceDetails }) => {
   const [selectedPlace, setSelectedPlace] = useState(null);
 
   const recommendations = [
@@ -12,9 +12,15 @@ const SearchRecommendations = ({ onRecommendationClick }) => {
     { name: '아르떼뮤지엄 제주', coordinates: { lat: 33.3964753, lng: 126.3420398 } },
   ];
 
-  const handleRecommendationClick = (place) => {
+  const handleRecommendationClick = async (place) => {
     setSelectedPlace(place);
     onRecommendationClick(place);
+    try {
+      const placeDetail = await getPlaceDetails({ placeId: place.placeId });
+      setPlaceDetails(placeDetail);
+    } catch (error) {
+      console.error('Error fetching place details:', error);
+    }
   };
 
   return (
@@ -26,7 +32,7 @@ const SearchRecommendations = ({ onRecommendationClick }) => {
           </ListItem>
         ))}
       </List>
-      {selectedPlace && <PlaceDetails placeName={selectedPlace.name} coordinates={selectedPlace.coordinates} />}
+      {selectedPlace && <PlaceDetail placeName={selectedPlace.name} coordinates={selectedPlace.coordinates} />}
     </div>
   );
 };
