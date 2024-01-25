@@ -59,10 +59,7 @@ function Mypage() {
         <OtherTravelPlanSection title="관심있는 여행계획" others={others}/>
         <InterestedPlacesSection title="관심있는 장소" />
         {/* <p>{plans[0].place}</p> */}
-        <div className="log-botton">
-          <button>로그아웃</button>
-          <button>회원탈퇴</button>
-        </div>
+        <LogoutSection />
       </div>
       
     )
@@ -70,22 +67,29 @@ function Mypage() {
 
 export default Mypage;
 
-export function ProfileSection() {
+export function ProfileSection({ userName, userNickname, userEmail, userProfileImage }) {
+  // 네이버 API에서 받아온 정보를 사용하여 프로필 섹션을 채웁니다.
+  // userName: 네이버에서 받아온 사용자 이름
+  // userNickname: 네이버에서 받아온 사용자 닉네임
+  // userEmail: 네이버에서 받아온 사용자 이메일
+  // userProfileImage: 네이버에서 받아온 사용자 프로필 사진 URL
+
   return (
     <div className="flex items-center mb-8">
       <div>
-        <h2 className="user-name">상현님 반갑습니다 !</h2>
-        <img src="" alt="프로필 아이콘"/>
-        <p className="user-nickname">닉네임</p>
-        <p className="user-email">shawn2018@naver.com</p>
+        <h2 className="user-name">{userName} 반갑습니다 !</h2>
+        <img src={userProfileImage} alt="프로필 아이콘"/>
+        <p className="user-nickname">{userNickname}</p>
+        <p className="user-email">{userEmail}</p>
       </div>
     </div>
   );
 }
 
+
 export function MyplanThumbnail(props){
   return (
-    <div className="col-md-4" style={{...Thumbnail.bigBox, margin: '0 10px'}} >
+    <div className="thumbnail-container" style={{...Thumbnail.bigBox, margin: '0 10px'}} >
       <img style={{...Thumbnail.imageBox, width: '100%'}} src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
       <a style={Thumbnail.placeText}>{props.plans.place}</a>
       <p style={Thumbnail.hashtagText}>{props.plans.hashtag.join(', ')}</p>
@@ -116,10 +120,10 @@ export function MyTravelPlanSection({ title, plans }) {
 
 export function OtherplanThumbnail(props){
   return (
-    <div className="col-md-4">
-      <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
-      <h4>{props.others.place}</h4>
-      <p>{props.others.hashtag.join(', ')}</p>
+    <div className="col-md-4" style={{...Thumbnail.bigBox, margin: '0 10px'}}>
+      <img style={{...Thumbnail.imageBox, width: '100%'}} src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
+      <a style={Thumbnail.placeText}>{props.others.place}</a>
+      <p style={Thumbnail.hashtagText}>{props.others.hashtag.join(', ')}</p>
     </div>
   )
 }
@@ -195,6 +199,26 @@ export function InterestedPlacesSection({title}) {
           </div>
 
         </div>
+    </div>
+  );
+  
+}
+
+export function LogoutSection() {
+  const handleLogout = () => {
+    // 로그아웃 로직을 여기에 구현하세요
+    console.log("로그아웃 처리");
+  };
+
+  const handleWithdrawal = () => {
+    // 회원탈퇴 로직을 여기에 구현하세요
+    console.log("회원탈퇴 처리");
+  };
+
+  return (
+    <div className="logout-section">
+      <button onClick={handleLogout}>로그아웃</button>
+      <button onClick={handleWithdrawal}>회원탈퇴</button>
     </div>
   );
 }

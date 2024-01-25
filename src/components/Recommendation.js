@@ -1,8 +1,8 @@
 // components/SearchRecommendations.js
 import React, { useState } from 'react';
 import { List, ListItem, ListItemText } from '@material-ui/core';
-import PlaceDetails from './PlaceDetail';
 import { Button, Typography } from '@material-ui/core';
+import PlaceDetail from './PlaceDetail';
 
 
 const SearchRecommendations = ({ onRecommendationClick, getPlaceDetails, setPlaceDetails }) => {

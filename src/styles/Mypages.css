@@ -1,0 +1,23 @@
+/* styles/Mypages.css */
+
+/* 다음 코드를 추가합니다 */
+.col-md-4 {
+    margin-bottom: 20px; /* 썸네일 사이의 아래 간격을 조절합니다 */
+  }
+
+/* 페이지 네이션 스타일링 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* 버튼 위의 간격을 조절합니다 */
+  }
+  
+  .page-button {
+    /* 기존 스타일 유지 */
+  }
+  
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
