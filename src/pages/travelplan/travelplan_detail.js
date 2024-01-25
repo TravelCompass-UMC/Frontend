@@ -24,6 +24,7 @@ const Trvlpage = () => {
   const [adultCount, setAdultCount] = useState(0);
   const [childrenCount, setChildrenCount] = useState(0);
   const [selectedAccommodation, setSelectedAccommodation] = useState(null);
+  const [selectedAccommodations, setSelectedAccommodations] = useState({});
 
   const formattedStartDate = startDate
     ? format(new Date(startDate), "yyyy-MM-dd")
@@ -157,8 +158,13 @@ const Trvlpage = () => {
     );
   };
 
-  const handleSelectAccommodation = (accommodationId, formattedDate) => {
+  const handleSelectAccommodation = (accommodationId, formattedDate, e) => {
+    e.stopPropagation(); // 이벤트 전파 중지
     setSelectedAccommodation(accommodationId);
+    setSelectedAccommodations((prev) => ({
+      ...prev,
+      [formattedDate]: accommodationId,
+    }));
     setSidebarContent("숙소");
     // 여기에서 'formattedDate'를 사용하여 날짜 선택 기능을 구현할 수 있습니다.
   };
@@ -209,14 +215,6 @@ const Trvlpage = () => {
                       dateFormat="h:mm aa"
                     />
                   </div>
-                  {/* 숙소 선택 + 버튼 */}
-                  <button
-                    onClick={() =>
-                      handleSelectAccommodation(null, formattedDate)
-                    }
-                  >
-                    + 숙소 선택
-                  </button>
                 </div>
               );
             })}
@@ -226,6 +224,15 @@ const Trvlpage = () => {
         );
 
       case "숙소":
+        const intervalDates = eachDayOfInterval({
+          start: new Date(startDate),
+          end: new Date(endDate),
+        });
+        const datesWithoutLastDay = intervalDates.slice(
+          0,
+          intervalDates.length - 1
+        );
+
         return (
           <div>
             {AccommodationsData.map((accommodation) => (
@@ -238,6 +245,37 @@ const Trvlpage = () => {
                 selected={selectedAccommodation === accommodation.id}
               />
             ))}
+            {datesWithoutLastDay.map((date, index) => {
+              const formattedDate = format(date, "yyyy-MM-dd");
+              const isSelected = selectedAccommodations[formattedDate];
+
+              return (
+                <div key={index}>
+                  <h3>{format(date, "yyyy년 MM월 dd일")}</h3>
+                  {isSelected ? (
+                    <Accommodation
+                      key={selectedAccommodations[formattedDate]}
+                      {...AccommodationsData.find(
+                        (acc) =>
+                          acc.id === selectedAccommodations[formattedDate]
+                      )}
+                      onSelect={() =>
+                        handleSelectAccommodation(null, formattedDate)
+                      }
+                    />
+                  ) : (
+                    <button
+                      onClick={(e) =>
+                        setSidebarContent("숙소 선택") &&
+                        handleSelectAccommodation(null, formattedDate, e)
+                      }
+                    >
+                      + 숙소 선택 ({formattedDate})
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
         );
 
