@@ -5,7 +5,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/locale"; // 변경된 부분
 import { Link } from "react-router-dom";
-
 import Modal from "../../components/Modal";
 import { format } from "date-fns";
 
