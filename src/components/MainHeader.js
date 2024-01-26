@@ -55,12 +55,11 @@ const MainHeader = () => {
       <Modal
         open={isModalOpen}
         close={closeModal}
-        header="로그인" // 모달 헤더
-        onButtonClick={closeModal} // 모달 버튼 클릭 시 모달 닫기
+      // 모달 버튼 클릭 시 모달 닫기
       >
         {/* 모달 내용 */}
         {/* 여기에 로그인 폼 또는 내용을 추가할 수 있습니다. */}
-        <p>로그인 폼을 여기에 추가하세요.</p>
+
       </Modal>
     </header>
   );
