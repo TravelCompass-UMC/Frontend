@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import classes from "../styles/MainHeader.module.css";
-import Modal from "./lginModal"; // 모달 컴포넌트를 임포트합니다.
-
+import Modal from "./lginModal";
+import Mainlogo from "../assets/images/logo_no_letter.svg";
 const MainHeader = () => {
   // 모달 열기/닫기 상태를 관리하는 상태 변수와 함수를 선언합니다.
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,9 +18,9 @@ const MainHeader = () => {
 
   return (
     <header className={classes.header}>
-      <h1>
+      <h1 className={classes.logobox}>
         <Link to="/" className={classes.logo}>
-          Travel Compass
+          <img src={Mainlogo} />
         </Link>
       </h1>
       <nav>
@@ -55,11 +55,10 @@ const MainHeader = () => {
       <Modal
         open={isModalOpen}
         close={closeModal}
-      // 모달 버튼 클릭 시 모달 닫기
+        // 모달 버튼 클릭 시 모달 닫기
       >
         {/* 모달 내용 */}
         {/* 여기에 로그인 폼 또는 내용을 추가할 수 있습니다. */}
-
       </Modal>
     </header>
   );
