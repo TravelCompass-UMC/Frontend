@@ -14,9 +14,8 @@ const defaultCenter = {
   lng: 128.6014,
 };
 
-const Map = ({ location, onPinClick }) => {
+const Map = ({ location, recommendations, onPinClick }) => {
   const [map, setMap] = useState(null);
-  const [mapCenter, setMapCenter] = useState(defaultCenter);
   const [zoomLevel, setZoomLevel] = useState(7);
   const [markers, setMarkers] = useState([]);
 
@@ -26,16 +25,27 @@ const Map = ({ location, onPinClick }) => {
 
   useEffect(() => {
     if (location && location.lat !== null && location.lng !== null) {
-      setMapCenter(location);
       setZoomLevel(12);
     }
   }, [location]);
 
   useEffect(() => {
-    if (location && location.lat !== null && location.lng !== null) {
-      setMarkers([{ position: location, label: "1" }]);
+    let newMarkers = [];
+    if (recommendations && recommendations.length > 0) {
+      newMarkers = recommendations.map((place, index) => ({
+        position: { lat: place.lat, lng: place.lng },
+        label: `${index + 1}`,
+        name: place.name // Add name property to each marker
+      }));
+    } else if (location && location.lat !== null && location.lng !== null) {
+      newMarkers = [{ position: location, label: "1" }];
     }
-  }, [location]);
+    setMarkers(newMarkers);
+  }, [location, recommendations]);
+
+  const handleMarkerClick = (marker) => {
+    onPinClick(marker.name); // Call onPinClick callback with marker name
+  };
 
   return (
     <div style={{ position: "relative" }}>
@@ -43,15 +53,15 @@ const Map = ({ location, onPinClick }) => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           onLoad={onLoad}
-          center={location && location.lat !== null ? location : mapCenter}
-          zoom={location ? 12 : zoomLevel}
+          center={location || defaultCenter}
+          zoom={zoomLevel}
         >
           {markers.map((marker, index) => (
             <Marker
               key={index}
               position={marker.position}
               label={marker.label}
-              onClick={() => onPinClick(`Place ${marker.label}`)}
+              onClick={() => handleMarkerClick(marker)} // Pass marker to handleMarkerClick
             />
           ))}
         </GoogleMap>
