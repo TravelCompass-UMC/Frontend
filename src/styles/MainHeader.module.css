@@ -6,9 +6,16 @@
   align-items: center;
 }
 
-.logo {
+.logobox {
+  width: 25vw;
+}
+.logo img {
+  margin-left: 8vw;
   text-decoration: none;
-  color: #fff;
+  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 nav {
@@ -23,7 +30,7 @@ nav ul {
 }
 
 nav li {
-  margin-left: 20px;
+  margin-left: 0px;
   padding-right: 20px;
 }
 
