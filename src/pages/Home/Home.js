@@ -10,6 +10,7 @@ class home extends Component {
     return (
       <div className="container">
         <div className="map">배경 이미지 지도</div>
+        {/* <GoogleMapComponent/> */}
         <input type="text" className="searchbox" placeholder="궁금한 지역을 검색해보세요"></input>
         <SidebarR width={320}>
         <h1>대한민국</h1>

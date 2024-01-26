@@ -1,4 +1,5 @@
-// RecommendationCard.js
+//RecommendationCard.js
+
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
 
@@ -10,14 +11,16 @@ const RecommendationCard = ({ placeDetails }) => {
   return (
     <Card>
       {placeDetails.photos && placeDetails.photos.length > 0 && (
-        <img src={placeDetails.photos[0].getUrl()} alt={placeDetails.name} />
+        <img src={placeDetails.photos[0]} alt={placeDetails.name} />
       )}
-      <h3>{placeDetails.name}</h3>
-      <p>Rating: {placeDetails.rating}</p>
-      <p>Location: {placeDetails.vicinity}</p>
-      <p>Operating Hours: {placeDetails.opening_hours && placeDetails.opening_hours.weekday_text.join(', ')}</p>
-      <p>Phone: {placeDetails.formatted_phone_number}</p>
-      <p>Reviews: {placeDetails.reviews && placeDetails.reviews.length}</p>
+      <CardContent>
+        <Typography variant="h5" component="h2">{placeDetails.name}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">별점: {placeDetails.rating || '제공되지 않는 정보입니다.'}점</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">위치: {placeDetails.vicinity || '제공되지 않는 정보입니다.'}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">운영 시간: {placeDetails.opening_hours && placeDetails.opening_hours.weekday_text ? placeDetails.opening_hours.weekday_text.join(', ') : '제공되지 않는 정보입니다.'}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">전화번호: {placeDetails.formatted_phone_number || '제공되지 않는 정보입니다.'}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">리뷰 갯수: {placeDetails.reviews ? placeDetails.reviews.length : '제공되지 않는 정보입니다.'}개</Typography>
+      </CardContent>
     </Card>
   );
 };
