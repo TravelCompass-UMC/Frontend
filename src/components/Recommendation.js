@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { List, ListItem, ListItemText } from '@material-ui/core';
-import PlaceDetail from './PlaceDetail';
 
 const SearchRecommendations = ({ onRecommendationClick }) => {
-  const [selectedPlace, setSelectedPlace] = useState(null);
-
   const recommendations = [
     { name: '빛의 벙커', placeId: "ChIJnTFvBUcTDTURh7KTiaHnYYE" },
     { name: '비양도 봉수대', placeId: "ChIJRxWgQQBBDTURAT3xqkmF210" },
@@ -12,8 +9,7 @@ const SearchRecommendations = ({ onRecommendationClick }) => {
   ];
 
   const handleRecommendationClick = (place) => {
-    setSelectedPlace(place);
-    onRecommendationClick(place);
+    onRecommendationClick(place); // 상위 컴포넌트로 선택된 장소 정보를 전달
   };
 
   return (
@@ -25,7 +21,6 @@ const SearchRecommendations = ({ onRecommendationClick }) => {
           </ListItem>
         ))}
       </List>
-      {selectedPlace && <PlaceDetail place={selectedPlace} />}
     </div>
   );
 };

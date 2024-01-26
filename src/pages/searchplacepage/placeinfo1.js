@@ -1,8 +1,5 @@
-// placeinfo1.js
-
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import SidebarL from '../../components/SidebarL';
 import SearchRecommendations from '../../components/Recommendation';
 import Map from '../../components/Map';
