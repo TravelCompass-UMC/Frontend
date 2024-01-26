@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import classes from "../styles/MainHeader.module.css";
+import Modal from "./lginModal"; // 모달 컴포넌트를 임포트합니다.
 
 const MainHeader = () => {
+  // 모달 열기/닫기 상태를 관리하는 상태 변수와 함수를 선언합니다.
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // 모달을 열고 닫는 함수
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <header className={classes.header}>
       <h1>
@@ -33,12 +46,22 @@ const MainHeader = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName={classes.active} to="/login">
-              로그인
-            </NavLink>
+            {/* 로그인 버튼을 클릭하면 모달 열기 함수를 호출합니다. */}
+            <button onClick={openModal}>로그인</button>
           </li>
         </ul>
       </nav>
+      {/* 모달 컴포넌트를 사용하여 모달을 렌더링합니다. */}
+      <Modal
+        open={isModalOpen}
+        close={closeModal}
+        header="로그인" // 모달 헤더
+        onButtonClick={closeModal} // 모달 버튼 클릭 시 모달 닫기
+      >
+        {/* 모달 내용 */}
+        {/* 여기에 로그인 폼 또는 내용을 추가할 수 있습니다. */}
+        <p>로그인 폼을 여기에 추가하세요.</p>
+      </Modal>
     </header>
   );
 };
