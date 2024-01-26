@@ -1,33 +1,34 @@
 import React, { useState } from "react";
+import styles from "../../styles/search.module.css";
 
-const styles = {
-  titleText: {
-    color: "#191B24",
-    fontSize: 18,
-    fontFamily: "SUIT Variable",
-    fontWeight: "700",
-    wordWrap: "break-word",
-    width: "200px",
-    display: "inline-block",
-  },
-  optionText: {
-    color: "#BFC4D8",
-    fontSize: 15,
-    fontFamily: "SUIT Variable",
-    fontWeight: "700",
-    wordWrap: "break-word",
-  },
-  optionButton: {
-    width: "100px",
-    height: "40px",
-    borderRadius: 8,
-    border: "none",
-  },
-  customBox: {
-    width: '300px', height: '60px', background: '#EBEDF8', borderRadius: 8, border: '1px #BFC4D8 solid'
+// const styles = {
+//   titleText: {
+//     color: "#191B24",
+//     fontSize: 18,
+//     fontFamily: "SUIT Variable",
+//     fontWeight: "700",
+//     wordWrap: "break-word",
+//     width: "200px",
+//     display: "inline-block",
+//   },
+//   optionText: {
+//     color: "#BFC4D8",
+//     fontSize: 15,
+//     fontFamily: "SUIT Variable",
+//     fontWeight: "700",
+//     wordWrap: "break-word",
+//   },
+//   optionButton: {
+//     width: "100px",
+//     height: "40px",
+//     borderRadius: 8,
+//     border: "none",
+//   },
+//   customBox: {
+//     width: '300px', height: '60px', background: '#EBEDF8', borderRadius: 8, border: '1px #BFC4D8 solid'
 
-  },
-};
+//   },
+// };
 
 const SearchComponent = () => {
   const [selectedDuration, setSelectedDuration] = useState(""); // 선택된 일정
@@ -36,11 +37,13 @@ const SearchComponent = () => {
   const [listItems, setListItems] = useState([]); // 검색된 목록
   const [customDuration, setCustomDuration] = useState(""); // 직접 입력하는 칸의 값
   const [customLocation, setCustomLocation] = useState(""); // 직접 입력하는 칸의 값
+  const [customHashtags, setCustomHashtags] = useState([]);
+
 
   const handleDurationButtonClick = (duration) => {
     //일정
     if (duration === "allDuration") {
-      setSelectedDuration("allDuration");
+      setSelectedDuration(selectedDuration === "allDuration" ? "" : "allDuration");
     } else if (duration === "oneday") {
       setSelectedDuration(selectedDuration === "oneday" ? "" : "oneday");
     } else if (duration === "twodays") {
@@ -107,22 +110,33 @@ const SearchComponent = () => {
     setSelectedDuration("");
   };
 
+  const handleCustomHashtagChange = (e) => {
+    setCustomDuration(e.target.value);
+  };
+
+  const handleAddHashtag = () => {
+    if (customHashtags.length < 5 && customDuration.trim() !== "") {
+      setCustomHashtags((prevHashtags) => [...prevHashtags, customDuration]);
+      setCustomDuration(""); // Clear the input after adding the hashtag
+    }
+  };
+
   return (
     <>
       <div style={{ marginBottom: "20px" }}>
-        <label>
-          <span style={styles.titleText}>일정</span>
+        <label style={{ width: "100%" }}>
+          <span className={styles.titleText}>일정</span>
           <button
+            className={styles.optionButton}
             style={{
-              ...styles.optionButton,
               background:
                 selectedDuration === "allDuration" ? "#8270FF" : "#EBEDF8",
             }}
             onClick={() => handleDurationButtonClick("allDuration")}
           >
             <div
+              className={styles.optionText}
               style={{
-                ...styles.optionText,
                 color:
                   selectedDuration === "allDuration" ? "#FFFFFF" : "#BFC4D8",
               }}
@@ -132,15 +146,15 @@ const SearchComponent = () => {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
+            className={styles.optionButton}
             style={{
-              ...styles.optionButton,
               background: selectedDuration === "oneday" ? "#8270FF" : "#EBEDF8",
             }}
             onClick={() => handleDurationButtonClick("oneday")}
           >
             <div
+              className={styles.optionText}
               style={{
-                ...styles.optionText,
                 color: selectedDuration === "oneday" ? "#FFFFFF" : "#BFC4D8",
               }}
             >
@@ -149,47 +163,53 @@ const SearchComponent = () => {
           </button>
           &nbsp;&nbsp;
           <button
+            className={styles.optionButton}
             style={{
-              ...styles.optionButton,
               background:
                 selectedDuration === "twodays" ? "#8270FF" : "#EBEDF8",
             }}
             onClick={() => handleDurationButtonClick("twodays")}
           >
             <div
+              className={styles.optionText}
               style={{
-                ...styles.optionText,
                 color: selectedDuration === "twodays" ? "#FFFFFF" : "#BFC4D8",
               }}
             >
               2일 이상
             </div>
           </button>
-          <span style={styles.customBox}>
-          <input
-            type="text"
-            placeholder="일 동안"
-            value={customDuration}
-            onChange={handleCustomDurationChange}
-          />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span className={styles.customBox}>
+            <input className={styles.customText}
+              type="text"
+              placeholder="직접 입력"
+              value={customDuration}
+              onChange={handleCustomDurationChange}
+            />
+            <a
+              className={styles.customTextFix}
+            >
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일 동안
+            </a>
           </span>
         </label>
-      </div>
+      </div >
 
       <div style={{ marginBottom: "20px" }}>
         <label>
-          <span style={styles.titleText}>여행지</span>
+          <span className={styles.titleText}>여행지</span>
           <button
+            className={styles.optionButton}
             style={{
-              ...styles.optionButton,
               background:
                 selectedLocation === "allLocation" ? "#8270FF" : "#EBEDF8",
             }}
             onClick={() => handleLocationButtonClick("allLocation")}
           >
             <div
+              className={styles.optionText}
               style={{
-                ...styles.optionText,
                 color:
                   selectedLocation === "allLocation" ? "#FFFFFF" : "#BFC4D8",
               }}
@@ -199,17 +219,18 @@ const SearchComponent = () => {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
+            className={styles.optionButton}
             style={{
-              ...styles.optionButton,
               background:
                 selectedLocation === "domestic" ? "#8270FF" : "#EBEDF8",
             }}
             onClick={() => handleLocationButtonClick("domestic")}
           >
             <div
+              className={styles.optionText}
               style={{
-                ...styles.optionText,
-                color: selectedLocation === "domestic" ? "#FFFFFF" : "#BFC4D8",
+                color:
+                  selectedLocation === "domestic" ? "#FFFFFF" : "#BFC4D8",
               }}
             >
               국내
@@ -217,39 +238,45 @@ const SearchComponent = () => {
           </button>
           &nbsp;&nbsp;
           <button
+            className={styles.optionButton}
             style={{
-              ...styles.optionButton,
               background:
                 selectedLocation === "foreign" ? "#8270FF" : "#EBEDF8",
             }}
             onClick={() => handleLocationButtonClick("foreign")}
           >
             <div
+              className={styles.optionText}
               style={{
-                ...styles.optionText,
-                color: selectedLocation === "foreign" ? "#FFFFFF" : "#BFC4D8",
+                color:
+                  selectedLocation === "foreign" ? "#FFFFFF" : "#BFC4D8",
               }}
             >
               국외
             </div>
           </button>
-          {selectedLocation === "custom" && (
-            <input
-              type="text"
-              placeholder="일 동안"
-              value={customLocation}
-              onChange={handleCustomLocationChange}
-            />
-          )}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span className={styles.customBox}>
+            <select className={styles.customText} id="location" value={customLocation}
+              onChange={handleCustomLocationChange} name="location">
+              <option value="seoul">서울</option>
+              <option value="gyeongju">경주</option>
+              <option value="busan">부산</option>
+              <option value="incheon">인천</option>
+              <option value="sokcho">속초</option>
+              <option value="gangneung">강릉</option>
+              <option value="jeju">제주도</option>
+            </select>
+          </span>
         </label>
       </div>
 
       <div style={{ marginBottom: "20px" }}>
         <label>
-          <span style={styles.titleText}>교통수단</span>
+          <span className={styles.titleText}>교통수단</span>
           <button
+            className={styles.optionButton}
             style={{
-              ...styles.optionButton,
               background:
                 selectedTransportation === "allTransportation"
                   ? "#8270FF"
@@ -258,8 +285,8 @@ const SearchComponent = () => {
             onClick={() => handleTransportationButtonClick("allTransportation")}
           >
             <div
+              className={styles.optionText}
               style={{
-                ...styles.optionText,
                 color:
                   selectedTransportation === "allTransportation"
                     ? "#FFFFFF"
@@ -271,16 +298,16 @@ const SearchComponent = () => {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
+            className={styles.optionButton}
             style={{
-              ...styles.optionButton,
               background:
                 selectedTransportation === "public" ? "#8270FF" : "#EBEDF8",
             }}
             onClick={() => handleTransportationButtonClick("public")}
           >
             <div
+              className={styles.optionText}
               style={{
-                ...styles.optionText,
                 color:
                   selectedTransportation === "public" ? "#FFFFFF" : "#BFC4D8",
               }}
@@ -290,16 +317,16 @@ const SearchComponent = () => {
           </button>
           &nbsp;&nbsp;
           <button
+            className={styles.optionButton}
             style={{
-              ...styles.optionButton,
               background:
                 selectedTransportation === "private" ? "#8270FF" : "#EBEDF8",
             }}
             onClick={() => handleTransportationButtonClick("private")}
           >
             <div
+              className={styles.optionText}
               style={{
-                ...styles.optionText,
                 color:
                   selectedTransportation === "private" ? "#FFFFFF" : "#BFC4D8",
               }}
@@ -310,9 +337,52 @@ const SearchComponent = () => {
         </label>
       </div>
 
+      <div style={{ marginBottom: "20px" }}>
+        <label>
+          <span className={styles.titleText}>해시태그 검색</span>
+          <span className={styles.customHashtagBox}>
+            <div>
+              <input
+                className={styles.customHashtagText}
+                type="text"
+                placeholder="  #원하는 여행 조건을 검색해보세요.(최대 5개)"
+                value={customDuration}
+                onChange={handleCustomHashtagChange}
+              />
+              &nbsp;&nbsp;&nbsp;
+              <button
+                className={styles.optionButton}
+                onClick={handleAddHashtag}
+              >
+                추가
+              </button>
+            </div>
+            <div>
+              {customHashtags.length > 0 && (
+                <div style={{ marginBottom: "20px" }}>
+                  {/* <span className={styles.titleText}>입력된 해시태그</span> */}
+                  <ul>
+                    {customHashtags.map((hashtag, index) => (
+                      <span key={index} className={styles.hashtagBox}>
+                        {hashtag}
+                      </span>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </span>
+        </label>
+      </div>
+
       <div>
-        <button onClick={handleResetFilters}>조건 초기화</button>
-        <button onClick={handleApplyFilters}>조건 적용하기</button>
+        <button className={styles.optionButton} onClick={handleResetFilters}>
+          조건 초기화
+        </button>
+        <button className={styles.optionButton} onClick={handleApplyFilters}>
+          조건 적용하기
+        </button>
+
 
         {/* 여기에서 조건에 따라 생성된 목록을 표시합니다. */}
         <ul>

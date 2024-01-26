@@ -1,0 +1,86 @@
+.titleText {
+    color: #191B24;
+    font-size: 18px;
+    font-family: "SUIT Variable";
+    font-weight: 700;
+    word-wrap: break-word;
+    width: 200px;
+    display: inline-block;
+}
+
+.optionText {
+    color: #BFC4D8;
+    font-size: 15px;
+    font-family: "SUIT Variable";
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.optionButton {
+    width: 100px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+}
+
+.customBox {
+    width: 250px;
+    height: 60px;
+    background: #EBEDF8;
+    border-radius: 8px;
+    border: 1px #BFC4D8 solid;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.customText {
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    margin-top: 9px;
+    margin-left: 25px;
+    /* 왼쪽으로 20px 이동 */
+    border-radius: 8px;
+    background: var(--grayscale-White, #FFF);
+    border: none;
+}
+
+.customTextFix {
+    color: var(--grayscale-Gray8, #191B24);
+    font-family: "SUIT Variable";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+    /* 밑줄 제거 */
+    margin-top: 5px;
+}
+
+.customHashtagBox {
+    width: 645px;
+    height: 110px;
+    background: #EBEDF8;
+    border-radius: 8px;
+    border: 1px #BFC4D8 solid;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.customHashtagText {
+    width: 490px;
+    height: 40px;
+    margin-top: 9px;
+    margin-left: 25px;
+    /* 왼쪽으로 20px 이동 */
+    border-radius: 8px;
+    background: var(--grayscale-White, #FFF);
+    border: none;
+}
+
+.hashtagBox {
+    width: 50px;
+    height: 10px;
+    border-radius: 50px;
+    background: var(--Primary-color, #8270FF);
+}
