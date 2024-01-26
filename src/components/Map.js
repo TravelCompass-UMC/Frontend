@@ -25,7 +25,7 @@ const Map = ({ location, recommendations, onPinClick }) => {
 
   useEffect(() => {
     if (location && location.lat !== null && location.lng !== null) {
-      setZoomLevel(12);
+      setZoomLevel(11);
     }
   }, [location]);
 

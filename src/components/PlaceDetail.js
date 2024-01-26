@@ -9,8 +9,8 @@ const PlaceDetail = ({ place }) => {
 
   useEffect(() => {
     const fetchPlaceDetails = async () => {
-      if (!place || prevPlace.current === place) return; // 이전 값과 현재 값 비교
-      prevPlace.current = place; // 현재 값을 이전 값으로 업데이트
+      if (!place || prevPlace.current === place) return;
+      prevPlace.current = place;
       try {
         setLoading(true);
         const response = await getPlaceDetails({ placeId: place.placeId }); 
