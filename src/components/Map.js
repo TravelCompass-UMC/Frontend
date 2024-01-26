@@ -39,7 +39,7 @@ const Map = ({ location, onPinClick }) => {
 
   return (
     <div style={{ position: "relative" }}>
-      <LoadScript googleMapsApiKey="AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U">
+      <LoadScript googleMapsApiKey="AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU">
         <GoogleMap
           mapContainerStyle={containerStyle}
           onLoad={onLoad}
