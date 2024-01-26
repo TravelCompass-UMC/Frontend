@@ -62,7 +62,9 @@ const SearchComponent = () => {
   const handleTransportationButtonClick = (transportation) => {
     //교통수단
     if (transportation === "allTransportation") {
-      selectedTransportation === "public" ? "" : "public"
+      setSelectedTransportation(
+        selectedTransportation === "allTransportation" ? "" : "allTransportation"
+      );
     } else if (transportation === "public") {
       setSelectedTransportation(
         selectedTransportation === "public" ? "" : "public"
