@@ -1,27 +1,20 @@
-// components/SearchRecommendations.js
+//Recommendation.js
 import React, { useState } from 'react';
 import { List, ListItem, ListItemText } from '@material-ui/core';
-import { Button, Typography } from '@material-ui/core';
 import PlaceDetail from './PlaceDetail';
 
-const SearchRecommendations = ({ onRecommendationClick, getPlaceDetails, setPlaceDetails }) => {
+const SearchRecommendations = ({ onRecommendationClick }) => {
   const [selectedPlace, setSelectedPlace] = useState(null);
 
   const recommendations = [
-    { name: '빛의 벙커', coordinates: { lat: 33.4398529, lng: 126.8964279 } },
-    { name: '비양도 봉수대', coordinates: { lat: 33.5153276, lng: 126.9666388 } },
-    { name: '아르떼뮤지엄 제주', coordinates: { lat: 33.3964753, lng: 126.3420398 } },
+    { name: '빛의 벙커', placeId: "ChIJnTFvBUcTDTURh7KTiaHnYYE" },
+    { name: '비양도 봉수대', placeId: "ChIJRxWgQQBBDTURAT3xqkmF210" },
+    { name: '아르떼뮤지엄 제주', placeId: "ChIJUwtlFmhfDDURUr3BMm9Sb6k" },
   ];
 
-  const handleRecommendationClick = async (place) => {
+  const handleRecommendationClick = (place) => {
     setSelectedPlace(place);
     onRecommendationClick(place);
-    try {
-      const placeDetail = await getPlaceDetails({ placeId: place.placeId });
-      setPlaceDetails(placeDetail);
-    } catch (error) {
-      console.error('Error fetching place details:', error);
-    }
   };
 
   return (
@@ -33,7 +26,7 @@ const SearchRecommendations = ({ onRecommendationClick, getPlaceDetails, setPlac
           </ListItem>
         ))}
       </List>
-      {selectedPlace && <PlaceDetail placeName={selectedPlace.name} coordinates={selectedPlace.coordinates} />}
+      {selectedPlace && <PlaceDetail place={selectedPlace} />}
     </div>
   );
 };

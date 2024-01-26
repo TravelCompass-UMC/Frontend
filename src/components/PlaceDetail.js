@@ -1,29 +1,42 @@
-// src > components > PlaceDetail.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import RecommendationCard from './RecommendationCard';
 import { getPlaceDetails } from '../api/MapDetail';
 
-const PlaceDetail = ({ placeName, coordinates }) => {
+const PlaceDetail = ({ place }) => {
   const [placeDetails, setPlaceDetails] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const prevPlace = useRef(null);
 
   useEffect(() => {
     const fetchPlaceDetails = async () => {
+      if (!place || prevPlace.current === place) return; // 이전 값과 현재 값 비교
+      prevPlace.current = place; // 현재 값을 이전 값으로 업데이트
       try {
-        const response = await getPlaceDetails({ placeId: ['PLACE_ID_1', 'PLACE_ID_2', 'PLACE_ID_3']}); 
+        setLoading(true);
+        const response = await getPlaceDetails({ placeId: place.placeId }); 
         if (response) {
           setPlaceDetails(response);
         } else {
           console.error('Failed to fetch place details');
         }
+        setLoading(false);
       } catch (error) {
         console.error('Error during fetch:', error);
+        setLoading(false);
       }
     };
 
     fetchPlaceDetails();
-  }, [placeName, coordinates]);
+  }, [place]);
 
-  return <RecommendationCard placeDetails={placeDetails} />;
+  return (
+    <div>
+      {loading && <p>Loading...</p>}
+      {!loading && placeDetails && (
+        <RecommendationCard placeDetails={placeDetails} />
+      )}
+    </div>
+  );
 };
 
 export default PlaceDetail;
