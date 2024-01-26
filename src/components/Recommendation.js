@@ -4,7 +4,6 @@ import { List, ListItem, ListItemText } from '@material-ui/core';
 import { Button, Typography } from '@material-ui/core';
 import PlaceDetail from './PlaceDetail';
 
-
 const SearchRecommendations = ({ onRecommendationClick, getPlaceDetails, setPlaceDetails }) => {
   const [selectedPlace, setSelectedPlace] = useState(null);
 
