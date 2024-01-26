@@ -11,18 +11,35 @@
   transition: 0.4s ease;
   color: #202020;
   z-index: 99;
+  border: none; /* 테두리 제거 */
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); /* 사이드바에 그림자 추가 */
 }
 
 .toggle-button {
   position: fixed;
+
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 버튼에 그림자 추가 */
   top: 40vh;
   left: 0px; /* 사이드바와의 간격 조정 */
   width: 15px; /* 버튼의 너비 */
   height: 40px; /* 버튼의 높이 */
-  z-index: 100;
+  z-index: 1;
   background-color: #e3ecf1; /* 사다리꼴의 배경색 */
   cursor: pointer;
-  clip-path: polygon(0% 0%, 100% 25%, 100% 75%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 20%, 100% 80%, 0% 100%);
+  border: none; /* 테두리 제거 */
+  padding: 6px 6px;
+}
+
+.toggle-button-shadow {
+  position: fixed;
+  top: 40vh; /* 버튼과 동일한 위치 */
+  left: 0px; /* 조정 필요 */
+  width: 15px; /* 버튼과 동일한 너비 */
+  height: 40px; /* 버튼과 동일한 높이 */
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 그림자 적용 */
+  transform: translateX(5px); /* 필요에 따라 조정 */
+  z-index: 90; /* 버튼 뒤에 위치하도록 z-index 조정 */
 }
 
 .content {

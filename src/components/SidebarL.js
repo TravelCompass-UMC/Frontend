@@ -45,41 +45,10 @@ const SidebarL = ({ width = 280, isOpen: externalIsOpen, children }) => {
           onClick={toggleMenu}
           className="toggle-button"
           style={{
-            transform: isOpen
-              ? `translate(${width}px, 20px)`
-              : `translate(${width - 20}px, 20px)`,
+            transform: `translate(${width}px, 20px)`, // Adjust button position
           }}
         >
-          {isOpen ? (
-            // SVG for close icon when sidebar is open
-            <svg
-              width="3"
-              height="20"
-              viewBox="0 0 12 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 20L0 10L10 0L11.775 1.775L3.55 10L11.775 18.225L10 20Z"
-                fill="#1C1B1F"
-              />
-            </svg>
-          ) : (
-            // SVG for open icon (close icon rotated 180 degrees)
-            <svg
-              width=""
-              height="20"
-              viewBox="0 0 12 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ transform: "rotate(180deg)" }}
-            >
-              <path
-                d="M10 20L0 10L10 0L11.775 1.775L3.55 10L11.775 18.225L10 20Z"
-                fill="#1C1B1F"
-              />
-            </svg>
-          )}
+          {isOpen ? "<" : ">"}
         </button>
         <div className="content">{children}</div>
       </div>
