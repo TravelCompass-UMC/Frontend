@@ -92,6 +92,7 @@ const SearchComponent = () => {
 
     setCustomDuration("");
     setCustomLocation("");
+    setCustomHashtags([]);
 
     setListItems([]);
   };
