@@ -135,7 +135,7 @@ const SearchComponent = () => {
   };
 
   return (
-    <div style={{ margin: "center" }}>
+    <div>
       <div style={{ width: "100%", marginBottom: "20px" }}>
         {/* <label style={{ width: "100%" }}> */}
         <span className={styles.titleText}>일정</span>

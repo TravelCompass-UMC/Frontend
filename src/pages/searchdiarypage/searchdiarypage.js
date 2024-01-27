@@ -19,11 +19,10 @@ class srchdiary extends Component {
       <div>
         <img src="../../assets/images/Pages/Vector.png" />
         <h3 style={styles.searchText}> 원하는 조건의 계획 찾기 </h3>
-        <div>
-          <Search />
-          <DiaryList />
-          {/* oneday와 twoplus에 대한 유사한 버튼들 */}
-        </div>
+
+        <Search />
+        <DiaryList />
+        {/* oneday와 twoplus에 대한 유사한 버튼들 */}
       </div>
     );
   }
