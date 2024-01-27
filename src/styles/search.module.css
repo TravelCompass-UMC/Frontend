@@ -1,0 +1,140 @@
+.titleText {
+  color: #191b24;
+  font-size: 18px;
+  font-family: "SUIT Variable";
+  font-weight: 700;
+  word-wrap: break-word;
+  width: 200px;
+  display: inline-block;
+}
+
+.optionText {
+  color: #bfc4d8;
+  font-size: 15px;
+  font-family: "SUIT Variable";
+  font-weight: 100;
+  word-wrap: break-word;
+}
+
+.optionButton {
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+}
+.optionButton1 {
+  /*초기화*/
+  border-radius: 8px;
+  background: var(--grayscale-Gray2, #ebedf8);
+  color: var(--grayscale-Gray5, #626682);
+  width: 120px;
+  height: 50px;
+  border: none;
+  /* botton/botton_bold_20 */
+  font-family: "SUIT Variable";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.optionButton2 {
+  /*조건 적용하기*/
+  margin-left: 25px;
+  border-radius: 8px;
+  background: var(--grayscale-Gray8, #191b24);
+  color: var(--grayscale-White, #fff);
+  width: 700px;
+  height: 50px;
+  /* botton/botton_bold_20 */
+  font-family: "SUIT Variable";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.customBox {
+  width: 250px;
+  height: 60px;
+  background: #ebedf8;
+  border-radius: 8px;
+  border: 1px #bfc4d8 solid;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.customText {
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  margin-top: 9px;
+  margin-left: 25px;
+  /* 왼쪽으로 20px 이동 */
+  border-radius: 8px;
+  background: var(--grayscale-White, #fff);
+  border: none;
+}
+
+.customTextFix {
+  color: var(--grayscale-Gray8, #191b24);
+  font-family: "SUIT Variable";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration: none;
+  /* 밑줄 제거 */
+  margin-top: 5px;
+}
+
+.customHashtagBox {
+  width: 645px;
+  height: 110px;
+  background: #ebedf8;
+  border-radius: 8px;
+  border: 1px #bfc4d8 solid;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.customHashtagText {
+  width: 490px;
+  height: 40px;
+  margin-top: 9px;
+  margin-left: 25px;
+  /* 왼쪽으로 20px 이동 */
+  border-radius: 8px;
+  background: var(--grayscale-White, #fff);
+  border: none;
+}
+
+.hashtagBox {
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 120%;
+  height: 15px;
+  border-radius: 60px;
+  background: var(--Primary-color, #8270ff);
+  color: var(--grayscale-White, #fff);
+  /* botton/botton_bold_20 */
+  font-family: "SUIT Variable";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.hashtagdelete {
+  width: 30px;
+  height: 10px;
+  border-radius: 8px;
+  border: none;
+  background: transparent; /* 배경을 투명으로 설정 */
+  cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 상태로 표시 */
+  color: var(--grayscale-White, #fff);
+  font-family: "SUIT Variable";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
