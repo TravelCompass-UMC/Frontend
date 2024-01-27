@@ -1,23 +1,10 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import DiaryContent from "../../components/Searchdairy/DiaryContent";
 
-class diarycnt extends Component {
-  render() {
-    return (
-      <div>
-        <DiaryContent />
-      </div>
-    );
-  }
+export default function diarycontent() {
+  return (
+    <div style={{ width: "100%", height: "94vh", background: "#F3F5FF" }}>
+      <DiaryContent />
+    </div>
+  );
 }
-
-ReactDOM.render(
-  <React.StrictMode>
-    {/* <srchdiary /> Use the component name with PascalCase */}
-    <diarycnt />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
-
-export default diarycnt;

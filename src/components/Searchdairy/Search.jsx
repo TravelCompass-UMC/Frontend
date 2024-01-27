@@ -145,16 +145,15 @@ const SearchComponent = () => {
   };
 
   return (
-    <div>
+    <div style={{ background: "#F3F5FF" }}>
       <div
         style={{
           display: "flex",
           justifyContent: "20%",
-          marginTop: "20px",
           marginLeft: "10%",
         }}
       >
-        <div style={{ marginTop: "10px" }}>
+        <div style={{ marginTop: "40px" }}>
           <img
             src={VectorImage}
             style={{

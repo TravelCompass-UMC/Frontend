@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../styles/diaryContent.css";
+import styles from "../../styles/diaryContent.module.css";
 
 function LeftBar() {
   // 여행 기간에 따른 버튼을 생성하기 위한 state
@@ -8,6 +8,7 @@ function LeftBar() {
   // 전체 일정 버튼을 클릭할 때 호출되는 함수
   const handleAllScheduleClick = () => {
     // 전체 일정을 보여주는 로직을 추가할 수 있습니다.
+
     console.log("전체 일정을 보여줍니다.");
   };
 
@@ -29,7 +30,11 @@ function LeftBar() {
     for (let i = 1; i <= travelDays; i++) {
       buttons.push(
         <div>
-          <button key={i} onClick={() => handleDayButtonClick(i)}>
+          <button
+            className={styles.buttonFalse}
+            key={i}
+            onClick={() => handleDayButtonClick(i)}
+          >
             {`${i}일차`}
           </button>
         </div>
@@ -41,7 +46,9 @@ function LeftBar() {
   return (
     <div>
       {/* LeftBarjsx 내용 */}
-      <button onClick={handleAllScheduleClick}>전체일정</button>
+      <button className={styles.buttonFalse} onClick={handleAllScheduleClick}>
+        전체일정
+      </button>
       {/* 여행 기간 설정을 위한 예시 입력 */}
       {/* <input
         type="number"
