@@ -63,6 +63,15 @@
   vertical-align: middle;
 }
 
+.customBox0 {
+  width: 250px;
+  height: 60px;
+  background: #f8ebf000;
+  border: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .customText {
   width: 100px;
   height: 40px;

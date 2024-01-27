@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import styles from "../../styles/search.module.css";
+import VectorImage from "../../assets/images/Pages/Vector.png"; // 이미지를 import
 
+const styless = {
+  searchText: {
+    color: "#191B24",
+    fontSize: 22,
+    fontFamily: "SUIT Variable",
+    fontWeight: "700",
+    wordWrap: "break-word",
+  },
+};
 // const styles = {
 //   titleText: {
 //     color: "#191B24",
@@ -136,269 +146,316 @@ const SearchComponent = () => {
 
   return (
     <div>
-      <div style={{ width: "100%", marginBottom: "20px" }}>
-        {/* <label style={{ width: "100%" }}> */}
-        <span className={styles.titleText}>일정</span>
-        <button
-          className={styles.optionButton}
-          style={{
-            background:
-              selectedDuration === "allDuration" ? "#8270FF" : "#EBEDF8",
-          }}
-          onClick={() => handleDurationButtonClick("allDuration")}
-        >
-          <div
-            className={styles.optionText}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "20%",
+          marginTop: "20px",
+          marginLeft: "10%",
+        }}
+      >
+        <div style={{ marginTop: "10px" }}>
+          <img
+            src={VectorImage}
             style={{
-              color: selectedDuration === "allDuration" ? "#FFFFFF" : "#BFC4D8",
+              position: "relative",
             }}
-          >
-            전체 선택
-          </div>
-        </button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button
-          className={styles.optionButton}
-          style={{
-            background: selectedDuration === "oneday" ? "#8270FF" : "#EBEDF8",
-          }}
-          onClick={() => handleDurationButtonClick("oneday")}
-        >
-          <div
-            className={styles.optionText}
-            style={{
-              color: selectedDuration === "oneday" ? "#FFFFFF" : "#BFC4D8",
-            }}
-          >
-            당일치기
-          </div>
-        </button>
-        &nbsp;&nbsp;
-        <button
-          className={styles.optionButton}
-          style={{
-            background: selectedDuration === "twodays" ? "#8270FF" : "#EBEDF8",
-          }}
-          onClick={() => handleDurationButtonClick("twodays")}
-        >
-          <div
-            className={styles.optionText}
-            style={{
-              color: selectedDuration === "twodays" ? "#FFFFFF" : "#BFC4D8",
-            }}
-          >
-            2일 이상
-          </div>
-        </button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span className={styles.customBox}>
-          <input
-            className={styles.customText}
-            type="text"
-            placeholder="직접 입력"
-            value={customDuration}
-            onChange={handleCustomDurationChange}
           />
-          <a className={styles.customTextFix}>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일 동안
-          </a>
-        </span>
-        {/* </label> */}
-      </div>
 
-      <div style={{ width: "100%", marginBottom: "20px" }}>
-        {/* <label> */}
-        <span className={styles.titleText}>여행지</span>
-        <button
-          className={styles.optionButton}
-          style={{
-            background:
-              selectedLocation === "allLocation" ? "#8270FF" : "#EBEDF8",
-          }}
-          onClick={() => handleLocationButtonClick("allLocation")}
-        >
-          <div
-            className={styles.optionText}
+          <h3
             style={{
-              color: selectedLocation === "allLocation" ? "#FFFFFF" : "#BFC4D8",
+              ...styless.searchText,
+              marginLeft: "25px",
+              marginTop: "-15px",
+              position: "relative",
             }}
           >
-            전체 선택
-          </div>
-        </button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button
-          className={styles.optionButton}
-          style={{
-            background: selectedLocation === "domestic" ? "#8270FF" : "#EBEDF8",
-          }}
-          onClick={() => handleLocationButtonClick("domestic")}
-        >
-          <div
-            className={styles.optionText}
-            style={{
-              color: selectedLocation === "domestic" ? "#FFFFFF" : "#BFC4D8",
-            }}
-          >
-            국내
-          </div>
-        </button>
-        &nbsp;&nbsp;
-        <button
-          className={styles.optionButton}
-          style={{
-            background: selectedLocation === "foreign" ? "#8270FF" : "#EBEDF8",
-          }}
-          onClick={() => handleLocationButtonClick("foreign")}
-        >
-          <div
-            className={styles.optionText}
-            style={{
-              color: selectedLocation === "foreign" ? "#FFFFFF" : "#BFC4D8",
-            }}
-          >
-            국외
-          </div>
-        </button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span className={styles.customBox}>
-          <select
-            className={styles.customText}
-            id="location"
-            value={customLocation}
-            onChange={handleCustomLocationChange}
-            name="location"
-          >
-            {selectedLocation === "domestic" && (
-              <>
-                <option value="seoul">서울</option>
-                <option value="gyeongju">경주</option>
-                <option value="busan">부산</option>
-                <option value="incheon">인천</option>
-                <option value="sokcho">속초</option>
-                <option value="gangneung">강릉</option>
-                <option value="jeju">제주도</option>
-              </>
-            )}
-          </select>
-        </span>
-        {/* </label> */}
+            {" "}
+            계획 둘러보기{" "}
+          </h3>
+        </div>
       </div>
-
-      <div style={{ width: "100%", marginBottom: "20px" }}>
-        {/* <label> */}
-        <span className={styles.titleText}>교통수단</span>
-        <button
-          className={styles.optionButton}
-          style={{
-            background:
-              selectedTransportation === "allTransportation"
-                ? "#8270FF"
-                : "#EBEDF8",
-          }}
-          onClick={() => handleTransportationButtonClick("allTransportation")}
-        >
-          <div
-            className={styles.optionText}
+      <div
+        style={{
+          margin: "auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ marginBottom: "20px" }}>
+          {/* <label style={{ width: "100%" }}> */}
+          <span className={styles.titleText}>일정</span>
+          <button
+            className={styles.optionButton}
             style={{
-              color:
-                selectedTransportation === "allTransportation"
-                  ? "#FFFFFF"
-                  : "#BFC4D8",
+              background:
+                selectedDuration === "allDuration" ? "#8270FF" : "#EBEDF8",
             }}
+            onClick={() => handleDurationButtonClick("allDuration")}
           >
-            전체 선택
-          </div>
-        </button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button
-          className={styles.optionButton}
-          style={{
-            background:
-              selectedTransportation === "public" ? "#8270FF" : "#EBEDF8",
-          }}
-          onClick={() => handleTransportationButtonClick("public")}
-        >
-          <div
-            className={styles.optionText}
+            <div
+              className={styles.optionText}
+              style={{
+                color:
+                  selectedDuration === "allDuration" ? "#FFFFFF" : "#BFC4D8",
+              }}
+            >
+              전체 선택
+            </div>
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button
+            className={styles.optionButton}
             style={{
-              color:
-                selectedTransportation === "public" ? "#FFFFFF" : "#BFC4D8",
+              background: selectedDuration === "oneday" ? "#8270FF" : "#EBEDF8",
             }}
+            onClick={() => handleDurationButtonClick("oneday")}
           >
-            대중교통
-          </div>
-        </button>
-        &nbsp;&nbsp;
-        <button
-          className={styles.optionButton}
-          style={{
-            background:
-              selectedTransportation === "private" ? "#8270FF" : "#EBEDF8",
-          }}
-          onClick={() => handleTransportationButtonClick("private")}
-        >
-          <div
-            className={styles.optionText}
+            <div
+              className={styles.optionText}
+              style={{
+                color: selectedDuration === "oneday" ? "#FFFFFF" : "#BFC4D8",
+              }}
+            >
+              당일치기
+            </div>
+          </button>
+          &nbsp;&nbsp;
+          <button
+            className={styles.optionButton}
             style={{
-              color:
-                selectedTransportation === "private" ? "#FFFFFF" : "#BFC4D8",
+              background:
+                selectedDuration === "twodays" ? "#8270FF" : "#EBEDF8",
             }}
+            onClick={() => handleDurationButtonClick("twodays")}
           >
-            자가용
-          </div>
-        </button>
-        {/* </label> */}
-      </div>
-
-      <div style={{ width: "100%", marginBottom: "20px" }}>
-        {/* <label> */}
-        <span className={styles.titleText}>해시태그 검색</span>
-        <span className={styles.customHashtagBox}>
-          <div>
+            <div
+              className={styles.optionText}
+              style={{
+                color: selectedDuration === "twodays" ? "#FFFFFF" : "#BFC4D8",
+              }}
+            >
+              2일 이상
+            </div>
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span className={styles.customBox}>
             <input
-              className={styles.customHashtagText}
+              className={styles.customText}
               type="text"
-              placeholder="  #원하는 여행 조건을 검색해보세요.(최대 5개)"
-              value={customHashtag}
-              onChange={handleCustomHashtagChange}
+              placeholder="직접 입력"
+              value={customDuration}
+              onChange={handleCustomDurationChange}
             />
-            &nbsp;&nbsp;&nbsp;
-            <button className={styles.optionButton} onClick={handleAddHashtag}>
-              추가
-            </button>
-          </div>
-          <div>
-            {customHashtags.length > 0 && (
-              <div style={{ marginLeft: "20px", marginTop: "16px" }}>
-                {/* <span className={styles.titleText}>입력된 해시태그</span> */}
+            <a className={styles.customTextFix}>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일 동안
+            </a>
+          </span>
+          {/* </label> */}
+        </div>
 
-                {customHashtags.map((hashtag, index) => (
-                  <span key={index} className={styles.hashtagBox}>
-                    &nbsp;&nbsp;# {hashtag}&nbsp;
-                    <button
-                      className={styles.hashtagdelete}
-                      onClick={() => handleDeleteHashtag(index)}
-                    >
-                      X
-                    </button>
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        </span>
-        {/* </label> */}
-      </div>
+        <div style={{ marginBottom: "20px" }}>
+          {/* <label> */}
+          <span className={styles.titleText}>여행지</span>
+          <button
+            className={styles.optionButton}
+            style={{
+              background:
+                selectedLocation === "allLocation" ? "#8270FF" : "#EBEDF8",
+            }}
+            onClick={() => handleLocationButtonClick("allLocation")}
+          >
+            <div
+              className={styles.optionText}
+              style={{
+                color:
+                  selectedLocation === "allLocation" ? "#FFFFFF" : "#BFC4D8",
+              }}
+            >
+              전체 선택
+            </div>
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button
+            className={styles.optionButton}
+            style={{
+              background:
+                selectedLocation === "domestic" ? "#8270FF" : "#EBEDF8",
+            }}
+            onClick={() => handleLocationButtonClick("domestic")}
+          >
+            <div
+              className={styles.optionText}
+              style={{
+                color: selectedLocation === "domestic" ? "#FFFFFF" : "#BFC4D8",
+              }}
+            >
+              국내
+            </div>
+          </button>
+          &nbsp;&nbsp;
+          <button
+            className={styles.optionButton}
+            style={{
+              background:
+                selectedLocation === "foreign" ? "#8270FF" : "#EBEDF8",
+            }}
+            onClick={() => handleLocationButtonClick("foreign")}
+          >
+            <div
+              className={styles.optionText}
+              style={{
+                color: selectedLocation === "foreign" ? "#FFFFFF" : "#BFC4D8",
+              }}
+            >
+              국외
+            </div>
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span className={styles.customBox}>
+            <select
+              className={styles.customText}
+              id="location"
+              value={customLocation}
+              onChange={handleCustomLocationChange}
+              name="location"
+            >
+              {selectedLocation === "domestic" && (
+                <>
+                  <option value="seoul">서울</option>
+                  <option value="gyeongju">경주</option>
+                  <option value="busan">부산</option>
+                  <option value="incheon">인천</option>
+                  <option value="sokcho">속초</option>
+                  <option value="gangneung">강릉</option>
+                  <option value="jeju">제주도</option>
+                </>
+              )}
+            </select>
+          </span>
+          {/* </label> */}
+        </div>
 
-      <div>
-        <button className={styles.optionButton1} onClick={handleResetFilters}>
-          조건 초기화
-        </button>
-        <button className={styles.optionButton2} onClick={handleApplyFilters}>
-          조건 적용하기
-        </button>
+        <div style={{ marginBottom: "20px" }}>
+          {/* <label> */}
+          <span className={styles.titleText}>교통수단</span>
+          <button
+            className={styles.optionButton}
+            style={{
+              background:
+                selectedTransportation === "allTransportation"
+                  ? "#8270FF"
+                  : "#EBEDF8",
+            }}
+            onClick={() => handleTransportationButtonClick("allTransportation")}
+          >
+            <div
+              className={styles.optionText}
+              style={{
+                color:
+                  selectedTransportation === "allTransportation"
+                    ? "#FFFFFF"
+                    : "#BFC4D8",
+              }}
+            >
+              전체 선택
+            </div>
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button
+            className={styles.optionButton}
+            style={{
+              background:
+                selectedTransportation === "public" ? "#8270FF" : "#EBEDF8",
+            }}
+            onClick={() => handleTransportationButtonClick("public")}
+          >
+            <div
+              className={styles.optionText}
+              style={{
+                color:
+                  selectedTransportation === "public" ? "#FFFFFF" : "#BFC4D8",
+              }}
+            >
+              대중교통
+            </div>
+          </button>
+          &nbsp;&nbsp;
+          <button
+            className={styles.optionButton}
+            style={{
+              background:
+                selectedTransportation === "private" ? "#8270FF" : "#EBEDF8",
+            }}
+            onClick={() => handleTransportationButtonClick("private")}
+          >
+            <div
+              className={styles.optionText}
+              style={{
+                color:
+                  selectedTransportation === "private" ? "#FFFFFF" : "#BFC4D8",
+              }}
+            >
+              자가용
+            </div>
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span className={styles.customBox0}></span>
+          {/* </label> */}
+        </div>
 
+        <div style={{ marginBottom: "20px" }}>
+          {/* <label> */}
+          <span className={styles.titleText}>해시태그 검색</span>
+          <span className={styles.customHashtagBox}>
+            <div>
+              <input
+                className={styles.customHashtagText}
+                type="text"
+                placeholder="  #원하는 여행 조건을 검색해보세요.(최대 5개)"
+                value={customHashtag}
+                onChange={handleCustomHashtagChange}
+              />
+              &nbsp;&nbsp;&nbsp;
+              <button
+                className={styles.optionButton}
+                onClick={handleAddHashtag}
+              >
+                추가
+              </button>
+            </div>
+            <div>
+              {customHashtags.length > 0 && (
+                <div style={{ marginLeft: "20px", marginTop: "16px" }}>
+                  {/* <span className={styles.titleText}>입력된 해시태그</span> */}
+
+                  {customHashtags.map((hashtag, index) => (
+                    <span key={index} className={styles.hashtagBox}>
+                      &nbsp;&nbsp;# {hashtag}&nbsp;
+                      <button
+                        className={styles.hashtagdelete}
+                        onClick={() => handleDeleteHashtag(index)}
+                      >
+                        X
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </span>
+          {/* </label> */}
+        </div>
+
+        <div>
+          <button className={styles.optionButton1} onClick={handleResetFilters}>
+            조건 초기화
+          </button>
+          <button className={styles.optionButton2} onClick={handleApplyFilters}>
+            조건 적용하기
+          </button>
+        </div>
         {/* 여기에서 조건에 따라 생성된 목록을 표시합니다. */}
         <ul>
           {listItems.map((item, index) => (
