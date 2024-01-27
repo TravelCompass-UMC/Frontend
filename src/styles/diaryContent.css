@@ -1,0 +1,26 @@
+.buttonTrue {
+  border-radius: 8px;
+  background: var(--grayscale-Gray6, #484a64);
+  color: var(--grayscale-White, #fff);
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 170%; /* 27.2px */
+}
+
+.buttonFalse {
+  border-radius: 8px;
+  border: 1px solid var(--grayscale-Gray2, #ebedf8);
+  background: var(--grayscale-White, #fff);
+  color: var(--grayscale-Gray3, #bfc4d8);
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 170%; /* 27.2px */
+}

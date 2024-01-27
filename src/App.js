@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import TravelPlandes from "./pages/travelplan/travelplandestination";
 import TravelPlandate from "./pages/travelplan/travelplandate";
 import Searchdiary from "./pages/searchdiarypage/searchdiarypage";
+import DiaryContent from "./pages/searchdiarypage/diarycontent";
 import Searchplace from "./pages/searchplacepage/searchplace";
 import SearchPlaceInfo from "./pages/searchplacepage/placeinfo";
 import PlaceInfo from "./pages/searchplacepage/placeinfo1";
@@ -38,6 +39,7 @@ function App() {
             <Route path="/travelplandes" element={<TravelPlandes />} />
             <Route path="/travelplandate" element={<TravelPlandate />} />
             <Route path="/searchdiary" element={<Searchdiary />} />
+            <Route path="/diarycontent" element={<DiaryContent />} />
             <Route path="/searchplace" element={<Searchplace />} />
             <Route path="/placeinfo" element={<SearchPlaceInfo />} />
             <Route path="/placeinfo/:placeName" element={<PlaceDetail />} />
