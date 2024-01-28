@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { createGlobalStyle } from "styled-components";
+import "./constants/fonts.css";
 
 import Home from "./pages/Home/Home";
 import Login from "./pages/login_and_signin/login";
@@ -24,9 +26,15 @@ import Myplacepage from "./pages/mapages/Myplacepage";
 import Otherplanpage from "./pages/mapages/Otherplanpage";
 const queryClient = new QueryClient();
 
+const Globalstyle = createGlobalStyle`{
+  body{
+    font-family:"Jalnan",sans-serif;
+  }
+}`;
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Globalstyle />
       <div>
         <MainHeader />
         <main>
