@@ -7,7 +7,7 @@ const Modal = ({ open, close }) => {
   // 네이버 로그인 버튼 클릭 핸들러
   const handleNaverLogin = () => {
     // 백엔드로 요청을 보내는 URI로 리다이렉트
-    window.location.href = "http://localhost:8080/oauth2/authorization/naver";
+    window.location.href = "https://dev.enable.site/oauth2/authorization/naver";
   };
 
   return (

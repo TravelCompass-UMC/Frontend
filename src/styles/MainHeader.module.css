@@ -27,14 +27,15 @@
 
 .logobox {
   width: 30vw;
+  height: 10vh;
 }
 .logo img {
   margin-left: 8vw;
   text-decoration: none;
   object-fit: cover;
   display: block;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 80%;
 }
 
 nav {
