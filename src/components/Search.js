@@ -42,7 +42,7 @@ const SearchComponent = ({ onSearch }) => {
 
     try {
       // Geocoding API 호출을 위한 URL
-      const geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchQuery}&key=AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U`;
+      const geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchQuery}&key=AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU`;
 
       // Geocoding API 호출
       const response = await fetch(geocodingApiUrl);

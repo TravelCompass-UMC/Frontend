@@ -1,19 +1,12 @@
-// src/api/MapDetail.js
 export const getPlaceDetails = async ({ placeId }) => {
-  const apiKey = "AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U"; // Replace with your actual API key
+  const apiKey = "AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU";
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${apiKey}`;
 
   try {
-    const detailsResponse = await fetch(
-      `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${apiKey}`
-    );
+    const response = await fetch(url);
+    const detailsData = await response.json();
 
-    if (!detailsResponse.ok) {
-      throw new Error('Failed to fetch place details');
-    }
-
-    const detailsData = await detailsResponse.json();
-
-    if (detailsData.status === 'OK') {
+    if (response.ok && detailsData.status === 'OK') {
       return detailsData.result;
     } else {
       throw new Error('Failed to fetch place details');

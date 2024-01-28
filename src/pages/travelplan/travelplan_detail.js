@@ -159,14 +159,13 @@ const Trvlpage = () => {
   };
 
   const handleSelectAccommodation = (accommodationId, formattedDate, e) => {
-    e.stopPropagation(); // 이벤트 전파 중지
+    if (e) e.stopPropagation(); // 조건부로 이벤트 전파 중지
     setSelectedAccommodation(accommodationId);
     setSelectedAccommodations((prev) => ({
       ...prev,
       [formattedDate]: accommodationId,
     }));
     setSidebarContent("숙소");
-    // 여기에서 'formattedDate'를 사용하여 날짜 선택 기능을 구현할 수 있습니다.
   };
 
   const renderSidebarContent = (
@@ -267,7 +266,7 @@ const Trvlpage = () => {
                     <button
                       onClick={(e) =>
                         setSidebarContent("숙소 선택") &&
-                        handleSelectAccommodation(null, formattedDate, e)
+                        handleSelectAccommodation(formattedDate, e)
                       }
                     >
                       + 숙소 선택 ({formattedDate})

@@ -1,33 +1,42 @@
-// components/PlaceDetail.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import RecommendationCard from './RecommendationCard';
-<script
-  async
-  defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U&libraries=places&callback=initMap"
-></script>
-const PlaceDetail = ({ placeName, coordinates }) => {
+import { getPlaceDetails } from '../api/MapDetail';
+
+const PlaceDetail = ({ place }) => {
   const [placeDetails, setPlaceDetails] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const prevPlace = useRef(null);
 
   useEffect(() => {
     const fetchPlaceDetails = async () => {
+      if (!place || prevPlace.current === place) return;
+      prevPlace.current = place;
       try {
-        const response = await fetch(`/api/places/details?lat=${coordinates.lat}&lng=${coordinates.lng}`);
-        if (response.ok) {
-          const data = await response.json();
-          setPlaceDetails(data);
+        setLoading(true);
+        const response = await getPlaceDetails({ placeId: place.placeId }); 
+        if (response) {
+          setPlaceDetails(response);
         } else {
           console.error('Failed to fetch place details');
         }
+        setLoading(false);
       } catch (error) {
         console.error('Error during fetch:', error);
+        setLoading(false);
       }
     };
 
     fetchPlaceDetails();
-  }, [placeName, coordinates]);
+  }, [place]);
 
-  return <RecommendationCard placeDetails={placeDetails} />;
+  return (
+    <div>
+      {loading && <p>Loading...</p>}
+      {!loading && placeDetails && (
+        <RecommendationCard placeDetails={placeDetails} />
+      )}
+    </div>
+  );
 };
 
 export default PlaceDetail;

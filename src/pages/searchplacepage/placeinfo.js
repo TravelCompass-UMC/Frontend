@@ -1,6 +1,6 @@
-// PlaceInfo.js
+// src > pages > searchplacepage > placeinfo.js
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";  // Import useNavigate
+import { useLocation, useNavigate } from "react-router-dom"; 
 import Map from "../../components/Map";
 import SidebarL from "../../components/SidebarL";
 
@@ -9,7 +9,7 @@ const PlaceInfo = () => {
   const searchParams = new URLSearchParams(search);
   const searchQuery = searchParams.get('q');
   const [mapLocation, setMapLocation] = useState(null);
-  const navigate = useNavigate();  // Use useNavigate to navigate to other pages
+  const navigate = useNavigate();  
 
   useEffect(() => {
     if (searchQuery) {
@@ -30,14 +30,13 @@ const PlaceInfo = () => {
       <SidebarL width={320}>
         <p>추천 즐겨찾기</p>
         <div className="popularplace">
-          <p>제주도의 가장 인기 많은 장소</p>
+          <p>해당 장소의 가장 인기 많은 장소</p>
           <p>추천 장소 목록</p>
-          <li>빛의 벙커</li>
-          <li>비양도 봉수대</li>
-          <li>아르떼뮤지엄 제주</li>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
         </div>
       </SidebarL>
-      {/* Pass the handlePinClick function to Map component */}
       <Map location={mapLocation} onPinClick={handlePinClick} />
     </div>
   );

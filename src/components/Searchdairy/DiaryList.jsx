@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import Diary from "./Diary";
+import VectorImage from "../../assets/images/Pages/Vector.png"; // 이미지를 import
 
+const styless = {
+  searchText: {
+    color: "#191B24",
+    fontSize: 22,
+    fontFamily: "SUIT Variable",
+    fontWeight: "700",
+    wordWrap: "break-word",
+  },
+};
 const contents = [
   // 데이터를 별도의 객체와 분리
   {
@@ -138,11 +148,36 @@ function DiaryList(props) {
 
   return (
     <>
-      <div style={styles.contextBox}>
-        {/* <div style={styles.imageTitle}></div>계획 둘러보기 */}
-        <img src={"../../assets/images/Pages/Vetor.png"} alt="vector" />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "20%",
+          marginTop: "20px",
+          marginLeft: "10%",
+        }}
+      >
+        <div style={{ marginTop: "50px" }}>
+          <img
+            src={VectorImage}
+            style={{
+              position: "relative",
+            }}
+          />
+
+          <h3
+            style={{
+              ...styless.searchText,
+              marginLeft: "25px",
+              marginTop: "-15px",
+              position: "relative",
+            }}
+          >
+            {" "}
+            계획 둘러보기{" "}
+          </h3>
+        </div>
       </div>
-      <div>
+      <div style={{ marginTop: "10px" }}>
         {Array.from({ length: rowsPerPage }).map((_, rowIndex) => (
           <div
             key={rowIndex}
