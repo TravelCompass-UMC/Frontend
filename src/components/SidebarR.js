@@ -1,37 +1,43 @@
-// SidebarR.js
+//SidebarR.js
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/sidebar.module.css";
-const SidebarR = ({ width = 280, children }) => {
-  const [isOpen, setOpen] = useState(false);
-  const [xPosition, setX] = useState(-width);
+
+const SidebarR = ({ width = 800, children }) => {
+  const [isOpen, setOpen] = useState(true); // 초기 상태에서 열린 상태로 설정
+  const [xPosition, setX] = useState(0);
   const side = useRef();
-  // button 클릭 시 토글
+  const closingWidth = 300;
+
   const toggleMenu = () => {
-    if (xPosition < 0) {
-      setX(0);
-      setOpen(true);
+    if (isOpen) {
+      setX(-width + closingWidth); // 사이드바를 닫는 버튼 클릭 시
     } else {
-      setX(-width);
-      setOpen(false);
+      setX(0); // 사이드바를 열어야 하는 버튼 클릭 시
     }
+    setOpen(!isOpen);
   };
 
-  // 사이드바 외부 클릭시 닫히는 함수
-  const handleClose = async (e) => {
-    let sideArea = side.current;
-    let sideCildren = side.current.contains(e.target);
-    if (isOpen && (!sideArea || !sideCildren)) {
-      await setX(-width);
-      await setOpen(false);
-    }
+  const handleButtonClick = (e) => {
+    toggleMenu();
+    e.stopPropagation();
   };
 
+  const handleClose = (e) => {
+    if (isOpen && e.target.tagName !== "BUTTON") {
+      e.stopPropagation();
+      return;
+    }
+  };
+  
   useEffect(() => {
-    window.addEventListener("click", handleClose);
-    return () => {
+    if (isOpen) {
+      window.addEventListener("click", handleClose);
+    } else {
       window.removeEventListener("click", handleClose);
-    };
-  });
+    }
+  }, [isOpen]);
+  
+  const topOffset = 54;
 
   return (
     <div className={styles.container}>
@@ -40,12 +46,12 @@ const SidebarR = ({ width = 280, children }) => {
         className={styles.sidebar}
         style={{
           width: `${width}px`,
-          height: "100%",
-          transform: `translatex(${-xPosition}px)`,
+          height: "80%",
+          transform: `translateX(${-xPosition}px) translateY(${topOffset}px)`,
         }}
       >
-        <button onClick={() => toggleMenu()} className={styles.button}>
-          {isOpen ? <span>X</span> : <span>&#9776;</span>}
+        <button onClick={handleButtonClick} className={styles.button}>
+          {isOpen ? <span>X</span> : <span>&#9776;</span>} {/* 열기와 닫기 아이콘을 반대로 표시 */}
         </button>
         <div className={styles.content}>{children}</div>
       </div>

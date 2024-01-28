@@ -15,8 +15,9 @@
   }
   .button {
     position: relative;
-    left: -50px;
-    top: 10px;
+    left: -50px; /* 가로축 위치 설정 */
+    top: 50%; /* 세로축을 50% 위치로 이동 */
+    transform: translateY(-50%); /* 세로축을 중앙으로 조정 */
     width: 40px;
     height: 40px;
     z-index: 99;
