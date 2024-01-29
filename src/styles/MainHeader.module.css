@@ -12,13 +12,13 @@
   color: green;
 }
 .blankbox {
-  height: 10vh;
+  height: 9vh;
 }
 .header {
-  height: 10vh;
+  height: 9vh;
   width: 100%;
   position: fixed;
-  background-color: #333;
+  background-color: #191B24;
   padding: 10px 3px 3px 3px;
   display: flex;
   justify-content: space-between;
@@ -31,11 +31,12 @@
 }
 .logo img {
   margin-left: 8vw;
+  margin-top: 1.5vw;
   text-decoration: none;
   object-fit: cover;
   display: block;
-  width: auto;
-  height: 80%;
+  width: 240px;
+  height: 50%;
 }
 
 nav {
