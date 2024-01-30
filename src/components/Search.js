@@ -2,7 +2,9 @@
 
 import React, { useState } from "react";
 import "../styles/Place.css";
-import zIndex from "@material-ui/core/styles/zIndex";
+import {
+  Search,
+} from "../styles/styles.jsx";
 
 const SearchComponent = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -79,7 +81,9 @@ const SearchComponent = ({ onSearch }) => {
             onChange={handleSearchChange}
             placeholder="궁금한 지역을 검색해보세요."
           />
-          <button type="submit">검색</button>
+          <button type="submit">
+            <Search />
+          </button>
         </form>
 
         {/* 추천 단어 목록 렌더링 */}

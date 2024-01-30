@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Search from "../assets/images/Place/검색창.svg";
+import SearchBtn from "../assets/images/Place/searchBtn.svg";
 
 // 페이지별로 용도 나눠주세요
 
@@ -19,27 +19,13 @@ export const Page = styled.div`
 `;
 
 /**  장소검색 페이지 스타일 **/
-
-export const SearchBtn = styled.div`
-  position: absolute;
-  top: 90px;
-  left: 390px;
-  z-index: 1;
-  width: 436px; /* 원하는 너비로 조절 */
-  height: 64px; /* 원하는 높이로 조절 */
-  background-image: url(${Search});
+export const Search = styled.div`
+  width: 40px;
+  height: 40px;
+  background-image: url(${SearchBtn});
   background-repeat: no-repeat;
-
 `;
 
-export const StyledTitle = styled.div`
-  margin-top: 20px;
-  font-family: 'Nanum Pen', cursive;
-  font-size: 25px;
-  line-height: 0.5;
-  color: #333;
-  text-align: center;
-`;
 
 /**  여행일지 페이지 스타일 **/
 

@@ -1,5 +1,3 @@
-// placeinfo1.js
-
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Map from "../../components/Map";
@@ -14,7 +12,6 @@ const PlaceInfo1 = () => {
   const [mapLocation, setMapLocation] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
-  const [sidebarOpen, setSidebarOpen] = useState(true); // Sidebar open by default
 
   useEffect(() => {
     if (searchQuery) {
@@ -40,12 +37,12 @@ const PlaceInfo1 = () => {
 
   const handlePinClick = (place) => {
     setSelectedPlace(place);
-    setMapLocation({ lat: place.lat, lng: place.lng }); // 클릭된 장소의 위치로 맵 이동
+    setMapLocation({ lat: place.lat, lng: place.lng });
   };
 
   return (
     <div>
-      <SidebarL width={320} >
+      <SidebarL width={320} isOpen={true}>
         <div className="popularplace">
           <p>제주도의 가장 인기 많은 장소</p>
           <p>추천 장소 목록</p>

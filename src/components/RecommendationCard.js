@@ -31,7 +31,7 @@ const RecommendationCard = ({ placeDetails }) => {
         <Typography variant="body2" color="textSecondary" component="p">위치: {placeDetails.vicinity || '제공되지 않는 정보입니다.'}</Typography>
         <div>
           <Typography variant="body2" color="textSecondary" component="p" onClick={toggleOpeningHours} style={{ cursor: 'pointer' }}>
-            운영 시간 {showOpeningHours ? '△' : '▽'}
+            운영 시간 {showOpeningHours ? '▲' : '▼'}
           </Typography>
           {showOpeningHours && (
             <Typography variant="body2" color="textSecondary" component="p">
