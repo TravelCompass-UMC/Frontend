@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import "../styles/Place.css";
+import zIndex from "@material-ui/core/styles/zIndex";
 
 const SearchComponent = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");

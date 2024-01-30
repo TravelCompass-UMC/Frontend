@@ -20,8 +20,8 @@ const SrchPlace = () => {
   return (
     <div>
       <div style={{ width: "80%", margin: "0 auto" }}></div>
-      <SearchComponent onSearch={handleSearch} />
       <Map />
+      <SearchComponent onSearch={handleSearch} />
     </div>
   );
 };
