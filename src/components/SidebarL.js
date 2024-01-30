@@ -19,7 +19,7 @@ const SidebarL = ({ width = 280, isOpen: externalIsOpen = true, children }) => {
   };
 
   useEffect(() => {
-    setOpen(externalIsOpen);
+    setOpen(externalIsOpen); // 외부에서 전달된 isOpen 값으로 사이드바 상태 설정
     setX(externalIsOpen ? 0 : -width);
   }, [externalIsOpen, width]);
 
@@ -45,7 +45,7 @@ const SidebarL = ({ width = 280, isOpen: externalIsOpen = true, children }) => {
           onClick={toggleMenu}
           className="toggle-button"
           style={{
-            transform: `translate(${width}px, 20px)`, // Adjust button position
+            transform: `translate(${width}px, 20px)`,
           }}
         >
           {isOpen ? "<" : ">"}
