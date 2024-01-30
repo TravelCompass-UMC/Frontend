@@ -1,4 +1,4 @@
-//placeinfo2.js
+//placeinfo1.js
 //제주도의 추천 장소 (빛의 벙커, 비양도 봉수대, 아르떼뮤지엄 제주)
 
 import React, { useEffect, useState } from "react";
@@ -30,7 +30,7 @@ const PlaceInfo1 = () => {
     const fetchRecommendations = async () => {
       const data = [
         { name: '빛의 벙커', placeId: "ChIJnTFvBUcTDTURh7KTiaHnYYE", lat: 33.440005, lng: 126.899003 },
-        { name: '비양도 봉수대', placeId: "ChIJRxWgQQBBDTURAT3xqkmF210", lat: 33.515547, lng: 126.969224 },
+        { name: '물영아리오름', placeId: "ChIJkzAEg1QBDTURvjZlYk6E4Ok", lat: 33.369239, lng: 126.693553 },
         { name: '아르떼뮤지엄 제주', placeId: "ChIJUwtlFmhfDDURUr3BMm9Sb6k", lat: 33.396560, lng: 126.344625 },
       ];
       setRecommendations(data);

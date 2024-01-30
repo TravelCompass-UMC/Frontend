@@ -1,3 +1,4 @@
+// PlaceDetail.js
 import React, { useEffect, useState, useRef } from 'react';
 import RecommendationCard from './RecommendationCard';
 import { getPlaceDetails } from '../api/MapDetail';
@@ -13,7 +14,7 @@ const PlaceDetail = ({ place }) => {
       prevPlace.current = place;
       try {
         setLoading(true);
-        const response = await getPlaceDetails({ placeId: place.placeId }); 
+        const response = await getPlaceDetails({ placeId: place.placeId });
         if (response) {
           setPlaceDetails(response);
         } else {
