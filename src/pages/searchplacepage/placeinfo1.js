@@ -1,5 +1,4 @@
-//placeinfo1.js
-//제주도의 추천 장소 (빛의 벙커, 비양도 봉수대, 아르떼뮤지엄 제주)
+// placeinfo1.js
 
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -41,7 +40,7 @@ const PlaceInfo1 = () => {
 
   const handlePinClick = (place) => {
     setSelectedPlace(place);
-    setSidebarOpen(true);
+    setMapLocation({ lat: place.lat, lng: place.lng }); // 클릭된 장소의 위치로 맵 이동
   };
 
   return (
