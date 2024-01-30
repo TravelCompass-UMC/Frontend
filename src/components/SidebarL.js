@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/sidebarL.css";
 
-const SidebarL = ({ width = 280, isOpen: externalIsOpen, children }) => {
+const SidebarL = ({ width = 280, isOpen: externalIsOpen = true, children }) => {
   const [isOpen, setOpen] = useState(externalIsOpen);
   const [xPosition, setX] = useState(isOpen ? 0 : -width);
   const side = useRef();
@@ -19,7 +19,7 @@ const SidebarL = ({ width = 280, isOpen: externalIsOpen, children }) => {
   };
 
   useEffect(() => {
-    setOpen(externalIsOpen);
+    setOpen(externalIsOpen); // 외부에서 전달된 isOpen 값으로 사이드바 상태 설정
     setX(externalIsOpen ? 0 : -width);
   }, [externalIsOpen, width]);
 
@@ -45,7 +45,7 @@ const SidebarL = ({ width = 280, isOpen: externalIsOpen, children }) => {
           onClick={toggleMenu}
           className="toggle-button"
           style={{
-            transform: `translate(${width}px, 20px)`, // Adjust button position
+            transform: `translate(${width}px, 20px)`,
           }}
         >
           {isOpen ? "<" : ">"}
