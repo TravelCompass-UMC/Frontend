@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import classes from "../styles/MainHeader.module.css";
 import Modal from "./lginModal";
-import Mainlogo from "../assets/images/logo_no_letter.svg";
+import Mainlogo from "../assets/images/Mypage/FinalLogo.svg"
 
 const MainHeader = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
