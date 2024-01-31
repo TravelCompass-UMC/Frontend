@@ -6,6 +6,7 @@ import DetailList from "./detailList";
 
 function Diarycontent() {
   const [num, setNum] = useState(0);
+
   const handleAllScheduleClick = (value) => {
     // 사용하고자 하는 로직을 수행
     setNum(value);
@@ -23,7 +24,9 @@ function Diarycontent() {
 
       <div style={{ width: "100%", marginTop: "30px" }}>
         {num === 0 && <AllList />}
-        {num > 0 && <DetailList />}
+        {console.log("diarycontent에서의 num", num)}
+        {num > 0 && <DetailList num={num} />} {/* Pass num to DetailList */}
+
       </div>
     </div>
 
