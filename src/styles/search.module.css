@@ -22,6 +22,7 @@
   border-radius: 8px;
   border: none;
 }
+
 .optionButton1 {
   /*초기화*/
   border-radius: 8px;
@@ -37,6 +38,7 @@
   font-weight: 700;
   line-height: normal;
 }
+
 .optionButton2 {
   /*조건 적용하기*/
   margin-left: 25px;
@@ -138,8 +140,10 @@
   height: 10px;
   border-radius: 8px;
   border: none;
-  background: transparent; /* 배경을 투명으로 설정 */
-  cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 상태로 표시 */
+  background: transparent;
+  /* 배경을 투명으로 설정 */
+  cursor: pointer;
+  /* 커서 모양을 포인터로 변경하여 클릭 가능한 상태로 표시 */
   color: var(--grayscale-White, #fff);
   font-family: "SUIT Variable";
   font-size: 15px;

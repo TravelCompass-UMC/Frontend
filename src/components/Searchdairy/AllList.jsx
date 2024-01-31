@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import styles from "../../styles/diaryContent.module.css";
 import numImage1 from "../../assets/images/Pages/Ellipse 10.png"
+import heart from "../../assets/images/Pages/Group 2236.png"; // 이미지를 import
+import heartFilled from "../../assets/images/Pages/Group 2236_filled.png"; // 채워진 하트 이미지를 import
+
 //전체일정
 const AllList = () => {
     const [travelDays, setTravelDays] = useState(4);
     const [travelnum, setTravelnum] = useState([3, 4, 2, 1]);
 
+    const [heartState, setHeartState] = useState(0); // 0: 빈 하트, 1: 채워진 하트
+
+    const handleHeartClick = () => {
+        setHeartState(heartState === 0 ? 1 : 0); // 클릭할 때마다 상태 변경
+    };
     const generateDay = () => {
         const day = [];
         for (let i = 1; i <= travelDays; i++) {
@@ -49,7 +57,15 @@ const AllList = () => {
     };
     return (
         <div>
+            {/* Heart 이미지 클릭 이벤트 처리 */}
+            <img
+                className={styles.heartImage}
+                src={heartState === 1 ? heartFilled : heart}
+                alt="Heart"
+                onClick={handleHeartClick}
+            />
             <div className={styles.nickname}>여행 설계자의 닉네임</div>
+
             <h4 className={styles.title}>여행 계획서의 제목</h4>
             <div className={styles.inform}>
                 <span>2023.11.11 ~ 2023.11.13 (3박 4일)</span>
