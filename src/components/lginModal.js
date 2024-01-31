@@ -10,35 +10,22 @@ const Modal = ({ open, close }) => {
       "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=3tVKSO15tNGbkeZJf8eE&scope=nickname%20email%20profile_image&state=2sByuLo9Si0KbSG2_8jeHXLXSspYMV7N4MmdmWEvG2w%3D&redirect_uri=http://dev.enble.site/login/oauth2/code/naver";
   };
 
-  // 콜백 URL에서 code와 state 추출
-  const getCodeAndStateFromCallback = () => {
+  // 콜백 URL에서 code와 state 추출 및 액세스 토큰 요청
+  useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
     const state = urlParams.get("state");
 
     if (code && state) {
-      requestAccessToken(code, state);
+      const tokenUrl = `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=3tVKSO15tNGbkeZJf8eE&client_secret=zHvANLwWHH&code=${code}&state=${state}`;
+      fetch(tokenUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Access Token:", data);
+          // 토큰 처리 로직 추가
+        })
+        .catch((error) => console.error("Error fetching access token:", error));
     }
-  };
-
-  // 액세스 토큰 요청
-  const requestAccessToken = (code, state) => {
-    const tokenUrl = `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=3tVKSO15tNGbkeZJf8eE&client_secret=zHvANLwWHH&code=${code}&state=${state}`;
-
-    // 실제 요청 로직은 서버 사이드에서 수행되어야 함
-    // 여기서는 예시로만 작성
-    fetch(tokenUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Access Token:", data);
-        // 토큰 처리 로직 추가
-      })
-      .catch((error) => console.error("Error fetching access token:", error));
-  };
-
-  // 컴포넌트가 마운트될 때 콜백 URL 체크
-  useEffect(() => {
-    getCodeAndStateFromCallback();
   }, []);
 
   return (
