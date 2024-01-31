@@ -1,10 +1,6 @@
-// Search.js
-
 import React, { useState } from "react";
 import "../styles/Place.css";
-import {
-  Search,
-} from "../styles/styles.jsx";
+import { Search } from "../styles/styles.jsx";
 
 const SearchComponent = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -74,16 +70,29 @@ const SearchComponent = ({ onSearch }) => {
     <div style={{ position: "relative" }}>
       <div className="search-container">
         <form onSubmit={handleSearch}>
-          <input
-            type="text"
-            maxLength="20"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            placeholder="궁금한 지역을 검색해보세요."
-          />
-          <button type="submit">
-            <Search />
-          </button>
+          <div style={{ display: "flex" }}>
+            <input
+              type="text"
+              maxLength="20"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="궁금한 지역을 검색해보세요."
+              style={{
+                width: "436px",
+                height: "54px",
+                padding: "5px",
+                fontSize: "15px",
+                border: "none",
+                borderRadius: "5px",
+                outline: "none",
+                paddingLeft: "17px", // 텍스트 왼쪽 여백 조절
+                marginRight: "-45px", // 버튼과 간격 조절
+              }}
+            />
+            <button type="submit" onClick={handleSearch}>
+              <Search />
+            </button>
+          </div>
         </form>
 
         {/* 추천 단어 목록 렌더링 */}
@@ -91,7 +100,7 @@ const SearchComponent = ({ onSearch }) => {
           <ul className="suggestion-list">
             {suggestions.map((suggestion, index) => (
               <li key={index} onClick={() => selectSuggestion(suggestion)}>
-                {suggestion}
+                <span style={{ borderBottom: "1px solid gray", paddingBottom: "1px" }}>{suggestion}</span>
               </li>
             ))}
           </ul>
