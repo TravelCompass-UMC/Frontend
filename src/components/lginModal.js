@@ -1,32 +1,36 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/LginModal.module.css";
 import MainLogo from "../assets/images/Mypage/Mainlogo.svg";
 import NaverLogo from "../assets/images/Mypage/NaverLogo.svg";
 
 const Modal = ({ open, close }) => {
-  // 네이버 로그인 버튼 클릭 핸들러
-  const handleNaverLogin = () => {
-    window.location.href =
-      "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=3tVKSO15tNGbkeZJf8eE&scope=nickname%20email%20profile_image&state=2sByuLo9Si0KbSG2_8jeHXLXSspYMV7N4MmdmWEvG2w%3D&redirect_uri=http://dev.enble.site/login/oauth2/code/naver";
-  };
+  const navigate = useNavigate();
 
-  // 콜백 URL에서 code와 state 추출 및 액세스 토큰 요청
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
     const state = urlParams.get("state");
 
     if (code && state) {
+      // 네이버 OAuth 토큰 요청
       const tokenUrl = `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=3tVKSO15tNGbkeZJf8eE&client_secret=zHvANLwWHH&code=${code}&state=${state}`;
       fetch(tokenUrl)
         .then((response) => response.json())
         .then((data) => {
           console.log("Access Token:", data);
-          // 토큰 처리 로직 추가
+          // 토큰을 사용한 추가 작업 수행
+
+          navigate("/"); // 토큰 처리 후 메인 페이지로 리디렉션
         })
         .catch((error) => console.error("Error fetching access token:", error));
     }
-  }, []);
+  }, [navigate]);
+
+  const handleNaverLogin = () => {
+    window.location.href =
+      "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=3tVKSO15tNGbkeZJf8eE&scope=nickname%20email%20profile_image&state=2sByuLo9Si0KbSG2_8jeHXLXSspYMV7N4MmdmWEvG2w%3D&redirect_uri=http://dev.enble.site/login/oauth2/code/naver";
+  };
 
   return (
     <div
