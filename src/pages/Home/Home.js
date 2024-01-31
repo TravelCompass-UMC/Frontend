@@ -1,3 +1,4 @@
+//Home.js
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import '../../styles/Home.css';
@@ -8,9 +9,11 @@ import SidebarR from "../../components/SidebarR";
 class home extends Component {
   render() {
     return (
-      <div className="container">
-        <div className="map">배경 이미지 지도</div>
-        {/* <GoogleMapComponent/> */}
+      <div>
+        <div className="map">
+        <GoogleMapComponent/>
+        </div>
+        
         <input type="text" className="searchbox" placeholder="궁금한 지역을 검색해보세요"></input>
         <SidebarR>
         <h1>대한민국</h1>
