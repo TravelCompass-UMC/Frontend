@@ -42,7 +42,7 @@ const PlaceInfo1 = () => {
 
   return (
     <div>
-      <SidebarL width={320} isOpen={true}>
+      <SidebarL width={320}>
         <div className="popularplace">
           <p>제주도의 가장 인기 많은 장소</p>
           <p>추천 장소 목록</p>
