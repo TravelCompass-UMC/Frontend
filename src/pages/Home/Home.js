@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import '../../styles/Home.css';
 import GoogleMapComponent from "../../components/Map";
 import SidebarR from "../../components/SidebarR";
-
+import SidebarL from "../../components/SidebarL";
 
 class home extends Component {
   render() {
