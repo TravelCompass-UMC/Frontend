@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const RecommendationCard = ({ placeDetails }) => {
   const [photoUrl, setPhotoUrl] = useState(null);
+  const [showOpeningHours, setShowOpeningHours] = useState(false);
 
   useEffect(() => {
     if (placeDetails && placeDetails.photos && placeDetails.photos.length > 0) {
@@ -14,6 +16,10 @@ const RecommendationCard = ({ placeDetails }) => {
     }
   }, [placeDetails]);
 
+  const toggleOpeningHours = () => {
+    setShowOpeningHours(!showOpeningHours);
+  };
+
   return (
     <Card>
       {photoUrl && (
@@ -23,7 +29,16 @@ const RecommendationCard = ({ placeDetails }) => {
         <Typography variant="h5" component="h2">{placeDetails.name}</Typography>
         <Typography variant="body2" color="textSecondary" component="p">별점: {placeDetails.rating || '제공되지 않는 정보입니다.'}점</Typography>
         <Typography variant="body2" color="textSecondary" component="p">위치: {placeDetails.vicinity || '제공되지 않는 정보입니다.'}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p">운영 시간: {placeDetails.opening_hours && placeDetails.opening_hours.weekday_text ? placeDetails.opening_hours.weekday_text.join(', ') : '제공되지 않는 정보입니다.'}</Typography>
+        <div>
+          <Typography variant="body2" color="textSecondary" component="p" onClick={toggleOpeningHours} style={{ cursor: 'pointer' }}>
+            운영 시간 {showOpeningHours ? '▲' : '▼'}
+          </Typography>
+          {showOpeningHours && (
+            <Typography variant="body2" color="textSecondary" component="p">
+              {placeDetails.opening_hours && placeDetails.opening_hours.weekday_text ? placeDetails.opening_hours.weekday_text.join(', ') : '제공되지 않는 정보입니다.'}
+            </Typography>
+          )}
+        </div>
         <Typography variant="body2" color="textSecondary" component="p">전화번호: {placeDetails.formatted_phone_number || '제공되지 않는 정보입니다.'}</Typography>
         <Typography variant="body2" color="textSecondary" component="p">리뷰 갯수: {placeDetails.reviews ? placeDetails.reviews.length : '제공되지 않는 정보입니다.'}개</Typography>
       </CardContent>
