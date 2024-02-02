@@ -17,21 +17,25 @@
 }
 
 .buttonUse {
+  /* 현재 계획서 적용하기 */
   width: 160px;
   height: 80px;
   border-radius: 8px;
-  border: 1px solid var(--grayscale-Gray2, #ebedf8);
-  background: var(--grayscale-White, #fff);
-  color: var(--grayscale-Gray3, rgba(130, 112, 255, 1));
-
+  border: none;
+  margin-top: 80%;
+  /* Primary color */
+  background: var(--grayscale-White, #8270FF);
   /* botton/botton_bold_16 */
-  font-family: "SUIT Variable";
-  font-size: 16px;
+  font-family: 'SUIT Variable';
   font-style: normal;
   font-weight: 700;
+  font-size: 16px;
   line-height: 170%;
-  /* 27.2px */
-  margin-top: 30px;
+  /* or 27px */
+  text-align: center;
+
+  /* grayscale/White */
+  color: #FFFFFF;
 }
 
 .nickname {
