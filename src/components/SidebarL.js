@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import "../styles/sidebarL.css";
 
 const SidebarL = ({ width = 280, children }) => {
-  const [isOpen, setOpen] = useState(true); // 항상 열린 상태로 시작
+  const [isOpen, setOpen] = useState(true); // 초기 상태를 열림으로 설정
   const [xPosition, setX] = useState(0); // 초기 xPosition 값 0으로 설정하여 열린 상태로 시작
   const side = useRef();
 
@@ -10,19 +10,18 @@ const SidebarL = ({ width = 280, children }) => {
     setOpen(!isOpen); // 상태를 토글하는 것으로 변경
   };
 
-  const handleClose = useCallback((e) => {
-    if (isOpen && !side.current.contains(e.target)) {
-      setX(-width);
-      setOpen(false);
-    }
-  }, [isOpen, width]); // 의존성 배열에 isOpen과 width 추가
+  const handleClose = useCallback(
+    (e) => {
+      if (isOpen && !side.current.contains(e.target)) {
+        setX(-width);
+        setOpen(false);
+      }
+    },
+    [isOpen, width]
+  ); // 의존성 배열에 isOpen과 width 추가
 
   useEffect(() => {
-    setOpen(true); // 항상 열린 상태로 설정
-    setX(0); // 초기 xPosition 값 0으로 설정하여 열린 상태로 시작
-
     window.addEventListener("click", handleClose);
-
     return () => {
       window.removeEventListener("click", handleClose);
     };
