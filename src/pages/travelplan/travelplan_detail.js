@@ -25,6 +25,8 @@ const Trvlpage = () => {
   const [childrenCount, setChildrenCount] = useState(0);
   const [selectedAccommodation, setSelectedAccommodation] = useState(null);
   const [selectedAccommodations, setSelectedAccommodations] = useState({});
+  const [tempSelectedAccommodation, setTempSelectedAccommodation] =
+    useState(null);
 
   const formattedStartDate = startDate
     ? format(new Date(startDate), "yyyy-MM-dd")
@@ -168,6 +170,107 @@ const Trvlpage = () => {
     setSidebarContent("숙소");
   };
 
+  const renderSelectedAccommodationInfo = (formattedDate) => {
+    const accommodationId = selectedAccommodations[formattedDate];
+    if (!accommodationId) return null; // 숙소가 선택되지 않은 경우
+
+    const accommodation = AccommodationsData.find(
+      (acc) => acc.id === accommodationId
+    );
+    if (!accommodation) return null; // 선택된 숙소 ID에 해당하는 정보가 없는 경우
+
+    return (
+      <div className="selected-accommodation-info">
+        <h4>{accommodation.name}</h4>
+        <p>{accommodation.address}</p>
+        {/* 이미지가 있을 경우 */}
+        {accommodation.imageUrl && (
+          <img
+            src={accommodation.imageUrl}
+            alt={accommodation.name}
+            style={{ width: "100px", height: "auto" }}
+          />
+        )}
+        {/* 숙소 선택 변경 또는 해제 처리를 위한 버튼 */}
+        <button onClick={() => handleSelectAccommodation(null, formattedDate)}>
+          숙소 변경
+        </button>
+      </div>
+    );
+  };
+
+  const onSelectAccommodation = (accommodationId) => {
+    setTempSelectedAccommodation(accommodationId);
+  };
+
+  const handleSelectAccommodationForDate = (formattedDate) => {
+    if (tempSelectedAccommodation) {
+      setSelectedAccommodations((prev) => ({
+        ...prev,
+        [formattedDate]: tempSelectedAccommodation,
+      }));
+      setTempSelectedAccommodation(null); // 임시 선택 초기화
+      // 여기서는 setSidebarContent("숙소")를 호출하지 않습니다.
+    }
+  };
+
+  // 숙소 선택 및 "+숙소 선택(날짜)" 버튼을 렌더링하는 로직을 수정하여,
+  // 숙소 리스트와 선택된 숙소 정보를 동시에 표시합니다.
+  const renderAccommodationSelection = () => {
+    const intervalDates = eachDayOfInterval({
+      start: new Date(startDate),
+      end: new Date(endDate),
+    });
+    const formattedDates = intervalDates.map((date) =>
+      format(date, "yyyy-MM-dd")
+    );
+
+    return (
+      <>
+        <div>
+          {AccommodationsData.map((accommodation) => (
+            <div
+              key={accommodation.id}
+              onClick={() => setTempSelectedAccommodation(accommodation.id)}
+            >
+              <h4>{accommodation.name}</h4>
+              <p>{accommodation.address}</p>
+              {accommodation.imageUrl && (
+                <img
+                  src={accommodation.imageUrl}
+                  alt={accommodation.name}
+                  style={{ width: "100px", height: "auto" }}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        {formattedDates.map((formattedDate, index) => (
+          <div key={index} className="daily-accommodation-selection">
+            <h3>{formattedDate}</h3>
+            {selectedAccommodations[formattedDate] && (
+              <div>
+                <p>
+                  선택된 숙소:{" "}
+                  {
+                    AccommodationsData.find(
+                      (acc) => acc.id === selectedAccommodations[formattedDate]
+                    )?.name
+                  }
+                </p>
+              </div>
+            )}
+            <button
+              onClick={() => handleSelectAccommodationForDate(formattedDate)}
+            >
+              + 숙소 선택 ({formattedDate})
+            </button>
+          </div>
+        ))}
+      </>
+    );
+  };
+
   const renderSidebarContent = (
     sidebarContent,
     dates,
@@ -223,58 +326,13 @@ const Trvlpage = () => {
         );
 
       case "숙소":
-        const intervalDates = eachDayOfInterval({
-          start: new Date(startDate),
-          end: new Date(endDate),
-        });
-        const datesWithoutLastDay = intervalDates.slice(
-          0,
-          intervalDates.length - 1
-        );
-
         return (
           <div>
-            {AccommodationsData.map((accommodation) => (
-              <Accommodation
-                key={accommodation.id}
-                name={accommodation.name}
-                address={accommodation.address}
-                imageUrl={accommodation.imageUrl}
-                onSelect={() => handleSelectAccommodation(accommodation.id)}
-                selected={selectedAccommodation === accommodation.id}
-              />
-            ))}
-            {datesWithoutLastDay.map((date, index) => {
-              const formattedDate = format(date, "yyyy-MM-dd");
-              const isSelected = selectedAccommodations[formattedDate];
-
-              return (
-                <div key={index}>
-                  <h3>{format(date, "yyyy년 MM월 dd일")}</h3>
-                  {isSelected ? (
-                    <Accommodation
-                      key={selectedAccommodations[formattedDate]}
-                      {...AccommodationsData.find(
-                        (acc) =>
-                          acc.id === selectedAccommodations[formattedDate]
-                      )}
-                      onSelect={() =>
-                        handleSelectAccommodation(null, formattedDate)
-                      }
-                    />
-                  ) : (
-                    <button
-                      onClick={(e) =>
-                        setSidebarContent("숙소 선택") &&
-                        handleSelectAccommodation(formattedDate, e)
-                      }
-                    >
-                      + 숙소 선택 ({formattedDate})
-                    </button>
-                  )}
-                </div>
-              );
-            })}
+            {renderAccommodationSelection()}
+            {/* eachDayOfInterval 호출을 제거하고, 선택된 숙소 정보를 여기서 직접 렌더링합니다. */}
+            {Object.keys(selectedAccommodations).map((formattedDate) =>
+              renderSelectedAccommodationInfo(formattedDate)
+            )}
           </div>
         );
 
@@ -285,6 +343,8 @@ const Trvlpage = () => {
         return <p>내용을 선택해 주세요.</p>;
     }
   };
+
+  // 나머지 컴포넌트 로직은 동일합니다.
 
   const handlePrevious = () => {
     const currentIndex = sidebarOptions.indexOf(sidebarContent);
@@ -339,6 +399,8 @@ const Trvlpage = () => {
           renderTransportationButtons,
           renderPeopleCount
         )}
+        {sidebarContent === "숙소" ? renderAccommodationSelection() : null}
+        {renderSelectedAccommodationInfo()}
 
         <button onClick={handlePrevious}>이전</button>
         <button onClick={handleNext}>다음</button>

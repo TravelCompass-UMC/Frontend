@@ -8,28 +8,43 @@ const Modal = ({ open, close }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // 페이지 로드 시 URL에서 인증 코드(code)와 상태(state) 추출
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
     const state = urlParams.get("state");
 
+    // 인증 코드와 상태가 있을 경우, 자체 서버를 통해 토큰 요청
     if (code && state) {
-      // 네이버 OAuth 토큰 요청
-      const tokenUrl = `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=3tVKSO15tNGbkeZJf8eE&client_secret=zHvANLwWHH&code=${code}&state=${state}`;
-      fetch(tokenUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Access Token:", data);
-          // 토큰을 사용한 추가 작업 수행
-
-          navigate("/"); // 토큰 처리 후 메인 페이지로 리디렉션
+      fetch("/api/auth/naver/callback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code, state }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
         })
-        .catch((error) => console.error("Error fetching access token:", error));
+        .then(({ accessToken, refreshToken }) => {
+          // 여기서 accessToken과 refreshToken을 클라이언트에서 사용할 수 있도록 저장
+          console.log("Access Token:", accessToken);
+          console.log("Refresh Token:", refreshToken);
+          // 예: sessionStorage 또는 localStorage에 저장
+          sessionStorage.setItem("accessToken", accessToken);
+          sessionStorage.setItem("refreshToken", refreshToken);
+
+          navigate("/"); // 로그인 성공 후 리디렉션
+        })
+        .catch((error) => console.error("Error fetching tokens:", error));
     }
   }, [navigate]);
 
   const handleNaverLogin = () => {
-    window.location.href =
-      "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=3tVKSO15tNGbkeZJf8eE&scope=nickname%20email%20profile_image&state=2sByuLo9Si0KbSG2_8jeHXLXSspYMV7N4MmdmWEvG2w%3D&redirect_uri=http://dev.enble.site/login/oauth2/code/naver";
+    // 사용자를 자체 서버의 로그인 경로로 리디렉션
+    window.location.href = "http://localhost:8080/oauth2/authorization/naver";
   };
 
   return (
