@@ -8,12 +8,10 @@ const Modal = ({ open, close }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // 페이지 로드 시 URL에서 인증 코드(code)와 상태(state) 추출
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
     const state = urlParams.get("state");
 
-    // 인증 코드와 상태가 있을 경우, 자체 서버를 통해 토큰 요청
     if (code && state) {
       fetch("/api/auth/naver/callback", {
         method: "POST",
@@ -29,16 +27,31 @@ const Modal = ({ open, close }) => {
           return response.json();
         })
         .then(({ accessToken, refreshToken }) => {
-          // 여기서 accessToken과 refreshToken을 클라이언트에서 사용할 수 있도록 저장
-          console.log("Access Token:", accessToken);
-          console.log("Refresh Token:", refreshToken);
-          // 예: sessionStorage 또는 localStorage에 저장
           sessionStorage.setItem("accessToken", accessToken);
           sessionStorage.setItem("refreshToken", refreshToken);
 
+          // 네이버 사용자 정보 요청
+          return fetch("https://openapi.naver.com/v1/nid/me", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+        })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch user information");
+          }
+          return response.json();
+        })
+        .then(({ response }) => {
+          console.log("User Info:", response);
+          // 여기에서 사용자 정보(닉네임, 이메일 등)를 처리합니다.
+          // 예: 로그인 세션 생성, 데이터베이스에 사용자 정보 저장 등
+          sessionStorage.setItem("nickname", response.nickname); // 닉네임 저장
           navigate("/"); // 로그인 성공 후 리디렉션
         })
-        .catch((error) => console.error("Error fetching tokens:", error));
+        .catch((error) => console.error("Error:", error));
     }
   }, [navigate]);
 
