@@ -23,7 +23,7 @@ const RecommendationCard = ({ placeDetails }) => {
   return (
     <Card>
       {photoUrl && (
-        <img src={photoUrl} alt={placeDetails.name} />
+        <img src={photoUrl} alt={placeDetails.name} style={{ maxWidth: '100%', height: 'auto' }}/>
       )}
       <CardContent>
         <Typography variant="h5" component="h2">{placeDetails.name}</Typography>

@@ -14,3 +14,14 @@
     position: relative;
     z-index: 0;
   }
+
+.searched-location {
+  margin-top: 20%;
+  color: red;
+  font-weight: 800;
+  text-align: center;
+}
+
+.popularplace {
+  margin-top: 10%;
+}
