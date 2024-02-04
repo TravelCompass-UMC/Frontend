@@ -1,19 +1,50 @@
 /* styles/Mypages.css */
-.mypage-container{
-  justify-content: center;
-  align-items: center;
+
+.container{
+  background-color: white;
+  margin-top: 80px;
 }
 
+.nav-bar p {
+  color: #191B24;
+  font-size: 17px;
+  font-family: "SUIT Variable";
+  font-weight: 700;
+  word-wrap: break-word;
+  margin-left: 4vw;
+}
+
+.nav-bar button{
+  margin-right: 3vw;
+}
+
+/*프로필 섹션*/
 .profile-box{
   text-align: center;
 }
 
-
-
-
-.row{
+/* 컨테이너들 */
+.col-md-4{
+  width:360px;
+}
+.row {
   justify-content: center;
 }
+
+.row-container{
+  display: flex;
+  justify-content: center;
+}
+
+.col-md-4{
+  margin-bottom: 40px;
+  padding: 0px 0px;
+}
+.place-thumbnail-container{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 /* 페이지 네이션 스타일링 */
 .pagination {
     display: flex;

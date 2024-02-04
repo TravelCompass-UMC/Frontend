@@ -5,7 +5,6 @@ import myplans from "../../tempdata/myplandata";
 import { MyTravelPlanSection } from "./MyPage";
 import { useState } from "react";
 import { MyplanThumbnail } from "./MyPage";
-import { Container } from "react-bootstrap";
 
 
 function Myplanpage() {
@@ -35,7 +34,7 @@ function Myplanpage() {
   };
 
   return (
-    <div className="planpage-container">
+    <div className="container">
       <h3>나의 여행계획</h3>
       {/* 3개씩 묶어서 표시 */}
       {currentPlans.length > 0 && (
