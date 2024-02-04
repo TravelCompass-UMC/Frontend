@@ -1,12 +1,12 @@
 /* sidebarL.css code */
 
 .container {
-  background-color: #e3ecf1;
+  background: var(--grayscale-Gray1, #F3F5FF);
 }
 
 .sidebar {
   position: fixed;
-  background-color: #e3ecf1;
+  background: var(--grayscale-Gray1, #F3F5FF);
   top: 9%;
   bottom: 0;
   left: 0;
@@ -19,7 +19,6 @@
 
 .toggle-button {
   position: fixed;
-
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 버튼에 그림자 추가 */
   top: 40vh;
   left: 0px; /* 사이드바와의 간격 조정 */
