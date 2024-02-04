@@ -1,32 +1,64 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/LginModal.module.css";
 import MainLogo from "../assets/images/Mypage/Mainlogo.svg";
 import NaverLogo from "../assets/images/Mypage/NaverLogo.svg";
 
 const Modal = ({ open, close }) => {
-  // 네이버 로그인 버튼 클릭 핸들러
-  const handleNaverLogin = () => {
-    window.location.href =
-      "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=3tVKSO15tNGbkeZJf8eE&scope=nickname%20email%20profile_image&state=2sByuLo9Si0KbSG2_8jeHXLXSspYMV7N4MmdmWEvG2w%3D&redirect_uri=http://dev.enble.site/login/oauth2/code/naver";
-  };
+  const navigate = useNavigate();
 
-  // 콜백 URL에서 code와 state 추출 및 액세스 토큰 요청
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get("code");
     const state = urlParams.get("state");
 
     if (code && state) {
-      const tokenUrl = `https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=3tVKSO15tNGbkeZJf8eE&client_secret=zHvANLwWHH&code=${code}&state=${state}`;
-      fetch(tokenUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Access Token:", data);
-          // 토큰 처리 로직 추가
+      fetch("/api/auth/naver/callback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code, state }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
         })
-        .catch((error) => console.error("Error fetching access token:", error));
+        .then(({ accessToken, refreshToken }) => {
+          sessionStorage.setItem("accessToken", accessToken);
+          sessionStorage.setItem("refreshToken", refreshToken);
+
+          // 네이버 사용자 정보 요청
+          return fetch("https://openapi.naver.com/v1/nid/me", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+        })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch user information");
+          }
+          return response.json();
+        })
+        .then(({ response }) => {
+          console.log("User Info:", response);
+          // 여기에서 사용자 정보(닉네임, 이메일 등)를 처리합니다.
+          // 예: 로그인 세션 생성, 데이터베이스에 사용자 정보 저장 등
+          sessionStorage.setItem("nickname", response.nickname); // 닉네임 저장
+          navigate("/"); // 로그인 성공 후 리디렉션
+        })
+        .catch((error) => console.error("Error:", error));
     }
-  }, []);
+  }, [navigate]);
+
+  const handleNaverLogin = () => {
+    // 사용자를 자체 서버의 로그인 경로로 리디렉션
+    window.location.href = "http://localhost:8080/oauth2/authorization/naver";
+  };
 
   return (
     <div

@@ -1,10 +1,12 @@
-// SidebarR.js
+//SidebarR.js
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/sidebar.module.css";
-const SidebarR = ({ width = 280, children }) => {
-  const [isOpen, setOpen] = useState(false);
-  const [xPosition, setX] = useState(-width);
+
+const SidebarR = ({ width = 450, children }) => {
+  const [isOpen, setOpen] = useState(true); // 초기값을 true로 변경
+  const [xPosition, setX] = useState(0); // 초기값을 0으로 변경
   const side = useRef();
+
   // button 클릭 시 토글
   const toggleMenu = () => {
     if (xPosition < 0) {
@@ -33,6 +35,8 @@ const SidebarR = ({ width = 280, children }) => {
     };
   });
 
+  const topOffset = 62.5; // 상단바 높이
+
   return (
     <div className={styles.container}>
       <div
@@ -41,12 +45,14 @@ const SidebarR = ({ width = 280, children }) => {
         style={{
           width: `${width}px`,
           height: "100%",
-          transform: `translatex(${-xPosition}px)`,
+          transform: `translateX(${-xPosition}px) translateY(${topOffset}px)`, // 아래로 이동
         }}
       >
-        <button onClick={() => toggleMenu()} className={styles.button}>
-          {isOpen ? <span>X</span> : <span>&#9776;</span>}
-        </button>
+        <div className={styles.buttonContainer}>
+          <button onClick={() => toggleMenu()} className={styles.button}>
+            {isOpen ? <span>X</span> : <span>&#9776;</span>}
+          </button>
+        </div>
         <div className={styles.content}>{children}</div>
       </div>
     </div>
@@ -54,3 +60,4 @@ const SidebarR = ({ width = 280, children }) => {
 };
 
 export default SidebarR;
+

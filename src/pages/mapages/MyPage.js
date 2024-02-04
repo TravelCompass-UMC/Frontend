@@ -3,10 +3,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Mypages.css";
-import { Container } from "react-bootstrap";
 import myplans from "../../tempdata/myplandata";
 import { useState } from "react";
 import otherplans from "../../tempdata/otherplandata";
+import myplaces from "../../tempdata/myplacedata";
 
 const Thumbnail = {
   bigBox: {
@@ -49,13 +49,14 @@ const Thumbnail = {
 function Mypage() {
   const [plans] = useState(myplans);
   const [others] = useState(otherplans);
+  const [places] = useState(myplaces);
 
   return (
-    <div className="container">
+    <div className="mypage-container">
       <ProfileSection />
       <MyTravelPlanSection title="나의 여행계획" plans={plans} />
       <OtherTravelPlanSection title="관심있는 여행계획" others={others} />
-      <InterestedPlacesSection title="관심있는 장소" />
+      <InterestedPlacesSection title="관심있는 장소" places={places}/>
       {/* <p>{plans[0].place}</p> */}
       <LogoutSection />
     </div>
@@ -77,7 +78,7 @@ export function ProfileSection({
   // userProfileImage: 네이버에서 받아온 사용자 프로필 사진 URL
 
   return (
-    <div className="flex items-center mb-8">
+    <div className="profile-box">
       <div>
         <h2 className="user-name">{userName} 반갑습니다 !</h2>
         <img src={userProfileImage} alt="프로필 아이콘" />
@@ -100,7 +101,11 @@ export function MyplanThumbnail(props) {
         width="80%"
       />
       <a style={Thumbnail.placeText}>{props.plans.place}</a>
-      <p style={Thumbnail.hashtagText}>{props.plans.hashtag.join(", ")}</p>
+      <p style={Thumbnail.hashtagText}>
+        {props.plans.hashtag.map((tag, index) => (
+          <span key={index}>#{tag}</span>
+        ))}
+      </p>
     </div>
   );
 }
@@ -142,7 +147,11 @@ export function OtherplanThumbnail(props) {
         width="80%"
       />
       <a style={Thumbnail.placeText}>{props.others.place}</a>
-      <p style={Thumbnail.hashtagText}>{props.others.hashtag.join(", ")}</p>
+      <p style={Thumbnail.hashtagText}>
+        {props.others.hashtag.map((tag, index) => (
+          <span key={index}>#{tag}</span>
+        ))}
+      </p>
     </div>
   );
 }
@@ -182,14 +191,21 @@ export function OtherTravelPlanSection({ title, others }) {
 export function InteresetedPlaceThumbnail(props) {
   return (
     <div className="col-md-4">
-      <img src={""} alt="장소이미지" width="80%" />
-      <h4>{props.others.place}</h4>
-      <p>{props.others.hashtag.join(", ")}</p>
+      <img 
+      style={{ ...Thumbnail.imageBox, width: "100%" }}
+      src={""} alt="장소이미지" 
+      width="80%"
+      />
+      <h4>{props.places.place}</h4>
+      <p>{props.places.info}</p>
     </div>
   );
 }
 
-export function InterestedPlacesSection({ title }) {
+export function InterestedPlacesSection({ title, places }) {
+ // 처음 6개의 요소만 사용
+ const firstThreeOthers = places.slice(0, 6);
+  
   return (
     <div className="w-full">
       <div
@@ -206,54 +222,13 @@ export function InterestedPlacesSection({ title }) {
         </Link>
       </div>
       <div className="row">
-        <div className="col-md-4">
-          <img
-            src="https://codingapple1.github.io/shop/shoes1.jpg"
-            width="60%"
-          />
-          <h4>상품명</h4>
-          <p>상품정보</p>
-        </div>
-        <div className="col-md-4">
-          <img
-            src="https://codingapple1.github.io/shop/shoes2.jpg"
-            width="60%"
-          />
-          <h4>상품명</h4>
-          <p>상품정보</p>
-        </div>
-        <div className="col-md-4">
-          <img
-            src="https://codingapple1.github.io/shop/shoes3.jpg"
-            width="60%"
-          />
-          <h4>상품명</h4>
-          <p>상품정보</p>
-        </div>
-        <div className="col-md-4">
-          <img
-            src="https://codingapple1.github.io/shop/shoes3.jpg"
-            width="60%"
-          />
-          <h4>상품명</h4>
-          <p>상품정보</p>
-        </div>
-        <div className="col-md-4">
-          <img
-            src="https://codingapple1.github.io/shop/shoes3.jpg"
-            width="60%"
-          />
-          <h4>상품명</h4>
-          <p>상품정보</p>
-        </div>
-        <div className="col-md-4">
-          <img
-            src="https://codingapple1.github.io/shop/shoes3.jpg"
-            width="60%"
-          />
-          <h4>상품명</h4>
-          <p>상품정보</p>
-        </div>
+      {firstThreeOthers.map((place, i) => (
+          <InteresetedPlaceThumbnail
+            key={i}
+            places={place}
+            i={i + 1}
+          ></InteresetedPlaceThumbnail>
+        ))}
       </div>
     </div>
   );
