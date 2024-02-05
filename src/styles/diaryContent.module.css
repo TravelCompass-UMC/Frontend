@@ -134,6 +134,27 @@
   height: 28px;
 }
 
+.detailnum2 {
+  /* 2 */
+
+  position: relative;
+  width: 10px;
+  height: 27px;
+  left: -19px;
+  top: -24px;
+
+  /* botton/botton_bold_16 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+
+  /* grayscale/Gray4 */
+  color: #7F85A3;
+}
+
 .detailtime {
   color: var(--grayscale-Gray4, #7F85A3);
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/diaryContent.module.css";
-import numImage1 from "../../assets/images/Pages/Ellipse 10.png"
+import numImage1 from "../../assets/images/Pages/Ellipse 10 (1).png"
 import heart from "../../assets/images/Pages/Group 2236.png"; // 이미지를 import
 import heartFilled from "../../assets/images/Pages/Group 2236_filled.png"; // 채워진 하트 이미지를 import
 import Modal from "./Modal"; // 모달 컴포넌트를 임포트합니다.
@@ -45,6 +45,9 @@ const AllList = () => {
                                 <tr>
                                     <td style={{ width: "50px" }} rowSpan={4} >
                                         <img className={styles.detailnum1} src={numImage1} />
+                                        <span className={styles.detailnum2}>
+                                            {`${index + 1}`}
+                                        </span>
                                     </td>
                                     <td className={styles.detailtime}>
                                         09:30~11:20
