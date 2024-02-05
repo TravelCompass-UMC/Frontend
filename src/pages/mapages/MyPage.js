@@ -16,22 +16,22 @@ import { Container } from "react-bootstrap";
 const Thumbnail = {
   bigBox: {
     boxShadow: "rgba(0, 0, 0, 0.1) 4px 4px 8px 0px",
-    width: "333px",
-    height: "210px",
+    width: "380px",
+    height: "230px",
     background: "white",
     borderRadius: 16,
     border: "1px #EBEDF8 solid",
     marginBottom: "20px",
   },
   imageBox: {
-    width: "300px",
-    height: "120px",
+    width: "100%",
+    height: "138px",
     background: "#EBEDF8",
     borderRadius: 15,
   },
   textBox: {
-    width: "300px",
-    height: "80px",
+    width: "100%",
+    height: "92px",
     // background: "#FFFFFF",
     borderRadius: 15,
   },
