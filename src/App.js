@@ -13,8 +13,7 @@ import Searchdiary from "./pages/searchdiarypage/searchdiarypage";
 import DiaryContent from "./pages/searchdiarypage/diarycontent";
 import Searchplace from "./pages/searchplacepage/searchplace";
 import SearchPlaceInfo from "./pages/searchplacepage/placeinfo";
-import PlaceInfo1 from "./pages/searchplacepage/placeinfo1";
-import PlaceInfo2 from "./pages/searchplacepage/placeinfo2";
+import PlaceInfoJeju from "./pages/searchplacepage/placeinfo1_jeju";
 import PlaceDetail from "./components/PlaceDetail";
 import CityDetail from "./components/CityDetail";
 import MainHeader from "./components/MainHeader";
@@ -46,8 +45,7 @@ function App() {
             <Route path="/searchplace" element={<Searchplace />} />
             <Route path="/placeinfo" element={<SearchPlaceInfo />} />
             <Route path="/placeinfo/:placeName" element={<PlaceDetail />} />
-            <Route path="/placeinfo1/:placeName" element={<PlaceInfo1 />} />
-            <Route path="/placeinfo2/:placeName" element={<PlaceInfo2 />} />
+            <Route path="/placeinfo1_jeju/:placeName" element={<PlaceInfoJeju />} />
             <Route path="/city/:cityName" element={<CityDetail />} />
             <Route path="/travelplandetail" element={<Plandetail />} />
             <Route path="/travelplanedit" element={<PlanEdit />} />

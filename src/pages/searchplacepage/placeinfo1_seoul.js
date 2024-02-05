@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Map from "../../components/Map";
 import SidebarL from "../../components/SidebarL";
-import searchImg from "../../assets/images/Place/검색창.svg";
 import SearchRecommendations from "../../components/Recommendation";
 import PlaceDetail from "../../components/PlaceDetail";
 import "../../styles/placeinfo.css"; 
@@ -23,16 +22,16 @@ const PlaceInfo1 = () => {
       const [lat, lng, name] = searchQuery.split(",");
       setMapLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
     } else {
-      setMapLocation({ lat: 33.3868, lng: 126.582 });
+      setMapLocation({ lat: 37.56313, lng: 126.98854 });
     }
   }, [searchQuery]);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
       const data = [
-        { name: "빛의 벙커", placeId: "ChIJnTFvBUcTDTURh7KTiaHnYYE", lat: 33.440005, lng: 126.899003 },
-        { name: "물영아리오름", placeId: "ChIJkzAEg1QBDTURvjZlYk6E4Ok", lat: 33.369239, lng: 126.693553 },
-        { name: "아르떼뮤지엄 제주", placeId: "ChIJUwtlFmhfDDURUr3BMm9Sb6k", lat: 33.396560, lng: 126.344625 },
+        { name: "경복궁 광화문", placeId: "ChIJsYP2VHSjfDURwAtqfCHFGfo", lat: 37.57598, lng: 126.97680 },
+        { name: "63빌딩", placeId: "ChIJn_UiGDyffDURWfZBRKwb5YE", lat: 37.51993, lng: 126.94010 },
+        { name: "DDP 동대문디자인플라자", placeId: "ChIJ8xRYr29FezUR3AtFqx2pIlw", lat: 37.56784, lng: 127.00906 },
       ];
       setRecommendations(data);
     };
@@ -48,7 +47,6 @@ const PlaceInfo1 = () => {
   return (
     <div>
       <SidebarL width={320}>
-      <img src={searchImg} alt="search-image" width={280}/>
       <div className="popularplace">
           <p>{searchedLocation}의 추천 장소 목록</p>
           <SearchRecommendations onRecommendationClick={handlePinClick} />

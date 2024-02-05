@@ -25,7 +25,7 @@ const PlaceInfo = () => {
   // Handle pin click function
   const handlePinClick = (placeName) => {
     // Navigate to /placeinfo1 when a pin is clicked
-    navigate(`/placeinfo1/${placeName}`, { state: { searchedLocation: searchedLocation } }); // 검색어 함께 전달
+    navigate(`/placeinfo1_jeju/${placeName}`, { state: { searchedLocation: searchedLocation } }); // 검색어 함께 전달
   };
 
   return (
