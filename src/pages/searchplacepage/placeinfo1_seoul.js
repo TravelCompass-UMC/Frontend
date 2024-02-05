@@ -1,14 +1,14 @@
-// placeinfo1.js
+// placeinfo1_seoul.js
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Map from "../../components/Map";
 import SidebarL from "../../components/SidebarL";
-import SearchRecommendations from "../../components/Recommendation";
+// import searchImg from "../../assets/images/Place/검색창.svg";
+import SearchRecommendations from "../../components/Recommendation/RecommendationSeoul";
 import PlaceDetail from "../../components/PlaceDetail";
 import "../../styles/placeinfo.css"; 
 
-
-const PlaceInfo1 = () => {
+const PlaceInfoSeoul = () => {
   const { state } = useLocation(); // state에서 검색어 받아오기
   const searchedLocation = state?.searchedLocation; // 검색어 받아오기
   const searchParams = new URLSearchParams(window.location.search); // 검색어 직접 가져오기
@@ -16,6 +16,8 @@ const PlaceInfo1 = () => {
   const [mapLocation, setMapLocation] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
+  const [zoomLevel, setZoomLevel] = useState(12);
+
 
   useEffect(() => {
     if (searchQuery) {
@@ -42,20 +44,22 @@ const PlaceInfo1 = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
+    setZoomLevel(16); // 확대 레벨 조정
   };
 
   return (
     <div>
       <SidebarL width={320}>
+      {/* <img src={searchImg} alt="search-image" width={280}/> */}
       <div className="popularplace">
           <p>{searchedLocation}의 추천 장소 목록</p>
           <SearchRecommendations onRecommendationClick={handlePinClick} />
         </div>
         {selectedPlace && <PlaceDetail place={selectedPlace} />}
       </SidebarL>
-      <Map location={mapLocation} recommendations={recommendations} onPinClick={handlePinClick} />
+      <Map location={mapLocation} recommendations={recommendations} onPinClick={handlePinClick} zoom={zoomLevel}/>
     </div>
   );
 };
 
-export default PlaceInfo1;
+export default PlaceInfoSeoul;

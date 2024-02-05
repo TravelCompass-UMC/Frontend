@@ -4,12 +4,12 @@ import { useLocation } from "react-router-dom";
 import Map from "../../components/Map";
 import SidebarL from "../../components/SidebarL";
 import searchImg from "../../assets/images/Place/검색창.svg";
-import SearchRecommendations from "../../components/Recommendation";
+import SearchRecommendations from "../../components/Recommendation/RecommendationJeju";
 import PlaceDetail from "../../components/PlaceDetail";
 import "../../styles/placeinfo.css"; 
 
 
-const PlaceInfo1 = () => {
+const PlaceInfoJeju = () => {
   const { state } = useLocation(); // state에서 검색어 받아오기
   const searchedLocation = state?.searchedLocation; // 검색어 받아오기
   const searchParams = new URLSearchParams(window.location.search); // 검색어 직접 가져오기
@@ -23,7 +23,7 @@ const PlaceInfo1 = () => {
       const [lat, lng, name] = searchQuery.split(",");
       setMapLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
     } else {
-      setMapLocation({ lat: 33.3868, lng: 126.582 });
+      setMapLocation({ lat: 33.380462, lng: 126.539098 });
     }
   }, [searchQuery]);
 
@@ -60,4 +60,4 @@ const PlaceInfo1 = () => {
   );
 };
 
-export default PlaceInfo1;
+export default PlaceInfoJeju;
