@@ -86,6 +86,7 @@
 .line {
   border-bottom: 2px solid var(--grayscale-Gray2, #EBEDF8);
   background: var(--grayscale-Gray1, #F3F5FF);
+  width: 90%;
 }
 
 .dayContainer {
@@ -94,10 +95,16 @@
   margin-right: 100px;
   display: inline-block;
   /* 가로 스크롤 활성화 */
-  white-space: nowrap;
-  /* 텍스트 줄 바꿈 방지 */
+
 }
 
+.divscroll {
+  width: 90%;
+  height: 550px;
+  overflow: auto;
+  white-space: nowrap;
+  display: relative;
+}
 
 .detailnum {
   color: #000;

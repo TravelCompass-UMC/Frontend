@@ -75,7 +75,7 @@ const AllList = () => {
         return day;
     };
     return (
-        <div>
+        <div style={{ marginLeft: "100px" }}>
             {/* Heart 이미지 클릭 이벤트 처리 */}
             <img
                 className={styles.heartImage}
@@ -98,15 +98,21 @@ const AllList = () => {
             </div>
             <hr className={styles.line}></hr>
             {/* JSX 내용 작성 */}
-            {generateDay()}
+            <div>
+                <div className={styles.divscroll}>
+                    {generateDay()}
+                </div>
+            </div>
 
-            {selectedBox && (
-                <Modal
-                    data={selectedBox}
-                    onClose={() => setSelectedBox(null)} // 닫기 핸들러를 추가합니다.
-                />
-            )}
-        </div>
+            {
+                selectedBox && (
+                    <Modal
+                        data={selectedBox}
+                        onClose={() => setSelectedBox(null)} // 닫기 핸들러를 추가합니다.
+                    />
+                )
+            }
+        </div >
 
     );
 };
