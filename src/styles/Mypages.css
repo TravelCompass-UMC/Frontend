@@ -21,6 +21,8 @@
 /*프로필 섹션*/
 .profile-box{
   text-align: center;
+  background-color: #F3F5FF;
+  height: 250px;
 }
 
 /* 컨테이너들 */

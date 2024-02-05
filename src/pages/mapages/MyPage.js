@@ -10,6 +10,7 @@ import myplaces from "../../tempdata/myplacedata";
 import heart from "../../assets/images/Pages/Group 2236.png";
 import heartFilled from "../../assets/images/Pages/Group 2236_filled.png";
 import { Container } from "react-bootstrap";
+
 const Thumbnail = {
   bigBox: {
     width: "333px",
@@ -47,7 +48,6 @@ const Thumbnail = {
     wordWrap: "break-word",
   },
   heartImage: {
-    marginLeft: "190px",
     cursor: "pointer", // 커서를 포인터로 변경하여 클릭 가능하다는 표시
   },
 };
@@ -111,9 +111,9 @@ function Mypage() {
 export default Mypage;
 
 export function ProfileSection({
-  userName,
-  userNickname,
-  userEmail,
+  userName = "박상현",
+  userNickname = "쉽지않은만남",
+  userEmail = "shawn2018@naver.com",
   userProfileImage,
 }) {
   // 네이버 API에서 받아온 정보를 사용하여 프로필 섹션을 채웁니다.
@@ -121,14 +121,48 @@ export function ProfileSection({
   // userNickname: 네이버에서 받아온 사용자 닉네임
   // userEmail: 네이버에서 받아온 사용자 이메일
   // userProfileImage: 네이버에서 받아온 사용자 프로필 사진 URL
+  
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "20px",
+  };
+
+  // 프로필 이미지와 정보를 담는 박스 스타일
+  const profileInfoBoxStyle = {
+    display: "flex",
+    alignItems: "center",
+    margin: "20px 0",
+  };
+
+  // 프로필 이미지 스타일
+  const profileImageStyle = {
+    width: "100px", // 이미지 크기 조정
+    height: "100px",
+    borderRadius: "50%", // 이미지를 원형으로 만듦
+    marginRight: "20px", // 이미지와 텍스트 사이의 간격
+  };
+
+  // 텍스트 정보 스타일
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#f0f0f0", // 배경색을 회색으로 설정
+    padding: "10px", // 패딩으로 내부 여백 추가
+    borderRadius: "5px", // 테두리를 약간 둥글게
+  };
 
   return (
-    <div className="profile-box">
-      <div>
-        <h2 className="user-name">{userName} 반갑습니다 !</h2>
-        <img src={userProfileImage} alt="프로필 아이콘" />
-        <p className="user-nickname">{userNickname}</p>
-        <p className="user-email">{userEmail}</p>
+    <div className="profile-box" style={containerStyle}>
+      <h2 className="user-name">{userName}님 반갑습니다!</h2>
+      <div style={profileInfoBoxStyle}>
+        <img src={userProfileImage} alt="프로필 아이콘" style={profileImageStyle} />
+        <div style={textStyle}>
+          <span>닉네임 {userNickname}</span>
+          <span>로그인 계정 {userEmail}</span>
+        </div>
       </div>
     </div>
   );
@@ -141,8 +175,23 @@ export function MyplanThumbnail(props) {
     setplanHeart(planHeart === 0 ? 1 : 0); // 클릭할 때마다 상태 변경
   };
 
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between", // 컨테이너 내 요소들 사이의 공간 최대화
+    alignItems: "flex-start", // 요소들을 컨테이너의 상단에 정렬
+    width: "100%", // 컨테이너 너비를 100%로 설정하여 넓게 사용
+    marginBottom: "10px", // 하단 마진으로 간격 조정
+  };
 
-    return (
+  // 텍스트 영역 스타일
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column", // 요소들을 세로로 나열
+    justifyContent: "center", // 세로 중앙 정렬
+    width: "calc(100% - 40px)", // 하트 이미지와의 공간을 고려하여 너비 조정
+  };
+
+ return (
     <div
       className="thumbnail-container"
       style={{ ...Thumbnail.bigBox, margin: "0 10px" }}
@@ -150,21 +199,24 @@ export function MyplanThumbnail(props) {
       <img
         style={{ ...Thumbnail.imageBox, width: "100%" }}
         src={"https://codingapple1.github.io/shop/shoes" + props.i + ".jpg"}
-        width="80%"
+        alt="장소 이미지"
       />
-      {/* Heart 이미지 클릭 이벤트 처리 */}
-      <a style={Thumbnail.placeText}>{props.plans.place}</a>
-      <img
-        style={styles.heartImage}
-        src={planHeart === 1 ? heartFilled : heart}
-        alt="Heart"
-        onClick={handleHeartClick}
-      />
-      <p style={Thumbnail.hashtagText}>
-        {props.plans.hashtag.map((tag, index) => (
-          <span key={index}>#{tag}</span>
-        ))}
-      </p>
+      <div style={containerStyle}>
+        <div style={textStyle}>
+          <a style={Thumbnail.placeText}>{props.plans.place}</a>
+          <p style={Thumbnail.hashtagText}>
+            {props.plans.hashtag.map((tag, index) => (
+              <span key={index}>#{tag} </span>
+            ))}
+          </p>
+        </div>
+        <img
+          style={Thumbnail.heartImage}
+          src={planHeart === 1 ? heartFilled : heart}
+          alt="Heart"
+          onClick={handleHeartClick}
+        />
+      </div>
     </div>
   );
 }
@@ -205,30 +257,48 @@ export function OtherplanThumbnail(props) {
     setHeartState(heartState === 0 ? 1 : 0); // 클릭할 때마다 상태 변경
   };
 
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between", // 컨테이너 내 요소들 사이의 공간 최대화
+    alignItems: "flex-start", // 요소들을 컨테이너의 상단에 정렬
+    width: "100%", // 컨테이너 너비를 100%로 설정하여 넓게 사용
+  };
+
+  // 텍스트 영역 스타일, 여기에는 장소 이름과 해시태그가 포함됩니다.
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column", // 요소들을 세로로 나열
+    justifyContent: "center", // 세로 중앙 정렬
+    width: "calc(100% - 50px)", // 하트 이미지와의 간격을 고려하여 너비 조정
+  };
+
   return (
-    <div className="thumbnail-container" style={{ ...Thumbnail.bigBox, margin: "0 10px" }}>
-      <NavLink to ="/diarycontent" style={{ textDecoration: "none" }}>
+    <div
+      className="thumbnail-container"
+      style={{ ...Thumbnail.bigBox, margin: "0 10px" }}
+    >
       <img
         style={{ ...Thumbnail.imageBox, width: "100%" }}
         src={"https://codingapple1.github.io/shop/shoes" + props.i + ".jpg"}
-        width="80%"
+        alt="장소 이미지"
       />
-      <a style={Thumbnail.placeText}>{props.others.place}</a>
-      </NavLink>
-       {/* Heart 이미지 클릭 이벤트 처리 */}
-       <img
-        style={styles.heartImage}
-        src={heartState === 1 ? heartFilled : heart}
-        alt="Heart"
-        onClick={handleHeartClick}
-      />
-      <br></br>
-      <div style={styles.textBox}>
-      <p style={Thumbnail.hashtagText}>
-        {props.others.hashtag.map((tag, index) => (
-          <span key={index}>#{tag}</span>
-        ))}
-      </p>
+      <div style={containerStyle}>
+      <NavLink to="/diarycontent" style={{ textDecoration: "none", width: "100%" }}>
+        <div style={textStyle}>
+          <a style={Thumbnail.placeText}>{props.others.place}</a>
+          <p style={Thumbnail.hashtagText}>
+            {props.others.hashtag.map((tag, index) => (
+              <span key={index}>#{tag} </span>
+            ))}
+          </p>
+        </div>
+        </NavLink>
+        <img
+          style={Thumbnail.heartImage}
+          src={heartState === 1 ? heartFilled : heart}
+          alt="Heart"
+          onClick={handleHeartClick}
+        />
       </div>
     </div>
   );
