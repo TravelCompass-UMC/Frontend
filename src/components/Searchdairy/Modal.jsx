@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../../styles/Modal.module.css"; // 모달에 대한 스타일을 적용하기 위한 CSS 모듈을 임포트합니다.
 import eclose from "../../assets/images/Pages/close.png"; // 닫기 이미지
+import star from "../../assets/images/Pages/Vector.png"; // 별 이미지
+import bookmark from "../../assets/images/Pages/bookmark.png"; // 별 이미지
 
 const Modal = ({ data, onClose }) => {
     return (
@@ -13,17 +15,21 @@ const Modal = ({ data, onClose }) => {
                 {/* 추가적인 데이터 표시 */}
                 {/* 예: <p>{data.someOtherField}</p> */}
                 {/* 모달 닫기 버튼 */}
-                <img className={styles.closeImage} src={eclose} onClick={onClose} />
+
 
                 <div style={{ height: "40px", marginTop: "30px" }}>
+                    <img className={styles.closeImage} src={eclose} onClick={onClose} />
                     <span className={styles.modalTitle}>성산일출봉</span>
                     <span className={styles.modalPlace}>명소</span>
                 </div>
                 <div style={{ height: "40px" }}>
                     <p className={styles.modallocation}>제주 제주시 애월읍 고내1길 33</p>
                 </div>
-                <div style={{ backgroundColor: "black", height: "50px", }}>
-                    스크랩
+                <div className={styles.modalscrap} style={{ height: "50px", }}>
+                    <img className={styles.starImage} src={star} />
+                    <span className={styles.starNumber}>3.57</span>
+                    <img className={styles.bookmarkImage} src={bookmark} />
+                    <span className={styles.bookmarkNumber}>238</span>
                 </div>
                 <div style={{ height: "60px", marginTop: "20px" }}>
                     <p className={styles.modalplaceinform}>장소 설명을 간단하게 적어 놓는 공간입니다.
