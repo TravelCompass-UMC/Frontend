@@ -45,6 +45,7 @@ const Map = ({ location, recommendations, onPinClick }) => {
 
   const handleMarkerClick = (marker) => {
     onPinClick(marker.name); // Call onPinClick callback with marker name
+    setZoomLevel(14); // Set zoom level when marker is clicked
   };
 
   return (

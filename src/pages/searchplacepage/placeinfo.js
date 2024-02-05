@@ -7,25 +7,24 @@ import "../../styles/placeinfo.css";
 import searchImg from "../../assets/images/Place/검색창.svg";
 
 const PlaceInfo = () => {
-  const { search } = useLocation();
+  const { search, state } = useLocation();
   const searchParams = new URLSearchParams(search);
   const searchQuery = searchParams.get('q');
   const [mapLocation, setMapLocation] = useState(null);
   const navigate = useNavigate();  
-  const [searchedLocation, setSearchedLocation] = useState(null); // 검색된 지역명 상태 추가
+  const [searchedLocation, setSearchedLocation] = useState(null);
 
   useEffect(() => {
     if (searchQuery) {
       const [lat, lng, name] = searchQuery.split(',');
       setMapLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
-      setSearchedLocation(name); // 검색된 지역명 설정
+      setSearchedLocation(name);
     }
   }, [searchQuery]);
 
-  // Handle pin click function
-  const handlePinClick = (placeName) => {
-    // Navigate to /placeinfo1 when a pin is clicked
-    navigate(`/placeinfo1/${placeName}`, { state: { searchedLocation: searchedLocation } }); // 검색어 함께 전달
+  const handlePinClick = () => {
+    const placeName = searchedLocation === '서울' ? 'seoul' : 'jeju'; // 검색된 장소에 따라 placeName 설정
+    navigate(`/placeinfo1_${placeName}`, { state: { searchedLocation: searchedLocation } });
   };
 
   return (
