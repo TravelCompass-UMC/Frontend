@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/search.module.css";
-import VectorImage from "../../assets/images/Pages/Vector.png"; // 이미지를 import
+import VectorImage from "../../assets/images/Pages/Vector (1).png"; // 이미지를 import
 
 const styless = {
   searchText: {
@@ -170,7 +170,7 @@ const SearchComponent = () => {
             }}
           >
             {" "}
-            계획 둘러보기{" "}
+            원하는 조건의 계획 찾기{" "}
           </h3>
         </div>
       </div>

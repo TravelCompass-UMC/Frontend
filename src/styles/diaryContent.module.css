@@ -86,6 +86,7 @@
 .line {
   border-bottom: 2px solid var(--grayscale-Gray2, #EBEDF8);
   background: var(--grayscale-Gray1, #F3F5FF);
+  width: 90%;
 }
 
 .dayContainer {
@@ -94,10 +95,16 @@
   margin-right: 100px;
   display: inline-block;
   /* 가로 스크롤 활성화 */
-  white-space: nowrap;
-  /* 텍스트 줄 바꿈 방지 */
+
 }
 
+.divscroll {
+  width: 90%;
+  height: 550px;
+  overflow: auto;
+  white-space: nowrap;
+  display: relative;
+}
 
 .detailnum {
   color: #000;
@@ -132,6 +139,27 @@
   margin-left: 10%;
   width: 28px;
   height: 28px;
+}
+
+.detailnum2 {
+  /* 2 */
+
+  position: relative;
+  width: 10px;
+  height: 27px;
+  left: -19px;
+  top: -24px;
+
+  /* botton/botton_bold_16 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+
+  /* grayscale/Gray4 */
+  color: #7F85A3;
 }
 
 .detailtime {
