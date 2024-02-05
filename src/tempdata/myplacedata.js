@@ -3,77 +3,135 @@ let myplaces = [
     {
       place: "제주도1",
       info: "카페",
+      where: "애월 애용 애응",
       liked: 0
+      
     },
     {
         place: "서울2",
         info: "식당",
+        where: "애월 애용 멍멍",
         liked: 0
+        
     },
     {
-        place: "부산3",
-        info: "명소",
+        place: "제주도3",
+        info: "카페",
+        where: "애월 애용 왈왈",
         liked: 0
+        
     },
     {
         place: "제주도4",
-        info: "식당",
-        liked: 0
-    },
-    {
-        place: "서울5",
-        info: "카페",
-        liked: 0
-    },
-    {
-        place: "부산6",
-        info: "식당",
-        liked: 0
-    },
-    {
-        place: "제주도7",
         info: "명소",
+        where: "애월 애용 삑삑",
         liked: 0
+        
     },
     {
-        place: "서울8",
+        place: "부산5",
         info: "카페",
+        where: "애월 애용 꽥꽥",
         liked: 0
+        
     },
     {
-        place: "부산9",
-        info: "식당",
-        liked: 0
-    },
-    {
-        place: "제주도10",
-        info: "식당",
-        liked: 0
-    },
-    {
-        place: "제주도11",
+        place: "제주도1",
         info: "카페",
+        where: "애월 애용 애응",
         liked: 0
+        
     },
     {
-        place: "제주도12",
-        info: "식당",
-        liked: 0
-    },
-    {
-        place: "서울13",
+        place: "제주도1",
         info: "카페",
+        where: "애월 애용 애응",
         liked: 0
+        
     },
     {
-        place: "부산14",
+        place: "제주도1",
         info: "카페",
+        where: "애월 애용 애응",
         liked: 0
+        
     },
     {
-        place: "제주도15",
+        place: "제주도1",
         info: "카페",
+        where: "애월 애용 애응",
         liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
+    },
+    {
+        place: "제주도1",
+        info: "카페",
+        where: "애월 애용 애응",
+        liked: 0
+        
     },
 
       

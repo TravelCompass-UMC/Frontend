@@ -22,7 +22,7 @@ class Home extends Component {
     return (
       <div>
         <div className="map">
-          <GoogleMapComponent />
+          {/* <GoogleMapComponent /> */}
         </div>
         <input
           type="text"

@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/Mypages.css";
 import myplaces from "../../tempdata/myplacedata";
-import { InteresetedPlaceThumbnail } from "./MyPage";
-import { Container } from "react-bootstrap";
+import { InterestedPlaceThumbnail } from "./MyPage";
 
 function Myplacepage() {
   const [places] = useState(myplaces);
@@ -40,8 +39,8 @@ function Myplacepage() {
           <div className="row">
             {currentPlaces.map((place, i) => {
               return (
-                <div key={i} className="col-md-3 thumbnail-container">
-                  <InteresetedPlaceThumbnail places={place} i={i + 1}></InteresetedPlaceThumbnail>
+                <div key={i} className="col-md-4 thumbnail-container">
+                  <InterestedPlaceThumbnail places={place} i={i + 1}></InterestedPlaceThumbnail>
                 </div>
               );
             })}
