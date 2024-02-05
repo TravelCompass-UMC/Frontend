@@ -9,10 +9,13 @@ import otherplans from "../../tempdata/otherplandata";
 import myplaces from "../../tempdata/myplacedata";
 import heart from "../../assets/images/Pages/Group 2236.png";
 import heartFilled from "../../assets/images/Pages/Group 2236_filled.png";
+import ProfileImage from "../../assets/images/Mypage/ProfileExample.svg";
+import EndImage from "../../assets/images/Mypage/Endimg.svg";
 import { Container } from "react-bootstrap";
 
 const Thumbnail = {
   bigBox: {
+    boxShadow: "rgba(0, 0, 0, 0.1) 4px 4px 8px 0px",
     width: "333px",
     height: "210px",
     background: "white",
@@ -104,69 +107,43 @@ function Mypage() {
       <InterestedPlacesSection title="관심있는 장소" places={places}/>
       {/* <p>{plans[0].place}</p> */}
       <LogoutSection />
+      <EndSection/>
     </div>
   );
 }
 
 export default Mypage;
 
-export function ProfileSection({
-  userName = "박상현",
-  userNickname = "쉽지않은만남",
-  userEmail = "shawn2018@naver.com",
-  userProfileImage,
-}) {
-  // 네이버 API에서 받아온 정보를 사용하여 프로필 섹션을 채웁니다.
-  // userName: 네이버에서 받아온 사용자 이름
-  // userNickname: 네이버에서 받아온 사용자 닉네임
-  // userEmail: 네이버에서 받아온 사용자 이메일
-  // userProfileImage: 네이버에서 받아온 사용자 프로필 사진 URL
-  
-  const containerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "20px",
-  };
-
-  // 프로필 이미지와 정보를 담는 박스 스타일
-  const profileInfoBoxStyle = {
-    display: "flex",
-    alignItems: "center",
-    margin: "20px 0",
-  };
-
-  // 프로필 이미지 스타일
-  const profileImageStyle = {
-    width: "100px", // 이미지 크기 조정
-    height: "100px",
-    borderRadius: "50%", // 이미지를 원형으로 만듦
-    marginRight: "20px", // 이미지와 텍스트 사이의 간격
-  };
-
-  // 텍스트 정보 스타일
-  const textStyle = {
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "#f0f0f0", // 배경색을 회색으로 설정
-    padding: "10px", // 패딩으로 내부 여백 추가
-    borderRadius: "5px", // 테두리를 약간 둥글게
-  };
-
-  return (
-    <div className="profile-box" style={containerStyle}>
-      <h2 className="user-name">{userName}님 반갑습니다!</h2>
-      <div style={profileInfoBoxStyle}>
-        <img src={userProfileImage} alt="프로필 아이콘" style={profileImageStyle} />
-        <div style={textStyle}>
-          <span>닉네임 {userNickname}</span>
-          <span>로그인 계정 {userEmail}</span>
+  export function ProfileSection({
+    userName = "박상현",
+    userNickname = "쉽지않은만남",
+    userEmail = "shawn2018@naver.com",
+    userProfileImage = ProfileImage,
+  }) {
+    // 네이버 API에서 받아온 정보를 사용하여 프로필 섹션을 채웁니다.
+    // userName: 네이버에서 받아온 사용자 이름
+    // userNickname: 네이버에서 받아온 사용자 닉네임
+    // userEmail: 네이버에서 받아온 사용자 이메일
+    // userProfileImage: 네이버에서 받아온 사용자 프로필 사진 URL
+    return (
+      <div className="profile-box">
+        <h2 className="user-name">{userName}님 반갑습니다!</h2>
+        <div className="profile-and-info">
+          <img src={userProfileImage} alt="프로필 아이콘" className="profile-image" />
+          <div className="info-box">
+            <div className="info-item">
+              <span>닉네임:</span>
+              <div className="value-box">{userNickname}</div>
+            </div>
+            <div className="info-item">
+              <span>로그인 계정:</span>
+              <div className="value-box">{userEmail}</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
 export function MyplanThumbnail(props) {
 
@@ -221,9 +198,11 @@ export function MyplanThumbnail(props) {
   );
 }
 
-export function MyTravelPlanSection({ title, plans }) {
+export function MyTravelPlanSection({ title, plans, userName}) {
   // 처음 3개의 요소만 사용
   const firstThreePlans = plans.slice(0, 3);
+  const isEmpty = plans.length === 0;
+  userName = "박상현";
 
   return (
     <div className="container">
@@ -236,16 +215,25 @@ export function MyTravelPlanSection({ title, plans }) {
         }}
       >
         <p>{title}</p>
-        <Link to="/myplan" className="morebutton">
-          <button>더보기</button>
+        <Link to="/myplan">
+          <button className="morebutton">더보기</button>
         </Link>
       </div>
-      <div className="row-container">
+      {isEmpty ? (
+        <div className="row-container" style={{ display: 'flex', justifyContent: 'center' }}>
+        <div className="empty-box">
+          <p>아직 {userName}님이 작성하신 계획이 존재하지 않습니다.</p>
+          <p>Travel Compass와 함께 여행 계획을 세워보세요!</p>
+        </div>
+      </div>    
+      ) : (
+        <div className="row-container">
         
         {firstThreePlans.map((plan, i) => (
           <MyplanThumbnail key={i} plans={plan} i={i + 1}></MyplanThumbnail>
         ))}
       </div>
+      )}
     </div>
   );
 }
@@ -279,7 +267,7 @@ export function OtherplanThumbnail(props) {
     >
       <img
         style={{ ...Thumbnail.imageBox, width: "100%" }}
-        src={"https://codingapple1.github.io/shop/shoes" + props.i + ".jpg"}
+        src={props.others.img}
         alt="장소 이미지"
       />
       <div style={containerStyle}>
@@ -319,8 +307,8 @@ export function OtherTravelPlanSection({ title, others }) {
         }}
       >
         <p>{title}</p>
-        <Link to="/otherplan" className="morebutton">
-          <button>더보기</button>
+        <Link to="/otherplan">
+          <button className="morebutton">더보기</button>
         </Link>
       </div>
       <div className="row-container">
@@ -341,10 +329,10 @@ export function InterestedPlaceThumbnail(props) {
     <div className="place-thumbnail-container" style={Placethumbnail.detailBox}>
       <div style={Placethumbnail.detailText}>
         <p style={Placethumbnail.place}>
-          <span style={Placethumbnail.placeName}>아웃백</span> {/* 장소 이름 */}
-          <span style={Placethumbnail.placeType}>식당</span> {/* 분류 */}
+          <span style={Placethumbnail.placeName}>{props.places.place}</span> {/* 장소 이름 */}
+          <span style={Placethumbnail.placeType}>{props.places.info}</span> {/* 분류 */}
         </p>
-        <p style={Placethumbnail.placeWhere}>제주 제주시 애월읍 고내1길 33</p> {/* 위치 설명 */}
+        <p style={Placethumbnail.placeWhere}>{props.places.where}</p> {/* 위치 설명 */}
         <div>
           <img alt="평점" /> <span>3.57</span>
           <img alt="북마크" /> <span>238</span>
@@ -374,8 +362,8 @@ export function InterestedPlacesSection({ title, places }) {
         }}
       >
         <p>{title}</p>
-        <Link to="/myplace" className="morebutton">
-          <button>더보기</button>
+        <Link to="/myplace">
+          <button className="morebutton">더보기</button>
         </Link>
       </div>
       <div className="row">
@@ -403,9 +391,20 @@ export function LogoutSection() {
   };
 
   return (
-    <div className="logbutton-container">
-      <button className="logbutton" onClick={handleLogout}>로그아웃</button>
-      <button className="logbutton" onClick={handleWithdrawal}>회원탈퇴</button>
+    <div className="container">
+      <div className="loginbox">
+        <button className="logbutton" onClick={handleLogout}>로그아웃</button>
+        <button className="logbutton" onClick={handleWithdrawal}>회원탈퇴</button>
+      </div>
+
     </div>
   );
+}
+
+export function EndSection(){
+  return (
+    <div className="end-box">
+      <img src={EndImage} alt="EndImage" className="endimage"/>
+    </div>
+  )
 }

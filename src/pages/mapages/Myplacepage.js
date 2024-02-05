@@ -40,7 +40,7 @@ function Myplacepage() {
             {currentPlaces.map((place, i) => {
               return (
                 <div key={i} className="col-md-4 thumbnail-container">
-                  <InterestedPlaceThumbnail place={place} i={i + 1}></InterestedPlaceThumbnail>
+                  <InterestedPlaceThumbnail places={place} i={i + 1}></InterestedPlaceThumbnail>
                 </div>
               );
             })}
