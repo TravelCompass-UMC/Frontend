@@ -74,6 +74,15 @@ function LeftBar({ onCustomChange }) {
       /> */}
       {/* 여행 기간에 따른 일차 버튼들 */}
       {generateDayButtons()}
+      {/*현재 계획서 적용하기*/}
+      <button className={styles.buttonUse}
+        // style={{
+        //   background: custom === 0 ? "#484a64" : "#ebedf8",
+        // }}
+        value={-1} onClick={() => handleAllScheduleClick(-1)}>
+        <div>현재 계획서</div>
+        적용하기
+      </button>
     </div>
   );
 }
