@@ -28,7 +28,6 @@ const SidebarL = ({
   }, [externalIsOpen, internalIsOpen]);
 
   return (
-    <div className="container">
       <div
         ref={side}
         className="sidebar"
@@ -43,7 +42,6 @@ const SidebarL = ({
         </button>
         <div className="content">{children}</div>
       </div>
-    </div>
   );
 };
 

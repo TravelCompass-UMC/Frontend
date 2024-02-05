@@ -13,7 +13,8 @@ const Modal = ({ open, close }) => {
     const state = urlParams.get("state");
 
     if (code && state) {
-      fetch("/api/auth/naver/callback", {
+      // `/token` 엔드포인트로 요청 변경
+      fetch("/token", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,8 +47,6 @@ const Modal = ({ open, close }) => {
         })
         .then(({ response }) => {
           console.log("User Info:", response);
-          // 여기에서 사용자 정보(닉네임, 이메일 등)를 처리합니다.
-          // 예: 로그인 세션 생성, 데이터베이스에 사용자 정보 저장 등
           sessionStorage.setItem("nickname", response.nickname); // 닉네임 저장
           navigate("/"); // 로그인 성공 후 리디렉션
         })

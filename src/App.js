@@ -21,6 +21,7 @@ import MainHeader from "./components/MainHeader";
 import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
 import Plandetail from "./pages/travelplan/travelplan_detail";
+import PlanEdit from "./pages/planedit/travelplanEdit";
 import Myplanpage from "./pages/mapages/Myplanpage";
 import Myplacepage from "./pages/mapages/Myplacepage";
 import Otherplanpage from "./pages/mapages/Otherplanpage";
@@ -49,6 +50,7 @@ function App() {
             <Route path="/placeinfo2/:placeName" element={<PlaceInfo2 />} />
             <Route path="/city/:cityName" element={<CityDetail />} />
             <Route path="/travelplandetail" element={<Plandetail />} />
+            <Route path="/travelplanedit" element={<PlanEdit />} />
             <Route path="/myplan" element={<Myplanpage />} />
             <Route path="/otherplan" element={<Otherplanpage />} />
             <Route path="/myplace" element={<Myplacepage />} />
