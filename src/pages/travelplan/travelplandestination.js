@@ -109,54 +109,67 @@ class TrvlPlan extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ width: "1700px" }}>
         <form onSubmit={this.handleSubmit}>
           {/* 여행 제목 입력 필드 */}
+          <div>
+            <div className="textTitle" style={{ marginTop: "200px" }}>여행의 제목을 작성해주세요.</div></div>
           <input
             type="text"
             maxLength="20"
-            className="search_input"
+            className="search_title"
             name="tripTitle"
-            placeholder="여행 제목을 입력해주세요."
+            placeholder="  여행 제목을 입력해주세요."
             value={this.state.tripTitle}
             onChange={this.handleTripTitleChange}
           />
           {/* 목적지 검색 필드 */}
+          <div className="textTitle">어디로 가시나요?</div>
           <input
             type="text"
             maxLength="20"
-            className="search_input"
+            className="search_destination"
             name="searchInput"
-            placeholder="어디로 가고싶나요?"
+            placeholder="  어디로 가고싶나요?"
             value={this.state.searchInput}
             onChange={this.handleSearchInput}
           />
           {this.renderSuggestions()}
           {/* 초대 코드 입력 섹션 */}
+          <div className="textTitle">친구에게 초대받으셨나요?</div>
           <div className="invitationCodeSection">
             <input
               type="text"
               maxLength="20"
-              className="search_input"
+              className="search_invite"
               name="invitationCode"
-              placeholder="초대코드를 입력해주세요."
+              placeholder="  초대코드를 입력해주세요."
               value={this.state.invitationCode}
               onChange={this.handleInvitationCodeChange}
-            />
+            ></input>
             <button
               onClick={this.handleInvitationCodeSubmit}
-              className="submit_button"
+              className="serach_submit"
             >
               제출
             </button>
+
           </div>
+
+          {/* 이전 버튼 */}
+          <button type="submit" className="pre_button">
+            이전
+          </button>
 
           {/* 다음 버튼 */}
           <button type="submit" className="next_button">
-            다음
+            선택완료
           </button>
-        </form>
-      </div>
+
+
+          <div className="image"> </div>
+        </form >
+      </div >
     );
   }
 }

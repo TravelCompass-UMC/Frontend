@@ -1,14 +1,121 @@
-.search_input {
-  padding: 2px;
-  margin-right: 5px;
-  margin-top: 15px;
-  width: 50%;
+.textTitle {
+  /* 여행의 제목을 작성해주세요. */
+
+  position: relative;
+  left: 25%;
+  margin-top: 50px;
+
+  /* head/head_bold_24 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 30px;
+  /* identical to box height */
+
+  /* grayscale/Gray8 */
+  color: #191B24;
 }
 
+.search_title {
+  /* Rectangle 34624545 */
+
+  position: relative;
+  width: 480px;
+  height: 80px;
+  left: 25%;
+
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border: none;
+  border-radius: 10px;
+
+  /* botton/botton_bold_16 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+}
+
+
+.search_destination {
+  /* Rectangle 34624545 */
+
+  position: relative;
+  width: 480px;
+  height: 80px;
+  left: 25%;
+
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border: none;
+  border-radius: 10px;
+
+  /* botton/botton_bold_16 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+}
+
+
+
+.search_invite {
+  /* Rectangle 34624545 */
+
+  position: relative;
+  width: 400px;
+  height: 80px;
+  left: 25%;
+
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border: none;
+  border-radius: 10px;
+
+  /* botton/botton_bold_16 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+}
+
+
 .serach_submit {
-  position: absolute;
-  margin-top: 14px;
-  cursor: pointer;
+  /* 확인 */
+
+  position: relative;
+  width: 80px;
+  height: 80px;
+  left: 25%;
+
+  /* botton/botton_bold_16 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+  border: none;
+  border-radius: 10px;
 }
 
 
@@ -22,3 +129,70 @@
   margin-right: 15px;
 }
 
+.pre_button {
+  /* Rectangle 34624548 */
+
+  position: relative;
+  width: 180px;
+  height: 80px;
+  left: 25%;
+  margin-top: 100px;
+
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border-radius: 8px;
+  border: none;
+
+  /* botton/botton_bold_20 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  /* identical to box height */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+}
+
+.next_button {
+  /* Rectangle 34624548 */
+
+  position: relative;
+  width: 180px;
+  height: 80px;
+  left: 75%;
+  margin-top: 100px;
+
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border-radius: 8px;
+  border: none;
+
+  /* botton/botton_bold_20 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  /* identical to box height */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+}
+
+.image {
+
+
+  /* Rectangle 34624544 */
+
+  position: relative;
+  width: 580px;
+  height: 480px;
+  left: 68%;
+  margin-top: -650px;
+
+  /* grayscale/Gray2 */
+  background: #EBEDF8;
+  border-radius: 8px;
+}
