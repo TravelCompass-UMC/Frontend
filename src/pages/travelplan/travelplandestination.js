@@ -84,17 +84,23 @@ class TrvlPlan extends Component {
         return (
           <ul className="suggestions">
             {filteredDestinations.map((destination, index) => (
-              <li
+              <div
+                className="destinationList"
                 key={index}
                 onClick={() => this.selectDestination(destination)}
               >
-                {destination}
-              </li>
+                <div className="destinationListText">{destination}</div>
+              </div>
             ))}
           </ul>
         );
       } else {
-        return <div className="no-suggestions">검색 결과가 없습니다.</div>;
+        return (
+          <div
+            className="destinationList">
+            <div className="destinationListText">검색 결과가 없습니다.</div>;
+          </div>
+        )
       }
     }
 

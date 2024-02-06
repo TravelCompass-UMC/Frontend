@@ -305,3 +305,35 @@
   background: #EBEDF8;
   border-radius: 8px;
 }
+
+.destinationList {
+  /* Rectangle 34624515 */
+
+  position: absolute;
+  width: 480px;
+  height: 60px;
+  left: 32.2%;
+  top: 592px;
+
+  /* grayscale/White */
+  background: #FFFFFF;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000;
+
+
+}
+
+.destinationListText {
+  /* botton/botton_bold_16 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+  margin-top: 15px;
+  margin-left: 19px;
+  /* grayscale/Gray5 */
+  color: #626682;
+}
