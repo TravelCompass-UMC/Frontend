@@ -25,7 +25,10 @@
     font-family: "SUIT Variable";
     font-size : 13px;
   } 
-
+.placeimg {
+  margin-top:12px;
+  margin-right:10px;
+}
   /*ProfileSection*/
   .profile-box {
     text-align: center;
@@ -102,22 +105,23 @@
     padding: 0px 0px;
   }
   .place-thumbnail-container{
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 0px 10px; /* 상하좌우 마진 추가 */
+    justify-content: center; /* 가운데 정렬 */
+    align-items: center; /* 세로 방향 중앙 정렬 */
   }
 
-  .thumbnail-container{
+  .thumbnail-container {
     margin: 20px; /* 상하좌우 마진 추가 */
     justify-content: center; /* 가운데 정렬 */
     align-items: center; /* 세로 방향 중앙 정렬 */
   }
 
   /* IsEmpty-container */
-  .empty-box {
+  .emptymy-box {
     border: 2px solid #EBEDF8;
     border-radius: 8px;
-    width: 1019px;
-    height: 210px;
+    width: 1160px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -127,22 +131,81 @@
     color: #BFC4D8; /* 글씨 색상 설정 */
   }
   
-  .empty-box p {
+ .emptymy-box p {
     margin: 5px 0; /* 간격 조정 */
   }
   
-  .empty-box p:first-child {
+  .emptymy-box p:first-child {
     font-size: 12px; /* 첫 번째 문단의 글씨 크기 */
     font-weight: bold;
     font-family: "SUIT Variable";
   }
   
-  .empty-box p:last-child {
+  .emptymy-box p:last-child {
     font-size: 20px; /* 두 번째 문단의 글씨 크기 */
     font-weight: bold; /* 글씨 진하게 */
     font-family: "SUIT Variable";
   }
+  /*  */
+  .emptyother-box {
+    border: 2px solid #EBEDF8;
+    border-radius: 8px;
+    width: 1160px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #BFC4D8; /* 글씨 색상 설정 */
+  }
   
+ .emptyother-box p {
+    margin: 5px 0; /* 간격 조정 */
+  }
+  
+  .emptyother-box p:first-child {
+    font-size: 12px; /* 첫 번째 문단의 글씨 크기 */
+    font-weight: bold;
+    font-family: "SUIT Variable";
+  }
+  
+  .emptyother-box p:last-child {
+    font-size: 20px; /* 두 번째 문단의 글씨 크기 */
+    font-weight: bold; /* 글씨 진하게 */
+    font-family: "SUIT Variable";
+  }
+  /*  */
+  .emptyplace-box {
+    border: 2px solid #EBEDF8;
+    border-radius: 8px;
+    width: 1160px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #BFC4D8; /* 글씨 색상 설정 */
+  }
+  
+ .emptyplace-box p {
+    margin: 5px 0; /* 간격 조정 */
+  }
+  
+  .emptyplace-box p:first-child {
+    font-size: 12px; /* 첫 번째 문단의 글씨 크기 */
+    font-weight: bold;
+    font-family: "SUIT Variable";
+  }
+  
+  .emptyplace-box p:last-child {
+    font-size: 20px; /* 두 번째 문단의 글씨 크기 */
+    font-weight: bold; /* 글씨 진하게 */
+    font-family: "SUIT Variable";
+  }
   /*LoginSection*/
   .loginbox {
     display: flex;
@@ -158,6 +221,7 @@
     cursor: pointer; /* 마우스 오버 시 커서 변경 */
     font-size: 16px; /* 폰트 크기 조정 */
   }
+  
   
   /* EndSection */
 .end-box{
