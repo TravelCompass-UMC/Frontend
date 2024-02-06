@@ -346,3 +346,40 @@
 
 
 }
+
+
+.dateTitle {
+
+  /*여행기간을 선택해주세요*/
+  position: relative;
+  left: 25%;
+  /* head/head_bold_24 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  /* identical to box height */
+
+  /* grayscale/Gray8 */
+  color: #191B24;
+}
+
+.dateTitle1 {
+
+  /*여행기간을 선택해주세요*/
+  position: relative;
+  left: 26%;
+
+
+  /* body/body_medium_15 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 170%;
+  /* identical to box height, or 26px */
+
+  /* grayscale/Gray4 */
+  color: #7F85A3;
+}

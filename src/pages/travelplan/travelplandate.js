@@ -40,9 +40,11 @@ const TrvlPlan = () => {
 
   return (
     <div>
-      <div>
-        <h1>여행 기간</h1>
-        <p>기간을 선택해주세요</p>
+      <div style={{ marginTop: "180px" }}>
+        <div>
+          <span className="dateTitle">여행 기간을 선택해주세요.</span>
+          <span className="dateTitle1">여행 기간은 최대 00일까지 선택 가능합니다.</span>
+        </div>
         <div>
           <h2>여행 시작일:</h2>
           <DatePicker
@@ -72,7 +74,16 @@ const TrvlPlan = () => {
           />
         </div>
       </div>
-      <button onClick={openModal}>계획 만들기</button>
+
+      {/* 이전 버튼 */}
+      <button type="submit" className="pre_button">
+        이전
+      </button>
+
+      {/* 다음 버튼 */}
+      <button type="submit" onClick={openModal} className="next_button">
+        선택완료
+      </button>
       <Modal
         open={modalOpen}
         close={closeModal}
