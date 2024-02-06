@@ -1,14 +1,14 @@
-// placeinfo1_seoul.js
+// placeinfo1_busan.js
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Map from "../../components/Map";
-import SidebarL from "../../components/SidebarL";
-// import searchImg from "../../assets/images/Place/검색창.svg";
-import SearchRecommendations from "../../components/Recommendation/RecommendationSeoul";
-import PlaceDetail from "../../components/PlaceDetail";
-import "../../styles/placeinfo.css"; 
+import Map from "../../../components/Map";
+import SidebarL from "../../../components/SidebarL";
+import searchImg from "../../../assets/images/Place/검색창.svg";
+import SearchRecommendations from "../../../components/Recommendation/RecommendationSeoul";
+import PlaceDetail from "../../../components/PlaceDetail";
+import "../../../styles/placeinfo.css";  
 
-const PlaceInfoSeoul = () => {
+const PlaceInfoBusan = () => {
   const { state } = useLocation(); // state에서 검색어 받아오기
   const searchedLocation = state?.searchedLocation; // 검색어 받아오기
   const searchParams = new URLSearchParams(window.location.search); // 검색어 직접 가져오기
@@ -24,16 +24,16 @@ const PlaceInfoSeoul = () => {
       const [lat, lng, name] = searchQuery.split(",");
       setMapLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
     } else {
-      setMapLocation({ lat: 37.56313, lng: 126.98854 });
+      setMapLocation({ lat: 35.22649, lng: 129.07273 });
     }
   }, [searchQuery]);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
       const data = [
-        { name: "경복궁 광화문", placeId: "ChIJsYP2VHSjfDURwAtqfCHFGfo", lat: 37.57598, lng: 126.97680 },
-        { name: "63빌딩", placeId: "ChIJn_UiGDyffDURWfZBRKwb5YE", lat: 37.51993, lng: 126.94010 },
-        { name: "DDP 동대문디자인플라자", placeId: "ChIJ8xRYr29FezUR3AtFqx2pIlw", lat: 37.56784, lng: 127.00906 },
+        { name: "해운대해수욕장", placeId: "ChIJXwf-DlyNaDURmKxjwdWxY5k", lat: 35.15955, lng: 129.16003 },
+        { name: "국립해양박물관", placeId: "ChIJG53_8sjuaDURR7ggeXzOSis", lat: 35.07847, lng: 129.07987 },
+        { name: "태종대유원지", placeId: "ChIJOfX1e0zpaDURWq5Hp5x4-SM", lat: 35.05417, lng: 129.08750 },
       ];
       setRecommendations(data);
     };
@@ -50,7 +50,10 @@ const PlaceInfoSeoul = () => {
   return (
     <div>
       <SidebarL width={320}>
-      {/* <img src={searchImg} alt="search-image" width={280}/> */}
+      <div style={{ display: 'inline-block' }}>
+          <img src={searchImg} alt="search-image" width={280} />
+          <div className="placeName">{searchedLocation}</div>
+        </div>
       <div className="popularplace">
           <p>{searchedLocation}의 추천 장소 목록</p>
           <SearchRecommendations onRecommendationClick={handlePinClick} />
@@ -62,4 +65,4 @@ const PlaceInfoSeoul = () => {
   );
 };
 
-export default PlaceInfoSeoul;
+export default PlaceInfoBusan;

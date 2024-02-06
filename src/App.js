@@ -13,8 +13,14 @@ import Searchdiary from "./pages/searchdiarypage/searchdiarypage";
 import DiaryContent from "./pages/searchdiarypage/diarycontent";
 import Searchplace from "./pages/searchplacepage/searchplace";
 import SearchPlaceInfo from "./pages/searchplacepage/placeinfo";
-import PlaceInfoJeju from "./pages/searchplacepage/placeinfo1_jeju";
-import PlaceInfoSeoul from "./pages/searchplacepage/placeinfo1_seoul";
+import PlaceInfoJeju from "./pages/searchplacepage/placeinfo1.js/placeinfo1_jeju";
+import PlaceInfoSeoul from "./pages/searchplacepage/placeinfo1.js/placeinfo1_seoul";
+import PlaceInfoBusan from "./pages/searchplacepage/placeinfo1.js/placeinfo1_busan";
+import PlaceInfoYeosu from "./pages/searchplacepage/placeinfo1.js/placeinfo1_yeosu";
+import PlaceInfoGyeongju from "./pages/searchplacepage/placeinfo1.js/placeinfo1_gyeongju";
+import PlaceInfoSokcho from "./pages/searchplacepage/placeinfo1.js/placeinfo1_sokcho";
+import PlaceInfoGangneung from "./pages/searchplacepage/placeinfo1.js/placeinfo1_gangneung";
+import PlaceInfoYangyang from "./pages/searchplacepage/placeinfo1.js/placeinfo1_yangyang";
 import PlaceDetail from "./components/PlaceDetail";
 import CityDetail from "./components/CityDetail";
 import MainHeader from "./components/MainHeader";
@@ -48,6 +54,12 @@ function App() {
             <Route path="/placeinfo/:placeName" element={<PlaceDetail />} />
             <Route path="/placeinfo1_jeju" element={<PlaceInfoJeju />} />
             <Route path="/placeinfo1_seoul" element={<PlaceInfoSeoul />} />
+            <Route path="/placeinfo1_busan" element={<PlaceInfoBusan />} />
+            <Route path="/placeinfo1_yeosu" element={<PlaceInfoYeosu />} />
+            <Route path="/placeinfo1_gyeongju" element={<PlaceInfoGyeongju />} />
+            <Route path="/placeinfo1_sokcho" element={<PlaceInfoSokcho />} />
+            <Route path="/placeinfo1_gangneung" element={<PlaceInfoGangneung />} />
+            <Route path="/placeinfo1_yangyang" element={<PlaceInfoYangyang />} />
             <Route path="/city/:cityName" element={<CityDetail />} />
             <Route path="/travelplandetail" element={<Plandetail />} />
             <Route path="/travelplanedit" element={<PlanEdit />} />

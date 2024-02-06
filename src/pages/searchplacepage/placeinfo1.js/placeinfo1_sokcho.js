@@ -1,15 +1,15 @@
-// placeinfo1_jeju.js
+// placeinfo1_sokcho.js
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Map from "../../components/Map";
-import SidebarL from "../../components/SidebarL";
-import searchImg from "../../assets/images/Place/검색창.svg";
-import SearchRecommendations from "../../components/Recommendation/RecommendationJeju";
-import PlaceDetail from "../../components/PlaceDetail";
-import "../../styles/placeinfo.css"; 
+import Map from "../../../components/Map";
+import SidebarL from "../../../components/SidebarL";
+import searchImg from "../../../assets/images/Place/검색창.svg";
+import SearchRecommendations from "../../../components/Recommendation/RecommendationSokcho";
+import PlaceDetail from "../../../components/PlaceDetail";
+import "../../../styles/placeinfo.css"; 
 
 
-const PlaceInfoJeju = () => {
+const PlaceInfoSokcho = () => {
   const { state } = useLocation(); // state에서 검색어 받아오기
   const searchedLocation = state?.searchedLocation; // 검색어 받아오기
   const searchParams = new URLSearchParams(window.location.search); // 검색어 직접 가져오기
@@ -23,16 +23,16 @@ const PlaceInfoJeju = () => {
       const [lat, lng, name] = searchQuery.split(",");
       setMapLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
     } else {
-      setMapLocation({ lat: 33.380462, lng: 126.539098 });
+      setMapLocation({ lat: 38.18131, lng: 128.52054 });
     }
   }, [searchQuery]);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
       const data = [
-        { name: "빛의 벙커", placeId: "ChIJnTFvBUcTDTURh7KTiaHnYYE", lat: 33.440005, lng: 126.899003 },
-        { name: "물영아리오름", placeId: "ChIJkzAEg1QBDTURvjZlYk6E4Ok", lat: 33.369239, lng: 126.693553 },
-        { name: "아르떼뮤지엄 제주", placeId: "ChIJUwtlFmhfDDURUr3BMm9Sb6k", lat: 33.396560, lng: 126.344625 },
+        { name: "속초해변", placeId: "ChIJ_ZIhB3S82F8RL-P-9mkcqq0", lat: 38.19126, lng: 128.60346 },
+        { name: "설악산자생식물원", placeId: "ChIJewqqbNy82F8RSoMNMELvzRk", lat: 38.19704, lng: 128.52529 },
+        { name: "영금정", placeId: "ChIJuVQp1w682F8RULr4nyAoHWU", lat: 38.21192, lng: 128.60145 },
       ];
       setRecommendations(data);
     };
@@ -48,9 +48,12 @@ const PlaceInfoJeju = () => {
   return (
     <div>
       <SidebarL width={320}>
-      <img src={searchImg} alt="search-image" width={280}/>
+      <div style={{ display: 'inline-block' }}>
+          <img src={searchImg} alt="search-image" width={280} />
+          <div className="placeName">{searchedLocation}</div>
+        </div>
       <div className="popularplace">
-          <p>{searchedLocation}의 추천 장소 목록</p>
+          <p className="placeList">{searchedLocation}의 추천 장소 목록</p>
           <SearchRecommendations onRecommendationClick={handlePinClick} />
         </div>
         {selectedPlace && <PlaceDetail place={selectedPlace} />}
@@ -60,4 +63,4 @@ const PlaceInfoJeju = () => {
   );
 };
 
-export default PlaceInfoJeju;
+export default PlaceInfoSokcho;
