@@ -59,6 +59,28 @@ const TrvlPlan = () => {
             selectsStart
             startDate={startDate}
             endDate={endDate}
+            popperModifiers={{
+              offset: {
+                enabled: true,
+                offset: "0, 10",
+              },
+              preventOverflow: {
+                enabled: true,
+                escapeWithReference: false,
+                boundariesElement: "viewport",
+              },
+              flip: {
+                enabled: true,
+              },
+              maxheight: {
+                enabled: true,
+                max: "500px",
+              },
+              maxwidth: {
+                enabled: true,
+                max: "500px",
+              },
+            }}
           />
         </div>
         <div>

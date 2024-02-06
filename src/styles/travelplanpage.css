@@ -386,34 +386,36 @@
 
 
 .custom-datepicker {
-  width: 100%;
+  width: 500px;
   padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+  font-size: 20px;
+  border: 1px solid #0000004b;
   border-radius: 5px;
   margin-bottom: 15px;
 }
 
 /* Custom styles for the date picker calendar */
 .custom-calendar {
-  font-size: 14px;
+  font-size: 20px;
+  width: 500px;
+  height: 500px;
 }
 
 /* Style for the previous and next month buttons in the calendar */
 .custom-calendar .react-datepicker__navigation {
-  top: 10px;
+  top: -100px;
 }
 
 /* Style for the day cells in the calendar */
 .custom-calendar .react-datepicker__day {
-  font-size: 14px;
+  font-size: 20px;
   padding: 8px;
   margin: 2px;
 }
 
 /* Style for the selected day in the calendar */
 .custom-calendar .react-datepicker__day--selected {
-  background-color: #007bff;
+  background-color: #8ea1ff;
   color: #fff;
 }
 
