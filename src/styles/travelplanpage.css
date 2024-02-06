@@ -383,3 +383,41 @@
   /* grayscale/Gray4 */
   color: #7F85A3;
 }
+
+
+.custom-datepicker {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+/* Custom styles for the date picker calendar */
+.custom-calendar {
+  font-size: 14px;
+}
+
+/* Style for the previous and next month buttons in the calendar */
+.custom-calendar .react-datepicker__navigation {
+  top: 10px;
+}
+
+/* Style for the day cells in the calendar */
+.custom-calendar .react-datepicker__day {
+  font-size: 14px;
+  padding: 8px;
+  margin: 2px;
+}
+
+/* Style for the selected day in the calendar */
+.custom-calendar .react-datepicker__day--selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Style for the today's date in the calendar */
+.custom-calendar .react-datepicker__day--today {
+  font-weight: bold;
+}

@@ -48,7 +48,9 @@ const TrvlPlan = () => {
         <div>
           <h2>여행 시작일:</h2>
           <DatePicker
-            className="datepicker"
+            className="custom-datepicker" // Add a custom class for styling
+            calendarClassName="custom-calendar" // Add a custom class for the calendar
+
             locale={ko}
             dateFormat="yyyy년 MM월 dd일"
             minDate={new Date()}
@@ -62,7 +64,9 @@ const TrvlPlan = () => {
         <div>
           <h2>여행 종료일:</h2>
           <DatePicker
-            className="datepicker"
+            className="custom-datepicker" // Add a custom class for styling
+            calendarClassName="custom-calendar" // Add a custom class for the calendar
+
             locale={ko}
             dateFormat="yyyy년 MM월 dd일"
             selected={endDate}
