@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/travelplanpage.css";
 import "react-datepicker/dist/react-datepicker.css";
+import image1 from "../../assets/images/Pages/Vector (2).png"
 import { format } from "date-fns";
 
 class TrvlPlan extends Component {
@@ -89,7 +90,9 @@ class TrvlPlan extends Component {
                 key={index}
                 onClick={() => this.selectDestination(destination)}
               >
-                <div className="destinationListText">{destination}</div>
+                <div className="destinationListText">{destination}
+                  <img className="image1" src={image1} />
+                </div>
               </div>
             ))}
           </ul>

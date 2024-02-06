@@ -78,7 +78,7 @@
   /* or 27px */
 
   /* grayscale/Gray3 */
-  color: #BFC4D8;
+  background: #F3F5FF;
 }
 
 
@@ -101,10 +101,8 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 170%;
-  /* or 27px */
-
   /* grayscale/Gray3 */
-  color: #BFC4D8;
+  background: #F3F5FF;
 }
 
 
@@ -123,7 +121,6 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 170%;
-
   /* or 27px */
   outline: none;
   /* grayscale/Gray8 */
@@ -336,4 +333,16 @@
   margin-left: 19px;
   /* grayscale/Gray5 */
   color: #626682;
+}
+
+.image1 {
+  /* Vector */
+
+  position: absolute;
+  width: 47px;
+  height: 13px;
+  left: 85%;
+  top: 25px;
+
+
 }
