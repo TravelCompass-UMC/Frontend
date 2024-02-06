@@ -112,48 +112,54 @@ class TrvlPlan extends Component {
       <div style={{ width: "1700px" }}>
         <form onSubmit={this.handleSubmit}>
           {/* 여행 제목 입력 필드 */}
-          <div>
-            <div className="textTitle" style={{ marginTop: "200px" }}>여행의 제목을 작성해주세요.</div></div>
-          <input
-            type="text"
-            maxLength="20"
-            className="search_title"
-            name="tripTitle"
-            placeholder="  여행 제목을 입력해주세요."
-            value={this.state.tripTitle}
-            onChange={this.handleTripTitleChange}
-          />
-          {/* 목적지 검색 필드 */}
-          <div className="textTitle">어디로 가시나요?</div>
-          <input
-            type="text"
-            maxLength="20"
-            className="search_destination"
-            name="searchInput"
-            placeholder="  어디로 가고싶나요?"
-            value={this.state.searchInput}
-            onChange={this.handleSearchInput}
-          />
-          {this.renderSuggestions()}
-          {/* 초대 코드 입력 섹션 */}
-          <div className="textTitle">친구에게 초대받으셨나요?</div>
-          <div className="invitationCodeSection">
+
+          <div className="textTitle" style={{ marginTop: "200px" }}>여행의 제목을 작성해주세요.</div>
+          <div className="search_title">
             <input
               type="text"
               maxLength="20"
-              className="search_invite"
-              name="invitationCode"
-              placeholder="  초대코드를 입력해주세요."
-              value={this.state.invitationCode}
-              onChange={this.handleInvitationCodeChange}
-            ></input>
-            <button
-              onClick={this.handleInvitationCodeSubmit}
-              className="serach_submit"
-            >
-              제출
-            </button>
+              className="search_title1"
+              name="tripTitle"
+              placeholder="여행 제목을 입력해주세요."
+              value={this.state.tripTitle}
+              onChange={this.handleTripTitleChange}
+            />
+          </div>
+          {/* 목적지 검색 필드 */}
+          <div className="textTitle">어디로 가시나요?</div>
+          <div className="search_destination">
+            <input
+              type="text"
+              maxLength="20"
+              className="search_destination1"
+              name="searchInput"
+              placeholder="어디로 가고싶나요?"
+              value={this.state.searchInput}
+              onChange={this.handleSearchInput}
+            />
+          </div>
+          {this.renderSuggestions()}
+          {/* 초대 코드 입력 섹션 */}
+          <div className="textTitle">친구에게 초대받으셨나요?</div>
+          <div className="search_invite">
+            <div className="invitationCodeSection">
+              <input
+                type="text"
+                maxLength="20"
+                className="search_invite1"
+                name="invitationCode"
+                placeholder="초대코드를 입력해주세요."
+                value={this.state.invitationCode}
+                onChange={this.handleInvitationCodeChange}
+              ></input>
+              <button
+                onClick={this.handleInvitationCodeSubmit}
+                className="search_submit"
+              >
+                제출
+              </button>
 
+            </div>
           </div>
 
           {/* 이전 버튼 */}

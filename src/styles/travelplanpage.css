@@ -30,6 +30,45 @@
   border: none;
   border-radius: 10px;
 
+  /* 신나는 부산 여행 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  padding-right: 10px;
+  outline: none;
+  /* Remove the outline on focus */
+  /* or 27px */
+
+  /* grayscale/Gray8 */
+  color: #191B24;
+}
+
+.search_title1 {
+  /* Rectangle 34624545 */
+
+  position: relative;
+  margin-top: 25px;
+  margin-left: 20px;
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border: none;
+  border-radius: 10px;
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+
+  /* or 27px */
+  outline: none;
+  /* grayscale/Gray8 */
+  color: #191B24;
+}
+
+
+.search_title1::placeholder {
   /* botton/botton_bold_16 */
   font-family: 'SUIT Variable';
   font-style: normal;
@@ -69,12 +108,47 @@
 }
 
 
+.search_destination1 {
+  /* Rectangle 34624545 */
+
+  position: relative;
+  margin-top: 25px;
+  margin-left: 20px;
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border: none;
+  border-radius: 10px;
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+
+  /* or 27px */
+  outline: none;
+  /* grayscale/Gray8 */
+  color: #191B24;
+}
+
+
+.search_destination1::placeholder {
+  /* botton/botton_bold_16 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+}
 
 .search_invite {
   /* Rectangle 34624545 */
 
   position: relative;
-  width: 400px;
+  width: 480px;
   height: 80px;
   left: 25%;
 
@@ -95,14 +169,49 @@
   color: #BFC4D8;
 }
 
+.search_invite1 {
+  /* Rectangle 34624545 */
 
-.serach_submit {
+  position: relative;
+  margin-top: 25px;
+  margin-left: 20px;
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border: none;
+  border-radius: 10px;
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+
+  /* or 27px */
+  outline: none;
+  /* grayscale/Gray8 */
+  color: #191B24;
+}
+
+
+.search_invite1::placeholder {
+  /* botton/botton_bold_16 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+}
+
+.search_submit {
   /* 확인 */
 
   position: relative;
   width: 80px;
   height: 80px;
-  left: 25%;
+  left: 35%;
 
   /* botton/botton_bold_16 */
   font-family: 'SUIT Variable';
