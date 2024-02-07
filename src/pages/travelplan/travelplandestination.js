@@ -99,10 +99,12 @@ class TrvlPlan extends Component {
         );
       } else {
         return (
-          <div
-            className="destinationList">
-            <div className="destinationListText">검색 결과가 없습니다.</div>;
-          </div>
+          <ul className="suggestions">
+            <div
+              className="destinationList">
+              <div className="destinationListText">검색 결과가 없습니다.</div>
+            </div>
+          </ul>
         )
       }
     }
@@ -135,21 +137,23 @@ class TrvlPlan extends Component {
             />
           </div>
           {/* 목적지 검색 필드 */}
-          <div className="textTitle">어디로 가시나요?</div>
-          <div className="search_destination">
-            <input
-              type="text"
-              maxLength="20"
-              className="search_destination1"
-              name="searchInput"
-              placeholder="어디로 가고싶나요?"
-              value={this.state.searchInput}
-              onChange={this.handleSearchInput}
-            />
+          <div style={{ height: "580px" }}>
+            <div className="textTitle">어디로 가시나요?</div>
+            <div className="search_destination">
+              <input
+                type="text"
+                maxLength="20"
+                className="search_destination1"
+                name="searchInput"
+                placeholder="어디로 가고싶나요?"
+                value={this.state.searchInput}
+                onChange={this.handleSearchInput}
+              />
+            </div>{this.renderSuggestions()}
           </div>
-          {this.renderSuggestions()}
+
           {/* 초대 코드 입력 섹션 */}
-          <div className="textTitle">친구에게 초대받으셨나요?</div>
+          <div className="textTitle2">친구에게 초대받으셨나요?</div>
           <div className="search_invite">
             <div className="invitationCodeSection">
               <input
