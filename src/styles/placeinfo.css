@@ -15,6 +15,16 @@
     z-index: 0;
   }
 
+.placeName {
+  margin-top: -30px;
+  margin-left: 20px;
+  font-family: 'SUIT Variable', sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 450;
+  color: var(--grayscale-Gray8, #191B24);
+}  
+
 .searched-location {
   margin-top: 20%;
   color: red;
@@ -25,4 +35,13 @@
 .popularplace {
   margin-top: 10%;
   font-size: large;
+}
+
+.placeList {
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-bottom: -5px;
+  font-family: 'SUIT Variable', sans-serif;
+  font-weight: 350;
+  color: #8270FF;
 }

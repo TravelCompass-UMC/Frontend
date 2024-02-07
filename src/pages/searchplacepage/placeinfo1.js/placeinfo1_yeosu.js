@@ -1,14 +1,15 @@
-// placeinfo1_seoul.js
+// placeinfo1_yeosu.js
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Map from "../../components/Map";
-import SidebarL from "../../components/SidebarL";
-// import searchImg from "../../assets/images/Place/검색창.svg";
-import SearchRecommendations from "../../components/Recommendation/RecommendationSeoul";
-import PlaceDetail from "../../components/PlaceDetail";
-import "../../styles/placeinfo.css"; 
+import Map from "../../../components/Map";
+import SidebarL from "../../../components/SidebarL";
+import searchImg from "../../../assets/images/Place/검색창_여수.svg";
+import SearchRecommendations from "../../../components/Recommendation/RecommendationYeosu";
+import PlaceDetail from "../../../components/PlaceDetail";
+import "../../../styles/placeinfo.css"; 
 
-const PlaceInfoSeoul = () => {
+
+const PlaceInfoYeosu = () => {
   const { state } = useLocation(); // state에서 검색어 받아오기
   const searchedLocation = state?.searchedLocation; // 검색어 받아오기
   const searchParams = new URLSearchParams(window.location.search); // 검색어 직접 가져오기
@@ -16,24 +17,22 @@ const PlaceInfoSeoul = () => {
   const [mapLocation, setMapLocation] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
-  const [zoomLevel, setZoomLevel] = useState(12);
-
 
   useEffect(() => {
     if (searchQuery) {
       const [lat, lng, name] = searchQuery.split(",");
       setMapLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
     } else {
-      setMapLocation({ lat: 37.56313, lng: 126.98854 });
+      setMapLocation({ lat: 34.76769, lng: 127.66162 });
     }
   }, [searchQuery]);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
       const data = [
-        { name: "경복궁 광화문", placeId: "ChIJsYP2VHSjfDURwAtqfCHFGfo", lat: 37.57598, lng: 126.97680 },
-        { name: "63빌딩", placeId: "ChIJn_UiGDyffDURWfZBRKwb5YE", lat: 37.51993, lng: 126.94010 },
-        { name: "DDP 동대문디자인플라자", placeId: "ChIJ8xRYr29FezUR3AtFqx2pIlw", lat: 37.56784, lng: 127.00906 },
+        { name: "돌산공원", placeId: "ChIJQyXmJyHZbTURGEe3-6sbVFo", lat: 34.73058, lng: 127.73968 },
+        { name: "유월드 루지 테마파크", placeId: "ChIJ65i7yabfbTURq8ZB3CZ70gY", lat: 34.74800, lng: 127.64123 },
+        { name: "오동도", placeId: "ChIJ04TP1GHYbTURa17mljtqOMQ", lat: 34.74555, lng: 127.76693 },
       ];
       setRecommendations(data);
     };
@@ -44,22 +43,26 @@ const PlaceInfoSeoul = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
-    setZoomLevel(16); // 확대 레벨 조정
   };
 
   return (
     <div>
       <SidebarL width={320}>
-      {/* <img src={searchImg} alt="search-image" width={280}/> */}
+      {/* <div style={{ display: 'inline-block' }}>
+          <img src={searchImg} alt="search-image" width={280} />
+          <div className="placeName">{searchedLocation}</div>
+        </div> */}
+      <img src={searchImg} alt="search-image" width={280} />
       <div className="popularplace">
-          <p>{searchedLocation}의 추천 장소 목록</p>
+          {/* <p className="placeList">{searchedLocation}의 추천 장소 목록</p> */}
+          <p className="placeList">여수의 추천 장소 목록</p>
           <SearchRecommendations onRecommendationClick={handlePinClick} />
         </div>
         {selectedPlace && <PlaceDetail place={selectedPlace} />}
       </SidebarL>
-      <Map location={mapLocation} recommendations={recommendations} onPinClick={handlePinClick} zoom={zoomLevel}/>
+      <Map location={mapLocation} recommendations={recommendations} onPinClick={handlePinClick} />
     </div>
   );
 };
 
-export default PlaceInfoSeoul;
+export default PlaceInfoYeosu;
