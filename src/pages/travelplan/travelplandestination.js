@@ -28,6 +28,11 @@ class TrvlPlan extends Component {
     };
   }
 
+  handlePre = () => {
+    this.props.history.push("/"); // withRouter로 인해 history.push 사용
+  };
+
+
   handleStartDateChange = (date) => {
     this.setState({ startDate: date });
   };
@@ -35,6 +40,8 @@ class TrvlPlan extends Component {
   handleEndDateChange = (date) => {
     this.setState({ endDate: date });
   };
+
+
 
   handleSearchInput = (e) => {
     const input = e.target.value;
@@ -176,7 +183,7 @@ class TrvlPlan extends Component {
           </div>
 
           {/* 이전 버튼 */}
-          <button type="submit" className="pre_button">
+          <button onClick={this.handlePre} className="pre_button">
             이전
           </button>
 

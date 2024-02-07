@@ -14,6 +14,13 @@ const TrvlPlan = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
+
+  const handlePre = () => {
+    navigate("/TravelPlandes", {
+      state: { destination: startDate, endDate },
+    });
+  };
+
   const handleStartDateChange = (date) => {
     setStartDate(date);
   };
@@ -102,7 +109,7 @@ const TrvlPlan = () => {
       </div>
 
       {/* 이전 버튼 */}
-      <button type="submit" className="pre_button">
+      <button onClick={handlePre} className="pre_button">
         이전
       </button>
 
