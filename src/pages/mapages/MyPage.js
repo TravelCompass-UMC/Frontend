@@ -355,8 +355,8 @@ export function InterestedPlaceThumbnail(props) {
   return (
     <div className="place-thumbnail-container" style={Placethumbnail.detailBox}>
       <div style={Placethumbnail.detailText}>
-        <p style={Placethumbnail.place}>
-          <span style={Placethumbnail.placeName}>{props.places.place}</span> {/* 장소 이름 */}
+        <p style={Placethumbnail.place}> {/*제주도 여행 장소*/}
+          <span style={Placethumbnail.placeName}>{props.places.place}</span> {/* 식당,숙소,카페 장소 이름 */}
           <span style={Placethumbnail.placeType}>{props.places.info}</span> {/* 분류 */}
         </p>
         <p style={Placethumbnail.placeWhere}>{props.places.where}</p> {/* 위치 설명 */}

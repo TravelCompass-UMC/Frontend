@@ -139,6 +139,11 @@
   .category-button:hover {
     background-color: #e9e9e9;
   }
+
+  /* 카테고리별 글씨색 */
+.category-숙소 { color: #EBEDF8; }
+.category-명소 { color: #8270FF; }
+.category-카페\/식당 { color: #7CDDA3; }
   /* IsEmpty-container */
   .emptymy-box {
     border: 2px solid #EBEDF8;
