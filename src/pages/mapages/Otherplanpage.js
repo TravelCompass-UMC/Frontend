@@ -62,9 +62,8 @@ function Otherplanpage() {
                 <button
                   key={index}
                   onClick={() => paginate(index + 1)}
-                  className={`${
-                    currentPage === index + 1 ? "active" : ""
-                  } page-button`}
+                  className={`${currentPage === index + 1 ? "active" : ""
+                    } page-button`}
                 >
                   {index + 1}
                 </button>
@@ -72,11 +71,10 @@ function Otherplanpage() {
             )}
             <button
               onClick={goToNextPage}
-              className={`page-button ${
-                currentPage === Math.ceil(others.length / plansPerPage)
+              className={`page-button ${currentPage === Math.ceil(others.length / plansPerPage)
                   ? "disabled"
                   : ""
-              }`}
+                }`}
             >
               다음페이지
             </button>

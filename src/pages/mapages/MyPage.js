@@ -254,7 +254,7 @@ export function MyTravelPlanSection({ title, plans, userName}) {
 
 export function OtherplanThumbnail(props) {
 
-  const [heartState, setHeartState] = useState(0);
+  const [heartState, setHeartState] = useState(props.others.liked);
   const handleHeartClick = () => {
     setHeartState(heartState === 0 ? 1 : 0); // 클릭할 때마다 상태 변경
   };
@@ -348,7 +348,7 @@ export function OtherTravelPlanSection({ title, others, userName }) {
 
 export function InterestedPlaceThumbnail(props) {
 
-  const [bookmarkState, setBookmarkState] = useState(0);
+  const [bookmarkState, setBookmarkState] = useState(props.places.liked);
   const handleBookmarkClick = () => {
     setBookmarkState(bookmarkState === 0 ? 1 : 0);
   }
@@ -369,7 +369,7 @@ export function InterestedPlaceThumbnail(props) {
           style={Thumbnail.heartImage}
           src={bookmarkState === 1 ? bookmarkFilled : bookmark}
           onClick = {handleBookmarkClick} 
-          /> <span>{props.places.liked}</span>
+          /> <span>{props.places.bookmark}</span>
         </div>
       </div>
       <img className="placeimg"

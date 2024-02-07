@@ -29,6 +29,13 @@
   margin-top:12px;
   margin-right:10px;
 }
+
+.title{
+  color: #191B24;
+    font-size: 17px;
+    font-family: "SUIT Variable";
+    font-weight: 700;
+}
   /*ProfileSection*/
   .profile-box {
     text-align: center;
@@ -105,7 +112,7 @@
     padding: 0px 0px;
   }
   .place-thumbnail-container{
-    margin: 0px 10px; /* 상하좌우 마진 추가 */
+    margin: 5px 20px; /* 상하좌우 마진 추가 */
     justify-content: center; /* 가운데 정렬 */
     align-items: center; /* 세로 방향 중앙 정렬 */
   }
@@ -116,6 +123,22 @@
     align-items: center; /* 세로 방향 중앙 정렬 */
   }
 
+  /*InterestedPlaceSection*/
+  .category-buttons {
+    margin-bottom: 20px;
+  }
+  
+  .category-button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .category-button:hover {
+    background-color: #e9e9e9;
+  }
   /* IsEmpty-container */
   .emptymy-box {
     border: 2px solid #EBEDF8;
