@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Map from "../../../components/Map";
 import SidebarL from "../../../components/SidebarL";
-import searchImg from "../../../assets/images/Place/검색창.svg";
+import searchImg from "../../../assets/images/Place/검색창_서울.svg";
 import SearchRecommendations from "../../../components/Recommendation/RecommendationSeoul";
 import PlaceDetail from "../../../components/PlaceDetail";
 import "../../../styles/placeinfo.css"; 
@@ -50,12 +50,14 @@ const PlaceInfoSeoul = () => {
   return (
     <div>
       <SidebarL width={320}>
-      <div style={{ display: 'inline-block' }}>
+      {/* <div style={{ display: 'inline-block' }}>
           <img src={searchImg} alt="search-image" width={280} />
           <div className="placeName">{searchedLocation}</div>
-        </div>
+        </div> */}
+      <img src={searchImg} alt="search-image" width={280} /> 
       <div className="popularplace">
-          <p>{searchedLocation}의 추천 장소 목록</p>
+          {/* <p>{searchedLocation}의 추천 장소 목록</p> */}
+          <p className="placeList">서울의 추천 장소 목록</p>
           <SearchRecommendations onRecommendationClick={handlePinClick} />
         </div>
         {selectedPlace && <PlaceDetail place={selectedPlace} />}

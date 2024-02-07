@@ -22,7 +22,6 @@ import PlaceInfoSokcho from "./pages/searchplacepage/placeinfo1.js/placeinfo1_so
 import PlaceInfoGangneung from "./pages/searchplacepage/placeinfo1.js/placeinfo1_gangneung";
 import PlaceInfoYangyang from "./pages/searchplacepage/placeinfo1.js/placeinfo1_yangyang";
 import PlaceDetail from "./components/PlaceDetail";
-import CityDetail from "./components/CityDetail";
 import MainHeader from "./components/MainHeader";
 import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
@@ -60,7 +59,6 @@ function App() {
             <Route path="/placeinfo1_sokcho" element={<PlaceInfoSokcho />} />
             <Route path="/placeinfo1_gangneung" element={<PlaceInfoGangneung />} />
             <Route path="/placeinfo1_yangyang" element={<PlaceInfoYangyang />} />
-            <Route path="/city/:cityName" element={<CityDetail />} />
             <Route path="/travelplandetail" element={<Plandetail />} />
             <Route path="/travelplanedit" element={<PlanEdit />} />
             <Route path="/myplan" element={<Myplanpage />} />
