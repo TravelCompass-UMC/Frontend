@@ -1,15 +1,15 @@
-// placeinfo1.js
+// placeinfo1_yeosu.js
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Map from "../../components/Map";
-import SidebarL from "../../components/SidebarL";
-import searchImg from "../../assets/images/Place/검색창.svg";
-import SearchRecommendations from "../../components/Recommendation";
-import PlaceDetail from "../../components/PlaceDetail";
-import "../../styles/placeinfo.css"; 
+import Map from "../../../components/Map";
+import SidebarL from "../../../components/SidebarL";
+import searchImg from "../../../assets/images/Place/검색창_여수.svg";
+import SearchRecommendations from "../../../components/Recommendation/RecommendationYeosu";
+import PlaceDetail from "../../../components/PlaceDetail";
+import "../../../styles/placeinfo.css"; 
 
 
-const PlaceInfo1 = () => {
+const PlaceInfoYeosu = () => {
   const { state } = useLocation(); // state에서 검색어 받아오기
   const searchedLocation = state?.searchedLocation; // 검색어 받아오기
   const searchParams = new URLSearchParams(window.location.search); // 검색어 직접 가져오기
@@ -23,16 +23,16 @@ const PlaceInfo1 = () => {
       const [lat, lng, name] = searchQuery.split(",");
       setMapLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
     } else {
-      setMapLocation({ lat: 33.3868, lng: 126.582 });
+      setMapLocation({ lat: 34.76769, lng: 127.66162 });
     }
   }, [searchQuery]);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
       const data = [
-        { name: "빛의 벙커", placeId: "ChIJnTFvBUcTDTURh7KTiaHnYYE", lat: 33.440005, lng: 126.899003 },
-        { name: "물영아리오름", placeId: "ChIJkzAEg1QBDTURvjZlYk6E4Ok", lat: 33.369239, lng: 126.693553 },
-        { name: "아르떼뮤지엄 제주", placeId: "ChIJUwtlFmhfDDURUr3BMm9Sb6k", lat: 33.396560, lng: 126.344625 },
+        { name: "돌산공원", placeId: "ChIJQyXmJyHZbTURGEe3-6sbVFo", lat: 34.73058, lng: 127.73968 },
+        { name: "유월드 루지 테마파크", placeId: "ChIJ65i7yabfbTURq8ZB3CZ70gY", lat: 34.74800, lng: 127.64123 },
+        { name: "오동도", placeId: "ChIJ04TP1GHYbTURa17mljtqOMQ", lat: 34.74555, lng: 127.76693 },
       ];
       setRecommendations(data);
     };
@@ -48,9 +48,14 @@ const PlaceInfo1 = () => {
   return (
     <div>
       <SidebarL width={320}>
-      <img src={searchImg} alt="search-image" width={280}/>
+      {/* <div style={{ display: 'inline-block' }}>
+          <img src={searchImg} alt="search-image" width={280} />
+          <div className="placeName">{searchedLocation}</div>
+        </div> */}
+      <img src={searchImg} alt="search-image" width={280} />
       <div className="popularplace">
-          <p>{searchedLocation}의 추천 장소 목록</p>
+          {/* <p className="placeList">{searchedLocation}의 추천 장소 목록</p> */}
+          <p className="placeList">여수의 추천 장소 목록</p>
           <SearchRecommendations onRecommendationClick={handlePinClick} />
         </div>
         {selectedPlace && <PlaceDetail place={selectedPlace} />}
@@ -60,4 +65,4 @@ const PlaceInfo1 = () => {
   );
 };
 
-export default PlaceInfo1;
+export default PlaceInfoYeosu;

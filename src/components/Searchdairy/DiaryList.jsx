@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Diary from "./Diary";
-import VectorImage from "../../assets/images/Pages/Vector.png"; // 이미지를 import
+import VectorImage from "../../assets/images/Pages/Vector (1).png"; // 이미지를 import
 
 const styless = {
   searchText: {
@@ -29,86 +29,7 @@ const contents = [
     place: "울릉도4",
     hashtag: ["추억 여행", "가족 여행"],
   },
-  {
-    place: "제주도5",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도6",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도7",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도8",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도9",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도10",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도11",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도12",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도1",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도2",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도3",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도4",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도5",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도6",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도7",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도8",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도9",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도10",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도11",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도12",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
+
   // 추가적인 데이터는 여기에 계속 추가
 ];
 

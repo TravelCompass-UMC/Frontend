@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/travelplanpage.css";
 import "react-datepicker/dist/react-datepicker.css";
+import image1 from "../../assets/images/Pages/Vector (2).png"
 import { format } from "date-fns";
 
 class TrvlPlan extends Component {
@@ -84,17 +85,25 @@ class TrvlPlan extends Component {
         return (
           <ul className="suggestions">
             {filteredDestinations.map((destination, index) => (
-              <li
+              <div
+                className="destinationList"
                 key={index}
                 onClick={() => this.selectDestination(destination)}
               >
-                {destination}
-              </li>
+                <div className="destinationListText">{destination}
+                  <img className="image1" src={image1} />
+                </div>
+              </div>
             ))}
           </ul>
         );
       } else {
-        return <div className="no-suggestions">검색 결과가 없습니다.</div>;
+        return (
+          <div
+            className="destinationList">
+            <div className="destinationListText">검색 결과가 없습니다.</div>;
+          </div>
+        )
       }
     }
 
@@ -109,54 +118,73 @@ class TrvlPlan extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ width: "1700px" }}>
         <form onSubmit={this.handleSubmit}>
           {/* 여행 제목 입력 필드 */}
-          <input
-            type="text"
-            maxLength="20"
-            className="search_input"
-            name="tripTitle"
-            placeholder="여행 제목을 입력해주세요."
-            value={this.state.tripTitle}
-            onChange={this.handleTripTitleChange}
-          />
-          {/* 목적지 검색 필드 */}
-          <input
-            type="text"
-            maxLength="20"
-            className="search_input"
-            name="searchInput"
-            placeholder="어디로 가고싶나요?"
-            value={this.state.searchInput}
-            onChange={this.handleSearchInput}
-          />
-          {this.renderSuggestions()}
-          {/* 초대 코드 입력 섹션 */}
-          <div className="invitationCodeSection">
+
+          <div className="textTitle" style={{ marginTop: "200px" }}>여행의 제목을 작성해주세요.</div>
+          <div className="search_title">
             <input
               type="text"
               maxLength="20"
-              className="search_input"
-              name="invitationCode"
-              placeholder="초대코드를 입력해주세요."
-              value={this.state.invitationCode}
-              onChange={this.handleInvitationCodeChange}
+              className="search_title1"
+              name="tripTitle"
+              placeholder="여행 제목을 입력해주세요."
+              value={this.state.tripTitle}
+              onChange={this.handleTripTitleChange}
             />
-            <button
-              onClick={this.handleInvitationCodeSubmit}
-              className="submit_button"
-            >
-              제출
-            </button>
           </div>
+          {/* 목적지 검색 필드 */}
+          <div className="textTitle">어디로 가시나요?</div>
+          <div className="search_destination">
+            <input
+              type="text"
+              maxLength="20"
+              className="search_destination1"
+              name="searchInput"
+              placeholder="어디로 가고싶나요?"
+              value={this.state.searchInput}
+              onChange={this.handleSearchInput}
+            />
+          </div>
+          {this.renderSuggestions()}
+          {/* 초대 코드 입력 섹션 */}
+          <div className="textTitle">친구에게 초대받으셨나요?</div>
+          <div className="search_invite">
+            <div className="invitationCodeSection">
+              <input
+                type="text"
+                maxLength="20"
+                className="search_invite1"
+                name="invitationCode"
+                placeholder="초대코드를 입력해주세요."
+                value={this.state.invitationCode}
+                onChange={this.handleInvitationCodeChange}
+              ></input>
+              <button
+                onClick={this.handleInvitationCodeSubmit}
+                className="search_submit"
+              >
+                제출
+              </button>
+
+            </div>
+          </div>
+
+          {/* 이전 버튼 */}
+          <button type="submit" className="pre_button">
+            이전
+          </button>
 
           {/* 다음 버튼 */}
           <button type="submit" className="next_button">
-            다음
+            선택완료
           </button>
-        </form>
-      </div>
+
+
+          <div className="image"> </div>
+        </form >
+      </div >
     );
   }
 }

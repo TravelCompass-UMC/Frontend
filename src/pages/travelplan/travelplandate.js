@@ -40,13 +40,17 @@ const TrvlPlan = () => {
 
   return (
     <div>
-      <div>
-        <h1>여행 기간</h1>
-        <p>기간을 선택해주세요</p>
+      <div style={{ marginTop: "180px" }}>
+        <div>
+          <span className="dateTitle">여행 기간을 선택해주세요.</span>
+          <span className="dateTitle1">여행 기간은 최대 00일까지 선택 가능합니다.</span>
+        </div>
         <div>
           <h2>여행 시작일:</h2>
           <DatePicker
-            className="datepicker"
+            className="custom-datepicker" // Add a custom class for styling
+            calendarClassName="custom-calendar" // Add a custom class for the calendar
+
             locale={ko}
             dateFormat="yyyy년 MM월 dd일"
             minDate={new Date()}
@@ -55,12 +59,36 @@ const TrvlPlan = () => {
             selectsStart
             startDate={startDate}
             endDate={endDate}
+            popperModifiers={{
+              offset: {
+                enabled: true,
+                offset: "0, 10",
+              },
+              preventOverflow: {
+                enabled: true,
+                escapeWithReference: false,
+                boundariesElement: "viewport",
+              },
+              flip: {
+                enabled: true,
+              },
+              maxheight: {
+                enabled: true,
+                max: "500px",
+              },
+              maxwidth: {
+                enabled: true,
+                max: "500px",
+              },
+            }}
           />
         </div>
         <div>
           <h2>여행 종료일:</h2>
           <DatePicker
-            className="datepicker"
+            className="custom-datepicker" // Add a custom class for styling
+            calendarClassName="custom-calendar" // Add a custom class for the calendar
+
             locale={ko}
             dateFormat="yyyy년 MM월 dd일"
             selected={endDate}
@@ -72,7 +100,16 @@ const TrvlPlan = () => {
           />
         </div>
       </div>
-      <button onClick={openModal}>계획 만들기</button>
+
+      {/* 이전 버튼 */}
+      <button type="submit" className="pre_button">
+        이전
+      </button>
+
+      {/* 다음 버튼 */}
+      <button type="submit" onClick={openModal} className="next_button">
+        선택완료
+      </button>
       <Modal
         open={modalOpen}
         close={closeModal}

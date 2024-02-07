@@ -39,7 +39,6 @@
     font-size: 24px;
     line-height: 30px;
     /* identical to box height */
-
     color: #000000;
 }
 
@@ -52,7 +51,7 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 17px;
-
+    margin-left: 20px;
     /* Sub color */
     color: #78CF9F;
 }
@@ -70,6 +69,22 @@
 
     /* grayscale/Gray3 */
     color: #BFC4D8;
+}
+
+
+
+.modalscrap {
+    /* Rectangle 34624543 */
+
+    width: 213px;
+    height: 40px;
+    left: calc(50% - 213px/2 + 0.5px);
+    top: 524px;
+
+    /* grayscale/Gray1 */
+    background: #F3F5FF;
+    border-radius: 4px;
+    margin-left: 30%;
 }
 
 .modalplaceinform {
@@ -105,12 +120,70 @@
 }
 
 .closeImage {
-
-
     position: relative;
     width: 20px;
     height: 20px;
-    left: 258px;
-    top: 3px;
+    left: 320px;
+    top: -30px;
+}
 
+.starImage {
+    /* Vector */
+    position: relative;
+    width: 25px;
+    left: -12%;
+    top: 20.44%;
+}
+
+.starNumber {
+    /* 3.57 */
+
+    position: relative;
+    width: 31px;
+    height: 19px;
+    left: -7%;
+    top: 26%;
+    bottom: 12.5%;
+    /* body/body_bold_15 */
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 19px;
+    /* identical to box height */
+
+    /* grayscale/Gray5 */
+    color: #626682;
+}
+
+.bookmarkImage {
+    /* bookmark */
+    position: relative;
+    width: 20px;
+    left: 4%;
+    right: 67.8%;
+    top: 21.5%;
+    bottom: 12.5%;
+
+}
+
+.bookmarkNumber {
+    /* 3.57 */
+
+    position: relative;
+    width: 31px;
+    height: 19px;
+    left: 9%;
+    top: 26%;
+    bottom: 12.5%;
+    /* body/body_bold_15 */
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 19px;
+    /* identical to box height */
+
+    /* grayscale/Gray5 */
+    color: #626682;
 }
