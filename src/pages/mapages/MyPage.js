@@ -11,12 +11,16 @@ import heart from "../../assets/images/Pages/Group 2236.png";
 import heartFilled from "../../assets/images/Pages/Group 2236_filled.png";
 import ProfileImage from "../../assets/images/Mypage/ProfileExample.svg";
 import EndImage from "../../assets/images/Mypage/Endimg.svg";
+import star from "../../assets/images/Mypage/Star.svg";
+import starFilled from "../../assets/images/Mypage/StarFilled.svg";
+import bookmark from "../../assets/images/Mypage/Bookmark.svg";
+import bookmarkFilled from "../../assets/images/Mypage/BookmarkFilled.svg";
 import { Container } from "react-bootstrap";
 
 const Thumbnail = {
   bigBox: {
     boxShadow: "rgba(0, 0, 0, 0.1) 4px 4px 8px 0px",
-    width: "380px",
+    width: "375px",
     height: "230px",
     background: "white",
     borderRadius: 16,
@@ -65,8 +69,8 @@ const Placethumbnail = {
     marginBottom: "20px",
     background: "var(--grayscale-White, #FFF)",
     boxShadow: "4px 4px 8px 0px rgba(0, 0, 0, 0.10)",
-    width: "333px",
-    height: "132px",
+    width: "375px",
+    height: "160px",
     padding: "6px", // 내부 여백을 추가합니다.
   },
   detailText: {
@@ -87,8 +91,8 @@ const Placethumbnail = {
     fontSize: "13px",
   },
   detailimage: {
-    width: "112px",
-    height: "112px",
+    width: "125px",
+    height: "125px",
     borderRadius: "10px",
     background: "var(--grayscale-Gray2, #EBEDF8)",
   },
@@ -145,11 +149,18 @@ export default Mypage;
     );
   }
 
-export function MyplanThumbnail(props) {
 
-  const [planHeart, setplanHeart] = useState(0);
+export function MyplanThumbnail(props, onToggleLike) {
+
+  const [planHeart, setPlanHeart] = useState(props.plans.liked);
+
   const handleHeartClick = () => {
-    setplanHeart(planHeart === 0 ? 1 : 0); // 클릭할 때마다 상태 변경
+    const newLikedState = planHeart === 1 ? 0 : 1;
+    setPlanHeart(newLikedState);
+
+    if (newLikedState === 0) {
+      props.onToggleLike(props.plans.id);
+    }
   };
 
   const containerStyle = {
@@ -157,7 +168,6 @@ export function MyplanThumbnail(props) {
     justifyContent: "space-between", // 컨테이너 내 요소들 사이의 공간 최대화
     alignItems: "flex-start", // 요소들을 컨테이너의 상단에 정렬
     width: "100%", // 컨테이너 너비를 100%로 설정하여 넓게 사용
-    marginBottom: "10px", // 하단 마진으로 간격 조정
   };
 
   // 텍스트 영역 스타일
@@ -165,7 +175,7 @@ export function MyplanThumbnail(props) {
     display: "flex",
     flexDirection: "column", // 요소들을 세로로 나열
     justifyContent: "center", // 세로 중앙 정렬
-    width: "calc(100% - 40px)", // 하트 이미지와의 공간을 고려하여 너비 조정
+    width: "calc(100% - 50px)", // 하트 이미지와의 공간을 고려하여 너비 조정
   };
 
  return (
@@ -173,16 +183,16 @@ export function MyplanThumbnail(props) {
       className="thumbnail-container"
       style={{ ...Thumbnail.bigBox, margin: "0 10px" }}
     >
-      <img
+      <img className="myplanimg"
         style={{ ...Thumbnail.imageBox, width: "100%" }}
-        src={"https://codingapple1.github.io/shop/shoes" + props.i + ".jpg"}
+        src={props.plans.img}
         alt="장소 이미지"
       />
       <div style={containerStyle}>
         <div style={textStyle}>
           <a style={Thumbnail.placeText}>{props.plans.place}</a>
           <p style={Thumbnail.hashtagText}>
-            {props.plans.hashtag.map((tag, index) => (
+            {props.plans.hashtag && props.plans.hashtag.map((tag, index) => (
               <span key={index}>#{tag} </span>
             ))}
           </p>
@@ -200,6 +210,10 @@ export function MyplanThumbnail(props) {
 
 export function MyTravelPlanSection({ title, plans, userName}) {
   // 처음 3개의 요소만 사용
+  const onToggleLike = (planId) => {
+    // 여기에 좋아요 토글 로직을 구현합니다.
+    console.log("Toggling like for planId:", planId);
+  };
   const firstThreePlans = plans.slice(0, 3);
   const isEmpty = plans.length === 0;
   userName = "박상현";
@@ -221,7 +235,7 @@ export function MyTravelPlanSection({ title, plans, userName}) {
       </div>
       {isEmpty ? (
         <div className="row-container" style={{ display: 'flex', justifyContent: 'center' }}>
-        <div className="empty-box">
+        <div className="emptymy-box">
           <p>아직 {userName}님이 작성하신 계획이 존재하지 않습니다.</p>
           <p>Travel Compass와 함께 여행 계획을 세워보세요!</p>
         </div>
@@ -230,7 +244,7 @@ export function MyTravelPlanSection({ title, plans, userName}) {
         <div className="row-container">
         
         {firstThreePlans.map((plan, i) => (
-          <MyplanThumbnail key={i} plans={plan} i={i + 1}></MyplanThumbnail>
+          <MyplanThumbnail key={i} plans={plan} i={i + 1} onToggleLike={onToggleLike}></MyplanThumbnail>
         ))}
       </div>
       )}
@@ -265,7 +279,7 @@ export function OtherplanThumbnail(props) {
       className="thumbnail-container"
       style={{ ...Thumbnail.bigBox, margin: "0 10px" }}
     >
-      <img
+      <img className="otherplanimg"
         style={{ ...Thumbnail.imageBox, width: "100%" }}
         src={props.others.img}
         alt="장소 이미지"
@@ -292,9 +306,11 @@ export function OtherplanThumbnail(props) {
   );
 }
 
-export function OtherTravelPlanSection({ title, others }) {
+export function OtherTravelPlanSection({ title, others, userName }) {
   // 처음 3개의 요소만 사용
   const firstThreeOthers = others.slice(0, 3);
+  const otherEmpty = others.length === 0;
+  userName = "박상현";
 
   return (
     <div className="container">
@@ -311,20 +327,31 @@ export function OtherTravelPlanSection({ title, others }) {
           <button className="morebutton">더보기</button>
         </Link>
       </div>
-      <div className="row-container">
-        {firstThreeOthers.map((other, i) => (
-          <OtherplanThumbnail
-            key={i}
-            others={other}
-            i={i + 1}
-          ></OtherplanThumbnail>
-        ))}
-      </div>
+       {otherEmpty ? (
+        <div className="row-container" style={{ display: 'flex', justifyContent: 'center' }}>
+        <div className="emptyother-box">
+          <p>{userName}님이 관심을 표시한 여행계획서가 존재하지 않습니다.</p>
+          <p>다양한 여행가들의 여행계획서를 참고하세요!</p>
+        </div>
+      </div>  
+       ) : (
+        <div className="row-container">
+
+          {firstThreeOthers.map((other, i) => (
+            <OtherplanThumbnail key ={i} others ={other} i= {i+1}></OtherplanThumbnail>
+          ))}
+        </div>
+   )}
     </div>
   );
 }
 
 export function InterestedPlaceThumbnail(props) {
+
+  const [bookmarkState, setBookmarkState] = useState(0);
+  const handleBookmarkClick = () => {
+    setBookmarkState(bookmarkState === 0 ? 1 : 0);
+  }
   return (
     <div className="place-thumbnail-container" style={Placethumbnail.detailBox}>
       <div style={Placethumbnail.detailText}>
@@ -334,23 +361,31 @@ export function InterestedPlaceThumbnail(props) {
         </p>
         <p style={Placethumbnail.placeWhere}>{props.places.where}</p> {/* 위치 설명 */}
         <div>
-          <img alt="평점" /> <span>3.57</span>
-          <img alt="북마크" /> <span>238</span>
+          <img alt="평점"
+          style={Thumbnail.heartImage}
+          src={star}
+          /> <span>{props.places.star}</span>
+          <img alt="북마크"
+          style={Thumbnail.heartImage}
+          src={bookmarkState === 1 ? bookmarkFilled : bookmark}
+          onClick = {handleBookmarkClick} 
+          /> <span>{props.places.liked}</span>
         </div>
       </div>
-      <img
+      <img className="placeimg"
         style={Placethumbnail.detailimage}
-        src={"https://codingapple1.github.io/shop/shoes" + props.i + ".jpg"}
+        src={""}
         alt="장소 이미지"
       />
     </div>
   );
 }
 
-export function InterestedPlacesSection({ title, places }) {
+export function InterestedPlacesSection({ title, places, userName}) {
  // 처음 6개의 요소만 사용
- const firstThreeOthers = places.slice(0, 6);
-  
+ const firstThreePlaces = places.slice(0, 6);
+ const placeEmpty = places.length === 0;
+ userName ="박상현"
   return (
     <div className="container">
       <div
@@ -366,15 +401,24 @@ export function InterestedPlacesSection({ title, places }) {
           <button className="morebutton">더보기</button>
         </Link>
       </div>
-      <div className="row">
-      {firstThreeOthers.map((place, i) => (
-          <InterestedPlaceThumbnail
-            key={i}
-            places={place}
-            i={i + 1}
-          ></InterestedPlaceThumbnail>
-        ))}
-      </div>
+      {placeEmpty ? (
+        <div className="row-container" style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="emptyplace-box">
+            <p>{userName}님이 관심을 표시한 장소가 존재하지 않습니다.</p>
+            <p>Travel Compass가 추천하는 장소를 살펴보세요!</p>
+          </div>
+        </div>
+      ) : (
+        <div className="row">
+          {firstThreePlaces.map((place, i) => (
+            <InterestedPlaceThumbnail
+              key={i}
+              places={place}
+              i={i + 1}
+            ></InterestedPlaceThumbnail>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

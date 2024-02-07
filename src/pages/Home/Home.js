@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "../../styles/Home.css";
 import SearchComponent from '../../components/Search.js';
 import GoogleMapComponent from "../../components/Map";
-import SidebarR from "../../components/sidebarR";
+import SidebarR from "../../components/SidebarR.js";
 
 const Home = () => {
   // const [nickname, setNickname] = useState("");
