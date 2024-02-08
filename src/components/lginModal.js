@@ -9,25 +9,6 @@ const Modal = ({ open, close }) => {
   const location = useLocation();
   const [tokenExtracted, setTokenExtracted] = useState(false);
 
-  useEffect(() => {
-    // URL에서 토큰 정보 추출
-    const urlParams = new URLSearchParams(location.search);
-    const accessToken = urlParams.get("access-token");
-    const refreshToken = urlParams.get("refresh-token");
-
-    if (accessToken && refreshToken) {
-      // 토큰 정보 처리 예: 세션 또는 로컬 스토리지에 저장
-      sessionStorage.setItem("accessToken", accessToken);
-      sessionStorage.setItem("refreshToken", refreshToken);
-      setTokenExtracted(true);
-
-      // 메인 페이지나 다른 페이지로 리디렉션
-      navigate("/"); // 여기서는 예제로 메인 페이지("/")로 리디렉션합니다.
-    } else {
-      setTokenExtracted(false);
-    }
-  }, [navigate, location.search]); // location.search를 의존성 배열에 추가
-
   const handleNaverLogin = () => {
     // 네이버 로그인 페이지로 리다이렉션하는 URL
     window.location.href =
