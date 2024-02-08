@@ -45,71 +45,80 @@ const TrvlPlan = () => {
   const formattedStartDate = format(startDate, "yyyy년 MM월 dd일");
   const formattedEndDate = format(endDate, "yyyy년 MM월 dd일");
 
+
   return (
     <div>
-      <div style={{ marginTop: "180px" }}>
+      <div style={{ marginTop: "150px" }}>
         <div>
           <span className="dateTitle">여행 기간을 선택해주세요.</span>
           <span className="dateTitle1">여행 기간은 최대 00일까지 선택 가능합니다.</span>
         </div>
-        <div>
-          <h2>여행 시작일:</h2>
-          <DatePicker
-            className="custom-datepicker" // Add a custom class for styling
-            calendarClassName="custom-calendar" // Add a custom class for the calendar
+        <div style={{ marginTop: "50px" }}>
+          <span style={{ marginLeft: "500px", marginTop: "100px" }}>
+            {/* <h2>여행 시작일:</h2> */}
+            <DatePicker
+              className="custom-datepicker large-calendar1" // Add a custom class for styling
+              calendarClassName="custom-calendar1" // Add a custom class for the calendar
+              popperModifiers={{
+                offset: {
+                  enabled: true,
+                  offset: "50px, 0px", // Adjust the offset as needed
+                },
+                preventOverflow: {
+                  enabled: true,
+                  escapeWithReference: false,
+                  boundariesElement: "viewport",
+                },
+                flip: {
+                  enabled: true,
+                },
+              }}
+              locale={ko}
+              dateFormat="yyyy년 MM월 dd일"
+              minDate={new Date()}
+              selected={startDate}
+              onChange={handleStartDateChange}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              inline
+            />
+          </span>
 
-            locale={ko}
-            dateFormat="yyyy년 MM월 dd일"
-            minDate={new Date()}
-            selected={startDate}
-            onChange={handleStartDateChange}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            popperModifiers={{
-              offset: {
-                enabled: true,
-                offset: "0, 10",
-              },
-              preventOverflow: {
-                enabled: true,
-                escapeWithReference: false,
-                boundariesElement: "viewport",
-              },
-              flip: {
-                enabled: true,
-              },
-              maxheight: {
-                enabled: true,
-                max: "500px",
-              },
-              maxwidth: {
-                enabled: true,
-                max: "500px",
-              },
-            }}
-          />
-        </div>
-        <div>
-          <h2>여행 종료일:</h2>
-          <DatePicker
-            className="custom-datepicker" // Add a custom class for styling
-            calendarClassName="custom-calendar" // Add a custom class for the calendar
-
-            locale={ko}
-            dateFormat="yyyy년 MM월 dd일"
-            selected={endDate}
-            onChange={handleEndDateChange}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-          />
+          <span style={{ marginLeft: "200px", marginTop: "100px" }}>
+            {/* <h2>여행 종료일:</h2> */}
+            <DatePicker
+              className="custom-datepicker large-calendar" // Add a custom class for styling
+              calendarClassName="custom-calendar" // Add a custom class for the calendar
+              popperModifiers={{
+                offset: {
+                  enabled: true,
+                  offset: "500px, 500px", // Adjust the offset as needed
+                },
+                preventOverflow: {
+                  enabled: true,
+                  escapeWithReference: false,
+                  boundariesElement: "viewport",
+                },
+                flip: {
+                  enabled: true,
+                },
+              }}
+              locale={ko}
+              dateFormat="yyyy년 MM월 dd일"
+              selected={endDate}
+              onChange={handleEndDateChange}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              inline
+            />
+          </span>
         </div>
       </div>
-
       {/* 이전 버튼 */}
-      <button onClick={handlePre} className="pre_button">
+      <button onClick={handlePre} className="pre_button" >
         이전
       </button>
 
@@ -118,6 +127,7 @@ const TrvlPlan = () => {
         선택완료
       </button>
       <Modal
+        className="modalContent"
         open={modalOpen}
         close={closeModal}
         header="여행 계획"

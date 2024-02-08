@@ -392,8 +392,6 @@
   /*여행기간을 선택해주세요*/
   position: relative;
   left: 23%;
-
-
   /* body/body_medium_15 */
   font-family: 'SUIT Variable';
   font-style: normal;
@@ -407,41 +405,190 @@
 }
 
 
-.custom-datepicker {
-  width: 500px;
-  padding: 10px;
-  font-size: 20px;
-  border: 1px solid #0000004b;
-  border-radius: 5px;
-  margin-bottom: 15px;
-}
 
-/* Custom styles for the date picker calendar */
-.custom-calendar {
-  font-size: 20px;
-  width: 500px;
-  height: 500px;
-}
-
-/* Style for the previous and next month buttons in the calendar */
-.custom-calendar .react-datepicker__navigation {
-  top: -100px;
-}
 
 /* Style for the day cells in the calendar */
 .custom-calendar .react-datepicker__day {
-  font-size: 20px;
-  padding: 8px;
-  margin: 2px;
+  width: 70px;
+  height: 70px;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 70px;
+
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 70;
+}
+
+.custom-calendar .react-datepicker__day--in-range {
+  background: #EBEDF8;
+
+  /* head/head_bold_24 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 70px;
+  /* identical to box height */
+  text-align: center;
+
+  /* grayscale/Gray8 */
+  color: #191B24;
 }
 
 /* Style for the selected day in the calendar */
 .custom-calendar .react-datepicker__day--selected {
-  background-color: #8ea1ff;
-  color: #fff;
+  /* grayscale/Gray8 */
+  background: #191B24;
+  border-radius: 90px;
+
+  /* head/head_bold_24 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 70px;
+  /* identical to box height */
+  text-align: center;
+
+  /* grayscale/White */
+  color: #FFFFFF;
+
 }
 
 /* Style for the today's date in the calendar */
 .custom-calendar .react-datepicker__day--today {
   font-weight: bold;
+}
+
+
+
+
+/* Style for the day cells in the calendar */
+.custom-calendar1 .react-datepicker__day {
+  width: 70px;
+  height: 70px;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 70px;
+
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 70;
+}
+
+.custom-calendar1 .react-datepicker__day--in-range {
+  background: #EBEDF8;
+
+  /* head/head_bold_24 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 70px;
+  /* identical to box height */
+  text-align: center;
+
+  /* grayscale/Gray8 */
+  color: #191B24;
+}
+
+/* Style for the selected day in the calendar */
+.custom-calendar1 .react-datepicker__day--selected {
+  /* grayscale/Gray8 */
+  background: #191B24;
+  border-radius: 90px;
+
+  /* head/head_bold_24 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 70px;
+  /* identical to box height */
+  text-align: center;
+
+  /* grayscale/White */
+  color: #FFFFFF;
+
+}
+
+/* Style for the today's date in the calendar */
+.custom-calendar1 .react-datepicker__day--today {
+  font-weight: bold;
+}
+
+
+.pre_button {
+  /* Rectangle 34624548 */
+
+  position: relative;
+  width: 180px;
+  height: 80px;
+  left: 22%;
+  top: 50px;
+
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border-radius: 8px;
+  border: none;
+
+  /* botton/botton_bold_20 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  /* identical to box height */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+}
+
+.next_button {
+  /* Rectangle 34624548 */
+
+  position: relative;
+  width: 180px;
+  height: 80px;
+  left: 58%;
+  top: 50px;
+  /* grayscale/Gray1 */
+  background: #F3F5FF;
+  border-radius: 8px;
+  border: none;
+
+  /* botton/botton_bold_20 */
+  font-family: 'SUIT Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  /* identical to box height */
+
+  /* grayscale/Gray3 */
+  color: #BFC4D8;
+}
+
+
+.modalContent {
+  height: 358px;
+  left: calc(50% - 681px/2 + 0.5px);
+  top: 389px;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+
+  /* 흰색 배경색 */
+  background: #FFFFFF;
+
+  /* 그림자 효과 */
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* 테두리 반경 */
+  border-radius: 16px;
 }
