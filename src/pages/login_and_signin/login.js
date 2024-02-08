@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import styles from "../../styles/Mypages.css";
+import "../../styles/Mypages.css";
 // 마이페이지에서 로그인이 안되어 있을시 로그인 페이지로 이동 !
 class Login extends Component {
   handleNaverLogin = () => {
