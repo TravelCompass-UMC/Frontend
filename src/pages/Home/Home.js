@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "../../styles/Home.css";
+import "../../styles/Home/Home.css";
 import SearchComponent from '../../components/Search.js';
 import GoogleMapComponent from "../../components/Map";
 import SidebarR from "../../components/SidebarR.js";

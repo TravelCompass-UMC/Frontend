@@ -6,7 +6,7 @@ import SidebarL from "../../../components/SidebarL";
 import searchImg from "../../../assets/images/Place/검색창_여수.svg";
 import SearchRecommendations from "../../../components/Recommendation/RecommendationYeosu";
 import PlaceDetail from "../../../components/PlaceDetail";
-import "../../../styles/placeinfo.css"; 
+import "../../../styles/searchplace/placeinfo.css";  
 
 
 const PlaceInfoYeosu = () => {

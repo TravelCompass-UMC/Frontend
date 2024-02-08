@@ -6,7 +6,7 @@ import SidebarL from "../../../components/SidebarL";
 import searchImg from "../../../assets/images/Place/검색창_경주.svg";
 import SearchRecommendations from "../../../components/Recommendation/RecommendationGyeongju";
 import PlaceDetail from "../../../components/PlaceDetail";
-import "../../../styles/placeinfo.css";  
+import "../../../styles/searchplace/placeinfo.css";  
 
 const PlaceInfoGyeongju = () => {
   const { state } = useLocation(); // state에서 검색어 받아오기

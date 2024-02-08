@@ -6,7 +6,7 @@ import SidebarL from "../../../components/SidebarL";
 import searchImg from "../../../assets/images/Place/검색창_강릉.svg";
 import SearchRecommendations from "../../../components/Recommendation/RecommendationGangneung";
 import PlaceDetail from "../../../components/PlaceDetail";
-import "../../../styles/placeinfo.css"; 
+import "../../../styles/searchplace/placeinfo.css";  
 
 
 const PlaceInfoGangneung = () => {

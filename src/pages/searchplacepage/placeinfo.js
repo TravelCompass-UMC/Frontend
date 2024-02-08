@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Map from "../../components/Map";
 import SidebarL from "../../components/SidebarL";
 import searchImg from "../../assets/images/Place/검색창.svg";
-import "../../styles/placeinfo.css"; 
+import "../../styles/searchplace/placeinfo.css";  
 
 const PlaceInfo = () => {
   const { search, state } = useLocation();
@@ -11,7 +11,7 @@ const PlaceInfo = () => {
   const searchQuery = searchParams.get('q');
   const [mapLocation, setMapLocation] = useState(null);
   const navigate = useNavigate();  
-  const [searchedLocation, setSearchedLocation] = useState(null);
+  const [searchedLocation, setSearchedLocation] = useState(state?.searchedLocation || '');
 
   useEffect(() => {
     if (searchQuery) {
@@ -19,7 +19,7 @@ const PlaceInfo = () => {
       setMapLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
       setSearchedLocation(name);
     }
-  }, [searchQuery]);
+  }, [searchQuery, state]);
 
   const handlePinClick = () => {
     let placeName;
@@ -55,6 +55,14 @@ const PlaceInfo = () => {
     navigate(`/placeinfo1_${placeName}`, { state: { searchedLocation: searchedLocation } });
   };
   
+  const handleSearch = (location, query) => {
+    // Update map location
+    setMapLocation(location);
+    // Encode query parameter
+    const encodedQuery = encodeURIComponent(query);
+    // Update search query in URL
+    navigate(`/placeinfo?q=${location.lat},${location.lng},${encodedQuery}`, { state: { searchedLocation: query } });
+  };
 
   return (
     <div className="page-container">
@@ -63,10 +71,24 @@ const PlaceInfo = () => {
       </div>
       <div className="sidebar-container">
         <SidebarL width={320}>
-        <div style={{ display: 'inline-block' }}>
-          <img src={searchImg} alt="search-image" width={280} />
-          <div className="placeName">{searchedLocation}</div>
-        </div>
+          <div style={{ display: 'inline-block' }}>
+            <img src={searchImg} alt="search-image" width={280} />
+            <div className="placeName">
+              <input
+                type="text"
+                value={searchedLocation}
+                onChange={(e) => {
+                  setSearchedLocation(e.target.value);
+                  handleSearch(mapLocation, e.target.value); // Call handleSearch when input changes
+                }}
+                placeholder="검색된 지역명"
+                style={{
+                  border: "none", 
+                  outline: "none", 
+                }}
+              />
+            </div>
+          </div>
           <br/> <p className="searched-location">Click a pin</p>
           <br/> <div className="popularplace">
         </div>

@@ -7,6 +7,7 @@ const containerStyle = {
   left: 0,
   width: "100vw",
   height: "91vh",
+  zIndex: 0,
 };
 
 const defaultCenter = {

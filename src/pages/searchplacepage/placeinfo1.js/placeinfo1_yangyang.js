@@ -6,7 +6,7 @@ import SidebarL from "../../../components/SidebarL";
 import searchImg from "../../../assets/images/Place/검색창_양양.svg";
 import SearchRecommendations from "../../../components/Recommendation/RecommendationYangyang";
 import PlaceDetail from "../../../components/PlaceDetail";
-import "../../../styles/placeinfo.css"; 
+import "../../../styles/searchplace/placeinfo.css";  
 
 
 const PlaceInfoYangyang = () => {

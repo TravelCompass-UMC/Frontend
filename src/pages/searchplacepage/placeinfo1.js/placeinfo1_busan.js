@@ -6,7 +6,7 @@ import SidebarL from "../../../components/SidebarL";
 import searchImg from "../../../assets/images/Place/검색창_부산.svg";
 import SearchRecommendations from "../../../components/Recommendation/RecommendationBusan";
 import PlaceDetail from "../../../components/PlaceDetail";
-import "../../../styles/placeinfo.css";  
+import "../../../styles/searchplace/placeinfo.css";  
 
 const PlaceInfoBusan = () => {
   const { state } = useLocation(); // state에서 검색어 받아오기
