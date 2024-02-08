@@ -13,7 +13,7 @@ const OAuthCallback = () => {
     if (accessToken && refreshToken) {
       sessionStorage.setItem("accessToken", accessToken);
       sessionStorage.setItem("refreshToken", refreshToken);
-      navigate("/mypage"); // 성공적으로 토큰을 저장한 후, 원하는 페이지로 리디렉션
+      navigate("/"); // 성공적으로 토큰을 저장한 후, 원하는 페이지로 리디렉션
     } else {
       navigate("/"); // 토큰을 얻지 못했다면, 로그인 페이지로 리디렉션
     }
