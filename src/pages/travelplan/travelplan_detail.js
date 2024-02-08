@@ -5,7 +5,7 @@ import Map from "../../components/Map";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { eachDayOfInterval, format } from "date-fns";
-import "../../styles/travelplan_detail.css";
+import "../../styles/travelplan/travelplan_detail.css";
 import Searching from "../../components/Search";
 import AccommodationsData from "../../tempdata/accommodationdata";
 import Accommodation from "./accommodationcomponent";

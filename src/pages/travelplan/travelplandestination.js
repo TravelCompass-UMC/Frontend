@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/travelplanpage.css";
+import "../../styles/travelplan/travelplanpage.css";
 import "react-datepicker/dist/react-datepicker.css";
-import image1 from "../../assets/images/Pages/Vector (2).png"
+import image1 from "../../assets/images/Pages/Vector (2).png";
 import { format } from "date-fns";
+import { autocompleteClasses } from "@mui/material";
+import Button from "../../components/common_components/common_button";
 
 class TrvlPlan extends Component {
   constructor(props) {
@@ -29,9 +31,8 @@ class TrvlPlan extends Component {
   }
 
   handlePre = () => {
-    this.props.history.push("/"); // withRouter로 인해 history.push 사용
+    this.props.navigate("/");
   };
-
 
   handleStartDateChange = (date) => {
     this.setState({ startDate: date });
@@ -40,8 +41,6 @@ class TrvlPlan extends Component {
   handleEndDateChange = (date) => {
     this.setState({ endDate: date });
   };
-
-
 
   handleSearchInput = (e) => {
     const input = e.target.value;
@@ -97,7 +96,8 @@ class TrvlPlan extends Component {
                 key={index}
                 onClick={() => this.selectDestination(destination)}
               >
-                <div className="destinationListText">{destination}
+                <div className="destinationListText">
+                  {destination}
                   <img className="image1" src={image1} />
                 </div>
               </div>
@@ -107,12 +107,11 @@ class TrvlPlan extends Component {
       } else {
         return (
           <ul className="suggestions">
-            <div
-              className="destinationList">
+            <div className="destinationList">
               <div className="destinationListText">검색 결과가 없습니다.</div>
             </div>
           </ul>
-        )
+        );
       }
     }
 
@@ -127,11 +126,11 @@ class TrvlPlan extends Component {
 
   render() {
     return (
-      <div style={{ width: "1700px" }}>
+      <div className="informinput-container">
         <form onSubmit={this.handleSubmit}>
           {/* 여행 제목 입력 필드 */}
 
-          <div className="textTitle" style={{ marginTop: "200px" }}>여행의 제목을 작성해주세요.</div>
+          <div className="textTitle">여행의 제목을 작성해주세요.</div>
           <div className="search_title">
             <input
               type="text"
@@ -156,7 +155,8 @@ class TrvlPlan extends Component {
                 value={this.state.searchInput}
                 onChange={this.handleSearchInput}
               />
-            </div>{this.renderSuggestions()}
+            </div>
+            {this.renderSuggestions()}
           </div>
 
           {/* 초대 코드 입력 섹션 */}
@@ -178,24 +178,16 @@ class TrvlPlan extends Component {
               >
                 제출
               </button>
-
             </div>
           </div>
 
-          {/* 이전 버튼 */}
-          <button onClick={this.handlePre} className="pre_button">
-            이전
-          </button>
+          <Button text="이전" onClick={this.handlePre} />
 
-          {/* 다음 버튼 */}
-          <button type="submit" className="next_button">
-            선택완료
-          </button>
-
+          <Button text="선택 완료" type="submit" />
 
           <div className="image"> </div>
-        </form >
-      </div >
+        </form>
+      </div>
     );
   }
 }
