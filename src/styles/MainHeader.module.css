@@ -23,6 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 9999; /* 다른 요소 위에 모달을 렌더링하도록 z-index 설정 */
 }
 
 .logobox {
@@ -69,4 +70,5 @@ nav a:hover {
 
 .active {
   color: #ffcc00;
+  z-index: 9999; /* 다른 요소 위에 모달을 렌더링하도록 z-index 설정 */
 }
