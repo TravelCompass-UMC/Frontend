@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../../styles/Home.css";
-import SearchComponent from '../../components/Search.js';
+import SearchComponent from "../../components/Search.js";
 import GoogleMapComponent from "../../components/Map";
 import SidebarR from "../../components/SidebarR.js";
 
@@ -10,35 +10,41 @@ const Home = () => {
   const navigate = useNavigate();
   const [searchedLocation, setSearchedLocation] = useState(null);
   const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 추가
+  const [nickname, setNickname] = useState(""); // 닉네임 상태 추가
 
-  // useEffect(() => {
-  //   const storedNickname = sessionStorage.getItem("nickname");
-  //   if (storedNickname) {
-  //     setNickname(storedNickname);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const storedNickname = sessionStorage.getItem("nickname");
+    if (storedNickname) {
+      setNickname(storedNickname);
+    }
+  }, []);
 
   const handleSearch = (location, query) => {
     // Save the searched location
     setSearchedLocation(location);
     setSearchQuery(query); // 검색어 저장
 
-    navigate(`/placeinfo?q=${location.lat},${location.lng},${encodeURIComponent(query)}`, {
-      state: { searchedLocation: query } // 검색된 지역명을 state에 저장하여 전달
-    });
+    navigate(
+      `/placeinfo?q=${location.lat},${location.lng},${encodeURIComponent(
+        query
+      )}`,
+      {
+        state: { searchedLocation: query }, // 검색된 지역명을 state에 저장하여 전달
+      }
+    );
   };
 
   return (
     <div>
-      <GoogleMapComponent/>
+      <GoogleMapComponent />
       <SearchComponent onSearch={handleSearch} />
-      {/* <div className="loginMessage">
+      <div className="loginMessage">
         {nickname ? (
           <div>환영합니다, {nickname}님!</div>
         ) : (
           <div>로그인이 필요합니다.</div>
         )}
-      </div> */}
+      </div>
       <SidebarR width={450}>
         <div className="sidebar-content">
           <h1>대한민국</h1>
@@ -66,7 +72,7 @@ const Home = () => {
           </div>
         </div>
       </SidebarR>
-    </div>    
+    </div>
   );
 };
 

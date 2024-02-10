@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "./constants/fonts.css";
@@ -30,9 +30,21 @@ import PlanEdit from "./pages/planedit/travelplanEdit";
 import Myplanpage from "./pages/mapages/Myplanpage";
 import Myplacepage from "./pages/mapages/Myplacepage";
 import Otherplanpage from "./pages/mapages/Otherplanpage";
+import OAuthCallback from "./components/OAuthCallback";
 const queryClient = new QueryClient();
 
 function App() {
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const accessToken = queryParams.get("access-token");
+    const refreshToken = queryParams.get("refresh-token");
+
+    if (accessToken && refreshToken) {
+      console.log("Access Token:", accessToken);
+      console.log("Refresh Token:", refreshToken);
+      // 토큰 처리 로직...
+    }
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <div>
@@ -64,6 +76,7 @@ function App() {
             <Route path="/myplan" element={<Myplanpage />} />
             <Route path="/otherplan" element={<Otherplanpage />} />
             <Route path="/myplace" element={<Myplacepage />} />
+            <Route path="/oauth/callback" element={<OAuthCallback />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

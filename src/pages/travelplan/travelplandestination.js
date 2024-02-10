@@ -28,6 +28,11 @@ class TrvlPlan extends Component {
     };
   }
 
+  handlePre = () => {
+    this.props.history.push("/"); // withRouter로 인해 history.push 사용
+  };
+
+
   handleStartDateChange = (date) => {
     this.setState({ startDate: date });
   };
@@ -35,6 +40,8 @@ class TrvlPlan extends Component {
   handleEndDateChange = (date) => {
     this.setState({ endDate: date });
   };
+
+
 
   handleSearchInput = (e) => {
     const input = e.target.value;
@@ -99,10 +106,12 @@ class TrvlPlan extends Component {
         );
       } else {
         return (
-          <div
-            className="destinationList">
-            <div className="destinationListText">검색 결과가 없습니다.</div>;
-          </div>
+          <ul className="suggestions">
+            <div
+              className="destinationList">
+              <div className="destinationListText">검색 결과가 없습니다.</div>
+            </div>
+          </ul>
         )
       }
     }
@@ -135,21 +144,23 @@ class TrvlPlan extends Component {
             />
           </div>
           {/* 목적지 검색 필드 */}
-          <div className="textTitle">어디로 가시나요?</div>
-          <div className="search_destination">
-            <input
-              type="text"
-              maxLength="20"
-              className="search_destination1"
-              name="searchInput"
-              placeholder="어디로 가고싶나요?"
-              value={this.state.searchInput}
-              onChange={this.handleSearchInput}
-            />
+          <div style={{ height: "580px" }}>
+            <div className="textTitle">어디로 가시나요?</div>
+            <div className="search_destination">
+              <input
+                type="text"
+                maxLength="20"
+                className="search_destination1"
+                name="searchInput"
+                placeholder="어디로 가고싶나요?"
+                value={this.state.searchInput}
+                onChange={this.handleSearchInput}
+              />
+            </div>{this.renderSuggestions()}
           </div>
-          {this.renderSuggestions()}
+
           {/* 초대 코드 입력 섹션 */}
-          <div className="textTitle">친구에게 초대받으셨나요?</div>
+          <div className="textTitle2">친구에게 초대받으셨나요?</div>
           <div className="search_invite">
             <div className="invitationCodeSection">
               <input
@@ -172,7 +183,7 @@ class TrvlPlan extends Component {
           </div>
 
           {/* 이전 버튼 */}
-          <button type="submit" className="pre_button">
+          <button onClick={this.handlePre} className="pre_button">
             이전
           </button>
 
