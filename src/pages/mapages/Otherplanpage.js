@@ -36,7 +36,7 @@ function Otherplanpage() {
 
   return (
     <div className="container">
-      <h3>관심있는 여행계획</h3>
+      <p className="page-title">관심있는 여행계획</p>
       {/* 3*3 형식으로 표시 */}
       {currentOthers.length > 0 && (
         <div>

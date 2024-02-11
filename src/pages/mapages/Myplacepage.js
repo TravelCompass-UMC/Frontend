@@ -34,7 +34,7 @@ function Myplacepage() {
 
   return (
     <div className="container">
-      <p className="title">관심있는 장소</p>
+      <p className="page-title">관심있는 장소</p>
       <div className="category-buttons">
         {['전체', '숙소', '명소', '카페/식당'].map((category) => (
           <button
