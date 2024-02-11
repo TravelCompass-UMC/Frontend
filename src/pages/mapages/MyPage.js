@@ -32,6 +32,20 @@ const Thumbnail = {
     height: "138px",
     background: "#EBEDF8",
     borderRadius: 15,
+    position: 'relative',
+  },
+  dateBox: {
+    textAlign: 'center',
+    width: "70px",
+    position: 'absolute',
+    top: '10px', // 상단에서부터 10px 떨어진 위치
+    right: '10px', // 우측에서부터 10px 떨어진 위치
+    background: 'white', // 흰색 배경
+    borderRadius: '5px', // 모서리 둥글게
+    padding: '5px 10px', // 내부 여백
+    fontSize: '14px', // 폰트 크기
+    fontWeight: 'bold', // 폰트 굵기
+    zIndex: 10, // 다른 요소들 위에 표시
   },
   textBox: {
     width: "100%",
@@ -178,16 +192,18 @@ export function MyplanThumbnail(props, onToggleLike) {
     width: "calc(100% - 50px)", // 하트 이미지와의 공간을 고려하여 너비 조정
   };
 
- return (
-    <div
-      className="thumbnail-container"
-      style={{ ...Thumbnail.bigBox, margin: "0 10px" }}
-    >
-      <img className="myplanimg"
-        style={{ ...Thumbnail.imageBox, width: "100%" }}
-        src={props.plans.img}
-        alt="장소 이미지"
-      />
+  return (
+    <div style={{ ...Thumbnail.bigBox, margin: "0 10px" }}>
+      <div style={Thumbnail.imageBox}>
+        <img
+          className="myplanimg"
+          style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "15px" }}
+          src={props.plans.img}
+          alt="장소 이미지"
+        />
+        {/* 흰색 날짜 박스 추가 */}
+        <div style={Thumbnail.dateBox}>D-23</div>
+      </div>
       <div style={containerStyle}>
         <div style={textStyle}>
           <a style={Thumbnail.placeText}>{props.plans.place}</a>
@@ -346,8 +362,18 @@ export function OtherTravelPlanSection({ title, others, userName }) {
   );
 }
 
+function getCategoryClassName(category) {
+  switch (category) {
+    case 1: return 'category-sukso'; // 숙소
+    case 2: return 'category-myungso'; // 명소
+    case 3: return 'category-cafe-sikdang'; // 카페/식당
+    default: return '';
+  }
+}
+
 export function InterestedPlaceThumbnail(props) {
 
+  const categoryClass = getCategoryClassName(props.places.category);
   const [bookmarkState, setBookmarkState] = useState(props.places.liked);
   const handleBookmarkClick = () => {
     setBookmarkState(bookmarkState === 0 ? 1 : 0);
@@ -357,7 +383,7 @@ export function InterestedPlaceThumbnail(props) {
       <div style={Placethumbnail.detailText}>
         <p style={Placethumbnail.place}> {/*제주도 여행 장소*/}
           <span style={Placethumbnail.placeName}>{props.places.place}</span> {/* 식당,숙소,카페 장소 이름 */}
-          <span style={Placethumbnail.placeType}>{props.places.info}</span> {/* 분류 */}
+          <span className={categoryClass} style={Placethumbnail.placeType}>{props.places.info}</span> {/* 분류 */}
         </p>
         <p style={Placethumbnail.placeWhere}>{props.places.where}</p> {/* 위치 설명 */}
         <div>

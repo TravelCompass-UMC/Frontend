@@ -1,5 +1,10 @@
 /* styles/Mypages.css */
 /* Components */
+
+.category-sukso { color: #BFC4D8; } /* 숙소 */
+.category-myungso { color: #8270FF; } /* 명소 */
+.category-cafe-sikdang { color: #7CDDA3; } /* 카페/식당 */
+
   .nav-bar p {
     color: #191B24;
     font-size: 17px;
@@ -117,6 +122,7 @@
   .col-md-4{
     margin-bottom: 40px;
     padding: 0px 0px;
+    width: 375px;
   }
   .place-thumbnail-container{
     margin: 5px 10px; /* 상하좌우 마진 추가 */
@@ -133,6 +139,7 @@
   /*InterestedPlaceSection*/
   .category-buttons {
     margin-bottom: 20px;
+    padding-left: 75px;
   }
   
   .category-button {
@@ -146,6 +153,44 @@
   .category-button:hover {
     background-color: #e9e9e9;
   }
+  .mypagesort-button{
+    background-color: white;
+    color: #7F85A3; /* 글자 색상 설정 */
+    font-weight: bold;
+    font-size: 0.8rem; /* 글자 크기 줄임, 기본값 대비 작게 */
+    border: none; /* 버튼 테두리 제거 */
+    cursor: pointer; /* 마우스 오버 시 커서 변경 */
+    padding: 5px 10px; /* 내부 여백 조정 */
+    text-decoration: none; /* 링크 밑줄 없앰 */
+    font-family: "SUIT Variable";
+    font-size : 13px;
+    margin-right:45px
+  }
+  .sort-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .sort-options {
+    position: absolute;
+    border: none; /* 버튼 테두리 제거 */
+    right: 45px;
+    background-color: white;
+    min-width: 110px;
+    box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 8px 0px;
+    z-index: 1;
+  }
+  
+  .sort-option {
+    width: 100px;
+    color: black;
+    background-color: white;
+    border: none; /* 버튼 테두리 제거 */
+    text-decoration: none;
+    display: block;
+  }
+  
+  .sort-option:hover {background-color: #f1f1f1}
   /* IsEmpty-container */
   .emptymy-box {
     border: 2px solid #EBEDF8;
@@ -241,6 +286,7 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    padding-right: 60px;
   }
   
   .logbutton {
@@ -248,6 +294,8 @@
     padding: 10px 20px; /* 버튼의 크기를 조정 */
     background-color: #F3F5FF; /* 버튼 배경색 설정 */
     border: none; /* 버튼 테두리 제거 */
+    border-radius: 5px;
+    width: 150px;
     cursor: pointer; /* 마우스 오버 시 커서 변경 */
     font-size: 16px; /* 폰트 크기 조정 */
   }
