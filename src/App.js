@@ -69,19 +69,10 @@ function App() {
             <Route path="/placeinfo1_seoul" element={<PlaceInfoSeoul />} />
             <Route path="/placeinfo1_busan" element={<PlaceInfoBusan />} />
             <Route path="/placeinfo1_yeosu" element={<PlaceInfoYeosu />} />
-            <Route
-              path="/placeinfo1_gyeongju"
-              element={<PlaceInfoGyeongju />}
-            />
+            <Route path="/placeinfo1_gyeongju" element={<PlaceInfoGyeongju />} />
             <Route path="/placeinfo1_sokcho" element={<PlaceInfoSokcho />} />
-            <Route
-              path="/placeinfo1_gangneung"
-              element={<PlaceInfoGangneung />}
-            />
-            <Route
-              path="/placeinfo1_yangyang"
-              element={<PlaceInfoYangyang />}
-            />
+            <Route path="/placeinfo1_gangneung" element={<PlaceInfoGangneung />} />
+            <Route path="/placeinfo1_yangyang" element={<PlaceInfoYangyang />} />
             <Route path="/travelplandetail" element={<Plandetail />} />
             <Route path="/travelplanedit" element={<PlanEdit />} />
             <Route path="/myplan" element={<Myplanpage />} />
