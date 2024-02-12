@@ -89,8 +89,8 @@ const PlaceInfoYeosu = () => {
             onClick={handleSearch}
             style={{
               position: 'absolute',
-              top: '60%',
-              right: '2px',
+              top: '2.8vh',
+              right: '2%',
               transform: 'translateY(-50%)',
               border: 'none',
               backgroundColor: 'white',
