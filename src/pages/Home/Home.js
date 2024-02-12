@@ -9,15 +9,6 @@ const Home = () => {
   const navigate = useNavigate();
   const [searchedLocation, setSearchedLocation] = useState(null);
   const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 추가
-  const [nickname, setNickname] = useState(""); // 닉네임 상태를 관리하기 위한 상태 추가
-
-  useEffect(() => {
-    // sessionStorage에서 닉네임 가져오기
-    const storedNickname = sessionStorage.getItem("nickname");
-    if (storedNickname) {
-      setNickname(storedNickname); // 가져온 닉네임을 상태에 저장
-    }
-  }, []);
 
   const handleSearch = (location, query) => {
     setSearchedLocation(location);
@@ -37,13 +28,7 @@ const Home = () => {
     <div>
       <GoogleMapComponent />
       <SearchComponent onSearch={handleSearch} />
-      <div className="loginMessage">
-        {nickname ? (
-          <div>환영합니다, {nickname}님!</div>
-        ) : (
-          <div>로그인이 필요합니다.</div>
-        )}
-      </div>
+
       <SidebarR width={450}>
         <div className="sidebar-content">
           <h1>대한민국</h1>
