@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import classes from "../styles/MainHeader.module.css";
 import Modal from "./lginModal";
-import Mainlogo from "../assets/images/Mypage/FinalLogo.svg"
+import Mainlogo from "../assets/images/Mypage/FinalLogo.svg";
 
 const MainHeader = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태
   const [username, setUsername] = useState(""); // 사용자 이름
+  const [nickname, setNickname] = useState(""); // 닉네임 상태를 관리하기 위한 상태 추가
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -27,7 +28,13 @@ const MainHeader = () => {
     setIsLoggedIn(false);
     setUsername("");
   };
-
+  useEffect(() => {
+    // sessionStorage에서 닉네임 가져오기
+    const storedNickname = sessionStorage.getItem("nickname");
+    if (storedNickname) {
+      setNickname(storedNickname); // 가져온 닉네임을 상태에 저장
+    }
+  }, []);
   return (
     <>
       <header className={classes.header}>
@@ -75,6 +82,13 @@ const MainHeader = () => {
                 </button>
               )}
             </li>
+            <div className="loginMessage">
+              {nickname ? (
+                <div>환영합니다, {nickname}님!</div>
+              ) : (
+                <div>로그인이 필요합니다.</div>
+              )}
+            </div>
           </ul>
         </nav>
         <Modal open={isModalOpen} close={closeModal}>
