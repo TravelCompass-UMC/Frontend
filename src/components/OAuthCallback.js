@@ -13,21 +13,25 @@ const OAuthCallback = () => {
     const fetchUserProfile = async () => {
       if (accessToken) {
         try {
-          // 예시로 사용자 정보를 요청하는 URL입니다. 실제 URL은 서버 구현에 따라 달라집니다.
-          const response = await fetch("YOUR_USER_PROFILE_ENDPOINT", {
+          const response = await fetch("http://dev.enble.site/me/info", {
+            method: "GET",
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
           });
           const data = await response.json();
 
-          // 사용자 정보 응답에서 닉네임 추출
-          const nickname = data.nickname; // 응답 구조에 따라 경로가 달라질 수 있습니다.
-
-          // 닉네임을 sessionStorage에 저장
-          sessionStorage.setItem("nickname", nickname);
-
-          navigate("/");
+          if (data.isSuccess) {
+            // 사용자 정보 응답에서 닉네임 추출
+            const nickname = data.result.nickname;
+            // 닉네임을 sessionStorage에 저장
+            sessionStorage.setItem("nickname", nickname);
+            navigate("/");
+          } else {
+            // isSuccess가 false인 경우, 오류 메시지를 출력하고 메인 페이지로 리디렉션합니다.
+            console.error(data.message);
+            navigate("/");
+          }
         } catch (error) {
           console.error("Failed to fetch user profile", error);
           navigate("/"); // 오류 발생 시 메인 페이지로 리디렉션
