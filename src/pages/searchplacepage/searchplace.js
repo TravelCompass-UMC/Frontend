@@ -1,7 +1,7 @@
 // searchplace.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/Place.css";
+import "../../styles/searchplace/Place.css";
 import SearchComponent from '../../components/Search.js';
 import Map from '../../components/Map';
 
