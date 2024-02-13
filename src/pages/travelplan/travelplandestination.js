@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/travelplanpage.css";
 import "react-datepicker/dist/react-datepicker.css";
-import image1 from "../../assets/images/Pages/Vector (2).png"
+import image1 from "../../assets/images/Pages/Vector (2).png";
 import { format } from "date-fns";
 
 class TrvlPlan extends Component {
@@ -16,22 +16,29 @@ class TrvlPlan extends Component {
       tripTitle: "",
       invitationCode: "",
       showSuggestions: false,
-      destinations: [
-        "서울",
-        "부산",
-        "제주도",
-        "여수",
-        "속초/강릉/양양",
-        "경주",
-      ],
+      destinations: [],
       filteredDestinations: [],
     };
   }
+  componentDidMount() {
+    // 컴포넌트가 마운트될 때 목적지 데이터를 가져옵니다.
+    this.fetchDestinations();
+  }
 
+  fetchDestinations = () => {
+    fetch("http://dev.enble.site:8080/regions")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isSuccess && data.result) {
+          const destinations = data.result.map((item) => item.name);
+          this.setState({ destinations });
+        }
+      })
+      .catch((error) => console.error("Error fetching destinations:", error));
+  };
   handlePre = () => {
     this.props.history.push("/"); // withRouter로 인해 history.push 사용
   };
-
 
   handleStartDateChange = (date) => {
     this.setState({ startDate: date });
@@ -40,8 +47,6 @@ class TrvlPlan extends Component {
   handleEndDateChange = (date) => {
     this.setState({ endDate: date });
   };
-
-
 
   handleSearchInput = (e) => {
     const input = e.target.value;
@@ -56,7 +61,6 @@ class TrvlPlan extends Component {
       filteredDestinations,
     });
   };
-
   selectDestination = (destination) => {
     this.setState({
       searchInput: destination,
@@ -97,7 +101,8 @@ class TrvlPlan extends Component {
                 key={index}
                 onClick={() => this.selectDestination(destination)}
               >
-                <div className="destinationListText">{destination}
+                <div className="destinationListText">
+                  {destination}
                   <img className="image1" src={image1} />
                 </div>
               </div>
@@ -107,12 +112,11 @@ class TrvlPlan extends Component {
       } else {
         return (
           <ul className="suggestions">
-            <div
-              className="destinationList">
+            <div className="destinationList">
               <div className="destinationListText">검색 결과가 없습니다.</div>
             </div>
           </ul>
-        )
+        );
       }
     }
 
@@ -131,7 +135,9 @@ class TrvlPlan extends Component {
         <form onSubmit={this.handleSubmit}>
           {/* 여행 제목 입력 필드 */}
 
-          <div className="textTitle" style={{ marginTop: "200px" }}>여행의 제목을 작성해주세요.</div>
+          <div className="textTitle" style={{ marginTop: "200px" }}>
+            여행의 제목을 작성해주세요.
+          </div>
           <div className="search_title">
             <input
               type="text"
@@ -156,7 +162,8 @@ class TrvlPlan extends Component {
                 value={this.state.searchInput}
                 onChange={this.handleSearchInput}
               />
-            </div>{this.renderSuggestions()}
+            </div>
+            {this.renderSuggestions()}
           </div>
 
           {/* 초대 코드 입력 섹션 */}
@@ -178,7 +185,6 @@ class TrvlPlan extends Component {
               >
                 제출
               </button>
-
             </div>
           </div>
 
@@ -192,10 +198,9 @@ class TrvlPlan extends Component {
             선택완료
           </button>
 
-
           <div className="image"> </div>
-        </form >
-      </div >
+        </form>
+      </div>
     );
   }
 }
