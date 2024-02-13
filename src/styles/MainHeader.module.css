@@ -1,3 +1,6 @@
+.loginMessage {
+  color: white;
+}
 .loginout_btn {
   background-color: rgba(0, 0, 0, 0.1);
   color: greenyellow;
@@ -18,7 +21,7 @@
   height: 9vh;
   width: 100%;
   position: fixed;
-  background-color: #191B24;
+  background-color: #191b24;
   padding: 10px 3px 3px 3px;
   display: flex;
   justify-content: space-between;
