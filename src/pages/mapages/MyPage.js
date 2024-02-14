@@ -94,15 +94,16 @@ const Placethumbnail = {
     margin: "4px 0",
   },
   placeName: { // 장소 이름 스타일
-    fontSize: "16px", // 예시 글자 크기
+    fontSize: "20px", // 예시 글자 크기
     fontWeight: "bold", // 굵은 글씨체
   },
   placeType: { // 분류(명소, 식당 등) 스타일
     fontSize: "14px", // 예시 글자 크기
     marginLeft: "8px", // 장소 이름과의 간격
+    fontWeight: "bold",
   },
   placeWhere: {
-    fontSize: "13px",
+    fontSize: "14px",
   },
   detailimage: {
     width: "125px",
@@ -385,7 +386,7 @@ export function InterestedPlaceThumbnail(props) {
           <span style={Placethumbnail.placeName}>{props.places.place}</span> {/* 식당,숙소,카페 장소 이름 */}
           <span className={categoryClass} style={Placethumbnail.placeType}>{props.places.info}</span> {/* 분류 */}
         </p>
-        <p style={Placethumbnail.placeWhere}>{props.places.where}</p> {/* 위치 설명 */}
+        <p className="wheretext" style={Placethumbnail.placeWhere}>{props.places.where}</p> {/* 위치 설명 */}
         <div>
           <img alt="평점"
           style={Thumbnail.heartImage}

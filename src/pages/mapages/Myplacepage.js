@@ -14,7 +14,7 @@ function Myplacepage() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   // 정렬 방식에 따른 제목 결정
-  const dropdownTitle = sortOrder === 'likes' ? '좋아요순' : '평점순';
+  const dropdownTitle = sortOrder === 'likes' ? '좋아요순' : '별점순';
 
   const filteredPlaces = places.filter(place => {
     if (currentCategory === '전체') return true;
@@ -51,8 +51,8 @@ function Myplacepage() {
           <button onClick={toggleDropdown} className="mypagesort-button">{dropdownTitle}</button>
           {showDropdown && (
             <div className="sort-options">
-              <button onClick={() => { setSortOrder('likes'); setShowDropdown(false); }} className="sort-option">좋아요순</button>
-              <button onClick={() => { setSortOrder('rating'); setShowDropdown(false); }} className="sort-option">평점순</button>
+              <button onClick={() => { setSortOrder('rating'); setShowDropdown(false); }} className="sort-option1">별점순</button>
+              <button onClick={() => { setSortOrder('likes'); setShowDropdown(false); }} className="sort-option2">좋아요순</button>
             </div>
           )}
         </div>
