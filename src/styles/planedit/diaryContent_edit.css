@@ -1,0 +1,337 @@
+.Schedule {
+    width: 138px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--grayscale-Gray6, #484A64);
+    border: 1px solid var(--grayscale-Gray2, #ebedf8);
+    color: var(--grayscale-White, #FFF);
+
+    /* botton/botton_bold_16 */
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 170%; 
+    margin-top: 21px;
+    margin-left: 211px;
+  }
+
+.dayBtn {
+    width: 138px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid var(--grayscale-Gray2, #EBEDF8);
+    background: var(--grayscale-White, #FFF);
+    color: var(--grayscale-Gray3, #BFC4D8);
+
+    /* botton/botton_bold_16 */
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 170%; 
+    margin-top: 20px;
+    margin-left: 211px;
+  }
+  
+  .editBtn {
+    /* 현재 계획서 편집 완료하기 */
+    width: 180px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: none;
+    margin-top: 304px;
+    margin-left: 169px;
+
+    /* Primary color */
+    border-radius: 8px;
+    border: 1px solid var(--grayscale-Gray3, #BFC4D8);
+    background: var(--grayscale-White, #FFF);
+    /* botton/botton_bold_16 */
+    color: var(--grayscale-Gray5, #626682);
+    /* botton/botton_bold_20 */
+    font-family: "SUIT Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    /* or 27px */
+    text-align: center;
+    }
+
+  .saveBtn {
+    /* 현재 계획서 저장하기 */
+    width: 180px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: none;
+    margin-top: 16px;
+    margin-left: 169px;
+
+    /* Primary color */
+    background: var(--grayscale-White, #8270FF);
+    /* botton/botton_bold_16 */
+    color: var(--grayscale-White, #FFF);
+
+    /* botton/botton_bold_20 */
+    font-family: "SUIT Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    /* or 27px */
+    text-align: center;
+  }
+  
+  .nickname {
+    width: fixed 134px;
+    height: fixed 20px;
+    margin-bottom: 4px;
+    color: var(--grayscale-Gray3, #BFC4D8);
+  
+    /* subtitle/subtitle_smbold_16 */
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .title {
+    width: fixed 179px;
+    height: fixed 30px;
+    color: var(--grayscale-Gray8, #191B24);
+  
+    /* head/head_bold_24 */
+    font-family: "SUIT Variable";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .edit_smallBtn {
+    width: 46px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: var(--grayscale-Gray3, #BFC4D8);
+    margin-left: 12px;
+  }
+
+  .edit_font {
+    width: fixed 25px;
+    height: fixed 24px;
+    margin-top: -4px;
+    color: var(--grayscale-White, #FFF);
+
+    /* detail/detail_regular_14 */
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 170%; 
+    text-align: center;
+  }
+  
+  .inform {
+    width: fixed 201px;
+    height: fixed 24px;
+    color: var(--grayscale-Gray3, #BFC4D8);
+
+    /* detail/detail_regular_14 */
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 170%; 
+  }
+  
+  .hashtags {
+    color: var(--grayscale-Gray4, #7F85A3);
+  
+    /* subtitle/subtitle_smbold_16 */
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .line {
+    border-bottom: 2px solid var(--grayscale-Gray2, #EBEDF8);
+    background: var(--grayscale-Gray1, #F3F5FF);
+    width: 90%;
+  }
+  
+  .dayContainer {
+    width: 434px;
+    height: 199px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    display: inline-block;
+    /* 가로 스크롤 활성화 */
+  
+  }
+  
+  .divscroll {
+    width: 95%;
+    height: 800px;
+    overflow: auto;
+    white-space: nowrap;
+    display: relative;
+  }
+  
+  .detailnum {
+    width: 57px;
+    height: 30px;
+    margin-bottom: 19px;
+    color: var(--grayscale-Gray8, #191B24);
+
+    /* head/head_bold_24 */
+    font-family: "SUIT Variable";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  
+  
+  .detailcal {
+    width: 113px;
+    height: 20px;
+    margin-bottom: 19px;
+    color: var(--grayscale-Gray3, #BFC4D8);
+  
+    /* subtitle/subtitle_smbold_16 */
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+  }
+  
+  .detailnum3 {
+    /*몇번*/
+    fill: var(--grayscale-Gray2, #EBEDF8);
+    margin-top: 14px;
+    margin-left: 14px;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .detailnum4 {
+    /* 2 */
+    width: 10px;
+    height: 27px;
+    top: 40px;
+    /* botton/botton_bold_16 */
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 170%;
+    /* or 27px */
+  
+    /* grayscale/Gray4 */
+    color: #7F85A3;
+  }
+  
+  .detailtime {
+    color: var(--grayscale-Gray4, #7F85A3);
+  
+    /* detail/detail_regular_14 */
+    width: 198px;
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 170%;
+    /* 23.8px */
+  }
+  
+  .detailplace {
+    color: var(--Sub-color, #78CF9F);
+  
+    /* body/body_bold_14 */
+    font-family: "SUIT Variable";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  .detailplacename {
+    color: var(--grayscale-Gray8, #191B24);
+  
+    /* head/head_bold_20 */
+    font-family: "SUIT Variable";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  .detailmoney {
+    color: var(--grayscale-Gray4, #7F85A3);
+  
+    /* body/body_bold_14 */
+    font-family: "SUIT Variable";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .place-plus{
+    margin-top: 40px;
+    width: 153px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: var(--grayscale-Gray2, #EBEDF8);
+  }
+
+  .plus-font{
+    color: var(--grayscale-Gray3, #BFC4D8);
+
+    /* botton/botton_bold_16 */
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 170%; 
+    text-align: center;
+  }
+
+  .detailimage {
+    margin-top: 150px;
+    width: 122px;
+    height: 122px;
+    border-radius: 10px;
+    background: var(--grayscale-Gray2, #EBEDF8);
+  }
+  
+  .detailBox {
+    border-radius: 8px;
+    margin-bottom: 100px;
+    background: var(--grayscale-White, #FFF);
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.10);
+    width: 380px;
+    height: 132px;
+    flex-shrink: 0;
+  }
+  
+  .heartImage {
+    cursor: pointer;
+  }
+
+
