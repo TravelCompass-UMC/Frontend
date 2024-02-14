@@ -1,6 +1,6 @@
 .buttonFalse {
-  width: 160px;
-  height: 80px;
+  width: 138px;
+  height: 70px;
   border-radius: 8px;
   border: 1px solid var(--grayscale-Gray2, #ebedf8);
   background: var(--grayscale-White, #fff);
@@ -13,20 +13,20 @@
   font-weight: 700;
   line-height: 170%;
   /* 27.2px */
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .buttonUse {
   /* 현재 계획서 적용하기 */
-  width: 160px;
-  height: 80px;
+  width: 138px;
+  height: 70px;
   border-radius: 8px;
   border: none;
-  margin-top: 80%;
+  margin-top: 85%;
   /* Primary color */
-  background: var(--grayscale-White, #8270FF);
+  background: var(--grayscale-White, #8270ff);
   /* botton/botton_bold_16 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -35,11 +35,11 @@
   text-align: center;
 
   /* grayscale/White */
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .nickname {
-  color: var(--grayscale-Gray3, #BFC4D8);
+  color: var(--grayscale-Gray3, #bfc4d8);
 
   /* subtitle/subtitle_smbold_16 */
   font-family: "SUIT Variable";
@@ -50,7 +50,7 @@
 }
 
 .title {
-  color: var(--grayscale-Gray8, #191B24);
+  color: var(--grayscale-Gray8, #191b24);
 
   /* head/head_bold_24 */
   font-family: "SUIT Variable";
@@ -61,7 +61,7 @@
 }
 
 .inform {
-  color: var(--grayscale-Gray3, #BFC4D8);
+  color: var(--grayscale-Gray3, #bfc4d8);
 
   /* detail/detail_regular_14 */
   font-family: "SUIT Variable";
@@ -73,7 +73,7 @@
 }
 
 .hashtags {
-  color: var(--grayscale-Gray4, #7F85A3);
+  color: var(--grayscale-Gray4, #7f85a3);
 
   /* subtitle/subtitle_smbold_16 */
   font-family: "SUIT Variable";
@@ -84,8 +84,8 @@
 }
 
 .line {
-  border-bottom: 2px solid var(--grayscale-Gray2, #EBEDF8);
-  background: var(--grayscale-Gray1, #F3F5FF);
+  border-bottom: 2px solid var(--grayscale-Gray2, #ebedf8);
+  background: var(--grayscale-Gray1, #f3f5ff);
   width: 90%;
 }
 
@@ -95,7 +95,6 @@
   margin-right: 100px;
   display: inline-block;
   /* 가로 스크롤 활성화 */
-
 }
 
 .divscroll {
@@ -118,10 +117,8 @@
   text-decoration: none;
 }
 
-
-
 .detailcal {
-  color: var(--grayscale-Gray3, #BFC4D8);
+  color: var(--grayscale-Gray3, #bfc4d8);
 
   /* subtitle/subtitle_smbold_16 */
   font-family: "SUIT Variable";
@@ -134,7 +131,7 @@
 
 .detailnum1 {
   /*몇번*/
-  fill: var(--grayscale-Gray2, #EBEDF8);
+  fill: var(--grayscale-Gray2, #ebedf8);
   margin-top: -50px;
   margin-left: 10%;
   width: 28px;
@@ -151,7 +148,7 @@
   top: -24px;
 
   /* botton/botton_bold_16 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -159,11 +156,11 @@
   /* or 27px */
 
   /* grayscale/Gray4 */
-  color: #7F85A3;
+  color: #7f85a3;
 }
 
 .detailtime {
-  color: var(--grayscale-Gray4, #7F85A3);
+  color: var(--grayscale-Gray4, #7f85a3);
 
   /* detail/detail_regular_14 */
   width: 198px;
@@ -176,7 +173,7 @@
 }
 
 .detailplace {
-  color: var(--Sub-color, #78CF9F);
+  color: var(--Sub-color, #78cf9f);
 
   /* body/body_bold_14 */
   font-family: "SUIT Variable";
@@ -187,7 +184,7 @@
 }
 
 .detailplacename {
-  color: var(--grayscale-Gray8, #191B24);
+  color: var(--grayscale-Gray8, #191b24);
 
   /* head/head_bold_20 */
   font-family: "SUIT Variable";
@@ -198,7 +195,7 @@
 }
 
 .detailmoney {
-  color: var(--grayscale-Gray4, #7F85A3);
+  color: var(--grayscale-Gray4, #7f85a3);
 
   /* body/body_bold_14 */
   font-family: "SUIT Variable";
@@ -213,18 +210,17 @@
   width: 122px;
   height: 122px;
   border-radius: 10px;
-  background: var(--grayscale-Gray2, #EBEDF8);
+  background: var(--grayscale-Gray2, #ebedf8);
 }
 
 .detailBox {
   border-radius: 8px;
   margin-bottom: 100px;
-  background: var(--grayscale-White, #FFF);
-  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.10);
+  background: var(--grayscale-White, #fff);
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.1);
   width: 380px;
   height: 132px;
   flex-shrink: 0;
-
 }
 
 .heartImage {

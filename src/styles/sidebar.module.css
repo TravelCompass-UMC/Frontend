@@ -16,16 +16,14 @@
   .button {
     position: fixed;
     background-color: white; /* 사다리꼴의 배경색 */
-    /* clip-path: polygon(0% 0%, 100% 20%, 100% 80%, 0% 100%); */
-    left: 0; /* 가로축 위치 설정 */
+    left: -32px; /* 가로축 위치 설정 */
     top: 40vh;
     width: 32px;
-    height: 40px;
+    height: 55px;
     z-index: 99;
     border: none;
     padding: 6px 6px;
-    border-bottom-right-radius: 20%;
-    border-top-right-radius: 20%;
+    border-radius: 8px 0px 0px 8px;
   }
   
   .openBtn {

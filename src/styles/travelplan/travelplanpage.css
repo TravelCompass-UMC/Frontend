@@ -1,3 +1,6 @@
+.informinput-container {
+  position: absolute;
+}
 .textTitle {
   /* 여행의 제목을 작성해주세요. */
 
@@ -6,7 +9,7 @@
   margin-top: 50px;
 
   /* head/head_bold_24 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 23px;
@@ -14,7 +17,7 @@
   /* identical to box height */
 
   /* grayscale/Gray8 */
-  color: #191B24;
+  color: #191b24;
 }
 
 .textTitle2 {
@@ -25,7 +28,7 @@
   top: -420px;
 
   /* head/head_bold_24 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 23px;
@@ -33,7 +36,7 @@
   /* identical to box height */
 
   /* grayscale/Gray8 */
-  color: #191B24;
+  color: #191b24;
 }
 
 .search_title {
@@ -45,12 +48,12 @@
   left: 25%;
 
   /* grayscale/Gray1 */
-  background: #F3F5FF;
+  background: #f3f5ff;
   border: none;
   border-radius: 10px;
 
   /* 신나는 부산 여행 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -61,7 +64,7 @@
   /* or 27px */
 
   /* grayscale/Gray8 */
-  color: #191B24;
+  color: #191b24;
 }
 
 .search_title1 {
@@ -71,10 +74,10 @@
   margin-top: 25px;
   margin-left: 20px;
   /* grayscale/Gray1 */
-  background: #F3F5FF;
+  background: #f3f5ff;
   border: none;
   border-radius: 10px;
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -83,22 +86,20 @@
   /* or 27px */
   outline: none;
   /* grayscale/Gray8 */
-  color: #191B24;
+  color: #191b24;
 }
-
 
 .search_title1::placeholder {
   /* botton/botton_bold_16 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 170%;
   /* or 27px */
   /* grayscale/Gray3 */
-  color: #BFC4D8;
+  color: #bfc4d8;
 }
-
 
 .search_destination {
   /* Rectangle 34624545 */
@@ -108,20 +109,18 @@
   height: 80px;
   left: 25%;
 
-
   /* grayscale/Gray1 */
-  background: #F3F5FF;
+  background: #f3f5ff;
   border: none;
   border-radius: 10px;
 
   /* botton/botton_bold_16 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 170%;
 }
-
 
 .search_destination1 {
   /* Rectangle 34624545 */
@@ -130,10 +129,10 @@
   margin-top: 25px;
   margin-left: 20px;
   /* grayscale/Gray1 */
-  background: #F3F5FF;
+  background: #f3f5ff;
   border: none;
   border-radius: 10px;
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -141,13 +140,12 @@
   /* or 27px */
   outline: none;
   /* grayscale/Gray8 */
-  color: #191B24;
+  color: #191b24;
 }
-
 
 .search_destination1::placeholder {
   /* botton/botton_bold_16 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -155,7 +153,7 @@
   /* or 27px */
 
   /* grayscale/Gray3 */
-  color: #BFC4D8;
+  color: #bfc4d8;
 }
 
 .search_invite {
@@ -167,14 +165,13 @@
   left: 25%;
   top: -420px;
 
-
   /* grayscale/Gray1 */
-  background: #F3F5FF;
+  background: #f3f5ff;
   border: none;
   border-radius: 10px;
 
   /* botton/botton_bold_16 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -182,7 +179,7 @@
   /* or 27px */
 
   /* grayscale/Gray3 */
-  color: #BFC4D8;
+  color: #bfc4d8;
 }
 
 .search_invite1 {
@@ -192,10 +189,10 @@
   top: 0px;
   margin-left: 20px;
   /* grayscale/Gray1 */
-  background: #F3F5FF;
+  background: #f3f5ff;
   border: none;
   border-radius: 10px;
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -204,13 +201,12 @@
   /* or 27px */
   outline: none;
   /* grayscale/Gray8 */
-  color: #191B24;
+  color: #191b24;
 }
-
 
 .search_invite1::placeholder {
   /* botton/botton_bold_16 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -218,7 +214,7 @@
   /* or 27px */
 
   /* grayscale/Gray3 */
-  color: #BFC4D8;
+  color: #bfc4d8;
 }
 
 .search_submit {
@@ -230,7 +226,7 @@
   left: 35%;
 
   /* botton/botton_bold_16 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -238,11 +234,10 @@
   /* or 27px */
 
   /* grayscale/Gray3 */
-  color: #F3F5FF;
+  color: #f3f5ff;
   border: none;
   border-radius: 10px;
 }
-
 
 .datepicker {
   text-align: center;
@@ -252,32 +247,6 @@
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   margin-right: 15px;
-}
-
-.pre_button {
-  /* Rectangle 34624548 */
-
-  position: relative;
-  width: 180px;
-  height: 80px;
-  left: 25%;
-  top: -200px;
-
-  /* grayscale/Gray1 */
-  background: #F3F5FF;
-  border-radius: 8px;
-  border: none;
-
-  /* botton/botton_bold_20 */
-  font-family: 'SUIT Variable';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 17px;
-  line-height: 25px;
-  /* identical to box height */
-
-  /* grayscale/Gray3 */
-  color: #BFC4D8;
 }
 
 .next_button {
@@ -290,12 +259,12 @@
   top: -200px;
 
   /* grayscale/Gray1 */
-  background: #F3F5FF;
+  background: #f3f5ff;
   border-radius: 8px;
   border: none;
 
   /* botton/botton_bold_20 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 17px;
@@ -303,22 +272,20 @@
   /* identical to box height */
 
   /* grayscale/Gray3 */
-  color: #BFC4D8;
+  color: #bfc4d8;
 }
 
 .image {
-
-
   /* Rectangle 34624544 */
 
-  position: relative;
+  position: absolute;
   width: 580px;
   height: 480px;
-  left: 68%;
+  right: -150%;
   margin-top: -930px;
 
   /* grayscale/Gray2 */
-  background: #EBEDF8;
+  background: #ebedf8;
   border-radius: 8px;
 }
 
@@ -332,18 +299,16 @@
   margin-top: -15px;
 
   /* grayscale/White */
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   z-index: 1000;
-
-
 }
 
 .destinationListText {
   /* botton/botton_bold_16 */
 
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -354,7 +319,6 @@
   margin-left: 20px;
   /* grayscale/Gray5 */
   color: #626682;
-
 }
 
 .image1 {
@@ -365,18 +329,14 @@
   height: 13px;
   left: 85%;
   top: 10px;
-
-
 }
 
-
 .dateTitle {
-
   /*여행기간을 선택해주세요*/
   position: relative;
   left: 22%;
   /* head/head_bold_24 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -384,16 +344,15 @@
   /* identical to box height */
 
   /* grayscale/Gray8 */
-  color: #191B24;
+  color: #191b24;
 }
 
 .dateTitle1 {
-
   /*여행기간을 선택해주세요*/
   position: relative;
   left: 23%;
   /* body/body_medium_15 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
@@ -401,11 +360,8 @@
   /* identical to box height, or 26px */
 
   /* grayscale/Gray4 */
-  color: #7F85A3;
+  color: #7f85a3;
 }
-
-
-
 
 /* Style for the day cells in the calendar */
 .custom-calendar .react-datepicker__day {
@@ -416,16 +372,16 @@
   margin-top: 20px;
   line-height: 70px;
 
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 70;
 }
 
 .custom-calendar .react-datepicker__day--in-range {
-  background: #EBEDF8;
+  background: #ebedf8;
 
   /* head/head_bold_24 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -434,17 +390,17 @@
   text-align: center;
 
   /* grayscale/Gray8 */
-  color: #191B24;
+  color: #191b24;
 }
 
 /* Style for the selected day in the calendar */
 .custom-calendar .react-datepicker__day--selected {
   /* grayscale/Gray8 */
-  background: #191B24;
+  background: #191b24;
   border-radius: 90px;
 
   /* head/head_bold_24 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -453,17 +409,13 @@
   text-align: center;
 
   /* grayscale/White */
-  color: #FFFFFF;
-
+  color: #ffffff;
 }
 
 /* Style for the today's date in the calendar */
 .custom-calendar .react-datepicker__day--today {
   font-weight: bold;
 }
-
-
-
 
 /* Style for the day cells in the calendar */
 .custom-calendar1 .react-datepicker__day {
@@ -474,16 +426,16 @@
   margin-top: 20px;
   line-height: 70px;
 
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 70;
 }
 
 .custom-calendar1 .react-datepicker__day--in-range {
-  background: #EBEDF8;
+  background: #ebedf8;
 
   /* head/head_bold_24 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -492,17 +444,17 @@
   text-align: center;
 
   /* grayscale/Gray8 */
-  color: #191B24;
+  color: #191b24;
 }
 
 /* Style for the selected day in the calendar */
 .custom-calendar1 .react-datepicker__day--selected {
   /* grayscale/Gray8 */
-  background: #191B24;
+  background: #191b24;
   border-radius: 90px;
 
   /* head/head_bold_24 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -511,15 +463,13 @@
   text-align: center;
 
   /* grayscale/White */
-  color: #FFFFFF;
-
+  color: #ffffff;
 }
 
 /* Style for the today's date in the calendar */
 .custom-calendar1 .react-datepicker__day--today {
   font-weight: bold;
 }
-
 
 .pre_button {
   /* Rectangle 34624548 */
@@ -531,12 +481,12 @@
   top: 50px;
 
   /* grayscale/Gray1 */
-  background: #F3F5FF;
+  background: #f3f5ff;
   border-radius: 8px;
   border: none;
 
   /* botton/botton_bold_20 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 17px;
@@ -544,7 +494,7 @@
   /* identical to box height */
 
   /* grayscale/Gray3 */
-  color: #BFC4D8;
+  color: #bfc4d8;
 }
 
 .next_button {
@@ -556,12 +506,12 @@
   left: 58%;
   top: 50px;
   /* grayscale/Gray1 */
-  background: #F3F5FF;
+  background: #f3f5ff;
   border-radius: 8px;
   border: none;
 
   /* botton/botton_bold_20 */
-  font-family: 'SUIT Variable';
+  font-family: "SUIT Variable";
   font-style: normal;
   font-weight: 700;
   font-size: 17px;
@@ -569,13 +519,12 @@
   /* identical to box height */
 
   /* grayscale/Gray3 */
-  color: #BFC4D8;
+  color: #bfc4d8;
 }
-
 
 .modalContent {
   height: 358px;
-  left: calc(50% - 681px/2 + 0.5px);
+  left: calc(50% - 681px / 2 + 0.5px);
   top: 389px;
   padding: 20px;
   border-radius: 10px;
@@ -584,7 +533,7 @@
   text-align: center;
 
   /* 흰색 배경색 */
-  background: #FFFFFF;
+  background: #ffffff;
 
   /* 그림자 효과 */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);

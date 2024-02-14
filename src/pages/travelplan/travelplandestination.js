@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/travelplanpage.css";
+import "../../styles/travelplan/travelplanpage.css";
 import "react-datepicker/dist/react-datepicker.css";
 import image1 from "../../assets/images/Pages/Vector (2).png";
 import { format } from "date-fns";
+import { autocompleteClasses } from "@mui/material";
+import Button from "../../components/common_components/common_button";
 
 class TrvlPlan extends Component {
   constructor(props) {
@@ -16,28 +18,20 @@ class TrvlPlan extends Component {
       tripTitle: "",
       invitationCode: "",
       showSuggestions: false,
-      destinations: [],
+      destinations: [
+        "서울",
+        "부산",
+        "제주도",
+        "여수",
+        "속초/강릉/양양",
+        "경주",
+      ],
       filteredDestinations: [],
     };
   }
-  componentDidMount() {
-    // 컴포넌트가 마운트될 때 목적지 데이터를 가져옵니다.
-    this.fetchDestinations();
-  }
 
-  fetchDestinations = () => {
-    fetch("http://dev.enble.site:8080/regions")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.isSuccess && data.result) {
-          const destinations = data.result.map((item) => item.name);
-          this.setState({ destinations });
-        }
-      })
-      .catch((error) => console.error("Error fetching destinations:", error));
-  };
   handlePre = () => {
-    this.props.history.push("/"); // withRouter로 인해 history.push 사용
+    this.props.navigate("/");
   };
 
   handleStartDateChange = (date) => {
@@ -61,6 +55,7 @@ class TrvlPlan extends Component {
       filteredDestinations,
     });
   };
+
   selectDestination = (destination) => {
     this.setState({
       searchInput: destination,
@@ -131,13 +126,11 @@ class TrvlPlan extends Component {
 
   render() {
     return (
-      <div style={{ width: "1700px" }}>
+      <div className="informinput-container">
         <form onSubmit={this.handleSubmit}>
           {/* 여행 제목 입력 필드 */}
 
-          <div className="textTitle" style={{ marginTop: "200px" }}>
-            여행의 제목을 작성해주세요.
-          </div>
+          <div className="textTitle">여행의 제목을 작성해주세요.</div>
           <div className="search_title">
             <input
               type="text"
@@ -188,17 +181,9 @@ class TrvlPlan extends Component {
             </div>
           </div>
 
-          {/* 이전 버튼 */}
-          <button onClick={this.handlePre} className="pre_button">
-            이전
-          </button>
+          <Button text="이전" onClick={this.handlePre} />
 
-          {/* 다음 버튼 */}
-          <button type="submit" className="next_button">
-            선택완료
-          </button>
-
-          <div className="image"> </div>
+          <Button text="선택 완료" type="submit" />
         </form>
       </div>
     );
