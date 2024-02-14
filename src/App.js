@@ -21,7 +21,7 @@ import PlaceInfoGyeongju from "./pages/searchplacepage/placeinfo1.js/placeinfo1_
 import PlaceInfoSokcho from "./pages/searchplacepage/placeinfo1.js/placeinfo1_sokcho";
 import PlaceInfoGangneung from "./pages/searchplacepage/placeinfo1.js/placeinfo1_gangneung";
 import PlaceInfoYangyang from "./pages/searchplacepage/placeinfo1.js/placeinfo1_yangyang";
-import PlaceDetail from "./components/PlaceDetail";
+import PlaceDetail from "./components/searchPlace/PlaceDetail";
 import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
 import Plandetail from "./pages/travelplan/travelplan_detail";

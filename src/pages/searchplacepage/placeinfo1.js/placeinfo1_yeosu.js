@@ -6,7 +6,7 @@ import SidebarL from "../../../components/SidebarL";
 import searchImg from "../../../assets/images/Place/검색창.svg";
 import searchBtn from "../../../assets/images/Place/searchBtn.svg"; 
 import SearchRecommendations from "../../../components/Recommendation/RecommendationYeosu";
-import PlaceDetail from "../../../components/PlaceDetail";
+import PlaceDetail from "../../../components/searchPlace/PlaceDetail";
 import "../../../styles/searchplace/placeinfo.css";  
 
 
