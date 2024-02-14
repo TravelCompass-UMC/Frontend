@@ -13,6 +13,7 @@
   font-weight: 700;
   line-height: 170%;
   margin-top: 20px;
+  margin-left: 111px;
 }
 
 .buttonUse {
@@ -21,7 +22,9 @@
   height: 70px;
   border-radius: 8px;
   border: none;
-  margin-top: 85%;
+  margin-top: 400px;
+  margin-left: 111px;
+
   /* Primary color */
   background: var(--grayscale-White, #8270ff);
   /* botton/botton_bold_16 */
@@ -97,8 +100,8 @@
 }
 
 .divscroll {
-  width: 80%;
-  height: 650px;
+  width: 100%;
+  height: 750px;
   overflow: auto;
   white-space: nowrap;
   display: relative;
