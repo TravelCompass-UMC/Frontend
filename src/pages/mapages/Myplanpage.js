@@ -44,7 +44,7 @@ function Myplanpage() {
   };
   return (
     <div className="container">
-      <h3>나의 여행계획</h3>
+      <p className="page-title">나의 여행계획</p>
       {/* 3개씩 묶어서 표시 */}
       {currentPlans.length > 0 && (
         <div>

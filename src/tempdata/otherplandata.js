@@ -10,140 +10,140 @@ let otherplans = [
     {
       place: "서울여행기",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : SeoulImage,
     },
     {
       place: "부산여행기",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0,
+      liked: 1,
       img : BusanImage,
     },
     {
       place: "제주도여행기",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "부산여행기",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0,
+      liked: 1,
       img : BusanImage,
     },
     {
       place: "제주도여행기",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "서울여행기",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0,
+      liked: 1,
       img : SeoulImage,
     },
     {
       place: "제주도여행기",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "부산여행기",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0,
+      liked: 1,
       img : BusanImage,
     },
     {
       place: "제주도여행기",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "부산여행기",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0,
+      liked: 1,
       img : BusanImage,
     },
     {
       place: "제주도여행기",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "부산여행기",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0,
+      liked: 1,
       img : BusanImage,
     },
     {
       place: "제주도1",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "울릉도2",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0
+      liked: 1
     },
     {
       place: "제주도3",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "울릉도4",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0
+      liked: 1
     },
     {
       place: "제주도5",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "울릉도6",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0
+      liked: 1
     },
     {
       place: "제주도7",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "울릉도8",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0
+      liked: 1
     },
     {
       place: "제주도9",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "울릉도10",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0
+      liked: 1
     },
     {
       place: "제주도11",
       hashtag: ["가족 여행"],
-      liked: 0,
+      liked: 1,
       img : JejuImage,
     },
     {
       place: "울릉도12",
       hashtag: ["추억 여행", "가족 여행"],
-      liked: 0
+      liked: 1
     },
     // 추가적인 데이터는 여기에 계속 추가
   ];

@@ -131,15 +131,14 @@ const PlaceInfo = () => {
           </div>
           <br/> <p className="searched-location">Click a pin</p>
           <br/> <div className="popularplace">
-            {/* Place for popular places or recommendations */}
           </div>
           <button
             type="submit"
             onClick={handleSearchButtonClick}
             style={{
               position: 'absolute',
-              top: '8.5%',
-              right: '18px',
+              top: '7.8vh',
+              right: '8%',
               transform: 'translateY(-50%)',
               border: 'none',
               backgroundColor: 'white',

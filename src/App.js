@@ -31,7 +31,8 @@ import Myplacepage from "./pages/mapages/Myplacepage";
 import Otherplanpage from "./pages/mapages/Otherplanpage";
 import MainHeader from "./components/MainHeader";
 import Modal from "./components/lginModal";
- 
+import OAuthCallback from "./components/OAuthCallback";
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -49,38 +50,39 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div>
-          <MainHeader />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/mypage" element={<MyPag />} />
-              <Route path="/myprofile" element={<Myprofile />} />
-              <Route path="/signup" element={<Joinmembership />} />
-              <Route path="/travelplandes" element={<TravelPlandes />} />
-              <Route path="/travelplandate" element={<TravelPlandate />} />
-              <Route path="/searchdiary" element={<Searchdiary />} />
-              <Route path="/diarycontent" element={<DiaryContent />} />
-              <Route path="/searchplace" element={<Searchplace />} />
-              <Route path="/placeinfo" element={<SearchPlaceInfo />} />
-              <Route path="/placeinfo/:placeName" element={<PlaceDetail />} />
-              <Route path="/placeinfo1_jeju" element={<PlaceInfoJeju />} />
-              <Route path="/placeinfo1_seoul" element={<PlaceInfoSeoul />} />
-              <Route path="/placeinfo1_busan" element={<PlaceInfoBusan />} />
-              <Route path="/placeinfo1_yeosu" element={<PlaceInfoYeosu />} />
-              <Route path="/placeinfo1_gyeongju" element={<PlaceInfoGyeongju />} />
-              <Route path="/placeinfo1_sokcho" element={<PlaceInfoSokcho />} />
-              <Route path="/placeinfo1_gangneung" element={<PlaceInfoGangneung />} />
-              <Route path="/placeinfo1_yangyang" element={<PlaceInfoYangyang />} />
-              <Route path="/travelplandetail" element={<Plandetail />} />
-              <Route path="/travelplanedit" element={<PlanEdit />} />
-              <Route path="/myplan" element={<Myplanpage />} />
-              <Route path="/otherplan" element={<Otherplanpage />} />
-              <Route path="/myplace" element={<Myplacepage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-        </div>
+        <MainHeader />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/mypage" element={<MyPag />} />
+            <Route path="/myprofile" element={<Myprofile />} />
+            <Route path="/signup" element={<Joinmembership />} />
+            <Route path="/travelplandes" element={<TravelPlandes />} />
+            <Route path="/travelplandate" element={<TravelPlandate />} />
+            <Route path="/searchdiary" element={<Searchdiary />} />
+            <Route path="/diarycontent" element={<DiaryContent />} />
+            <Route path="/searchplace" element={<Searchplace />} />
+            <Route path="/placeinfo" element={<SearchPlaceInfo />} />
+            <Route path="/placeinfo/:placeName" element={<PlaceDetail />} />
+            <Route path="/placeinfo1_jeju" element={<PlaceInfoJeju />} />
+            <Route path="/placeinfo1_seoul" element={<PlaceInfoSeoul />} />
+            <Route path="/placeinfo1_busan" element={<PlaceInfoBusan />} />
+            <Route path="/placeinfo1_yeosu" element={<PlaceInfoYeosu />} />
+            <Route path="/placeinfo1_gyeongju" element={<PlaceInfoGyeongju />} />
+            <Route path="/placeinfo1_sokcho" element={<PlaceInfoSokcho />} />
+            <Route path="/placeinfo1_gangneung" element={<PlaceInfoGangneung />} />
+            <Route path="/placeinfo1_yangyang" element={<PlaceInfoYangyang />} />
+            <Route path="/travelplandetail" element={<Plandetail />} />
+            <Route path="/travelplanedit" element={<PlanEdit />} />
+            <Route path="/myplan" element={<Myplanpage />} />
+            <Route path="/otherplan" element={<Otherplanpage />} />
+            <Route path="/myplace" element={<Myplacepage />} />
+            <Route path="/oauth/callback" element={<OAuthCallback />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+      </div>
       <Modal />
     </QueryClientProvider>
   );

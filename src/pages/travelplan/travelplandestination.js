@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/travelplan/travelplanpage.css";
 import "react-datepicker/dist/react-datepicker.css";
 import image1 from "../../assets/images/Pages/Vector (2).png";
+import image1 from "../../assets/images/Pages/Vector (2).png";
 import { format } from "date-fns";
 import { autocompleteClasses } from "@mui/material";
 import Button from "../../components/common_components/common_button";
@@ -18,18 +19,26 @@ class TrvlPlan extends Component {
       tripTitle: "",
       invitationCode: "",
       showSuggestions: false,
-      destinations: [
-        "서울",
-        "부산",
-        "제주도",
-        "여수",
-        "속초/강릉/양양",
-        "경주",
-      ],
+      destinations: [],
       filteredDestinations: [],
     };
   }
+  componentDidMount() {
+    // 컴포넌트가 마운트될 때 목적지 데이터를 가져옵니다.
+    this.fetchDestinations();
+  }
 
+  fetchDestinations = () => {
+    fetch("http://dev.enble.site:8080/regions")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isSuccess && data.result) {
+          const destinations = data.result.map((item) => item.name);
+          this.setState({ destinations });
+        }
+      })
+      .catch((error) => console.error("Error fetching destinations:", error));
+  };
   handlePre = () => {
     this.props.navigate("/");
   };
@@ -55,7 +64,6 @@ class TrvlPlan extends Component {
       filteredDestinations,
     });
   };
-
   selectDestination = (destination) => {
     this.setState({
       searchInput: destination,
@@ -98,6 +106,8 @@ class TrvlPlan extends Component {
               >
                 <div className="destinationListText">
                   {destination}
+                <div className="destinationListText">
+                  {destination}
                   <img className="image1" src={image1} />
                 </div>
               </div>
@@ -108,9 +118,11 @@ class TrvlPlan extends Component {
         return (
           <ul className="suggestions">
             <div className="destinationList">
+            <div className="destinationList">
               <div className="destinationListText">검색 결과가 없습니다.</div>
             </div>
           </ul>
+        );
         );
       }
     }
@@ -157,6 +169,8 @@ class TrvlPlan extends Component {
               />
             </div>
             {this.renderSuggestions()}
+            </div>
+            {this.renderSuggestions()}
           </div>
 
           {/* 초대 코드 입력 섹션 */}
@@ -186,6 +200,8 @@ class TrvlPlan extends Component {
           <Button text="선택 완료" type="submit" />
 
           <div className="image"> </div>
+        </form>
+      </div>
         </form>
       </div>
     );
