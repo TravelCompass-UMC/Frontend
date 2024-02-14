@@ -18,21 +18,16 @@ function Diarycontent() {
     //<SearchComponent onCustomDurationChange={handleCustomDurationChange} />
     //diarycontent.jsx 내용
     <div style={{ display: "flex", marginLeft: "50px" }}>
-      <div style={{ width: "250px" }}>
+      <div style={{ width: "150px" }}>
         <LeftBar onCustomChange={handleAllScheduleClick} />
       </div>
 
-      <div style={{ width: "90vw", marginTop: "20px" }}>
+      <div style={{ marginTop: "20px" }}>
         {num === 0 && <AllList />}
         {console.log("diarycontent에서의 num", num)}
         {num > 0 && <DetailList num={num} />} {/* Pass num to DetailList */}
-
       </div>
     </div>
-
-
-
-
   );
 }
 
