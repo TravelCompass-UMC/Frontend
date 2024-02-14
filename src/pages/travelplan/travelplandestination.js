@@ -18,26 +18,18 @@ class TrvlPlan extends Component {
       tripTitle: "",
       invitationCode: "",
       showSuggestions: false,
-      destinations: [],
+      destinations: [
+        "서울",
+        "부산",
+        "제주도",
+        "여수",
+        "속초/강릉/양양",
+        "경주",
+      ],
       filteredDestinations: [],
     };
   }
-  componentDidMount() {
-    // 컴포넌트가 마운트될 때 목적지 데이터를 가져옵니다.
-    this.fetchDestinations();
-  }
 
-  fetchDestinations = () => {
-    fetch("http://dev.enble.site:8080/regions")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.isSuccess && data.result) {
-          const destinations = data.result.map((item) => item.name);
-          this.setState({ destinations });
-        }
-      })
-      .catch((error) => console.error("Error fetching destinations:", error));
-  };
   handlePre = () => {
     this.props.navigate("/");
   };
@@ -63,6 +55,7 @@ class TrvlPlan extends Component {
       filteredDestinations,
     });
   };
+
   selectDestination = (destination) => {
     this.setState({
       searchInput: destination,
