@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/travelplanpage.css";
+import "../../styles/travelplan/travelplanpage.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/locale"; // 변경된 부분
@@ -13,7 +13,6 @@ const TrvlPlan = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
-
 
   const handlePre = () => {
     navigate("/TravelPlandes", {
@@ -45,13 +44,14 @@ const TrvlPlan = () => {
   const formattedStartDate = format(startDate, "yyyy년 MM월 dd일");
   const formattedEndDate = format(endDate, "yyyy년 MM월 dd일");
 
-
   return (
     <div>
       <div style={{ marginTop: "150px" }}>
         <div>
           <span className="dateTitle">여행 기간을 선택해주세요.</span>
-          <span className="dateTitle1">여행 기간은 최대 00일까지 선택 가능합니다.</span>
+          <span className="dateTitle1">
+            여행 기간은 최대 00일까지 선택 가능합니다.
+          </span>
         </div>
         <div style={{ marginTop: "50px" }}>
           <span style={{ marginLeft: "500px", marginTop: "100px" }}>
@@ -118,7 +118,7 @@ const TrvlPlan = () => {
         </div>
       </div>
       {/* 이전 버튼 */}
-      <button onClick={handlePre} className="pre_button" >
+      <button onClick={handlePre} className="pre_button">
         이전
       </button>
 

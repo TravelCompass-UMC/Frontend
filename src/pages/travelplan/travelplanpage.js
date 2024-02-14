@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classes from "../../styles/travelplanpage.css";
+import classes from "../../styles/travelplan/travelplanpage.css";
 import DatePicker from "react-datepicker";
 class trvlplan extends Component {
   constructor(props) {
