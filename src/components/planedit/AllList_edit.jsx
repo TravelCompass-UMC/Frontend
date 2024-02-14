@@ -46,8 +46,8 @@ const AllList = () => {
                                 <div>
                                 <tr>
                                     <td rowSpan={4} >
-                                        <img className="detailnum3" src={numImage1} />
-                                        <span className="detailnum4">{index + 1}</span>
+                                        <img className="detailnumImg" src={numImage1} />
+                                        <span className="detailnumber">{index + 1}</span>
                                     </td>
                                     <td className="detailtime">
                                         09:30~11:20
@@ -81,7 +81,6 @@ const AllList = () => {
     };
     return (
         <div style={{ marginLeft: "100px" }}>
-            {/* Heart 이미지 클릭 이벤트 처리 */}
             <img
                 className="heartImage"
                 src={heartState === 1 ? heartFilled : heart}

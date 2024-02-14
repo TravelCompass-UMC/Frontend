@@ -219,7 +219,7 @@
     text-decoration: none;
   }
   
-  .detailnum3 {
+  .detailnumImg {
     /*몇번*/
     fill: var(--grayscale-Gray2, #EBEDF8);
     margin-top: 14px;
@@ -228,11 +228,11 @@
     height: 32px;
   }
   
-  .detailnum4 {
+  .detailnumber {
     /* 2 */
-    width: 10px;
-    height: 27px;
-    top: 40px;
+    position: relative;
+    left: -35%;
+
     /* botton/botton_bold_16 */
     font-family: 'SUIT Variable';
     font-style: normal;
