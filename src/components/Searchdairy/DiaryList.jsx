@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Diary from "./Diary";
 import VectorImage from "../../assets/images/Pages/Vector (1).png"; // 이미지를 import
-
+import styles1 from "../../styles/searchdiary/diarylist.module.css";
 const styless = {
   searchText: {
     color: "#191B24",
@@ -85,17 +85,7 @@ function DiaryList(props) {
             }}
           />
 
-          <h3
-            style={{
-              ...styless.searchText,
-              marginLeft: "25px",
-              marginTop: "-15px",
-              position: "relative",
-            }}
-          >
-            {" "}
-            계획 둘러보기{" "}
-          </h3>
+          <h3 className={styles1.searchText}> 계획 둘러보기 </h3>
         </div>
       </div>
       <div style={{ marginTop: "10px" }}>
@@ -124,6 +114,7 @@ function DiaryList(props) {
           }}
         >
           <button
+            className={styles1.prebutton}
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
@@ -132,6 +123,7 @@ function DiaryList(props) {
 
           {Array.from({ length: totalPages }).map((_, index) => (
             <button
+              className={styles1.pagenum}
               key={index}
               onClick={() => handlePageChange(index + 1)}
               style={{
@@ -144,6 +136,7 @@ function DiaryList(props) {
           ))}
 
           <button
+            className={styles1.nextbutton}
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
           >

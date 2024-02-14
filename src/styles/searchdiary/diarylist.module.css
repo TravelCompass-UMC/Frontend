@@ -1,0 +1,58 @@
+.searchText {
+  color: #191b24;
+  font-size: 22px;
+  font-family: "SUIT Variable";
+  font-weight: 700;
+  word-wrap: break-word;
+  margin-left: 25px;
+  margin-top: -15px;
+  position: relative;
+}
+
+.prebutton {
+  width: 90px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--grayscale-Gray2, #ebedf8);
+  background: var(--grayscale-White, #fff);
+  color: var(--grayscale-Gray3, #bfc4d8);
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 170%;
+}
+
+.nextbutton {
+  width: 90px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--grayscale-Gray2, #ebedf8);
+  background: var(--grayscale-White, #fff);
+  color: var(--grayscale-Gray3, #bfc4d8);
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 170%;
+}
+
+.pagenum {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--grayscale-Gray2, #ebedf8);
+  background: var(--grayscale-White, #fff);
+  color: var(--grayscale-Gray3, #afb7d7);
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 170%;
+}
