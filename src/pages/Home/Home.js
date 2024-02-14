@@ -25,9 +25,9 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <GoogleMapComponent />
+    <div>      
       <SearchComponent onSearch={handleSearch} />
+      <GoogleMapComponent containerStyle={{ width: "80vw", height: "55vh" }} />
 
       <SidebarR width={450}>
         <div className="sidebar-content">

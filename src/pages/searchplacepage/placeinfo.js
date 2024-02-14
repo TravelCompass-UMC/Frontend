@@ -108,7 +108,7 @@ const PlaceInfo = () => {
   return (
     <div className="page-container">
       <div className="map-container">
-        <Map location={mapLocation} onPinClick={handlePinClick}/>
+        <Map location={mapLocation} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
       </div>
       <div className="sidebar-container">
         <SidebarL width={320}>
@@ -137,8 +137,8 @@ const PlaceInfo = () => {
             onClick={handleSearchButtonClick}
             style={{
               position: 'absolute',
-              top: '7.8vh',
-              right: '8%',
+              top: '5.8vh',
+              right: '10%',
               transform: 'translateY(-50%)',
               border: 'none',
               backgroundColor: 'white',

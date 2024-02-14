@@ -68,6 +68,9 @@ const PlaceInfoSokcho = () => {
 
   return (
     <div>
+      <div className="map-container">
+        <Map location={mapLocation} recommendations={recommendations} zoom={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+      </div>
       <SidebarL width={320}>
       <div style={{ display: 'inline-block', position: 'relative' }}>
           <img src={searchImg} alt="search-image" width={280} />
@@ -89,7 +92,7 @@ const PlaceInfoSokcho = () => {
             onClick={handleSearch}
             style={{
               position: 'absolute',
-              top: '2.8vh',
+              top: '2vh',
               right: '2%',
               transform: 'translateY(-50%)',
               border: 'none',
@@ -109,7 +112,6 @@ const PlaceInfoSokcho = () => {
         </div>
         {selectedPlace && <PlaceDetail place={selectedPlace} />}
       </SidebarL>
-      <Map location={mapLocation} recommendations={recommendations} onPinClick={handlePinClick} zoom={zoomLevel}/>
     </div>
   );
 };

@@ -23,10 +23,8 @@ const SrchPlace = () => {
 
   return (
     <div>
-      <div >
-        <Map />
-      </div>
       <SearchComponent onSearch={handleSearch} />
+      <Map containerStyle={{ width: "100vw", height: "91vh" }}/>
     </div>
   );
 };
