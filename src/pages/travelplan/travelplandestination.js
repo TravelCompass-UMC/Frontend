@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/travelplan/travelplanpage.css";
 import "react-datepicker/dist/react-datepicker.css";
 import image1 from "../../assets/images/Pages/Vector (2).png";
-import image1 from "../../assets/images/Pages/Vector (2).png";
 import { format } from "date-fns";
 import { autocompleteClasses } from "@mui/material";
 import Button from "../../components/common_components/common_button";
@@ -106,8 +105,6 @@ class TrvlPlan extends Component {
               >
                 <div className="destinationListText">
                   {destination}
-                <div className="destinationListText">
-                  {destination}
                   <img className="image1" src={image1} />
                 </div>
               </div>
@@ -118,11 +115,9 @@ class TrvlPlan extends Component {
         return (
           <ul className="suggestions">
             <div className="destinationList">
-            <div className="destinationList">
               <div className="destinationListText">검색 결과가 없습니다.</div>
             </div>
           </ul>
-        );
         );
       }
     }
@@ -169,8 +164,6 @@ class TrvlPlan extends Component {
               />
             </div>
             {this.renderSuggestions()}
-            </div>
-            {this.renderSuggestions()}
           </div>
 
           {/* 초대 코드 입력 섹션 */}
@@ -198,10 +191,6 @@ class TrvlPlan extends Component {
           <Button text="이전" onClick={this.handlePre} />
 
           <Button text="선택 완료" type="submit" />
-
-          <div className="image"> </div>
-        </form>
-      </div>
         </form>
       </div>
     );
