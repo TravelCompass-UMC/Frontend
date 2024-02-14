@@ -1,3 +1,4 @@
+//myplandata.js
 import SeoulImage from '../assets/images/CityPictures/Seoul.jpg';
 import BusanImage from '../assets/images/CityPictures/Busan.jpg';
 import GyeonjuImage from '../assets/images/CityPictures/Gyeongju.jpg';
@@ -14,6 +15,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: SokchoImage,
+      left: 11,
     },
     {
       id:2,
@@ -21,6 +23,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: GyeonjuImage,
+      left: 23,
     },
     {
       id:3,
@@ -28,6 +31,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: YeosuImage,
+      left: 5,
     },
     {
       id:4,
@@ -35,6 +39,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: BusanImage,
+      left: 213,
     },
     {
       id:5,
@@ -42,6 +47,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
+      left: 21,
     },
     {
       id:6,
@@ -49,6 +55,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: SokchoImage,
+      left: 11,
     },
     {
       id:7,
@@ -56,6 +63,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
+      left: 23,
     },
     {
       id:8,
@@ -63,6 +71,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: BusanImage,
+      left: 9,
     },
     {
       id:9,
@@ -70,6 +79,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
+      left: 100,
     },
     {
       id:10,
@@ -77,6 +87,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img:YeosuImage,
+      left: 22,
     },
     {
       id:11,
@@ -84,6 +95,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
+      left: 10,
     },
     {
       id:12,
@@ -91,6 +103,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: SokchoImage,
+      left: 13,
     },
     {
       id:13,
@@ -98,6 +111,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
+      left: 11,
     },
     {
       id:14,
@@ -105,6 +119,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: GyeonjuImage,
+      left: 10,
     },
     {
       id:15,
@@ -112,6 +127,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
+      left: 5,
     },
     {
       id:16,
@@ -119,6 +135,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: GyeonjuImage,
+      left: 6,
     },
     {
       id:17,
@@ -126,6 +143,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
+      left: 22,
     },
     {
       id:18,
@@ -133,6 +151,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: YeosuImage,
+      left: 21,
     },
     {
       id:19,
@@ -140,6 +159,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
+      left: 15,
     },
     {
       id:20,
@@ -147,6 +167,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img :SeoulImage,
+      left: 10,
     },
     {
       id:21,
@@ -161,6 +182,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img:YeosuImage,
+      left: 8,
     },
     {
       id:23,
@@ -168,6 +190,7 @@ let myplans = [
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
+      left: 6,
     },
     {
       id:24,
@@ -175,6 +198,7 @@ let myplans = [
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: BusanImage,
+      left: 7,
     },
     //추가적인 데이터는 여기에 계속 추가
   ];

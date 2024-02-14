@@ -16,6 +16,7 @@ import starFilled from "../../assets/images/Mypage/StarFilled.svg";
 import bookmark from "../../assets/images/Mypage/Bookmark.svg";
 import bookmarkFilled from "../../assets/images/Mypage/BookmarkFilled.svg";
 import { Container } from "react-bootstrap";
+import axios from "axios";
 
 const Thumbnail = {
   bigBox: {
@@ -54,6 +55,8 @@ const Thumbnail = {
     borderRadius: 15,
   },
   placeText: {
+    marginTop: 5,
+    marginLeft: 10,
     color: "#191B24",
     fontSize: 17,
     fontFamily: "SUIT Variable",
@@ -61,7 +64,9 @@ const Thumbnail = {
     wordWrap: "break-word",
   },
   hashtagText: {
+    marginTop: 2,
     color: "#7F85A3",
+    marginLeft: 10,
     fontSize: 13,
     fontFamily: "SUIT Variable",
     fontWeight: "400",
@@ -94,15 +99,18 @@ const Placethumbnail = {
     margin: "4px 0",
   },
   placeName: { // 장소 이름 스타일
+    marginLeft: 5,
     fontSize: "20px", // 예시 글자 크기
     fontWeight: "bold", // 굵은 글씨체
   },
   placeType: { // 분류(명소, 식당 등) 스타일
+    marginLeft: 5,
     fontSize: "14px", // 예시 글자 크기
     marginLeft: "8px", // 장소 이름과의 간격
     fontWeight: "bold",
   },
   placeWhere: {
+    marginLeft: 5,
     fontSize: "14px",
   },
   detailimage: {
@@ -134,9 +142,9 @@ function Mypage() {
 export default Mypage;
 
   export function ProfileSection({
-    userName = "박상현",
-    userNickname = "쉽지않은만남",
-    userEmail = "shawn2018@naver.com",
+    userName = "트컴",
+    userNickname = "트컴",
+    userEmail = "travelcompass@naver.com",
     userProfileImage = ProfileImage,
   }) {
     // 네이버 API에서 받아온 정보를 사용하여 프로필 섹션을 채웁니다.
@@ -146,17 +154,17 @@ export default Mypage;
     // userProfileImage: 네이버에서 받아온 사용자 프로필 사진 URL
     return (
       <div className="profile-box">
-        <h2 className="user-name">{userName}님 반갑습니다!</h2>
+        <p className="user-name">{userName}님 반갑습니다!</p>
         <div className="profile-and-info">
           <img src={userProfileImage} alt="프로필 아이콘" className="profile-image" />
           <div className="info-box">
             <div className="info-item">
-              <span>닉네임:</span>
-              <div className="value-box">{userNickname}</div>
+              <span className="commonspan">닉네임</span>
+              <div className="value-box"><p className="valuetext">{userNickname}</p></div>
             </div>
             <div className="info-item">
-              <span>로그인 계정:</span>
-              <div className="value-box">{userEmail}</div>
+              <span className="commonspan">로그인 계정</span>
+              <div className="value-box"><p className="valuetext">{userEmail}</p></div>
             </div>
           </div>
         </div>
@@ -198,12 +206,12 @@ export function MyplanThumbnail(props, onToggleLike) {
       <div style={Thumbnail.imageBox}>
         <img
           className="myplanimg"
-          style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "15px" }}
+          style={{ width: "100%", height: "100%", borderRadius: "15px" }}
           src={props.plans.img}
           alt="장소 이미지"
         />
         {/* 흰색 날짜 박스 추가 */}
-        <div style={Thumbnail.dateBox}>D-23</div>
+        <div style={Thumbnail.dateBox}>D-{props.plans.left}</div>
       </div>
       <div style={containerStyle}>
         <div style={textStyle}>
@@ -388,7 +396,7 @@ export function InterestedPlaceThumbnail(props) {
         </p>
         <p className="wheretext" style={Placethumbnail.placeWhere}>{props.places.where}</p> {/* 위치 설명 */}
         <div>
-          <img alt="평점"
+          <img className="starbookmark" alt="평점"
           style={Thumbnail.heartImage}
           src={star}
           /> <span>{props.places.star}</span>

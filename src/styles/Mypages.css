@@ -7,11 +7,11 @@
 
   .nav-bar p {
     color: #191B24;
-    font-size: 17px;
+    font-size: 20px;
     font-family: "SUIT Variable";
     font-weight: 700;
     word-wrap: break-word;
-    margin-left: 4vw;
+    margin-left: 3.5vw;
   }
   
   .nav-bar button{
@@ -28,25 +28,39 @@
     padding: 5px 10px; /* 내부 여백 조정 */
     text-decoration: none; /* 링크 밑줄 없앰 */
     font-family: "SUIT Variable";
-    font-size : 13px;
-  } 
+    font-size : 15px;
+  }
+  
+  .morebutton:hover, .morebutton:active{
+    color: #484A64;
+    font-weight: bold;
+  }
 .placeimg {
   margin-top:12px;
   margin-right:10px;
 }
 
-.title{
-  color: #191B24;
-    font-size: 17px;
-    font-family: "SUIT Variable";
-    font-weight: 700;
-}
 .page-title{
   color: #191B24;
   font-size: 20px;
   font-family: "SUIT Variable";
   font-weight: 700;
-  margin-left: 75px;
+  margin-left: 3vw;
+  margin-bottom: 0px;
+}
+
+.place-title{
+  color: #191B24;
+  font-size: 20px;
+  font-family: "SUIT Variable";
+  font-weight: 700;
+  margin-left: 4vw;
+}
+.commonspan{
+  color: #626682; /* 글자 색상 설정 */
+  font-family: "SUIT Variable";
+  font-weight: bold;
+  padding-left: 30px;
 }
   /*ProfileSection*/
   .profile-box {
@@ -59,6 +73,10 @@
   .user-name {
     margin-top: 30px;
     margin-bottom: 20px;
+    color: #191B24;
+    font-size: 23px;
+    font-family: "SUIT Variable";
+    font-weight: bold;
   }
   
   .profile-and-info {
@@ -91,17 +109,27 @@
   
   span {
     min-width: 120px; /* 라벨의 최소 너비를 설정하여 텍스트 시작 지점을 동일하게 함 */
+    text-align: left;
   }
   
   .value-box {
     width: 680px;
+    height: 40px;
     background-color: #EBEDF8;
-    padding: 5px 10px;
+    padding: 10px 10px;
     border-radius: 5px;
+    text-align: left;
     margin-left: 10px; /* 회색 박스와 라벨 사이의 간격 */ /* 내용에 맞게 너비 조정 */
     flex-grow: 1; /* 남은 공간을 채우도록 설정 */
   }
+
+  .valuetext{
+    color: #626682; /* 글자 색상 설정 */
+    font-family: "SUIT Variable";
+    font-weight: 550;
+  }
   
+
   /* Containers */
   .container{
     margin-top: 80px;
@@ -137,11 +165,16 @@
   }
 
   /*InterestedPlaceSection*/
+
+  .starbookmark{
+    padding-left: 5px;
+  }
   .wheretext{
     font-family: "SUIT Variable";
     color: #BFC4D8;
   }
   .category-buttons {
+    margin-top: 8px;
     margin-bottom: 20px;
     padding-left: 75px;
   }
@@ -159,9 +192,11 @@
     font-weight: bold;
   }
   
-  .category-button:hover {
-    background-color: #e9e9e9;
+  .category-button:hover, .category-button.active {
+    background-color: #484A64; /* 마우스 오버 및 활성화된 버튼의 배경색 */
+    color: white; /* 마우스 오버 및 활성화된 버튼의 글씨 색상 */
   }
+  
   .mypagesort-button{
     background-color: white;
     color: #7F85A3; /* 글자 색상 설정 */
@@ -322,8 +357,15 @@
     width: 150px;
     cursor: pointer; /* 마우스 오버 시 커서 변경 */
     font-size: 16px; /* 폰트 크기 조정 */
+    color: #484A64;
+    font-weight: bold;
+    font-family: "SUIT Variable";
   }
   
+  .logbutton:hover{
+    background-color: #484A64;
+    color:white;
+  }
   
   /* EndSection */
 .end-box{

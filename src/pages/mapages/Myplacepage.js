@@ -46,7 +46,7 @@ function Myplacepage() {
   return (
     <div className="container">
       <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <p className="page-title">관심있는 장소</p>
+        <p className="place-title">관심있는 장소</p>
         <div className="sort-dropdown">
           <button onClick={toggleDropdown} className="mypagesort-button">{dropdownTitle}</button>
           {showDropdown && (
