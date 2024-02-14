@@ -88,7 +88,7 @@
 .line {
   border-bottom: 2px solid var(--grayscale-Gray2, #ebedf8);
   background: var(--grayscale-Gray1, #f3f5ff);
-  width: 80%;
+  width: 100%;
 }
 
 .dayContainer {

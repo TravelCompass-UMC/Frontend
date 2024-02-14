@@ -63,7 +63,7 @@ const DetailList = ({ num }) => {
     return day;
   };
   return (
-    <div>
+    <div style={{ marginLeft: "100px" }}>
       {/* Heart 이미지 클릭 이벤트 처리 */}
       <img
         className={styles.heartImage}
