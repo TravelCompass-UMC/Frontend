@@ -4,7 +4,6 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 const RecommendationCard = ({ placeDetails }) => {
   const [photoUrl, setPhotoUrl] = useState(null);
   const [showOpeningHours, setShowOpeningHours] = useState(false);
-  const [showReviews, setShowReviews] = useState(false);
 
   useEffect(() => {
     if (placeDetails && placeDetails.photos && placeDetails.photos.length > 0) {
