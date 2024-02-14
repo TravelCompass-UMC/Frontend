@@ -7,6 +7,7 @@ const containerStyle = {
   left: 0,
   width: "100vw",
   height: "91vh",
+  zIndex: 0,
 };
 
 const defaultCenter = {
@@ -45,6 +46,7 @@ const Map = ({ location, recommendations, onPinClick }) => {
 
   const handleMarkerClick = (marker) => {
     onPinClick(marker.name); // Call onPinClick callback with marker name
+    setZoomLevel(14); // Set zoom level when marker is clicked
   };
 
   return (

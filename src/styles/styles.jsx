@@ -27,6 +27,7 @@ export const Search = styled.div`
 `;
 
 
+
 /**  여행일지 페이지 스타일 **/
 
 

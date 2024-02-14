@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../styles/diaryContent.module.css";
+import "../../styles/diaryContent.module.css";
 import LeftBar from "./LeftBar";
 import AllList from "./AllList";
 import DetailList from "./detailList";
@@ -22,7 +22,7 @@ function Diarycontent() {
         <LeftBar onCustomChange={handleAllScheduleClick} />
       </div>
 
-      <div style={{ width: "100%", marginTop: "30px" }}>
+      <div style={{ width: "90vw", marginTop: "20px" }}>
         {num === 0 && <AllList />}
         {console.log("diarycontent에서의 num", num)}
         {num > 0 && <DetailList num={num} />} {/* Pass num to DetailList */}

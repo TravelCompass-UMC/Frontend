@@ -5,11 +5,10 @@ import myplans from "../../tempdata/myplandata";
 import { MyTravelPlanSection } from "./MyPage";
 import { useState } from "react";
 import { MyplanThumbnail } from "./MyPage";
-import { Container } from "react-bootstrap";
 
 
 function Myplanpage() {
-  const [plans] = useState(myplans);
+  const [plans, setPlans] = useState(myplans);
   const [currentPage, setCurrentPage] = useState(1);
   const plansPerPage = 9;
 
@@ -34,8 +33,17 @@ function Myplanpage() {
     }
   };
 
+  const toggleLike = (planId) => {
+    const updatedPlans = plans.map(plan => {
+      if (plan.id === planId) {
+        return { ...plan, liked: plan.liked === 1 ? 0 : 1 };
+      }
+      return plan;
+    }).filter(plan => plan.liked !== 0);
+    setPlans(updatedPlans);
+  };
   return (
-    <div className="planpage-container">
+    <div className="container">
       <h3>나의 여행계획</h3>
       {/* 3개씩 묶어서 표시 */}
       {currentPlans.length > 0 && (
@@ -43,8 +51,8 @@ function Myplanpage() {
           <div className="row">
             {currentPlans.map((plan, i) => {
               return (
-                <div key={i} className="col-md-4">
-                  <MyplanThumbnail plans={plan} i={i + 1}></MyplanThumbnail>
+                <div key={i} className="col-md-4 thumbnail-container">
+                  <MyplanThumbnail plans={plan} i={i + 1} onToggleLike={toggleLike}></MyplanThumbnail>
                 </div>
               );
             })}

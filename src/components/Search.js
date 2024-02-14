@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Place.css";
+import "../styles/searchplace/Place.css";
 import { Search } from "../styles/styles.jsx";
 
 const SearchComponent = ({ onSearch }) => {
@@ -38,21 +38,21 @@ const SearchComponent = ({ onSearch }) => {
 
   const handleSearch = async (event) => {
     event.preventDefault();
-
+  
     try {
       // Geocoding API 호출을 위한 URL
       const geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchQuery}&key=AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU`;
-
+  
       // Geocoding API 호출
       const response = await fetch(geocodingApiUrl);
       const data = await response.json();
-
+  
       // 검색어로부터 위치 좌표 가져오기
       const location = data.results[0]?.geometry?.location;
-
+  
       if (location) {
-        // 검색된 위치를 부모 컴포넌트로 전달하여 지도를 업데이트
-        onSearch(location);
+        // 검색된 위치와 검색어를 부모 컴포넌트로 전달하여 지도를 업데이트
+        onSearch(location, searchQuery);
       } else {
         console.error("Location not found");
       }

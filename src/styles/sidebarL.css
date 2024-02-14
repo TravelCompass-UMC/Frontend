@@ -1,12 +1,12 @@
 /* sidebarL.css code */
-
+/* 
 .container {
-  background-color: #e3ecf1;
-}
+  background: var(--grayscale-Gray1, #F3F5FF);
+} */
 
 .sidebar {
   position: fixed;
-  background-color: #e3ecf1;
+  background: var(--grayscale-Gray1, #F3F5FF);
   top: 9%;
   bottom: 0;
   left: 0;
@@ -19,20 +19,17 @@
 
 .toggle-button {
   position: fixed;
-
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 버튼에 그림자 추가 */
   top: 40vh;
   left: 0px; /* 사이드바와의 간격 조정 */
-  width: 15px; /* 버튼의 너비 */
-  height: 40px; /* 버튼의 높이 */
+  width: 32px; /* 버튼의 너비 */
+  height: 55px; /* 버튼의 높이 */
   z-index: 1;
   background-color: white; /* 사다리꼴의 배경색 */
   cursor: pointer;
-  clip-path: polygon(0% 0%, 100% 20%, 100% 80%, 0% 100%);
   border: none; /* 테두리 제거 */
   padding: 6px 6px;
-  border-bottom-right-radius: 40%;
-  border-top-right-radius: 40%;
+  border-radius: 0px 8px 8px 0px;
 }
 
 .toggle-button-shadow {

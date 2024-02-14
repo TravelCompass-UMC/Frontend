@@ -1,94 +1,78 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "../../styles/Home.css";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import "../../styles/Home/Home.css";
+import SearchComponent from "../../components/Search.js";
 import GoogleMapComponent from "../../components/Map";
-import SidebarR from "../../components/SidebarR";
+import SidebarR from "../../components/SidebarR.js";
 
-class Home extends Component {
-  state = {
-    nickname: "",
-  };
+const Home = () => {
+  const navigate = useNavigate();
+  const [searchedLocation, setSearchedLocation] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 추가
+  const [nickname, setNickname] = useState(""); // 닉네임 상태를 관리하기 위한 상태 추가
 
-  componentDidMount() {
+  useEffect(() => {
+    // sessionStorage에서 닉네임 가져오기
     const storedNickname = sessionStorage.getItem("nickname");
     if (storedNickname) {
-      this.setState({ nickname: storedNickname });
+      setNickname(storedNickname); // 가져온 닉네임을 상태에 저장
     }
-  }
+  }, []);
 
-  render() {
-    const { nickname } = this.state;
+  const handleSearch = (location, query) => {
+    setSearchedLocation(location);
+    setSearchQuery(query); // 검색어 저장
 
-    return (
-      <div>
-        <div className="map">
-        <GoogleMapComponent/>
-        </div>
-        <input type="text" className="searchbox" placeholder="궁금한 지역을 검색해보세요"></input>
-        <SidebarR width={320}>
-        <h1>대한민국</h1>
-        <p>지금 대한민국의 가장 인기 많은 지역</p>
-        <ul>
-          <li>TOP1 <br/>
-            <Link to={`/city/seoul`}>서울</Link>
-          </li>
-          <li>TOP2 <br/>
-            <Link to={`/city/jeju`}>제주도</Link>
-          </li>
-          <li>TOP3 <br/>
-            <Link to={`/city/busan`}>부산</Link>
-          </li>
-          <li>TOP4 <br/>
-            <Link to={`/city/gyeongju`}>경주</Link>
-          </li>
-        </ul>
-        <div className="popularplace">
-          <p>선택하신 도시의 가장 인기 많은 장소</p>
-          <GoogleMapComponent />
-        </div>
+    navigate(
+      `/placeinfo?q=${location.lat},${location.lng},${encodeURIComponent(
+        query
+      )}`,
+      {
+        state: { searchedLocation: query }, // 검색된 지역명을 state에 저장하여 전달
+      }
+    );
+  };
 
-        <input
-          type="text"
-          className="searchbox"
-          placeholder="궁금한 지역을 검색해보세요"
-        ></input>
-
-        <div className="loginMessage">
-          {nickname ? (
-            <div>환영합니다, {nickname}님!</div>
-          ) : (
-            <div>로그인이 필요합니다.</div>
-          )}
-        </div>
-
-        <SidebarR>
+  return (
+    <div>
+      <GoogleMapComponent />
+      <SearchComponent onSearch={handleSearch} />
+      <div className="loginMessage">
+        {nickname ? (
+          <div>환영합니다, {nickname}님!</div>
+        ) : (
+          <div>로그인이 필요합니다.</div>
+        )}
+      </div>
+      <SidebarR width={450}>
+        <div className="sidebar-content">
           <h1>대한민국</h1>
           <p>지금 대한민국의 가장 인기 많은 지역</p>
           <ul>
             <li>
               TOP1 <br />
-              <Link to={`/city/seoul`}>서울</Link>
+              <Link to={`/placeinfo1_seoul`}>서울</Link>
             </li>
             <li>
               TOP2 <br />
-              <Link to={`/city/jeju`}>제주도</Link>
+              <Link to={`/placeinfo1_jeju`}>제주도</Link>
             </li>
             <li>
               TOP3 <br />
-              <Link to={`/city/busan`}>부산</Link>
+              <Link to={`/placeinfo1_busan`}>부산</Link>
             </li>
             <li>
               TOP4 <br />
-              <Link to={`/city/gyeongju`}>경주</Link>
+              <Link to={`/placeinfo1_gyeongju`}>경주</Link>
             </li>
           </ul>
           <div className="popularplace">
             <p>선택하신 도시의 가장 인기 많은 장소</p>
           </div>
-        </SidebarR>
-      </div>
-    );
-  }
-}
+        </div>
+      </SidebarR>
+    </div>
+  );
+};
 
 export default Home;

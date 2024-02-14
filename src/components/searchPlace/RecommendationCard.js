@@ -4,7 +4,6 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 const RecommendationCard = ({ placeDetails }) => {
   const [photoUrl, setPhotoUrl] = useState(null);
   const [showOpeningHours, setShowOpeningHours] = useState(false);
-  const [showReviews, setShowReviews] = useState(false);
 
   useEffect(() => {
     if (placeDetails && placeDetails.photos && placeDetails.photos.length > 0) {
@@ -23,7 +22,7 @@ const RecommendationCard = ({ placeDetails }) => {
   return (
     <Card>
       {photoUrl && (
-        <img src={photoUrl} alt={placeDetails.name} />
+        <img src={photoUrl} alt={placeDetails.name} style={{ maxWidth: '100%', height: 'auto' }}/>
       )}
       <CardContent>
         <Typography variant="h5" component="h2">{placeDetails.name}</Typography>
@@ -40,7 +39,6 @@ const RecommendationCard = ({ placeDetails }) => {
           )}
         </div>
         <Typography variant="body2" color="textSecondary" component="p">전화번호: {placeDetails.formatted_phone_number || '제공되지 않는 정보입니다.'}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p">리뷰 갯수: {placeDetails.reviews ? placeDetails.reviews.length : '제공되지 않는 정보입니다.'}개</Typography>
         <div>
           <Typography variant="body2" color="textSecondary" component="p" style={{ cursor: 'pointer' }}>
             <a href={`https://www.google.com/maps/place/?q=place_id:${placeDetails.place_id}&hl=ko&review=true`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#1976D2' }}>

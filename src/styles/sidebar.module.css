@@ -1,32 +1,29 @@
-/* sidebar.module.css */
-.container {
-    background-color: #E3ECF1;
-  }
+/* sidebarR.css */
   
   .sidebar {
-    background-color: #E3ECF1;
+    background: var(--grayscale-Gray1, #F3F5FF);
     position: fixed;
-    top: 0;
+    top: 9%;
     bottom: 0;
     right: 0;
     transition: 0.4s ease;
     color: #202020;
     height: 100%;
     z-index: 99;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); /* 사이드바에 그림자 추가 */
   }
   
   .button {
-    position: relative;
-    left: -40px; /* 가로축 위치 설정 */
-    top: 50%;
-    transform: translateY(700%);
-    width: 40px;
-    height: 40px;
+    position: fixed;
+    background-color: white; /* 사다리꼴의 배경색 */
+    left: -32px; /* 가로축 위치 설정 */
+    top: 40vh;
+    width: 32px;
+    height: 55px;
     z-index: 99;
-    transition: 0.8s ease;
-    border: 2px solid #202020;
-    border-radius: 40px;
-    overflow: hidden;
+    border: none;
+    padding: 6px 6px;
+    border-radius: 8px 0px 0px 8px;
   }
   
   .openBtn {
