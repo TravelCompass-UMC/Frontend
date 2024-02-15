@@ -44,7 +44,7 @@ const PlaceInfoYeosu = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
-    setZoomLevel(18); // 추천 장소를 클릭할 때 지도를 더 확대하여 보여주도록 설정
+    setZoomLevel(13.2); // 추천 장소를 클릭할 때 지도를 더 확대하여 보여주도록 설정
   };
 
   const handleSearch = () => {
