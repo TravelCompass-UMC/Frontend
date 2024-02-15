@@ -61,6 +61,14 @@ function DiaryList(props) {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = contents.slice(indexOfFirstItem, indexOfLastItem);
 
+  const [sortOrder, setSortOrder] = useState('likes'); // 초기 정렬 상태를 '좋아요순'으로 설정
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = () => setShowDropdown(!showDropdown);
+
+    // 정렬 방식에 따른 제목 결정
+    const dropdownTitle = sortOrder === 'likes' ? '좋아요순' : '별점순';
+
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
@@ -86,6 +94,15 @@ function DiaryList(props) {
           />
 
           <h3 className={styles1.searchText}> 계획 둘러보기 </h3>
+          <div className="sort-dropdown">
+          <button onClick={toggleDropdown} className="mypagesort-button">{dropdownTitle}</button>
+          {showDropdown && (
+            <div className="sort-options">
+              <button onClick={() => { setSortOrder('rating'); setShowDropdown(false); }} className="sort-option1">별점순</button>
+              <button onClick={() => { setSortOrder('likes'); setShowDropdown(false); }} className="sort-option2">좋아요순</button>
+            </div>
+          )}
+        </div>
         </div>
       </div>
       <div style={{ marginTop: "10px" }}>

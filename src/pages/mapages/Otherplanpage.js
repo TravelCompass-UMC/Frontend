@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import styles from "../../styles/Mypages.css";
-import { OtherTravelPlanSection } from "./MyPage";
+import { EndSection, OtherTravelPlanSection } from "./MyPage";
 import { OtherplanThumbnail } from "./MyPage";
 import { Container } from "react-bootstrap";
 import { useState } from "react";
@@ -36,6 +36,7 @@ function Otherplanpage() {
   };
 
   return (
+    <>
     <div className="container">
       <p className="page-title">관심있는 여행계획</p>
       {currentOthers.length > 0 && (
@@ -53,21 +54,23 @@ function Otherplanpage() {
             ))}
           </div>
           <div className="pagination">
-            <button onClick={goToPrevPage} className={`page-button ${currentPage === 1 ? "disabled" : ""}`}>
+            <button onClick={goToPrevPage} className={`prebutton ${currentPage === 1 ? "disabled" : ""}`}>
               이전페이지
             </button>
             {Array.from({ length: Math.ceil(others.length / plansPerPage) }, (_, index) => (
-              <button key={index} onClick={() => paginate(index + 1)} className={`page-button ${currentPage === index + 1 ? "active" : ""}`}>
+              <button key={index} onClick={() => paginate(index + 1)} className={`pagenum ${currentPage === index + 1 ? "active" : ""}`}>
                 {index + 1}
               </button>
             ))}
-            <button onClick={goToNextPage} className={`page-button ${currentPage === Math.ceil(others.length / plansPerPage) ? "disabled" : ""}`}>
+            <button onClick={goToNextPage} className={`nextbutton ${currentPage === Math.ceil(others.length / plansPerPage) ? "disabled" : ""}`}>
               다음페이지
             </button>
           </div>
         </div>
       )}
     </div>
+    <EndSection/>
+    </>
   );
 }
 

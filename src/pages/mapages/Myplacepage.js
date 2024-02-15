@@ -2,7 +2,7 @@
 import React, { useState, useMemo } from "react";
 import styles from "../../styles/Mypages.css";
 import myplaces from "../../tempdata/myplacedata";
-import { InterestedPlaceThumbnail } from "./MyPage";
+import { EndSection, InterestedPlaceThumbnail } from "./MyPage";
 import otherplans from "../../tempdata/otherplandata";
 
 function Myplacepage() {
@@ -58,6 +58,7 @@ function Myplacepage() {
   }
 
   return (
+    <>
     <div className="container">
       <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <p className="place-title">관심있는 장소</p>
@@ -90,13 +91,15 @@ function Myplacepage() {
         ))}
       </div>
       <div className="pagination">
-        <button onClick={goToPrevPage} className={`page-button ${currentPage === 1 ? "disabled" : ""}`}>이전페이지</button>
+        <button onClick={goToPrevPage} className={`prebutton ${currentPage === 1 ? "disabled" : ""}`}>이전페이지</button>
         {Array.from({ length: Math.ceil(sortedPlaces.length / placesPerPage) }, (_, index) => (
-          <button key={index} onClick={() => paginate(index + 1)} className={`page-button ${currentPage === index + 1 ? "active" : ""}`}>{index + 1}</button>
+          <button key={index} onClick={() => paginate(index + 1)} className={`pagenum ${currentPage === index + 1 ? "active" : ""}`}>{index + 1}</button>
         ))}
-        <button onClick={goToNextPage} className={`page-button ${currentPage === Math.ceil(sortedPlaces.length / placesPerPage) ? "disabled" : ""}`}>다음페이지</button>
+        <button onClick={goToNextPage} className={`nextbutton ${currentPage === Math.ceil(sortedPlaces.length / placesPerPage) ? "disabled" : ""}`}>다음페이지</button>
       </div>
     </div>
+    <EndSection/>
+    </>
   );
 }
 
