@@ -26,22 +26,22 @@ let otherplans = [
       img : JejuImage,
     },
     {
-      place: "부산여행기",
+      place: "경주여행기",
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
-      img : BusanImage,
+      img : GyeonjuImage,
     },
     {
-      place: "제주도여행기",
+      place: "속초여행기",
       hashtag: ["가족 여행"],
       liked: 1,
-      img : JejuImage,
+      img : SokchoImage,
     },
     {
-      place: "서울여행기",
+      place: "여수여행기",
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
-      img : SeoulImage,
+      img : YeosuImage,
     },
     {
       place: "제주도여행기",

@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 import { useState } from "react";
 import otherplans from "../../tempdata/otherplandata";
 
-function Otherplanpage() {
+export function Otherplanpage() {
   const [others] = useState(otherplans);
   const [currentPage, setCurrentPage] = useState(1);
   const plansPerPage = 9;
@@ -41,10 +41,10 @@ function Otherplanpage() {
       {currentOthers.length > 0 && (
         <div>
           <div className="row">
-            {currentOthers.map((plan, i) => {
+            {currentOthers.map((other, i) => {
               return (
                 <div key={i} className="col-md-4 thumbnail-container">
-                  <OtherplanThumbnail others={plan} i={i + 1}></OtherplanThumbnail>
+                  <OtherplanThumbnail others={other} i={i + 1}></OtherplanThumbnail>
                 </div>
               );
             })}
