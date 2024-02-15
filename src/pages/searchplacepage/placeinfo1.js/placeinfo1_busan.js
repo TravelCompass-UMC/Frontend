@@ -22,10 +22,10 @@ const PlaceInfoBusan = () => {
   useEffect(() => {
     if (searchedLocation) {
       // 지정된 검색어가 있으면 검색어를 지도의 위치로 설정
-      setMapLocation({ lat: 35.22649, lng: 129.07273 }); // 부산의 기본 위치
+      setMapLocation({ lat: 35.157288, lng: 129.042374 }); // 부산의 기본 위치
     } else {
       // 검색어가 없을 때 기본 위치 설정
-      setMapLocation({ lat: 35.22649, lng: 129.07273 }); // 부산의 기본 위치
+      setMapLocation({ lat: 35.157288, lng: 129.042374 }); // 부산의 기본 위치
     }
   }, [searchedLocation]);
 
@@ -45,7 +45,7 @@ const PlaceInfoBusan = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
-    setZoomLevel(16); // 확대 레벨 조정
+    setZoomLevel(12.6); // 확대 레벨 조정
   };
 
   const handleSearch = () => {
@@ -71,7 +71,7 @@ const PlaceInfoBusan = () => {
   return (
     <div>
       <div className="map-container">
-        <Map location={mapLocation} recommendations={recommendations} zoom={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+        <Map location={mapLocation} recommendations={recommendations} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={zoomLevel}/>
       </div>
       <SidebarL width={320}>
         <div style={{ display: 'inline-block', position: 'relative' }}>
