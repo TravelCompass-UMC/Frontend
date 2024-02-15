@@ -219,37 +219,10 @@
     text-decoration: none;
   }
   
-  .detailnumImg {
-    /*몇번*/
-    fill: var(--grayscale-Gray2, #EBEDF8);
-    margin-top: 14px;
-    margin-left: 14px;
-    width: 32px;
-    height: 32px;
-  }
-  
-  .detailnumber {
-    /* 2 */
-    position: relative;
-    left: -35%;
-
-    /* botton/botton_bold_16 */
-    font-family: 'SUIT Variable';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 170%;
-    /* or 27px */
-  
-    /* grayscale/Gray4 */
-    color: #7F85A3;
-  }
-  
-  .detailtime {
+  .detailTime {
     color: var(--grayscale-Gray4, #7F85A3);
-  
     /* detail/detail_regular_14 */
-    width: 198px;
+    width: 84px;
     font-family: "SUIT Variable";
     font-size: 14px;
     font-style: normal;
@@ -260,7 +233,6 @@
   
   .detailplace {
     color: var(--Sub-color, #78CF9F);
-  
     /* body/body_bold_14 */
     font-family: "SUIT Variable";
     font-size: 12px;
@@ -275,17 +247,6 @@
     /* head/head_bold_20 */
     font-family: "SUIT Variable";
     font-size: 17px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-  
-  .detailmoney {
-    color: var(--grayscale-Gray4, #7F85A3);
-  
-    /* body/body_bold_14 */
-    font-family: "SUIT Variable";
-    font-size: 12px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -312,8 +273,9 @@
     text-align: center;
   }
 
-  .detailimage {
+  .placeimage {
     margin-top: 150px;
+    margin-right: 16px;
     width: 122px;
     height: 122px;
     border-radius: 10px;

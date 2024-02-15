@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/searchplace/Place.css";
+import styles from "../styles/searchplace/search.module.css";
 import { Search } from "../styles/styles.jsx";
 
 const SearchComponent = ({ onSearch }) => {
@@ -68,7 +68,7 @@ const SearchComponent = ({ onSearch }) => {
 
   return (
     <div style={{ position: "relative" }}>
-      <div className="search-container">
+      <div className={styles.searchContainer}>
         <form onSubmit={handleSearch}>
           <div style={{ display: "flex" }}>
             <input
@@ -97,7 +97,7 @@ const SearchComponent = ({ onSearch }) => {
 
         {/* 추천 단어 목록 렌더링 */}
         {showSuggestions && (
-          <ul className="suggestion-list">
+          <ul className={styles.suggestionList}>
             {suggestions.map((suggestion, index) => (
               <li key={index} onClick={() => selectSuggestion(suggestion)}>
                 <span style={{ borderBottom: "1px solid gray", paddingBottom: "1px" }}>{suggestion}</span>
