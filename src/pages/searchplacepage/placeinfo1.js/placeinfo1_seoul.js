@@ -70,7 +70,7 @@ const PlaceInfoSeoul = () => {
   return (
     <div>
       <div className="map-container">
-        <Map location={mapLocation} recommendations={recommendations} zoom={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+        <Map location={mapLocation} recommendations={recommendations} zoomLevel={13} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
       </div>
       <SidebarL width={320}>
       <div style={{ display: 'inline-block', position: 'relative' }}>

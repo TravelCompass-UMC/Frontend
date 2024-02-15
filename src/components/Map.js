@@ -15,20 +15,13 @@ const defaultCenter = {
   lng: 128.6014,
 };
 
-const Map = ({ location, recommendations, onPinClick, containerStyle }) => {
+const Map = ({ location, recommendations, onPinClick, zoomLevel = 7, containerStyle }) => {
   const [map, setMap] = useState(null);
-  const [zoomLevel, setZoomLevel] = useState(7);
   const [markers, setMarkers] = useState([]);
 
   const onLoad = (map) => {
     setMap(map);
   };
-
-  useEffect(() => {
-    if (location && location.lat !== null && location.lng !== null) {
-      setZoomLevel(11);
-    }
-  }, [location]);
 
   useEffect(() => {
     let newMarkers = [];
@@ -46,7 +39,6 @@ const Map = ({ location, recommendations, onPinClick, containerStyle }) => {
 
   const handleMarkerClick = (marker) => {
     onPinClick(marker.name); // Call onPinClick callback with marker name
-    setZoomLevel(14); // Set zoom level when marker is clicked
   };
 
   return (

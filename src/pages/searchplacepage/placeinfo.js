@@ -108,7 +108,7 @@ const PlaceInfo = () => {
   return (
     <div className="page-container">
       <div className="map-container">
-        <Map location={mapLocation} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+        <Map location={mapLocation} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={11.2}/>
       </div>
       <div className="sidebar-container">
         <SidebarL width={320}>

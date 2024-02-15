@@ -16,14 +16,14 @@ const PlaceInfoGyeongju = () => {
   const [mapLocation, setMapLocation] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(searchedLocation || "경주"); // 검색어 상태 변경 및 초기값 설정
-  const [zoomLevel, setZoomLevel] = useState(12);
+  const [zoomLevel, setZoomLevel] = useState(16);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (searchedLocation) {
-      setMapLocation({ lat: 35.84956, lng: 129.24678 });
+      setMapLocation({ lat: 35.82047, lng: 129.26006 });
     } else {
-      setMapLocation({ lat: 35.84956, lng: 129.24678 });
+      setMapLocation({ lat: 35.82047, lng: 129.26006 });
     }
   }, [searchedLocation]);
 
@@ -69,7 +69,7 @@ const PlaceInfoGyeongju = () => {
   return (
     <div>
       <div className="map-container">
-        <Map location={mapLocation} recommendations={recommendations} zoom={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+        <Map location={mapLocation} recommendations={recommendations} zoomLevel={13} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
       </div>
       <SidebarL width={320}>
       <div style={{ display: 'inline-block', position: 'relative' }}>
@@ -92,7 +92,7 @@ const PlaceInfoGyeongju = () => {
             onClick={handleSearch}
             style={{
               position: 'absolute',
-              top: '2.8vh',
+              top: '2vh',
               right: '2%',
               transform: 'translateY(-50%)',
               border: 'none',
