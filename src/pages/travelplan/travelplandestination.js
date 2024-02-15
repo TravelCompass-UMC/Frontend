@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/travelplan/travelplanpage.css";
+import styles from "../../styles/travelplan/travelplandestination.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 import image1 from "../../assets/images/Pages/Vector (2).png";
 import { format } from "date-fns";
@@ -18,18 +18,26 @@ class TrvlPlan extends Component {
       tripTitle: "",
       invitationCode: "",
       showSuggestions: false,
-      destinations: [
-        "서울",
-        "부산",
-        "제주도",
-        "여수",
-        "속초/강릉/양양",
-        "경주",
-      ],
+      destinations: [],
       filteredDestinations: [],
     };
   }
+  componentDidMount() {
+    // 컴포넌트가 마운트될 때 목적지 데이터를 가져옵니다.
+    this.fetchDestinations();
+  }
 
+  fetchDestinations = () => {
+    fetch("http://dev.enble.site:8080/regions")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isSuccess && data.result) {
+          const destinations = data.result.map((item) => item.name);
+          this.setState({ destinations });
+        }
+      })
+      .catch((error) => console.error("Error fetching destinations:", error));
+  };
   handlePre = () => {
     this.props.navigate("/");
   };
@@ -55,7 +63,6 @@ class TrvlPlan extends Component {
       filteredDestinations,
     });
   };
-
   selectDestination = (destination) => {
     this.setState({
       searchInput: destination,
@@ -125,66 +132,82 @@ class TrvlPlan extends Component {
   };
 
   render() {
-    return (
-      <div className="informinput-container">
-        <form onSubmit={this.handleSubmit}>
-          {/* 여행 제목 입력 필드 */}
+    // 여행 제목과 목적지가 모두 입력되었는지 확인
+    const isFormFilled = this.state.tripTitle && this.state.searchInput;
 
-          <div className="textTitle">여행의 제목을 작성해주세요.</div>
-          <div className="search_title">
-            <input
-              type="text"
-              maxLength="20"
-              className="search_title1"
-              name="tripTitle"
-              placeholder="여행 제목을 입력해주세요."
-              value={this.state.tripTitle}
-              onChange={this.handleTripTitleChange}
-            />
-          </div>
-          {/* 목적지 검색 필드 */}
-          <div style={{ height: "580px" }}>
-            <div className="textTitle">어디로 가시나요?</div>
-            <div className="search_destination">
+    // 버튼 클래스를 조건부로 설정
+    const buttonClass = isFormFilled ? styles.buttonActive : ""; // 활성화 상태에 따라 클래스 변경
+
+    return (
+      <div className={styles.container}>
+        <div className={styles.informinputContainer}>
+          <form onSubmit={this.handleSubmit}>
+            <div className={styles.textTitle}>여행의 제목을 작성해주세요.</div>
+            <div className={styles.search_title}>
               <input
                 type="text"
                 maxLength="20"
-                className="search_destination1"
-                name="searchInput"
-                placeholder="어디로 가고싶나요?"
-                value={this.state.searchInput}
-                onChange={this.handleSearchInput}
+                className={styles.search_title1}
+                name="tripTitle"
+                placeholder="   여행 제목을 입력해주세요."
+                value={this.state.tripTitle}
+                onChange={this.handleTripTitleChange}
               />
             </div>
-            {this.renderSuggestions()}
-          </div>
-
-          {/* 초대 코드 입력 섹션 */}
-          <div className="textTitle2">친구에게 초대받으셨나요?</div>
-          <div className="search_invite">
-            <div className="invitationCodeSection">
-              <input
-                type="text"
-                maxLength="20"
-                className="search_invite1"
-                name="invitationCode"
-                placeholder="초대코드를 입력해주세요."
-                value={this.state.invitationCode}
-                onChange={this.handleInvitationCodeChange}
-              ></input>
-              <button
-                onClick={this.handleInvitationCodeSubmit}
-                className="search_submit"
-              >
-                제출
-              </button>
+            {/* 목적지 검색 필드 */}
+            <div>
+              <div className={styles.textTitle}>어디로 가시나요?</div>
+              <div className={styles.search_title}>
+                <input
+                  type="text"
+                  maxLength="20"
+                  className={styles.search_title1}
+                  name="searchInput"
+                  placeholder="   어디로 가고싶나요?"
+                  value={this.state.searchInput}
+                  onChange={this.handleSearchInput}
+                />
+              </div>
+              {this.renderSuggestions()}
             </div>
-          </div>
 
-          <Button text="이전" onClick={this.handlePre} />
+            {/* 초대 코드 입력 섹션 */}
+            <div className={styles.textTitle}>친구에게 초대받으셨나요?</div>
+            <div className={styles.search_title}>
+              <div className={styles.invitationCodeSection}>
+                <input
+                  type="text"
+                  maxLength="20"
+                  className={styles.search_title1}
+                  name="invitationCode"
+                  placeholder="   초대코드를 입력해주세요."
+                  value={this.state.invitationCode}
+                  onChange={this.handleInvitationCodeChange}
+                ></input>
+                <button
+                  onClick={this.handleInvitationCodeSubmit}
+                  className={styles.search_submit}
+                >
+                  제출
+                </button>
+              </div>
+            </div>
+            <div className={styles.btnContainer}>
+              <Button
+                className={`${styles.pre_btn}`} // 이전 버튼 스타일
+                text="이전"
+                onClick={this.handlePre}
+              />
 
-          <Button text="선택 완료" type="submit" />
-        </form>
+              <Button
+                className={`${styles.nextBtn} ${buttonClass}`} // 조건부 클래스 적용
+                text="선택 완료"
+                type="submit"
+                disabled={!isFormFilled} // 폼이 완전히 채워지지 않으면 버튼 비활성화
+              />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

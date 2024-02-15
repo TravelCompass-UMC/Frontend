@@ -1,0 +1,169 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.informinputContainer {
+  position: absolute;
+  width: 600px;
+  margin-top: 200px;
+}
+
+.textTitle {
+  /* 초대코드를 입력해주세요. */
+
+  /* head/head_bold_24 */
+  font-family: "SUIT Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 30px;
+  /* identical to box height */
+
+  /* grayscale/Gray8 */
+  color: #191b24;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.search_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 80px;
+  left: 25%;
+
+  /* grayscale/Gray1 */
+  background: #f3f5ff;
+  border: none;
+  border-radius: 10px;
+
+  /* 신나는 부산 여행 */
+  font-family: "SUIT Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  padding-right: 10px;
+  outline: none;
+  /* Remove the outline on focus */
+  /* or 27px */
+
+  /* grayscale/Gray8 */
+  color: #191b24;
+}
+
+.search_title1 {
+  /* Rectangle 34624545 */
+  width: 90%;
+
+  background: #f3f5ff;
+  border: none;
+  border-radius: 10px;
+  font-family: "SUIT Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+
+  /* or 27px */
+  outline: none;
+  /* grayscale/Gray8 */
+  color: #191b24;
+}
+
+.search_title1::placeholder {
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+  /* grayscale/Gray3 */
+  color: #bfc4d8;
+}
+
+.search_destination {
+  /* Rectangle 34624545 */
+
+  width: 480px;
+  height: 80px;
+  left: 25%;
+
+  /* grayscale/Gray1 */
+  background: #f3f5ff;
+  border: none;
+  border-radius: 10px;
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+}
+
+.search_invite {
+  /* Rectangle 34624545 */
+
+  width: 480px;
+  height: 80px;
+  left: 25%;
+  top: -420px;
+
+  /* grayscale/Gray1 */
+  background: #f3f5ff;
+  border: none;
+  border-radius: 10px;
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+
+  /* grayscale/Gray3 */
+  color: #bfc4d8;
+}
+
+.search_submit {
+  width: 80px;
+  height: 80px;
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  /* or 27px */
+  color: #bfc4d8;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.invitationCodeSection {
+  display: flex;
+  justify-content: space-between; /* input과 button 사이에 공간을 균등하게 배분 */
+  width: 100%; /* 부모 컨테이너의 너비에 맞춤 */
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 90px; /* 버튼 간격을 조정하고 싶은 경우 */
+}
+
+/* 활성화된 버튼 스타일 */
+.buttonActive {
+  background-color: purple; /* 활성화된 버튼의 배경 색상 */
+  color: white; /* 활성화된 버튼의 텍스트 색상 */
+}
+
+.buttonActive:hover {
+  cursor: pointer; /* 마우스 오버 시 커서 변경 */
+}
