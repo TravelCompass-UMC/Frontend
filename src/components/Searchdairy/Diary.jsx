@@ -6,22 +6,23 @@ import heartFilled from "../../assets/images/Pages/Group 2236_filled.png"; // �
 
 const styles = {
   bigBox: {
-    width: "300px",
-    height: "210px",
+    width: "375px",
+    height: "230px",
     background: "white",
     borderRadius: 16,
     border: "1px #EBEDF8 solid",
     marginBottom: "20px",
   },
   imageBox: {
-    width: "300px",
-    height: "120px",
+    width: "100%",
+    height: "138px",
     background: "#EBEDF8",
     borderRadius: 15,
+    position: "relative",
   },
   textBox: {
-    width: "300px",
-    height: "80px",
+    width: "100%",
+    height: "92px",
     // background: "#FFFFFF",
     borderRadius: 15,
   },
@@ -41,7 +42,7 @@ const styles = {
     wordWrap: "break-word",
   },
   heartImage: {
-    marginLeft: "190px",
+    marginLeft: "270px",
     cursor: "pointer", // 커서를 포인터로 변경하여 클릭 가능하다는 표시
   },
 };
@@ -64,7 +65,7 @@ function Diary(props) {
         {/* <span style={styles.nameText}>{props.name}</span> */}
         {/* <div style={styles.textBox}> */}
         <a style={styles.placeText}>{props.place}</a>
-      </NavLink >
+      </NavLink>
       {/* Heart 이미지 클릭 이벤트 처리 */}
       <img
         style={styles.heartImage}
@@ -85,7 +86,6 @@ function Diary(props) {
 
       {/* </div> */}
     </div>
-
   );
 }
 

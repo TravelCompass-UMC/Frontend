@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Diary from "./Diary";
 import VectorImage from "../../assets/images/Pages/Vector (1).png"; // 이미지를 import
 import styles1 from "../../styles/searchdiary/diarylist.module.css";
+import { EndSection } from "../../pages/mapages/MyPage";
+import sort from "../../styles/searchdiary/sort.module.css";
+
 const styless = {
   searchText: {
     color: "#191B24",
@@ -61,11 +64,23 @@ function DiaryList(props) {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = contents.slice(indexOfFirstItem, indexOfLastItem);
 
+  const [sortOrder, setSortOrder] = useState("recom"); // 초기 정렬 상태를 '좋아요순'으로 설정
+  const [showDropdown, setShowDropdown] = useState(false);
+  const toggleDropdown = () => setShowDropdown(!showDropdown);
+
+  // 정렬 방식에 따른 제목 결정
+  const dropdownTitle = () => {
+    if (sortOrder === "recom") return "추천순";
+    else if (sortOrder === "look") return "조회많은순";
+    else if (sortOrder === "newly") return "최신순";
+  };
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
     }
   };
+
+  //정렬
 
   return (
     <>
@@ -85,7 +100,43 @@ function DiaryList(props) {
             }}
           />
 
-          <h3 className={styles1.searchText}> 계획 둘러보기 </h3>
+          <span className={styles1.searchText}> 계획 둘러보기 </span>
+          <span className={sort.sortdropdown}>
+            <button onClick={toggleDropdown} className={sort.mypagesortbutton}>
+              {dropdownTitle()}
+            </button>
+            {showDropdown && (
+              <div className={sort.sortoptions}>
+                <button
+                  onClick={() => {
+                    setSortOrder("recom");
+                    setShowDropdown(false);
+                  }}
+                  className={sort.sortoption1}
+                >
+                  추천순
+                </button>
+                <button
+                  onClick={() => {
+                    setSortOrder("look");
+                    setShowDropdown(false);
+                  }}
+                  className={sort.sortoption2}
+                >
+                  조회많은순
+                </button>
+                <button
+                  onClick={() => {
+                    setSortOrder("newly");
+                    setShowDropdown(false);
+                  }}
+                  className={sort.sortoption2}
+                >
+                  최신순
+                </button>
+              </div>
+            )}
+          </span>
         </div>
       </div>
       <div style={{ marginTop: "10px" }}>
@@ -144,6 +195,7 @@ function DiaryList(props) {
           </button>
         </div>
       </div>
+      <EndSection />
     </>
   );
 }
