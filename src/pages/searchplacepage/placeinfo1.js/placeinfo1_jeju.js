@@ -17,7 +17,7 @@ const PlaceInfoJeju = () => {
   const [mapLocation, setMapLocation] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(searchedLocation || "제주도"); // 검색어 상태 변경 및 초기값 설정
-  const [zoomLevel, setZoomLevel] = useState(12);
+  const [zoomLevel, setZoomLevel] = useState(11);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const PlaceInfoJeju = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
-    setZoomLevel(16); // 확대 레벨 조정
+    setZoomLevel(12); // 확대 레벨 조정
   };
 
   const handleSearch = () => {
@@ -70,7 +70,7 @@ const PlaceInfoJeju = () => {
   return (
     <div>
       <div className="map-container">
-        <Map location={mapLocation} recommendations={recommendations} zoomLevel={11} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+        <Map location={mapLocation} recommendations={recommendations} zoomLevel={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
       </div>
       <SidebarL width={320}>
       <div style={{ display: 'inline-block', position: 'relative' }}>

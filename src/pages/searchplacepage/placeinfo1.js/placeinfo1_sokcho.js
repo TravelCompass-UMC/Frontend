@@ -17,14 +17,14 @@ const PlaceInfoSokcho = () => {
   const [mapLocation, setMapLocation] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(searchedLocation || "속초"); // 검색어 상태 변경 및 초기값 설정
-  const [zoomLevel, setZoomLevel] = useState(12);
+  const [zoomLevel, setZoomLevel] = useState(13.5);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (searchedLocation) {
-      setMapLocation({ lat: 38.18131, lng: 128.52054 });
+      setMapLocation({ lat: 38.180676, lng: 128.543079 });
     } else {
-      setMapLocation({ lat: 38.18131, lng: 128.52054 });
+      setMapLocation({ lat: 38.180676, lng: 128.543079 });
     }
   }, [searchedLocation]);
 
@@ -44,6 +44,7 @@ const PlaceInfoSokcho = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
+    setZoomLevel(13.7); // 추천 장소를 클릭할 때 지도를 더 확대하여 보여주도록 설정
   };
 
   const handleSearch = () => {
@@ -69,7 +70,7 @@ const PlaceInfoSokcho = () => {
   return (
     <div>
       <div className="map-container">
-        <Map location={mapLocation} recommendations={recommendations} zoomLevel={13} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+        <Map location={mapLocation} recommendations={recommendations} zoomLevel={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
       </div>
       <SidebarL width={320}>
       <div style={{ display: 'inline-block', position: 'relative' }}>

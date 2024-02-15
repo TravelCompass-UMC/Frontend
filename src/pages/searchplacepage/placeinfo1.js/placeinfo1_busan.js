@@ -45,7 +45,7 @@ const PlaceInfoBusan = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
-    setZoomLevel(16); // 확대 레벨 조정
+    setZoomLevel(12.6); // 확대 레벨 조정
   };
 
   const handleSearch = () => {
@@ -71,7 +71,7 @@ const PlaceInfoBusan = () => {
   return (
     <div>
       <div className="map-container">
-        <Map location={mapLocation} recommendations={recommendations} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={12}/>
+        <Map location={mapLocation} recommendations={recommendations} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={zoomLevel}/>
       </div>
       <SidebarL width={320}>
         <div style={{ display: 'inline-block', position: 'relative' }}>
