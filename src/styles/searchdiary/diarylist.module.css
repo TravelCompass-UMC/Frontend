@@ -56,3 +56,13 @@
   font-weight: 700;
   line-height: 170%;
 }
+
+.prebutton:hover,
+.prebutton:active,
+.nextbutton:hover,
+.nextbutton:active,
+.pagenum:hover,
+.pagenum:active {
+  background-color: #484a64; /* 마우스 오버 및 활성화된 버튼의 배경색 */
+  color: white; /* 마우스 오버 및 활성화된 버튼의 글씨 색상 */
+}
