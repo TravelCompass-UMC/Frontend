@@ -255,7 +255,13 @@ export function MyTravelPlanSection({ title, plans, userName}) {
       >
         <p>{title}</p>
         <Link to="/myplan">
-          <button className="morebutton">더보기</button>
+          <button className="morebutton" onClick={() => {
+            axios.get('http://dev.enble.site:8080/me/plans?page=0')
+              .then((data) => {
+                console.log(data)
+              })
+          }
+          }>더보기</button>
         </Link>
       </div>
       {isEmpty ? (

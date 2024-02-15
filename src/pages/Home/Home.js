@@ -4,6 +4,7 @@ import "../../styles/Home/Home.css";
 import SearchComponent from "../../components/Search.js";
 import GoogleMapComponent from "../../components/Map";
 import SidebarR from "../../components/SidebarR.js";
+import { EndSection } from "../mapages/MyPage.js";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -25,11 +26,11 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <GoogleMapComponent />
+    <div>      
       <SearchComponent onSearch={handleSearch} />
+      <GoogleMapComponent containerStyle={{ width: "100vw", height: "80vh" }} />
 
-      <SidebarR width={450}>
+      <SidebarR width={600}>
         <div className="sidebar-content">
           <h1>대한민국</h1>
           <p>지금 대한민국의 가장 인기 많은 지역</p>
@@ -56,6 +57,7 @@ const Home = () => {
           </div>
         </div>
       </SidebarR>
+      <EndSection/>
     </div>
   );
 };

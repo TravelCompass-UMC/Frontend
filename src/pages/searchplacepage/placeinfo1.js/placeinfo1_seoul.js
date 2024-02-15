@@ -6,7 +6,7 @@ import SidebarL from "../../../components/SidebarL";
 import searchImg from "../../../assets/images/Place/검색창.svg";
 import searchBtn from "../../../assets/images/Place/searchBtn.svg"; 
 import SearchRecommendations from "../../../components/Recommendation/RecommendationSeoul";
-import PlaceDetail from "../../../components/PlaceDetail";
+import PlaceDetail from "../../../components/searchPlace/PlaceDetail";
 import "../../../styles/searchplace/placeinfo.css";  
 
 const PlaceInfoSeoul = () => {
@@ -69,6 +69,9 @@ const PlaceInfoSeoul = () => {
 
   return (
     <div>
+      <div className="map-container">
+        <Map location={mapLocation} recommendations={recommendations} zoom={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+      </div>
       <SidebarL width={320}>
       <div style={{ display: 'inline-block', position: 'relative' }}>
           <img src={searchImg} alt="search-image" width={280} />
@@ -90,7 +93,7 @@ const PlaceInfoSeoul = () => {
             onClick={handleSearch}
             style={{
               position: 'absolute',
-              top: '2.8vh',
+              top: '2vh',
               right: '2%',
               transform: 'translateY(-50%)',
               border: 'none',
@@ -109,7 +112,6 @@ const PlaceInfoSeoul = () => {
         </div>
         {selectedPlace && <PlaceDetail place={selectedPlace} />}
       </SidebarL>
-      <Map location={mapLocation} recommendations={recommendations} onPinClick={handlePinClick} zoom={zoomLevel}/>
     </div>
   );
 };

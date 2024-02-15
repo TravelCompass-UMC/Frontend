@@ -15,7 +15,7 @@ const defaultCenter = {
   lng: 128.6014,
 };
 
-const Map = ({ location, recommendations, onPinClick }) => {
+const Map = ({ location, recommendations, onPinClick, containerStyle }) => {
   const [map, setMap] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(7);
   const [markers, setMarkers] = useState([]);

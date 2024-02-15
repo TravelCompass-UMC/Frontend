@@ -1,7 +1,7 @@
 // PlaceDetail.js
 import React, { useEffect, useState, useRef } from 'react';
 import RecommendationCard from './RecommendationCard';
-import { getPlaceDetails } from '../api/MapDetail';
+import { getPlaceDetails } from '../../api/MapDetail';
 
 const PlaceDetail = ({ place }) => {
   const [placeDetails, setPlaceDetails] = useState(null);
