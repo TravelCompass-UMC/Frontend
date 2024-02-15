@@ -1,7 +1,7 @@
 // Mypages.js
 
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useNavigate, NavLink, Link } from "react-router-dom";
 import styles from "../../styles/Mypages.css";
 import myplans from "../../tempdata/myplandata";
 import { useState } from "react";
@@ -239,9 +239,19 @@ export function MyTravelPlanSection({ title, plans, userName}) {
     // 여기에 좋아요 토글 로직을 구현합니다.
     console.log("Toggling like for planId:", planId);
   };
+  const navigate = useNavigate();
   const firstThreePlans = plans.slice(0, 3);
   const isEmpty = plans.length === 0;
+  const isMoreThanThree = plans.length > 3;
   userName = "박상현";
+
+  const handleMoreClick = () => {
+    if(isMoreThanThree) {
+      navigate("/myplan"); // 조건을 만족할 때만 myplan 페이지로 이동
+    }
+    // 조건을 만족하지 않으면 아무 동작도 하지 않음
+  };
+
 
   return (
     <div className="container">
@@ -254,9 +264,13 @@ export function MyTravelPlanSection({ title, plans, userName}) {
         }}
       >
         <p>{title}</p>
-        <Link to="/myplan">
-          <button className="morebutton">더보기</button>
-        </Link>
+        {/* <Link to="/myplan"> */}
+        <button
+          className={`morebutton ${!isMoreThanThree ? 'disabled' : ''}`}
+          onClick={handleMoreClick}
+          disabled={!isMoreThanThree} // 썸네일이 3개 이하일 때 비활성화
+        >더보기</button>
+        {/* </Link> */}
       </div>
       {isEmpty ? (
         <div className="row-container" style={{ display: 'flex', justifyContent: 'center' }}>

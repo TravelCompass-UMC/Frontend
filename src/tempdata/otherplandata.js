@@ -157,7 +157,7 @@ let otherplans = [
       liked: 1
     },
     {
-      id: 23, 
+      id: 2, 
       place: "제주도11",
       hashtag: ["가족 여행"],
       liked: 1,
