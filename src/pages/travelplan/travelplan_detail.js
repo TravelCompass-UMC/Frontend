@@ -153,8 +153,6 @@ const Trvlpage = () => {
       </div>
     );
   };
-
-  // 날짜별로 선택된 숙소와 장소 정보를 렌더링하는 함수
   // 날짜별로 선택된 숙소와 장소 정보를 렌더링하는 함수
   const renderSelectedInfoForDate = () => {
     const currentAccommodationId = selectedAccommodations[activeDate];
