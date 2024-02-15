@@ -3,13 +3,16 @@ import React, { useState, useMemo } from "react";
 import styles from "../../styles/Mypages.css";
 import myplaces from "../../tempdata/myplacedata";
 import { InterestedPlaceThumbnail } from "./MyPage";
+import otherplans from "../../tempdata/otherplandata";
 
 function Myplacepage() {
 
  const [currentCategory, setCurrentCategory] = useState('전체');
-  const [places] = useState(myplaces);
+  const [places, setPlaces] = useState(myplaces);
   const [currentPage, setCurrentPage] = useState(1);
   const placesPerPage = 12;
+
+
   const [sortOrder, setSortOrder] = useState('likes'); // 초기 정렬 상태를 '좋아요순'으로 설정
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -43,6 +46,17 @@ function Myplacepage() {
   const goToNextPage = () => currentPage < Math.ceil(sortedPlaces.length / placesPerPage) && setCurrentPage(currentPage + 1);
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
+  const toggleLike = (placeId) => {
+    const updatePlaces = places.map(place => {
+      if(place.id === placeId){
+        return {...place, liked: place.liked === 1 ? 0 : 1};
+      }
+      return place;
+    }).filter(place => place.liked !== 0);
+    setPlaces(updatePlaces);
+
+  }
+
   return (
     <div className="container">
       <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -69,9 +83,9 @@ function Myplacepage() {
         ))}
       </div>
       <div className="row">
-        {currentPlaces.map((place, index) => (
-          <div key={index} className="col-md-4 place-thumbnail-container">
-            <InterestedPlaceThumbnail places={place}></InterestedPlaceThumbnail>
+        {currentPlaces.map((place, i) => (
+          <div key={i} className="col-md-4 place-thumbnail-container">
+            <InterestedPlaceThumbnail places={place} i={i+1} onToggleLike = {toggleLike}></InterestedPlaceThumbnail>
           </div>
         ))}
       </div>
