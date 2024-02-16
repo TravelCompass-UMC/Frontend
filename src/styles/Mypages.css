@@ -62,6 +62,61 @@
   font-weight: bold;
   padding-left: 30px;
 }
+
+.prebutton {
+  width: 90px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--grayscale-Gray2, #ebedf8);
+  background: var(--grayscale-White, #fff);
+  color: var(--grayscale-Gray3, #bfc4d8);
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 170%;
+}
+
+.prebutton:hover, .prebutton:active, .nextbutton:hover, .nextbutton:active,
+.pagenum:hover, .pagenum:active
+{
+  background-color: #484A64; /* 마우스 오버 및 활성화된 버튼의 배경색 */
+  color: white; /* 마우스 오버 및 활성화된 버튼의 글씨 색상 */
+}
+
+.nextbutton {
+  width: 90px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--grayscale-Gray2, #ebedf8);
+  background: var(--grayscale-White, #fff);
+  color: var(--grayscale-Gray3, #bfc4d8);
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 170%;
+}
+
+.pagenum {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--grayscale-Gray2, #ebedf8);
+  background: var(--grayscale-White, #fff);
+  color: var(--grayscale-Gray3, #afb7d7);
+
+  /* botton/botton_bold_16 */
+  font-family: "SUIT Variable";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 170%;
+}
   /*ProfileSection*/
   .profile-box {
     text-align: center;
@@ -388,7 +443,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 100px;
   /* 버튼 위의 간격을 조절합니다 */
 }
 
