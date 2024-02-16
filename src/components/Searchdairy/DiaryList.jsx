@@ -5,15 +5,6 @@ import styles1 from "../../styles/searchdiary/diarylist.module.css";
 import { EndSection } from "../../pages/mapages/MyPage";
 import sort from "../../styles/searchdiary/sort.module.css";
 
-const styless = {
-  searchText: {
-    color: "#191B24",
-    fontSize: 22,
-    fontFamily: "SUIT Variable",
-    fontWeight: "700",
-    wordWrap: "break-word",
-  },
-};
 const contents = [
   // 데이터를 별도의 객체와 분리
   {

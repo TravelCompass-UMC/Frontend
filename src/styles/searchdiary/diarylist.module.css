@@ -1,15 +1,18 @@
 .searchText {
+  /* 계획 둘러보기 css */
   color: #191b24;
   font-size: 22px;
   font-family: "SUIT Variable";
   font-weight: 700;
   word-wrap: break-word;
-  margin-left: 25px;
-  margin-top: -15px;
+  margin-left: -85px;
+  margin-top: 30px;
+  top: 20px;
   position: relative;
 }
 
 .prebutton {
+  /*pagenation 이전버튼*/
   width: 90px;
   height: 40px;
   border-radius: 8px;
@@ -17,7 +20,6 @@
   background: var(--grayscale-White, #fff);
   color: var(--grayscale-Gray3, #bfc4d8);
 
-  /* botton/botton_bold_16 */
   font-family: "SUIT Variable";
   font-size: 14px;
   font-style: normal;
@@ -26,6 +28,7 @@
 }
 
 .nextbutton {
+  /*pagenation 다음버튼*/
   width: 90px;
   height: 40px;
   border-radius: 8px;
@@ -33,7 +36,6 @@
   background: var(--grayscale-White, #fff);
   color: var(--grayscale-Gray3, #bfc4d8);
 
-  /* botton/botton_bold_16 */
   font-family: "SUIT Variable";
   font-size: 14px;
   font-style: normal;
@@ -42,6 +44,7 @@
 }
 
 .pagenum {
+  /*pagenation 숫자*/
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -49,7 +52,6 @@
   background: var(--grayscale-White, #fff);
   color: var(--grayscale-Gray3, #afb7d7);
 
-  /* botton/botton_bold_16 */
   font-family: "SUIT Variable";
   font-size: 14px;
   font-style: normal;
@@ -63,6 +65,8 @@
 .nextbutton:active,
 .pagenum:hover,
 .pagenum:active {
-  background-color: #484a64; /* 마우스 오버 및 활성화된 버튼의 배경색 */
-  color: white; /* 마우스 오버 및 활성화된 버튼의 글씨 색상 */
+  background-color: #484a64;
+  /* 마우스 오버 및 활성화된 버튼의 배경색 */
+  color: white;
+  /* 마우스 오버 및 활성화된 버튼의 글씨 색상 */
 }
