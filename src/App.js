@@ -26,6 +26,7 @@ import Joinmembership from "./pages/login_and_signin/signup";
 import Myprofile from "./pages/login_and_signin/Myprofile";
 import Plandetail from "./pages/travelplan/travelplan_detail";
 import PlanEdit from "./pages/planedit/travelplanEdit";
+import PlaceAddition from "./pages/planedit/PlaceAdditionPage";
 import Myplanpage from "./pages/mapages/Myplanpage";
 import Myplacepage from "./pages/mapages/Myplacepage";
 import Otherplanpage from "./pages/mapages/Otherplanpage";
@@ -75,6 +76,7 @@ function App() {
             <Route path="/placeinfo1_yangyang" element={<PlaceInfoYangyang />} />
             <Route path="/travelplandetail" element={<Plandetail />} />
             <Route path="/travelplanedit" element={<PlanEdit />} />
+            <Route path="/travelplaceadd" element={<PlaceAddition />} />
             <Route path="/myplan" element={<Myplanpage />} />
             <Route path="/otherplan" element={<Otherplanpage />} />
             <Route path="/myplace" element={<Myplacepage />} />

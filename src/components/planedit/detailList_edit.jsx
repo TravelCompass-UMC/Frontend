@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../../styles/planedit/diaryContent_edit.css";
-import numImage1 from "../../assets/images/Pages/Ellipse 10 (1).png"
 import heart from "../../assets/images/Pages/Group 2236.png"; // 이미지를 import
 import heartFilled from "../../assets/images/Pages/Group 2236_filled.png"; // 채워진 하트 이미지를 import
 import Modal from "./Modal_edit"; // 모달 컴포넌트를 임포트합니다.
@@ -34,7 +33,7 @@ const DetailList = ({ num }) => {
                 <div>
                     {console.log("detailList에서의 num", num)}
                     <a className="detailnum">{`${num}일차`}</a>&nbsp;&nbsp;
-                    <a className="detailcal">2024.02.07(수)</a>
+                    <a className="detailcal">2024.02.15(목)</a>
                 </div>
                 {Array.from({ length: travelnum[num - 1] }).map((_, index) => (
                     <div
@@ -44,17 +43,14 @@ const DetailList = ({ num }) => {
                     >                        <table>
                             <tr>
                                 <td style={{ width: "50px" }} rowSpan={4}>
-                                    <img className="detailnum1" src={numImage1} />
-                                    <span className="detailnum2">
-                                        {`${index + 1}`}
-                                    </span>
                                 </td>
-                                <td className="detailtime">09:30~11:20</td>
-                                <td className="detailimage" rowSpan={4}></td>
+                                <td className="detailTime">09:30~11:20</td>
+                                <td className="placeimage" rowSpan={4}></td>
                             </tr>
                             <tr className="detailplace">명소</tr>
                             <tr className="detailplacename">장소이름</tr>
                             <tr className="detailmoney">00,000원</tr>
+                            <tr className="detailtime">소요시간(기본 2시간)</tr>
                         </table>
                     </div>
                 ))}
