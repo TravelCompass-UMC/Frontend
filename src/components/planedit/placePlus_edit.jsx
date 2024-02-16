@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/planedit/plusModal.module.css";
 import eclose from "../../assets/images/Pages/close.png";
-import SearchModal from "./Search"; // 경로 확인
+import SearchModal from "./Search"; 
 
 const PlusBtn = ({ onClose }) => {
     const [placeInfo, setPlaceInfo] = useState(null);
