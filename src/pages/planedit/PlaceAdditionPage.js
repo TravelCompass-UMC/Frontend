@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Map from '../../components/Map'; // Assume this is a component that renders a map
 import SidebarL from '../../components/SidebarL'; // A component for the sidebar
 import searchBtn from "../../assets/images/Place/searchBtn.svg";
+import searchBox from "../../assets/images/Place/검색창.svg";
 import PlaceDetail from '../../components/searchPlace/PlaceDetail'; // A component for place details
 import SearchRecommendations from '../../components/planedit/SearchRecommendations';
-import '../../styles/searchplace/placeinfo.css'; // Stylesheet for the page
+import styles from '../../styles/planedit/additionPage.module.css';
 
 const PlaceAddition = () => {
   const [searchQuery, setSearchQuery] = useState(""); // Search query state
@@ -49,7 +50,7 @@ const PlaceAddition = () => {
   };
 
   return (
-    <div className="place-addition-page">
+    <div className={styles.placeAdditionPage}>
       <Map 
         location={mapLocation}
         zoomLevel={zoomLevel}
@@ -58,15 +59,16 @@ const PlaceAddition = () => {
         // The Map component needs to handle this prop and render pins accordingly
       />
       <SidebarL width={500}>
-        <div className="search-bar">
+        <div className={styles.searchBar} style={{ backgroundImage: `url(${searchBox})` }}>
           <input
             type="text"
             value={searchQuery}
             onChange={handleSearchChange}
-            placeholder="Search for a location"
-            className="search-input" // Add your CSS class for styling
+            placeholder="검색할 장소를 입력하세요"
+            className={styles.searchInput}
+            style={{width: "30%", height:"100%", border: "none", }}
           />
-          <button onClick={handleSearchSubmit} className="search-button"> {/* Add your CSS class for styling */}
+          <button onClick={handleSearchSubmit} className={styles.searchButton}>
             <img src={searchBtn} alt="search-button" />
           </button>
         </div>
