@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../styles/planedit/Recommendation.module.css';
 
+
 const SearchRecommendations = ({ places, onRecommendationClick }) => {
 
   // Function to generate photo URL for a given photo reference
@@ -13,6 +14,7 @@ const SearchRecommendations = ({ places, onRecommendationClick }) => {
   };
 
   return (
+    
     <div className={styles.recommendationsContainer}>
       {places.map((place, index) => (
         <div 

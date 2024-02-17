@@ -1,0 +1,34 @@
+/* additionPage.module.css */
+.placeAdditionPage {
+    display: flex;
+    position: relative;
+    height: 100vh;
+  }
+  
+  .searchBar {
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 12px;
+  }
+  
+  .searchInput {
+    flex-grow: 1;
+    padding: 8px 16px;
+    margin-right: -40px; /* Adjust based on your search button size */
+    border: none;
+    background-color: transparent; /* Make the input background transparent */
+  }
+  
+  .searchButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 8px 16px;
+    top: -8px;
+    left: 11.2px;
+    position: relative;
+    z-index: 2; /* Ensure button is above the input */
+  }
+    
