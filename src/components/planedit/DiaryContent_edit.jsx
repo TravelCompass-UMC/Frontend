@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../styles/planedit/diaryContent_edit.css";
 import LeftBar from "./LeftBar_edit";
 import AllList from "./AllList_edit";
 import DetailList from "./detailList_edit";

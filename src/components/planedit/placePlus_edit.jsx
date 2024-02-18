@@ -17,13 +17,13 @@ const PlusBtn = ({ onClose }) => {
                 <SearchModal onSearch={handleSearch}/>
                 {placeInfo && (
                     <div className={styles.placeCard}>
-                        <h3>{placeInfo.name}</h3>
+                        <div className={styles.placeName}>{placeInfo.name}</div>
                         {placeInfo.photoReference && (
                             <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${placeInfo.photoReference}&key=AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU`} alt={placeInfo.name}
                             style={{width:"60%"}}
                             />
                         )}
-                        <p>위도: {placeInfo.location.lat}, 경도: {placeInfo.location.lng}</p>
+                        <p>위치: {placeInfo.vicinity || '제공되지 않는 정보입니다.'}</p>
                     </div>
                 )}
             </div>

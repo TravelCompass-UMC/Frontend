@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import "../../styles/planedit/diaryContent_edit.css";
 import heart from "../../assets/images/Pages/Group 2236.png"; // 이미지를 import
 import heartFilled from "../../assets/images/Pages/Group 2236_filled.png"; // 채워진 하트 이미지를 import
 
@@ -83,7 +82,6 @@ function Diary(props) {
         ))}
       </div>
 
-      {/* </div> */}
     </div>
 
   );
