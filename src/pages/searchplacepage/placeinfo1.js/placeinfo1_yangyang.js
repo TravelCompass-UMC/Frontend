@@ -72,9 +72,9 @@ const PlaceInfoYangyang = () => {
       <div className="map-container">
         <Map location={mapLocation} recommendations={recommendations} zoomLevel={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
       </div>
-      <SidebarL width={320}>
+      <SidebarL width={400}>
       <div style={{ display: 'inline-block', position: 'relative' }}>
-          <img src={searchImg} alt="search-image" width={280} />
+          <img src={searchImg} alt="search-image" width={350} />
           <div className="placeName">
             <input
               type="text"

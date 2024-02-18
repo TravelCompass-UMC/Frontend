@@ -16,18 +16,19 @@
   }
 
 .placeName {
-  margin-top: -30px;
+  margin-top: -40px;
   margin-left: 20px;
   font-family: 'SUIT Variable', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 450;
+  font-weight: 600;
   color: var(--grayscale-Gray8, #191B24);
 }  
 
 .searched-location {
   margin-top: 20%;
-  color: red;
+  color: #FF4C47;
+  font-size: 30px;
   font-weight: 800;
   text-align: center;
 }
@@ -42,6 +43,7 @@
   margin-left: 20px;
   margin-bottom: -5px;
   font-family: 'SUIT Variable', sans-serif;
-  font-weight: 350;
+  font-weight: 500;
+  font-size: 25px;
   color: #8270FF;
 }
