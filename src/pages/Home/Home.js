@@ -48,7 +48,7 @@ function Home() {
       <SearchComponent onSearch={handleSearch} />
       <GoogleMapComponent containerStyle={{ width: "100vw", height: "70vh" }} />
 
-      {/* <SidebarR width={450}>
+      <SidebarR width={450} height={756}>
         <div className="sidebar-content">
           <h1>대한민국</h1>
           <p>지금 대한민국의 가장 인기 많은 지역</p>
@@ -74,7 +74,7 @@ function Home() {
             <p>선택하신 도시의 가장 인기 많은 장소</p>
           </div>
         </div>
-      </SidebarR> */}
+      </SidebarR>
 
       {/* OtherTravelPlanSection 스타일 적용 */}
       <div className="container">
@@ -124,4 +124,4 @@ function Home() {
         );
 };
 
-        export default Home;
+export default Home;

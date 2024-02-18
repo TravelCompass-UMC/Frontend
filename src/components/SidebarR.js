@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/sidebar.module.css";
 
-const SidebarR = ({ width = 320, children, isOpen: externalIsOpen,   toggleSidebar,
+const SidebarR = ({ width = 320, height = 980, children, isOpen: externalIsOpen,   toggleSidebar,
 }) => {
   const [internalIsOpen, setInternalIsOpen] = useState(true);
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
@@ -30,7 +30,7 @@ const SidebarR = ({ width = 320, children, isOpen: externalIsOpen,   toggleSideb
         className={styles.sidebar}
         style={{
           width: `${width}px`,
-          height: "100%",
+          height: `${height}px`,
           transform: `translateX(${-xPosition}px)` }}
       >
         <div className={styles.buttonContainer}>
