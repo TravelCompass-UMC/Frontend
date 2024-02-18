@@ -1,0 +1,120 @@
+.dayContainer {
+    width: 434px;
+    height: 199px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    display: inline-block;
+    /* 가로 스크롤 활성화 */
+  }
+
+  .detailnum {
+    width: 57px;
+    height: 30px;
+    margin-bottom: 19px;
+    color: var(--grayscale-Gray8, #191B24);
+    font-family: "SUIT Variable";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .detailcal {
+    width: 113px;
+    height: 20px;
+    margin-bottom: 19px;
+    color: var(--grayscale-Gray3, #BFC4D8);
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+  }
+
+  .detailBox {
+    border-radius: 8px;
+    margin-bottom: 100px;
+    background: var(--grayscale-White, #FFF);
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.10);
+    width: 380px;
+    height: 132px;
+    flex-shrink: 0;
+  }
+
+  .placeimage {
+    margin-top: 150px;
+    margin-right: 16px;
+    width: 122px;
+    height: 122px;
+    border-radius: 10px;
+    background: var(--grayscale-Gray2, #EBEDF8);
+  }
+
+  .detailplace {
+    color: var(--Sub-color, #78CF9F);
+    font-family: "SUIT Variable";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .detailplacename {
+    color: var(--grayscale-Gray8, #191B24);
+    font-family: "SUIT Variable";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .detailmoney{
+    color: var(--grayscale-Gray2, #EBEDF8);
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .detailTime {
+    color: var(--grayscale-Gray4, #7F85A3);
+    width: 84px;
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 170%;
+  }
+
+  .nickname {
+    width: fixed 134px;
+    height: fixed 20px;
+    margin-bottom: 4px;
+    color: var(--grayscale-Gray3, #BFC4D8);
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .title {
+    width: fixed 179px;
+    height: fixed 30px;
+    color: var(--grayscale-Gray8, #191B24);  
+    font-family: "SUIT Variable";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .line {
+    border-bottom: 2px solid var(--grayscale-Gray2, #EBEDF8);
+    background: var(--grayscale-Gray1, #F3F5FF);
+    width: 90%;
+  }

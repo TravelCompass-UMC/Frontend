@@ -48,7 +48,7 @@ const SearchModal = ({ onSearch }) => {
               maxLength="20"
               value={searchQuery}
               onChange={handleSearchChange}
-              placeholder="궁금한 지역을 검색해보세요."
+              placeholder=" 추가할 장소를 검색하세요."
               className={styles.searchInput}
             />
             <button type="submit" className={styles.searchButton}>

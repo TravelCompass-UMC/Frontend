@@ -11,11 +11,11 @@ const containerStyle = {
 };
 
 const defaultCenter = {
-  lat: 35.8714,
-  lng: 128.6014,
+  lat: 35.82621,
+  lng: 127.64527,
 };
 
-const Map = ({ location, recommendations, onPinClick, zoomLevel = 7, containerStyle }) => {
+const Map = ({ location, recommendations, onPinClick, zoomLevel = 7.2, containerStyle }) => {
   const [map, setMap] = useState(null);
   const [markers, setMarkers] = useState([]);
 
