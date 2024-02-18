@@ -131,23 +131,34 @@ function DiaryList(props) {
         </div>
       </div>
       <div style={{ marginTop: "10px" }}>
-        {Array.from({ length: rowsPerPage }).map((_, rowIndex) => (
-          <div
-            key={rowIndex}
-            style={{ display: "flex", justifyContent: "center", gap: "20px" }}
-          >
-            {currentItems
-              .slice(rowIndex * itemsPerRow, (rowIndex + 1) * itemsPerRow)
-              .map((place, index) => (
-                <Diary
-                  key={index}
-                  place={place.place}
-                  hashtag={place.hashtag}
-                />
-              ))}
-          </div>
-        ))}
-
+        <div
+          style={{
+            margin: "auto",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <table>
+            {Array.from({ length: rowsPerPage }).map((_, rowIndex) => (
+              <tr>
+                <div key={rowIndex} style={{ display: "flex", gap: "20px" }}>
+                  {currentItems
+                    .slice(rowIndex * itemsPerRow, (rowIndex + 1) * itemsPerRow)
+                    .map((place, index) => (
+                      <td>
+                        <Diary
+                          key={index}
+                          place={place.place}
+                          hashtag={place.hashtag}
+                        />
+                      </td>
+                    ))}
+                </div>
+              </tr>
+            ))}
+          </table>
+        </div>
         <div
           style={{
             display: "flex",

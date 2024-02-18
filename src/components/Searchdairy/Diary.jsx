@@ -12,6 +12,7 @@ const styles = {
     borderRadius: 16,
     border: "1px #EBEDF8 solid",
     marginBottom: "20px",
+    display: "inline-block",
   },
   imageBox: {
     width: "100%",
