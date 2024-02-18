@@ -17,22 +17,17 @@ function Diarycontent() {
     //부모 컴포넌트에서 onCustomDurationChange 함수를 전달 */}
     //<SearchComponent onCustomDurationChange={handleCustomDurationChange} />
     //diarycontent.jsx 내용
-    <div style={{ display: "flex", marginLeft: "50px" }}>
-      <div style={{ width: "250px" }}>
+    <div style={{ display: "flex" }}>
+      <div style={{ width: "270px", height: "980px" }}>
         <LeftBar onCustomChange={handleAllScheduleClick} />
       </div>
 
-      <div style={{ width: "90vw", marginTop: "20px" }}>
+      <div style={{ width: "85vw", marginTop: "20px" }}>
         {num === 0 && <AllList />}
         {console.log("diarycontent에서의 num", num)}
         {num > 0 && <DetailList num={num} />} {/* Pass num to DetailList */}
-
       </div>
     </div>
-
-
-
-
   );
 }
 

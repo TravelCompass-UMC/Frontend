@@ -1,7 +1,7 @@
 // Mypages.js
 
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useNavigate, NavLink, Link } from "react-router-dom";
 import styles from "../../styles/Mypages.css";
 import myplans from "../../tempdata/myplandata";
 import { useState } from "react";
@@ -16,7 +16,7 @@ import starFilled from "../../assets/images/Mypage/StarFilled.svg";
 import bookmark from "../../assets/images/Mypage/Bookmark.svg";
 import bookmarkFilled from "../../assets/images/Mypage/BookmarkFilled.svg";
 import { Container } from "react-bootstrap";
-import axios from "axios";
+
 
 const Thumbnail = {
   bigBox: {
@@ -239,9 +239,19 @@ export function MyTravelPlanSection({ title, plans, userName}) {
     // 여기에 좋아요 토글 로직을 구현합니다.
     console.log("Toggling like for planId:", planId);
   };
+  const navigate = useNavigate();
   const firstThreePlans = plans.slice(0, 3);
   const isEmpty = plans.length === 0;
+  const isMoreThanThree = plans.length > 3;
   userName = "박상현";
+
+  const handleMoreClick = () => {
+    if(isMoreThanThree) {
+      navigate("/myplan"); // 조건을 만족할 때만 myplan 페이지로 이동
+    }
+    // 조건을 만족하지 않으면 아무 동작도 하지 않음
+  };
+
 
   return (
     <div className="container">
@@ -254,15 +264,13 @@ export function MyTravelPlanSection({ title, plans, userName}) {
         }}
       >
         <p>{title}</p>
-        <Link to="/myplan">
-          <button className="morebutton" onClick={() => {
-            axios.get('http://dev.enble.site:8080/me/plans?page=0')
-              .then((data) => {
-                console.log(data)
-              })
-          }
-          }>더보기</button>
-        </Link>
+        {/* <Link to="/myplan"> */}
+        <button
+          className={`morebutton ${!isMoreThanThree ? 'disabled' : ''}`}
+          onClick={handleMoreClick}
+          disabled={!isMoreThanThree} // 썸네일이 3개 이하일 때 비활성화
+        >더보기</button>
+        {/* </Link> */}
       </div>
       {isEmpty ? (
         <div className="row-container" style={{ display: 'flex', justifyContent: 'center' }}>
@@ -286,45 +294,53 @@ export function MyTravelPlanSection({ title, plans, userName}) {
 export function OtherplanThumbnail(props) {
 
   const [heartState, setHeartState] = useState(props.others.liked);
+
   const handleHeartClick = () => {
-    setHeartState(heartState === 0 ? 1 : 0); // 클릭할 때마다 상태 변경
+    if (props.isDeletable) {
+      // 삭제 로직 실행
+      props.onToggleLike(props.others.id);
+    } else {
+      // 하트 상태만 토글
+      const newHeartState = heartState === 1 ? 0 : 1;
+      setHeartState(newHeartState);
+      if (props.onToggleLike) { // 이 조건을 추가하여 Home.js에서 제공하는 onToggleLike 함수도 호출
+        props.onToggleLike(props.others.id, newHeartState);
+      }
+    }
   };
 
   const containerStyle = {
     display: "flex",
-    justifyContent: "space-between", // 컨테이너 내 요소들 사이의 공간 최대화
-    alignItems: "flex-start", // 요소들을 컨테이너의 상단에 정렬
-    width: "100%", // 컨테이너 너비를 100%로 설정하여 넓게 사용
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
   };
 
-  // 텍스트 영역 스타일, 여기에는 장소 이름과 해시태그가 포함됩니다.
   const textStyle = {
     display: "flex",
-    flexDirection: "column", // 요소들을 세로로 나열
-    justifyContent: "center", // 세로 중앙 정렬
-    width: "calc(100% - 50px)", // 하트 이미지와의 간격을 고려하여 너비 조정
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "calc(100% - 50px)",
   };
 
   return (
-    <div
-      className="thumbnail-container"
-      style={{ ...Thumbnail.bigBox, margin: "0 10px" }}
-    >
-      <img className="otherplanimg"
+    <div className="thumbnail-container" style={{ ...Thumbnail.bigBox, margin: "0 10px" }}>
+      <img
+        className="otherplanimg"
         style={{ ...Thumbnail.imageBox, width: "100%" }}
         src={props.others.img}
         alt="장소 이미지"
       />
       <div style={containerStyle}>
-      <NavLink to="/diarycontent" style={{ textDecoration: "none", width: "100%" }}>
-        <div style={textStyle}>
-          <a style={Thumbnail.placeText}>{props.others.place}</a>
-          <p style={Thumbnail.hashtagText}>
-            {props.others.hashtag.map((tag, index) => (
-              <span key={index}>#{tag} </span>
-            ))}
-          </p>
-        </div>
+        <NavLink to="/diarycontent" style={{ textDecoration: "none", width: "100%" }}>
+          <div style={textStyle}>
+            <a style={Thumbnail.placeText}>{props.others.place}</a>
+            <p style={Thumbnail.hashtagText}>
+              {props.others.hashtag.map((tag, index) => (
+                <span key={index}>#{tag} </span>
+              ))}
+            </p>
+          </div>
         </NavLink>
         <img
           style={Thumbnail.heartImage}
@@ -338,6 +354,9 @@ export function OtherplanThumbnail(props) {
 }
 
 export function OtherTravelPlanSection({ title, others, userName }) {
+  const onToggleLike = (otherId) => {
+    console.log("Toggling like for otherId:",otherId);
+  }
   // 처음 3개의 요소만 사용
   const firstThreeOthers = others.slice(0, 3);
   const otherEmpty = others.length === 0;
@@ -369,7 +388,7 @@ export function OtherTravelPlanSection({ title, others, userName }) {
         <div className="row-container">
 
           {firstThreeOthers.map((other, i) => (
-            <OtherplanThumbnail key ={i} others ={other} i= {i+1}></OtherplanThumbnail>
+            <OtherplanThumbnail key ={i} others ={other} i= {i+1} onToggleLike={onToggleLike} isDeletable={true}></OtherplanThumbnail>
           ))}
         </div>
    )}
@@ -390,8 +409,16 @@ export function InterestedPlaceThumbnail(props) {
 
   const categoryClass = getCategoryClassName(props.places.category);
   const [bookmarkState, setBookmarkState] = useState(props.places.liked);
+
   const handleBookmarkClick = () => {
-    setBookmarkState(bookmarkState === 0 ? 1 : 0);
+    const newbookmarkState = bookmarkState === 1 ? 1 : 0;
+    setBookmarkState(newbookmarkState);
+    props.onToggleLike(props.places.id);
+
+    if(newbookmarkState === 0){
+      props.onToggleLike(props.places.id);
+    }
+
   }
   return (
     <div className="place-thumbnail-container" style={Placethumbnail.detailBox}>
@@ -423,6 +450,11 @@ export function InterestedPlaceThumbnail(props) {
 }
 
 export function InterestedPlacesSection({ title, places, userName}) {
+
+  const onToggleLike = (placeId) => {
+    console.log("Toggling like for placeId", placeId);
+  }
+
  // 처음 6개의 요소만 사용
  const firstThreePlaces = places.slice(0, 6);
  const placeEmpty = places.length === 0;
@@ -456,6 +488,7 @@ export function InterestedPlacesSection({ title, places, userName}) {
               key={i}
               places={place}
               i={i + 1}
+              onToggleLike ={onToggleLike}
             ></InterestedPlaceThumbnail>
           ))}
         </div>

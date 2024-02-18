@@ -44,6 +44,7 @@ const PlaceInfoYeosu = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
+    setZoomLevel(13.2); // 추천 장소를 클릭할 때 지도를 더 확대하여 보여주도록 설정
   };
 
   const handleSearch = () => {
@@ -69,7 +70,7 @@ const PlaceInfoYeosu = () => {
   return (
     <div>
       <div className="map-container">
-        <Map location={mapLocation} recommendations={recommendations} zoom={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+        <Map location={mapLocation} recommendations={recommendations} zoomLevel={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
       </div>
       <SidebarL width={320}>
       <div style={{ display: 'inline-block', position: 'relative' }}>

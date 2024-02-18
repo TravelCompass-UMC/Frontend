@@ -17,7 +17,7 @@ const PlaceInfoYangyang = () => {
   const [mapLocation, setMapLocation] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(searchedLocation || "양양"); // 검색어 상태 변경 및 초기값 설정
-  const [zoomLevel, setZoomLevel] = useState(12);
+  const [zoomLevel, setZoomLevel] = useState(12.7);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const PlaceInfoYangyang = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
-    setZoomLevel(18);
+    setZoomLevel(13.3);
   };
 
   const handleSearch = () => {
@@ -70,7 +70,7 @@ const PlaceInfoYangyang = () => {
   return (
     <div>
       <div className="map-container">
-        <Map location={mapLocation} recommendations={recommendations} zoom={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
+        <Map location={mapLocation} recommendations={recommendations} zoomLevel={zoomLevel} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }}/>
       </div>
       <SidebarL width={320}>
       <div style={{ display: 'inline-block', position: 'relative' }}>
