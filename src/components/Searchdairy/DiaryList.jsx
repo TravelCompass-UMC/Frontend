@@ -4,44 +4,28 @@ import VectorImage from "../../assets/images/Pages/Vector (1).png"; // 이미지
 import styles1 from "../../styles/searchdiary/diarylist.module.css";
 import { EndSection } from "../../pages/mapages/MyPage";
 import sort from "../../styles/searchdiary/sort.module.css";
+import datas from "../../tempdata/searchdiary.js";
+// const contents = [
+//   // 데이터를 별도의 객체와 분리
+//   {
+//     place: "제주도1",
+//     hashtag: ["가족 여행"],
+//   },
+//   {
+//     place: "울릉도2",
+//     hashtag: ["추억 여행", "가족 여행"],
+//   },
+//   {
+//     place: "제주도3",
+//     hashtag: ["가족 여행"],
+//   },
+//   {
+//     place: "울릉도4",
+//     hashtag: ["추억 여행", "가족 여행"],
+//   },
 
-const contents = [
-  // 데이터를 별도의 객체와 분리
-  {
-    place: "제주도1",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도2",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-  {
-    place: "제주도3",
-    hashtag: ["가족 여행"],
-  },
-  {
-    place: "울릉도4",
-    hashtag: ["추억 여행", "가족 여행"],
-  },
-
-  // 추가적인 데이터는 여기에 계속 추가
-];
-
-const styles = {
-  contextBox: {
-    color: "#191B24",
-    fontSize: 22,
-    fontFamily: "SUIT Variable",
-    fontWeight: "700",
-    wordWrap: "break-word",
-  },
-  imageTitle: {
-    width: "50px",
-    height: "30px",
-    opacity: 0.6,
-    border: "6px #8270FF solid",
-  },
-};
+//   // 추가적인 데이터는 여기에 계속 추가
+// ];
 
 function DiaryList(props) {
   const itemsPerRow = 3; // Number of diaries per row
