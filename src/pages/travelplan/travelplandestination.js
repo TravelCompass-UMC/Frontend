@@ -142,28 +142,28 @@ class TrvlPlan extends Component {
       <div className={styles.container}>
         <div className={styles.informinputContainer}>
           <form onSubmit={this.handleSubmit}>
-            <div className={styles.textTitle}>여행의 제목을 작성해주세요.</div>
+            <div className={styles.textTitle}> 여행의 제목을 작성해주세요.</div>
             <div className={styles.search_title}>
               <input
                 type="text"
                 maxLength="20"
                 className={styles.search_title1}
                 name="tripTitle"
-                placeholder="   여행 제목을 입력해주세요."
+                placeholder=" 여행 제목을 입력해주세요."
                 value={this.state.tripTitle}
                 onChange={this.handleTripTitleChange}
               />
             </div>
             {/* 목적지 검색 필드 */}
             <div>
-              <div className={styles.textTitle}>어디로 가시나요?</div>
+              <div className={styles.textTitle}> 어디로 가시나요?</div>
               <div className={styles.search_title}>
                 <input
                   type="text"
                   maxLength="20"
                   className={styles.search_title1}
                   name="searchInput"
-                  placeholder="   어디로 가고싶나요?"
+                  placeholder=" 어디로 가고싶나요?"
                   value={this.state.searchInput}
                   onChange={this.handleSearchInput}
                 />
@@ -172,7 +172,7 @@ class TrvlPlan extends Component {
             </div>
 
             {/* 초대 코드 입력 섹션 */}
-            <div className={styles.textTitle}>친구에게 초대받으셨나요?</div>
+            <div className={styles.textTitle}> 친구에게 초대받으셨나요?</div>
             <div className={styles.search_title}>
               <div className={styles.invitationCodeSection}>
                 <input
@@ -180,7 +180,7 @@ class TrvlPlan extends Component {
                   maxLength="20"
                   className={styles.search_title1}
                   name="invitationCode"
-                  placeholder="   초대코드를 입력해주세요."
+                  placeholder="        초대코드를 입력해주세요."
                   value={this.state.invitationCode}
                   onChange={this.handleInvitationCodeChange}
                 ></input>

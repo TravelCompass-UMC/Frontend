@@ -490,8 +490,6 @@ const Trvlpage = () => {
     }
   };
 
-  // 나머지 컴포넌트 로직은 동일합니다.
-
   const handlePrevious = () => {
     const currentIndex = sidebarOptions.indexOf(sidebarContent);
     if (currentIndex > 0) {
@@ -560,8 +558,10 @@ const Trvlpage = () => {
           <button onClick={handleNextOrComplete}>다음</button>
         )}
       </SidebarL>
-
-      <Map />
+      <Map
+        containerStyle={{ width: "100vw", height: "91vh" }}
+        zoomLevel={11.2}
+      />
     </div>
   );
 };
