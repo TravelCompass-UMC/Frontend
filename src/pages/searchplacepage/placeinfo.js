@@ -111,9 +111,9 @@ const PlaceInfo = () => {
         <Map location={mapLocation} onPinClick={handlePinClick} containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={11.2}/>
       </div>
       <div className="sidebar-container">
-        <SidebarL width={320}>
+        <SidebarL width={400}>
           <div style={{ display: 'inline-block' }}>
-            <img src={searchImg} alt="search-image" width={280} />
+            <img src={searchImg} alt="search-image" width={350} />
             <div className="placeName">
               <input
                 type="text"
