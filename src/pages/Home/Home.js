@@ -158,9 +158,22 @@ function Home() {
             <p className="popluarplacetext">{selectedLocation}</p>
             <p className="selectpopulartext">선택하신 도시의 가장 인기 많은 장소</p>
           </div>
-          {/* <div className="popularplacebox">
-            <HomeplaceSection placesData={homeplaces}/>
-          </div> */}
+          <div className="popularplacebox">
+            <div style={Homeplace.HomebigBox}>
+              <div style={Homeplace.HomeimageBox}>
+                <img className="Homeplaceimg"
+                  style={{}}
+                  alt="인기장소"
+                />
+              </div>
+              <div style={containerStyle}>
+                <div style={textStyle}>
+                  <a style={Homeplace.categoryText}>명소</a>
+                  <p style={Homeplace.placenameText}>창덕궁</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </SidebarR>
 
@@ -214,59 +227,3 @@ function Home() {
 };
 
 export default Home;
-
-
-// function getCategoryClassName(category) {
-//   switch (category) {
-//     case 1: return 'category-sukso'; // 숙소
-//     case 2: return 'category-myungso'; // 명소
-//     case 3: return 'category-cafe-sikdang'; // 카페/식당
-//     default: return '';
-//   }
-// }
-
-// export function HomeplaceThumbnail(props){
-
-//   const categoryClass = getCategoryClassName(props.homeplaces.category);
-
-//   const containerStyle = {
-//     display: "flex",
-//     justifyContent: "space-between",
-//     alignItems: "flex-start",
-//     width: "100%",
-//   };
-
-//   const textStyle = {
-//     display: "flex",
-//     flexDirection: "column",
-//     justifyContent: "center",
-//     width: "calc(100% - 50px)",
-//   };
-
-//   return (
-//     <div style={Homeplace.HomebigBox}>
-//       <div style={Homeplace.HomeimageBox}>
-//         <img className="Homeplaceimg"
-//           style={{}}
-//           alt="인기장소"
-//         />
-//       </div>
-//       <div style={containerStyle}>
-//         <div style={textStyle}>
-//           <a style={Homeplace.categoryText}>{props.homeplaces.info}</a>
-//           <p style={Homeplace.placenameText}>{props.homeplaces.place}</p>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export function HomeplaceSection({homeplaces}){
-//   return (
-//     <>
-//       {homeplaces.map((home, i) => (
-//         <HomeplaceThumbnail key={i} homeplaces={home} />
-//       ))}
-//     </>
-//   );
-// }
