@@ -60,7 +60,6 @@
   height: 60px;
   background: #ebedf8;
   border-radius: 8px;
-  border: 1px #bfc4d8 solid;
   display: inline-block;
   vertical-align: middle;
 }
@@ -103,7 +102,6 @@
   height: 110px;
   background: #ebedf8;
   border-radius: 8px;
-  border: 1px #bfc4d8 solid;
   display: inline-block;
   vertical-align: middle;
 }
