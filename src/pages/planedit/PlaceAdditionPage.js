@@ -51,13 +51,14 @@ const PlaceAddition = () => {
 
   return (
     <div className={styles.placeAdditionPage}>
+      <div style={{marginLeft: "auto", paddingLeft: "25vw"}}>
       <Map 
         location={mapLocation}
         zoomLevel={zoomLevel}
         places={places} // Pass the places to the Map component
-        containerStyle={{ width: "100vw", height: "91vh" }}
-        // The Map component needs to handle this prop and render pins accordingly
+        containerStyle={{ width: "75vw", height: "91vh" }}
       />
+      </div>
       <SidebarL width={500}>
         <div className={styles.searchBar} style={{ backgroundImage: `url(${searchBox})` }}>
           <input

@@ -24,7 +24,7 @@ const SrchPlace = () => {
   return (
     <div>
       <SearchComponent onSearch={handleSearch} />
-      <Map containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={7.4} />
+      <Map containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={7.5} />
     </div>
   );
 };

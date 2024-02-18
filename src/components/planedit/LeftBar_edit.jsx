@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/planedit/diaryContent_edit.css";
+import styles from "../../styles/planedit/editLeftBar.module.css";
 
 function LeftBar({ onCustomChange }) {
   const [custom, setCustom] = useState(0);
@@ -38,7 +38,7 @@ function LeftBar({ onCustomChange }) {
       buttons.push(
         <div key={i}>
           <button
-            className="dayBtn"
+            className={styles.dayBtn}
             value={i}
             onClick={() => handleAllScheduleClick(i)}
             style={{
@@ -58,7 +58,7 @@ function LeftBar({ onCustomChange }) {
     <div>
       {/* 전체 일정 버튼 */}
       <button
-        className="Schedule"
+        className={styles.Schedule}
         style={{
           background: custom === 0 ? "#484a64" : "var(--grayscale-White, #FFF)",
           color: custom === 0 ? "#FFF" : "#000", 
@@ -73,7 +73,7 @@ function LeftBar({ onCustomChange }) {
 
       {/* 편집 완료 및 저장 버튼 */}
       <button
-        className="editBtn"
+        className={styles.editBtn}
         style={{
           background: editComplete ? "#cfcfcf" : "var(--grayscale-White, #FFF)",
         }}
@@ -82,7 +82,7 @@ function LeftBar({ onCustomChange }) {
         편집 완료하기
       </button>
       <button
-        className="saveBtn"
+        className={styles.saveBtn}
         style={{
           background: save ? "var(--grayscale-White, #6e59f9)" : "#8270FF",
         }}
