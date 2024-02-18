@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Diary from "./Diary";
+import Diary from "./Diary_edit";
 import VectorImage from "../../assets/images/Pages/Vector (1).png"; // 이미지를 import
 
 const styless = {

@@ -1,0 +1,197 @@
+.dayContainer {
+    width: 434px;
+    height: 199px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    display: inline-block;
+    /* 가로 스크롤 활성화 */
+  }
+
+  .detailNum {
+    width: 57px;
+    height: 30px;
+    color: var(--grayscale-Gray8, #191B24);
+    font-family: "SUIT Variable";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .detailCal {
+    width: 113px;
+    height: 20px;
+    margin-bottom: 19px;
+    color: var(--grayscale-Gray3, #BFC4D8);
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration: none;
+  }
+
+  .detailBox {
+    border-radius: 8px;
+    margin-bottom: 100px;
+    background: var(--grayscale-White, #FFF);
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.10);
+    width: 380px;
+    height: 132px;
+    flex-shrink: 0;
+  }
+
+  .detailTime {
+    color: var(--grayscale-Gray4, #7F85A3);
+    width: 84px;
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 170%;
+  }
+
+  .placeImage {
+    margin-top: 150px;
+    margin-right: 16px;
+    width: 122px;
+    height: 122px;
+    border-radius: 10px;
+    background: var(--grayscale-Gray2, #EBEDF8);
+  }
+
+  .detailPlace {
+    color: var(--Sub-color, #78CF9F);
+    font-family: "SUIT Variable";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .detailPlaceName {
+    color: var(--grayscale-Gray8, #191B24);
+    font-family: "SUIT Variable";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .placeTime{
+    color: var(--grayscale-Gray5, #626682);
+    font-family: "SUIT Variable";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .placeTime select {
+    padding: 4px 8px;
+    border: 1px solid #ebedf8;
+    border-radius: 4px;
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    color: var(--grayscale-Gray5, #626682);
+    background: white;
+    cursor: pointer;
+  }
+
+  .placeAdd{
+    margin-top: 40px;
+    width: 160px;
+    height: 40px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 4px;
+    background: var(--grayscale-Gray2, #EBEDF8);
+  }
+
+  .plusFont{
+    color: var(--grayscale-Gray3, #BFC4D8);
+    font-family: "SUIT Variable";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .nickname {
+    width: fixed 134px;
+    height: fixed 20px;
+    margin-bottom: 4px;
+    color: var(--grayscale-Gray3, #BFC4D8);
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .title {
+    width: fixed 179px;
+    height: fixed 30px;
+    color: var(--grayscale-Gray8, #191B24);
+    font-family: "SUIT Variable";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .editSmallBtn {
+    width: 46px;
+    height: 20px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 4px;
+    background: var(--grayscale-Gray3, #BFC4D8);
+    margin-left: 12px;
+  }
+
+  .editFont {
+    width: fixed 25px;
+    height: fixed 24px;
+    color: var(--grayscale-White, #FFF);
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .inform {
+    width: fixed 201px;
+    height: fixed 24px;
+    color: var(--grayscale-Gray3, #BFC4D8);
+    font-family: "SUIT Variable";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 170%; 
+  }
+
+  .hashtags {
+    color: var(--grayscale-Gray4, #7F85A3);
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .line {
+    border-bottom: 2px solid var(--grayscale-Gray2, #EBEDF8);
+    background: var(--grayscale-Gray1, #F3F5FF);
+    width: 90%;
+  }
+
+  .divscroll {
+    width: 95%;
+    height: 800px;
+    overflow: auto;
+    white-space: nowrap;
+    display: relative;
+  }

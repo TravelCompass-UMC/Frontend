@@ -1,7 +1,7 @@
 // searchplace.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/searchplace/Place.css";
+import "../../styles/searchplace/search.module.css";
 import SearchComponent from '../../components/Search.js';
 import Map from '../../components/Map';
 
@@ -24,7 +24,7 @@ const SrchPlace = () => {
   return (
     <div>
       <SearchComponent onSearch={handleSearch} />
-      <Map containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={7.4} />
+      <Map containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={7.5} />
     </div>
   );
 };
