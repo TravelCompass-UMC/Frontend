@@ -19,7 +19,7 @@ const PlusBtn = ({ onClose }) => {
                     <div className={styles.placeCard}>
                         <div className={styles.placeName}>{placeInfo.name}</div>
                         {placeInfo.photoReference && (
-                            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${placeInfo.photoReference}&key=AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU`} alt={placeInfo.name}
+                            <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=500&photoreference=${placeInfo.photoReference}&key=AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU`} alt={placeInfo.name}
                             style={{width:"60%"}}
                             />
                         )}
