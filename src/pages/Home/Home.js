@@ -10,9 +10,71 @@ import { EndSection } from "../mapages/MyPage.js";
 import { OtherplanThumbnail } from "../mapages/MyPage.js";
 import otherplans from "../../tempdata/otherplandata.js";
 import VectorImage from "../../assets/images/Pages/Vector (1).png";
+import up from "../../assets/images/Home/up.svg";
+import right from "../../assets/images/Home/right.svg";
+import down from "../../assets/images/Home/down.svg";
+import left from "../../assets/images/Home/left.svg";
+import { InterestedPlaceThumbnail } from "../mapages/MyPage.js";
+import homeplacesData from "../../tempdata/Homedata.js";
+import homeplaces from "../../tempdata/Homedata.js";
+
+const Homeplace = {
+  HomebigBox: {
+    width: "200px",
+    height: "320px",
+    background: "#F3F5FF",
+    borderRadius: 16,
+    marginBottom: "20px",
+  },
+  HomeimageBox: {
+    width: "100%",
+    height: "240px",
+    background: "#BFC4D8",
+    borderRadius: 15,
+    position: 'relative',
+    boxShadow: "rgba(0, 0, 0, 0.1) 4px 4px 8px 0px"
+  },
+  HometextBox: {
+    width: "100%",
+    height: "92px",
+    background: "#F3F5FF",
+    borderRadius: 15,
+  },
+  categoryText: {
+    marginTop: 10,
+    color: "#7F85A3",
+    marginLeft: 10,
+    fontSize: 15,
+    fontFamily: "SUIT Variable",
+    fontWeight: "400",
+    // lineHeight: 25.5,
+    wordWrap: "break-word",
+  },
+  placenameText: {
+    marginTop: 5,
+    marginLeft: 10,
+    color: "#191B24",
+    fontSize: 19,
+    fontFamily: "SUIT Variable",
+    fontWeight: "700",
+    wordWrap: "break-word",
+  },
+};
 
 function Home() {
+
+  const [selectedLocation, setSelectedLocation] = useState('서울'); // 초기값을 '서울'로 설정
+
+  // 버튼 클릭 이벤트를 처리하는 함수
+  const handleLocationChange = (location) => {
+    setSelectedLocation(location); // 선택된 지역으로 상태 업데이트
+  };
+
+
   const [others, setOthers] = useState(otherplans);
+  const [placesData,  setPlacesData] = useState(homeplacesData);
+
+
   const navigate = useNavigate();
   const [searchedLocation, setSearchedLocation] = useState(null);
   const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 추가
@@ -43,39 +105,65 @@ function Home() {
     );
   };
 
+    const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
+  };
+
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "calc(100% - 50px)",
+  };
+
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <SearchComponent onSearch={handleSearch} />
-      <div style={{marginRight: "auto", paddingRight: "30vw"}}>
-      <GoogleMapComponent containerStyle={{ width: "70vw", height: "70vh" }} />
+      <div style={{ marginRight: "auto", paddingRight: "30vw" }}>
+        <GoogleMapComponent containerStyle={{
+          width: "80vw",
+          height: "75vh",
+        }} />
       </div>
-      <SidebarR width={700} height={756}>
+      <SidebarR width={850} height={"75vh"}>
         <div className="sidebar-content">
-          <h1>대한민국</h1>
-          <p>지금 대한민국의 가장 인기 많은 지역</p>
-          <ul>
-            <li>
-              TOP1 <br />
-              <Link to={`/placeinfo1_seoul`}>서울</Link>
-            </li>
-            <li>
-              TOP2 <br />
-              <Link to={`/placeinfo1_jeju`}>제주도</Link>
-            </li>
-            <li>
-              TOP3 <br />
-              <Link to={`/placeinfo1_busan`}>부산</Link>
-            </li>
-            <li>
-              TOP4 <br />
-              <Link to={`/placeinfo1_gyeongju`}>경주</Link>
-            </li>
-          </ul>
-          <div className="popularplace">
-            <p>선택하신 도시의 가장 인기 많은 장소</p>
+          <p className="Koreatitle">대한민국</p>
+          <p className="popluartext">지금 대한민국의 가장 인기 많은 지역</p>
+          {/* 지역 버튼. 클릭 시 handleLocationChange 함수 호출 */}
+          <button className="topbox" onClick={() => handleLocationChange('서울')}>
+            <img src={up} className="arrow-image" />
+            <div className="top-number">TOP.1</div>
+            <div className="top-location-name">서울</div>
+          </button>
+          <button className="topbox" onClick={() => handleLocationChange('제주도')}>
+            <img src={right} className="arrow-image" />
+            <div className="top-number">TOP.2</div>
+            <div className="top-location-name">제주도</div>
+          </button>
+          <button className="topbox" onClick={() => handleLocationChange('부산')}>
+            <img src={down} className="arrow-image" />
+            <div className="top-number">TOP.3</div>
+            <div className="top-location-name">부산</div>
+          </button>
+          <button className="topbox" onClick={() => handleLocationChange('경주')}>
+            <img src={left} className="arrow-image" />
+            <div className="top-number">TOP.4</div>
+            <div className="top-location-name">경주</div>
+          </button>
+          <div>
+            {/* 선택된 지역을 표시 */}
+            <p className="popluarplacetext">{selectedLocation}</p>
+            <p className="selectpopulartext">선택하신 도시의 가장 인기 많은 장소</p>
           </div>
+          {/* <div className="popularplacebox">
+            <HomeplaceSection placesData={homeplaces}/>
+          </div> */}
         </div>
       </SidebarR>
+
 
       {/* OtherTravelPlanSection 스타일 적용 */}
       <div className="container">
@@ -100,29 +188,85 @@ function Home() {
           className="nav-bar"
           style={{
             display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <p>국내 인기 여행 계획</p>
-              <Link to="/searchdiary">
-                <button className="morebutton">더보기</button>
-              </Link>
-            </div>
-            <div className="row">
-              {firstSixPlans.map((other, i) => {
-                return (
-                  <div key={i} className="col-md-4 thumbnail-container">
-                    {/* `liked`를 `false`로 설정하여 하트가 눌러져 있지 않도록 함 */}
-                    <OtherplanThumbnail others={other} i={i + 1} onToggleLike={toggleLike} isDelete={false}></OtherplanThumbnail>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <EndSection />
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <p>국내 인기 여행 계획</p>
+          <Link to="/searchdiary">
+            <button className="morebutton">더보기</button>
+          </Link>
         </div>
-        );
+        <div className="row">
+          {firstSixPlans.map((other, i) => {
+            return (
+              <div key={i} className="col-md-4 thumbnail-container">
+                {/* `liked`를 `false`로 설정하여 하트가 눌러져 있지 않도록 함 */}
+                <OtherplanThumbnail others={other} i={i + 1} onToggleLike={toggleLike} isDelete={false}></OtherplanThumbnail>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <EndSection />
+    </div>
+  );
 };
 
 export default Home;
+
+
+// function getCategoryClassName(category) {
+//   switch (category) {
+//     case 1: return 'category-sukso'; // 숙소
+//     case 2: return 'category-myungso'; // 명소
+//     case 3: return 'category-cafe-sikdang'; // 카페/식당
+//     default: return '';
+//   }
+// }
+
+// export function HomeplaceThumbnail(props){
+
+//   const categoryClass = getCategoryClassName(props.homeplaces.category);
+
+//   const containerStyle = {
+//     display: "flex",
+//     justifyContent: "space-between",
+//     alignItems: "flex-start",
+//     width: "100%",
+//   };
+
+//   const textStyle = {
+//     display: "flex",
+//     flexDirection: "column",
+//     justifyContent: "center",
+//     width: "calc(100% - 50px)",
+//   };
+
+//   return (
+//     <div style={Homeplace.HomebigBox}>
+//       <div style={Homeplace.HomeimageBox}>
+//         <img className="Homeplaceimg"
+//           style={{}}
+//           alt="인기장소"
+//         />
+//       </div>
+//       <div style={containerStyle}>
+//         <div style={textStyle}>
+//           <a style={Homeplace.categoryText}>{props.homeplaces.info}</a>
+//           <p style={Homeplace.placenameText}>{props.homeplaces.place}</p>
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export function HomeplaceSection({homeplaces}){
+//   return (
+//     <>
+//       {homeplaces.map((home, i) => (
+//         <HomeplaceThumbnail key={i} homeplaces={home} />
+//       ))}
+//     </>
+//   );
+// }
