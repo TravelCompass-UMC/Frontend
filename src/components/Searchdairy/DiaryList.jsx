@@ -4,7 +4,8 @@ import VectorImage from "../../assets/images/Pages/Vector (1).png"; // 이미지
 import styles1 from "../../styles/searchdiary/diarylist.module.css";
 import { EndSection } from "../../pages/mapages/MyPage";
 import sort from "../../styles/searchdiary/sort.module.css";
-import datas from "../../tempdata/searchdiary.js";
+import contents from "../../tempdata/searchdiary.js";
+
 // const contents = [
 //   // 데이터를 별도의 객체와 분리
 //   {
@@ -125,20 +126,18 @@ function DiaryList(props) {
         >
           <table>
             {Array.from({ length: rowsPerPage }).map((_, rowIndex) => (
-              <tr>
-                <div key={rowIndex} style={{ display: "flex", gap: "20px" }}>
-                  {currentItems
-                    .slice(rowIndex * itemsPerRow, (rowIndex + 1) * itemsPerRow)
-                    .map((place, index) => (
-                      <td>
-                        <Diary
-                          key={index}
-                          place={place.place}
-                          hashtag={place.hashtag}
-                        />
-                      </td>
-                    ))}
-                </div>
+              <tr key={rowIndex} style={{ display: "flex", gap: "20px" }}>
+                {currentItems
+                  .slice(rowIndex * itemsPerRow, (rowIndex + 1) * itemsPerRow)
+                  .map((place, index) => (
+                    <td>
+                      <Diary
+                        key={index}
+                        place={place.place}
+                        hashtag={place.hashtag}
+                      />
+                    </td>
+                  ))}
               </tr>
             ))}
           </table>
