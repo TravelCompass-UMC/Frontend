@@ -68,9 +68,8 @@ function Home() {
     setSelectedLocation(location); // 선택된 지역으로 상태 업데이트
   };
 
-
-  const [others, setOthers] = useState(otherplans);
   const [homes, setHomes] = useState(homeplaces);
+  const [others, setOthers] = useState(otherplans);
 
 
   const navigate = useNavigate();
@@ -89,6 +88,30 @@ function Home() {
   // 여행 계획 데이터에서 처음 6개의 항목만 선택
   const firstSixPlans = otherplans.slice(0, 6).map(others => ({ ...others, liked: 0 }));
 
+  
+  const SeoulHomes = homeplaces.slice(0,3).map(homes => ({...homes}));
+  const JejuHomes  = homeplaces.slice(3,6).map(homes => ({...homes}));
+  const BusanHomes = homeplaces.slice(6,9).map(homes => ({...homes}));
+  const GyeongjuHomes = homeplaces.slice(9,12).map(homes => ({...homes}));
+  
+  let displayedHomes;
+switch (selectedLocation) {
+    case '서울':
+        displayedHomes = SeoulHomes;
+        break;
+    case '제주도':
+        displayedHomes = JejuHomes;
+        break;
+    case '부산':
+        displayedHomes = BusanHomes;
+        break;
+    case '경주':
+        displayedHomes = GyeongjuHomes;
+        break;
+    default:
+        displayedHomes = [];
+}
+
   const handleSearch = (location, query) => {
     setSearchedLocation(location);
     setSearchQuery(query); // 검색어 저장
@@ -106,13 +129,13 @@ function Home() {
   return (
     <div style={{ overflowX: "hidden" }}>
       <SearchComponent onSearch={handleSearch} />
-      <div style={{ marginRight: "auto", paddingRight: "30vw" }}>
+      <div style={{ marginRight: "auto", paddingRight: "40vw", marginLeft: "-10vw" }}>
         <GoogleMapComponent containerStyle={{
           width: "80vw",
           height: "75vh",
         }} />
       </div>
-      <SidebarR width={850} height={"75vh"}>
+      <SidebarR width={900} height={"75vh"}>
         <div className="sidebar-content">
           <p className="Koreatitle">대한민국</p>
           <p className="popluartext">지금 대한민국의 가장 인기 많은 지역</p>
@@ -143,7 +166,9 @@ function Home() {
             <p className="selectpopulartext">선택하신 도시의 가장 인기 많은 장소</p>
           </div>
           <div className="popularplacebox">
-              <HomeplaceThumbnail homes={homes}/>
+            {displayedHomes.map((home, i) => (
+              <SeoulThumbnail key={i} homes={home} /> // 여기서 SeoulThumbnail을 사용하거나, 더 일반적인 Thumbnail 컴포넌트를 사용할 수 있습니다.
+            ))}
           </div>
         </div>
       </SidebarR>
@@ -199,8 +224,75 @@ function Home() {
 
 export default Home;
 
+function getCategoryDetails(category) {
+  switch (category) {
+    case 1:
+      return { name: "숙소", color: "#BFC4D8" };
+    case 2:
+      return { name: "명소", color: "#8270FF" };
+    case 3:
+      return { name: "식당/카페", color: "#7CDDA3" };
+    default:
+      return { name: "기타", color: "#000" }; // 기본값
+  }
+}
 
-export function HomeplaceThumbnail(props) {
+
+export function SeoulThumbnail(props) {
+
+  const { name, color } = getCategoryDetails(props.homes.category);
+  const [homes, setHomes] = useState(homeplaces);
+
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
+  };
+
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "calc(100% - 50px)",
+  };
+
+  return (
+    <div style={Homeplace.HomebigBox}>
+      <div style={Homeplace.HomeimageBox}>
+        <img className="Homeplaceimg" alt="인기장소" />
+      </div>
+      <div style={{ ...Homeplace.HometextBox, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div style={{ ...Homeplace.categoryText, color: color }}>
+          {name}
+        </div>
+        <div style={Homeplace.placenameText}>{props.homes.place}</div>
+      </div>
+    </div>
+  );
+  // return (
+  //   <div style={Homeplace.HomebigBox}>
+  //     <div style={Homeplace.HomeimageBox}>
+  //       <img className="Homeplaceimg"
+  //         style={{}}
+  //         alt="인기장소"
+  //       />
+  //     </div>
+  //     <div style={containerStyle}>
+  //       <div style={textStyle}>
+  //         <div style={Homeplace.categoryText}>
+  //           {props.homes.category}
+  //         </div>
+  //         <div style={Homeplace.placenameText}>{props.homes.place}</div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // )
+}
+
+export function JejuThumbnail(props) {
+
+  const [homes, setHomes] = useState(homeplaces);
 
   const containerStyle = {
     display: "flex",
@@ -228,7 +320,84 @@ export function HomeplaceThumbnail(props) {
       <div style={containerStyle}>
         <div style={textStyle}>
           <div style={Homeplace.categoryText}>
-            {props.homes.category === 1 ? "숙소" : props.homes.category === 2 ? "명소" : "식당/카페"}
+            {props.homes.category}
+          </div>
+          <div style={Homeplace.placenameText}>{props.homes.place}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export function BusanThumbnail(props) {
+
+  const [homes, setHomes] = useState(homeplaces);
+
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
+  };
+
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "calc(100% - 50px)",
+  };
+
+
+  return (
+    <div style={Homeplace.HomebigBox}>
+      <div style={Homeplace.HomeimageBox}>
+        <img className="Homeplaceimg"
+          style={{}}
+          alt="인기장소"
+        />
+      </div>
+      <div style={containerStyle}>
+        <div style={textStyle}>
+          <div style={Homeplace.categoryText}>
+            {props.homes.category}
+          </div>
+          <div style={Homeplace.placenameText}>{props.homes.place}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+export function GyeongjuThumbnail(props) {
+
+  const [homes, setHomes] = useState(homeplaces);
+
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
+  };
+
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "calc(100% - 50px)",
+  };
+
+
+  return (
+    <div style={Homeplace.HomebigBox}>
+      <div style={Homeplace.HomeimageBox}>
+        <img className="Homeplaceimg"
+          style={{}}
+          alt="인기장소"
+        />
+      </div>
+      <div style={containerStyle}>
+        <div style={textStyle}>
+          <div style={Homeplace.categoryText}>
+            {props.homes.category}
           </div>
           <div style={Homeplace.placenameText}>{props.homes.place}</div>
         </div>

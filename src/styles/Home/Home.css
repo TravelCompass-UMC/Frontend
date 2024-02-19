@@ -81,7 +81,10 @@ color: #BFC4D8; */
     overflow-x: auto; /* 가로 스크롤만 허용 */
     gap: 10px; /* 항목 사이의 간격 */
     padding: 10px; /* 내부 여백 */
-    background-color:white; /* 배경색 */
+    background-color: #F3F5FF ; ; /* 배경색 */
     height: 340px; /* 최대 높이 설정 */
   }
   
+  .popularplacebox > div {
+    flex: 0 0 auto; /* 썸네일들이 flex 컨테이너 내에서 크기가 줄어들지 않도록 설정 */
+  }

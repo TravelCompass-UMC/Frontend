@@ -1,0 +1,162 @@
+/* 기본 설정 및 달력 공통 스타일 */
+:global .react-datepicker {
+  border: none; /* 테두리 제거 */
+  padding: 10px;
+}
+
+:global .react-datepicker__day,
+:global .custom-calendar .react-datepicker__day,
+:global .custom-calendar1 .react-datepicker__day {
+  width: 70px;
+  height: 55px;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 70px;
+  font-family: "SUIT Variable";
+  font-style: normal;
+  font-weight: 70;
+}
+
+:global .react-datepicker__day--selected,
+:global .custom-calendar .react-datepicker__day--selected,
+:global .custom-calendar1 .react-datepicker__day--selected {
+  background: #191b24;
+  border-radius: 90px;
+  color: #ffffff;
+}
+
+:global .react-datepicker__day--in-range,
+:global .custom-calendar .react-datepicker__day--in-range,
+:global .custom-calendar1 .react-datepicker__day--in-range {
+  background: #ebedf8;
+  color: #191b24;
+}
+
+:global .react-datepicker__day--today,
+:global .custom-calendar .react-datepicker__day--today,
+:global .custom-calendar1 .react-datepicker__day--today {
+  font-weight: bold;
+}
+
+/* DatePicker 커스텀 스타일 */
+:global .custom-datepicker {
+  text-align: center;
+  width: 320px;
+  padding: 8px 20px;
+  border: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  margin-right: 15px;
+}
+
+/* 달력 네비게이션 화살표 스타일 */
+:global .react-datepicker__navigation {
+  border: solid transparent;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  top: 20px;
+  border-width: 8px 8px;
+}
+
+:global .react-datepicker__navigation--previous {
+  left: 20px;
+  border-right-color: #666;
+}
+
+:global .react-datepicker__navigation--next {
+  right: 20px;
+  border-left-color: #666;
+}
+
+/* 텍스트 타이틀 스타일 */
+.dateTitle,
+.dateTitle1 {
+  font-family: "SUIT Variable";
+  font-style: normal;
+  line-height: 30px;
+}
+
+.dateTitle {
+  font-weight: 700;
+  font-size: 24px;
+  color: #191b24;
+}
+
+.dateTitle1 {
+  font-weight: 500;
+  font-size: 15px;
+  color: #7f85a3;
+}
+
+/* 컨테이너 및 레이아웃 스타일 */
+.totalcontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 60vw;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.textContainer {
+  text-align: left;
+}
+
+.calenderContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 90px; /* 버튼 간격을 조정하고 싶은 경우 */
+}
+
+.image,
+.destinationList {
+  position: absolute;
+  border-radius: 8px;
+  background: #ebedf8;
+}
+
+.image {
+  width: 580px;
+  height: 480px;
+  right: -150%;
+  margin-top: -930px;
+}
+
+.destinationList {
+  width: 480px;
+  height: 60px;
+  left: 23.5%;
+  margin-top: -15px;
+  background: #ffffff;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.destinationListText {
+  font-family: "SUIT Variable";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 170%;
+  margin-top: 15px;
+  margin-left: 20px;
+  color: #626682;
+  transform: translate(0, 50%);
+}
+
+.image1 {
+  position: absolute;
+  width: 47px;
+  height: 13px;
+  left: 85%;
+  top: 10px;
+}
