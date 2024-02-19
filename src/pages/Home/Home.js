@@ -159,20 +159,7 @@ function Home() {
             <p className="selectpopulartext">선택하신 도시의 가장 인기 많은 장소</p>
           </div>
           <div className="popularplacebox">
-            <div style={Homeplace.HomebigBox}>
-              <div style={Homeplace.HomeimageBox}>
-                <img className="Homeplaceimg"
-                  style={{}}
-                  alt="인기장소"
-                />
-              </div>
-              <div style={containerStyle}>
-                <div style={textStyle}>
-                  <a style={Homeplace.categoryText}>명소</a>
-                  <p style={Homeplace.placenameText}>창덕궁</p>
-                </div>
-              </div>
-            </div>
+            <HomeplaceSection homeplaces={placesData} />
           </div>
         </div>
       </SidebarR>
@@ -227,3 +214,31 @@ function Home() {
 };
 
 export default Home;
+
+
+export function HomeplaceThumbnail({ homeplace }) {
+  return (
+    <div style={Homeplace.HomebigBox}>
+      <div style={Homeplace.HomeimageBox}>
+        {/* 이미지 경로를 homeplace.img 등으로 설정할 수 있습니다. */}
+        <img className="Homeplaceimg" alt="인기 장소" />
+      </div>
+      <div style={Homeplace.HometextBox}>
+        <div style={{ marginLeft: 10, marginTop: 10 }}>
+          <div style={Homeplace.categoryText}>{homeplace.info}</div>
+          <div style={Homeplace.placenameText}>{homeplace.place}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function HomeplaceSection({ homeplaces }) {
+  return (
+    <div className="popularplacebox">
+      {homeplaces.map(homeplace => (
+        <HomeplaceThumbnail key={homeplace.id} homeplace={homeplace} />
+      ))}
+    </div>
+  );
+}
