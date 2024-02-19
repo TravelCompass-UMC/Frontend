@@ -9,9 +9,9 @@
   transition: 0.4s ease;
   color: #202020;
   width: 450px; /* 가로 길이 조정 가능 */
-  height: 70vh;
+  height: 75vh;
   z-index: 99;
-  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); /* 사이드바에 그림자 추가 */
+  transition: transform 0.5s ease;
 }
 
 .button {
