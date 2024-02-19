@@ -57,24 +57,25 @@ const AllList = () => {
                   </div>
               ))}
               {detailBoxes.map((box, index) => (
-                  <div key={`detail-${index}`} className={styles.detailBox}>
-                      {/* Render the new detail box here */}
-                      <div className={styles.timeContainer}>
-                          <div className={styles.numberIndex}>{index + 1}</div>
-                          <div className={styles.detailTime}>09:30~11:20</div>
-                      </div>
-                      <div className={styles.placeContainer}>
-                          <div className={styles.detailPlace}>명소</div>
-                          <div className={styles.detailPlaceName}>장소이름</div>
-                          <div className={styles.placeImage}></div>
-                      </div>
-                      <div className={styles.durationSelectContainer}>
-                          <select name="duration" defaultValue="2" onClick={(e) => e.stopPropagation()}>
-                              {Array.from({ length: 12 }, (_, i) => (
-                                  <option key={i} value={i + 1}>소요시간: {i + 1}시간</option>
-                              ))}
-                          </select>
-                      </div>
+              <div key={`detail-${index}`} className={styles.detailBox}>
+                  <div className={styles.timeContainer}>
+                      <div className={styles.numberIndex}>{index + 1}</div>
+                      <div className={styles.detailTime}>시간 정보</div>
+                  </div>
+                  <div className={styles.placeContainer}>
+                      <div className={styles.detailPlace}>식당</div>
+                      <div className={styles.detailPlaceName}>{box.name}</div>
+                      {box.photoReference && (
+                          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=${box.photoReference}&key=AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU`} alt={box.name} className={styles.placeImage} />
+                      )}
+                  </div>
+                  <div className={styles.durationSelectContainer}>
+                      <select name="duration" defaultValue="2" onClick={(e) => e.stopPropagation()}>
+                          {Array.from({ length: 12 }, (_, i) => (
+                              <option key={i} value={i + 1}>소요시간: {i + 1}시간</option>
+                          ))}
+                      </select>
+                  </div>
                       <button className={styles.placeAdd} onClick={handlePlusBtnClick}>
                           <img src={plusIcon} alt="Plus Icon" />
                           여기에 장소 추가
@@ -133,3 +134,4 @@ const AllList = () => {
 };
 
 export default AllList;
+
