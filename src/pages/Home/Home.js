@@ -122,13 +122,13 @@ function Home() {
   return (
     <div style={{ overflowX: "hidden" }}>
       <SearchComponent onSearch={handleSearch} />
-      <div style={{ marginRight: "auto", paddingRight: "30vw" }}>
+      <div style={{ marginRight: "auto", paddingRight: "40vw", marginLeft: "-10vw" }}>
         <GoogleMapComponent containerStyle={{
           width: "80vw",
           height: "75vh",
         }} />
       </div>
-      <SidebarR width={850} height={"75vh"}>
+      <SidebarR width={900} height={"75vh"}>
         <div className="sidebar-content">
           <p className="Koreatitle">대한민국</p>
           <p className="popluartext">지금 대한민국의 가장 인기 많은 지역</p>

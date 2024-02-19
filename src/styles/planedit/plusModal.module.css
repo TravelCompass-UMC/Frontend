@@ -15,12 +15,9 @@
 }
 
 .modalContent {
-    height: 358px;
+    height: 400px;
     left: calc(50% - 681px/2 + 0.5px);
-    top: 380px;
-    padding: 20px;
-    max-width: 600px;
-    width: 100%;
+    width: 600px;
     text-align: center;
 
     /* grayscale/White */
@@ -31,6 +28,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.searchModal{
+    margin-top: 20%;
 }
 
 .modalHeader {
@@ -52,17 +53,32 @@
     width: 20px;
     height: 20px;
     left: 580px;
-    top: -145px;
+    top: -165px;
     cursor: pointer; 
 }
 
 .placeCard{
-    width: 280px;
-    height: 120px;
+    width: 440px;
+    height: 200px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--grayscale-White, #FFF);
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.10);
+    margin-top: -5%;
 }
 
+.checkBox {
+    margin-top: 14px;
+    width: 32px;
+    height: 32px;
+    margin-left: 14px;
+    display: flex;
+    justify-content: center;
+  }
+
 .placeName{
-    margin-top: -25%;
+    margin-top: 5%;
+    margin-right: 40%;
     font-family: 'SUIT Variable';
     font-style: normal;
     font-weight: 700;
@@ -70,3 +86,18 @@
     color: #232323;
 }
 
+.placeImage {
+    width: 40%; 
+    border-radius: 8px; 
+    margin-left: 50%;
+    margin-top: -20%;
+}
+
+.placeLocation {
+    margin-top: 4%;
+    color: var(--grayscale-Gray3, #5c5d5e);
+    font-family: "SUIT Variable";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+}
