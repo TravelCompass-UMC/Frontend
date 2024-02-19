@@ -22,7 +22,7 @@ const styles = {
     position: "relative",
   },
   textBox: {
-    width: "100%",
+    width: "90%",
     height: "92px",
     // background: "#FFFFFF",
     borderRadius: 15,
@@ -43,7 +43,9 @@ const styles = {
     wordWrap: "break-word",
   },
   heartImage: {
-    marginLeft: "270px",
+    display: "absolute",
+    marginLeft: "90%",
+    marginTop: "-10%",
     cursor: "pointer", // 커서를 포인터로 변경하여 클릭 가능하다는 표시
   },
 };

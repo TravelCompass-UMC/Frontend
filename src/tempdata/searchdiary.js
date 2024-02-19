@@ -1,3 +1,4 @@
+//searchdiary.js
 const contents = [
   {
     id: 1,
@@ -6,7 +7,8 @@ const contents = [
     location: "제주도",
     recom: 2,
     look: 3,
-    like: 10,
+    likes: 10,
+    liked: 1, //내가 좋아요 눌렀는지
     itinerary: [
       { day: 1, activities: ["아침 해안도로", "제주 돌마을", "맛집"] },
       {
@@ -23,7 +25,8 @@ const contents = [
     location: "전라도",
     recom: 3,
     look: 1,
-    like: 13,
+    likes: 13,
+    liked: 1, //내가 좋아요 눌렀는지
     itinerary: [
       { day: 1, activities: ["아침 해안도로", "제주 돌마을", "맛집"] },
       {
@@ -36,3 +39,5 @@ const contents = [
   { id: 3, place: "제주도3", hashtag: ["가족 여행"] },
   { id: 4, place: "울릉도4", hashtag: ["추억 여행", "가족 여행"] },
 ];
+
+export default contents;
