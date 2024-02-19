@@ -5,7 +5,7 @@ import Map from "../../components/Map";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { eachDayOfInterval, format } from "date-fns";
-import "../../styles/travelplan/travelplan_detail.css";
+import styles from "../../styles/travelplan/travelplan_detail.module.css";
 import Searching from "../../components/Search";
 import AccommodationsData from "../../tempdata/accommodationdata";
 import PlaceData from "../../tempdata/temp_placedata";
@@ -13,6 +13,9 @@ import Accommodation from "./accommodationcomponent";
 import PlaceComponent from "./placecomponent";
 import PlaceDateComponent from "./date_place_component";
 import { subDays } from "date-fns";
+import ClockIcon from "../../assets/images/clock.svg";
+
+import Button from "../../components/common_components/common_button";
 
 const sidebarOptions = ["일정", "숙소", "장소"];
 
@@ -27,6 +30,7 @@ const Trvlpage = () => {
 
   const [sidebarContent, setSidebarContent] = useState("일정");
   const [transportation, setTransportation] = useState("자가용");
+
   const [times, setTimes] = useState({});
   const [hashtag, setHashtag] = useState("");
   const [hashArr, setHashArr] = useState([]);
@@ -37,6 +41,7 @@ const Trvlpage = () => {
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [activeDate, setActiveDate] = useState("");
   const [selectedPlaces, setSelectedPlaces] = useState({});
+  const sidebarWidth = sidebarContent === "일정" ? 900 : 1100;
 
   const [tempSelectedAccommodation, setTempSelectedAccommodation] =
     useState(null);
@@ -77,20 +82,20 @@ const Trvlpage = () => {
   }, [searchTerm]);
 
   // Place 컴포넌트 예시
-  const Place = ({ name, address, imageUrl, onSelect, selected }) => {
-    const selectedClass = selected ? "selected" : "";
+  // const Place = ({ name, address, imageUrl, onSelect, selected }) => {
+  //   const selectedClass = selected ? "selected" : "";
 
-    return (
-      <div className={`place-container ${selectedClass}`} onClick={onSelect}>
-        <img src={imageUrl} alt={name} className="place-image" />
-        <div className="place-info">
-          <h3>{name}</h3>
-          <p>{address}</p>
-        </div>
-        {selected && <button className="select-button">선택됨</button>}
-      </div>
-    );
-  };
+  //   return (
+  //     <div className={`place-container ${selectedClass}`} onClick={onSelect}>
+  //       <img src={imageUrl} alt={name} className={styles.place_image} />
+  //       <div className="place-info">
+  //         <h3>{name}</h3>
+  //         <p>{address}</p>
+  //       </div>
+  //       {selected && <button className="select-button">선택됨</button>}
+  //     </div>
+  //   );
+  // };
 
   const renderPlaceSearch = () => {
     const handleSelectPlace = (id) => {
@@ -155,6 +160,8 @@ const Trvlpage = () => {
   };
   // 날짜별로 선택된 숙소와 장소 정보를 렌더링하는 함수
   const renderSelectedInfoForDate = () => {
+    if (!activeDate) return null; // activeDate가 유효하지 않으면 여기서 처리
+
     const currentAccommodationId = selectedAccommodations[activeDate];
     const currentAccommodation = AccommodationsData.find(
       (acc) => acc.id === currentAccommodationId
@@ -177,7 +184,6 @@ const Trvlpage = () => {
               <img
                 src={previousAccommodation.imageUrl}
                 alt={previousAccommodation.name}
-                style={{ width: "100px", height: "auto" }}
               />
             </div>
           </div>
@@ -190,7 +196,6 @@ const Trvlpage = () => {
               <img
                 src={currentAccommodation.imageUrl}
                 alt={currentAccommodation.name}
-                style={{ width: "100px", height: "auto" }}
               />
             </div>
           </div>
@@ -242,16 +247,16 @@ const Trvlpage = () => {
         >
           대중교통
         </button>
-        <div className="HashWrap">
-          <div className="HashWrapOuter">
+        <div className={styles.HashWrap}>
+          <div className={styles.HashWrapOuter}>
             {hashArr.map((tag, index) => (
-              <div key={index} className="HashWrapInner">
+              <div key={index} className={styles.HashWrapInner}>
                 #{tag}
               </div>
             ))}
           </div>
           <input
-            className="HashInput"
+            className={styles.HashInput}
             type="text"
             value={hashtag}
             onChange={onChangeHashtag}
@@ -284,24 +289,33 @@ const Trvlpage = () => {
       <div className="people-count">
         <div>
           <label>성인: </label>
-          <button className="minus" onClick={() => handleAdultCount("minus")}>
+          <button
+            className={styles.minus}
+            onClick={() => handleAdultCount("minus")}
+          >
             -
           </button>
           <span>{adultCount}</span>
-          <button className="plus" onClick={() => handleAdultCount("plus")}>
+          <button
+            className={styles.plus}
+            onClick={() => handleAdultCount("plus")}
+          >
             +
           </button>
         </div>
         <div>
           <label>미성년자: </label>
           <button
-            className="minus"
+            className={styles.minus}
             onClick={() => handleChildrenCount("minus")}
           >
             -
           </button>
           <span>{childrenCount}</span>
-          <button className="plus" onClick={() => handleChildrenCount("plus")}>
+          <button
+            className={styles.plus}
+            onClick={() => handleChildrenCount("plus")}
+          >
             +
           </button>
         </div>
@@ -332,11 +346,7 @@ const Trvlpage = () => {
       <div className="selected-accommodation-info">
         {/* 이미지가 있을 경우 */}
         {accommodation.imageUrl && (
-          <img
-            src={accommodation.imageUrl}
-            alt={accommodation.name}
-            style={{ width: "100px", height: "auto" }}
-          />
+          <img src={accommodation.imageUrl} alt={accommodation.name} />
         )}
         {/* 숙소 선택 변경 또는 해제 처리를 위한 버튼 */}
         <button onClick={() => handleSelectAccommodation(null, formattedDate)}>
@@ -432,12 +442,30 @@ const Trvlpage = () => {
       case "일정":
         return (
           <>
+            <div className={styles.informBox}>
+              <div>
+                <img src={ClockIcon} alt="Clock" />
+              </div>
+
+              <div className={styles.info}>
+                첫날은 입력하신 시간부터 일정이 시작되고, 그 다음날부터는
+                설정하신 숙소로부터 일정이 시작됩니다.
+              </div>
+
+              <div>
+                <img src={ClockIcon} alt="Clock" />
+              </div>
+              <div>
+                기본 설정은 오전 10시 ~ 오후 10시입니다. 한 장소는 2시간으로
+                머물시간이 고정되어 편집 후 바꿀 수 있습니다.
+              </div>
+            </div>
             {dates.map((date) => {
               const formattedDate = format(date, "yyyy-MM-dd");
               const { startTime, endTime } = times[formattedDate] || {};
               return (
                 <div key={formattedDate}>
-                  <h3>{format(date, "yyyy년 MM월 dd일")}</h3>
+                  <h3>{format(date, "MM.dd")}</h3>
                   <div>
                     <label>시작 시간: </label>
                     <DatePicker
@@ -490,8 +518,6 @@ const Trvlpage = () => {
     }
   };
 
-  // 나머지 컴포넌트 로직은 동일합니다.
-
   const handlePrevious = () => {
     const currentIndex = sidebarOptions.indexOf(sidebarContent);
     if (currentIndex > 0) {
@@ -513,55 +539,75 @@ const Trvlpage = () => {
   };
 
   return (
-    <div>
-      <SidebarL width={400} isOpen={true}>
-        <h2>여행지: {destination}</h2>
-        <h3>
-          여행 기간: {formattedStartDate} ~ {formattedEndDate}
-        </h3>
-        <div className="search-component">
-          {sidebarContent === "숙소" && <Searching />}
+    <div className={styles.totalComponent}>
+      <SidebarL width={sidebarWidth} isOpen={true}>
+        <div className={styles.sidebarLayout}>
+          {/* 첫 번째 열: 버튼 및 컨트롤 */}
+          <div className={styles.sidebarButtons}>
+            <button
+              className={
+                sidebarContent === "일정"
+                  ? styles.selectedBtn
+                  : styles.commonBtn
+              }
+              onClick={() => setSidebarContent("일정")}
+            >
+              상세일정
+            </button>
+            <button
+              className={
+                sidebarContent === "숙소"
+                  ? styles.selectedBtn
+                  : styles.commonBtn
+              }
+              onClick={() => setSidebarContent("숙소")}
+            >
+              숙소선택
+            </button>
+            <button
+              className={
+                sidebarContent === "장소"
+                  ? styles.selectedBtn
+                  : styles.commonBtn
+              }
+              onClick={() => setSidebarContent("장소")}
+            >
+              장소선택
+            </button>
+
+            <div className={styles.controlButtons}>
+              <button className={styles.prevBtn} onClick={handlePrevious}>
+                이전
+              </button>
+              <button className={styles.nextBtn} onClick={handleNextOrComplete}>
+                {sidebarContent === "장소" ? "계획생성완료" : "다음"}
+              </button>
+            </div>
+          </div>
+
+          {/* 두 번째 열: 선택된 섹션의 내용 */}
+          <div className={styles.sidebarContent}>
+            <div className={styles.sidebarTop}>
+              <div className={styles.des}>{destination}</div>
+              <div className={styles.date}>
+                {formattedStartDate} ~ {formattedEndDate}
+              </div>
+            </div>
+            {renderSidebarContent(
+              sidebarContent,
+              eachDayOfInterval({ start: startDate, end: endDate }),
+              times,
+              handleTimeChange,
+              renderTransportationButtons,
+              renderPeopleCount
+            )}
+          </div>
         </div>
-        <button
-          className={sidebarContent === "일정" ? "selected" : ""}
-          onClick={() => setSidebarContent("일정")}
-          data-content="일정"
-        >
-          상세일정
-        </button>
-        <button
-          className={sidebarContent === "숙소" ? "selected" : ""}
-          onClick={() => setSidebarContent("숙소")}
-          data-content="숙소"
-        >
-          숙소선택
-        </button>
-        <button
-          className={sidebarContent === "장소" ? "selected" : ""}
-          onClick={() => setSidebarContent("장소")}
-          data-content="장소"
-        >
-          장소선택
-        </button>
-        {renderSidebarContent(
-          sidebarContent,
-          eachDayOfInterval({ start: startDate, end: endDate }),
-          times,
-          handleTimeChange,
-          renderTransportationButtons,
-          renderPeopleCount
-        )}
-
-        <button onClick={handlePrevious}>이전</button>
-        {/* "다음" 버튼을 조건부로 "계획생성완료" 버튼으로 변경 */}
-        {sidebarContent === "장소" ? (
-          <button onClick={handleNextOrComplete}>계획생성완료</button>
-        ) : (
-          <button onClick={handleNextOrComplete}>다음</button>
-        )}
       </SidebarL>
-
-      <Map />
+      <Map
+        containerStyle={{ width: "100vw", height: "91vh" }}
+        zoomLevel={11.2}
+      />
     </div>
   );
 };
