@@ -25,13 +25,8 @@ function Diarycontent() {
         {num === 0 && <AllList />}
         {console.log("diarycontent에서의 num", num)}
         {num > 0 && <DetailList num={num} />} {/* Pass num to DetailList */}
-
       </div>
     </div>
-
-
-
-
   );
 }
 
