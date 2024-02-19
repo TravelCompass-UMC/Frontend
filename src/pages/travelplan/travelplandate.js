@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styles from "../../styles/travelplan/travelplandate.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,10 +14,12 @@ const TrvlPlan = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { destination } = location.state || {};
 
   const handlePre = () => {
     navigate("/TravelPlandes", {
-      state: { destination: startDate, endDate },
+      state: { startDate, endDate },
     });
   };
 
@@ -38,7 +40,9 @@ const TrvlPlan = () => {
 
   const goToDetail = () => {
     closeModal();
-    navigate("/travelplandetail", { state: { startDate, endDate } });
+    navigate("/travelplandetail", {
+      state: { startDate, endDate, destination },
+    });
   };
 
   const formattedStartDate = format(startDate, "yyyy년 MM월 dd일");

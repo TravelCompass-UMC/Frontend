@@ -6,6 +6,7 @@ import image1 from "../../assets/images/Pages/Vector (2).png";
 import { format } from "date-fns";
 import { autocompleteClasses } from "@mui/material";
 import Button from "../../components/common_components/common_button";
+import { EndSection } from "../../pages/mapages/MyPage";
 
 class TrvlPlan extends Component {
   constructor(props) {

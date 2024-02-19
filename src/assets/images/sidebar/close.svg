@@ -1,3 +1,18 @@
-<svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10 20L0 10L10 0L11.775 1.775L3.55 10L11.775 18.225L10 20Z" fill="#1C1B1F"/>
-</svg>
+import React from 'react';
+
+const ClockIcon = (props) => (
+  <svg 
+    width="24" 
+    height="24" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    {...props} // 이렇게 props를 전달하여 외부에서 스타일이나 클래스를 조정할 수 있습니다.
+  >
+    <circle cx="12" cy="12" r="12" fill="#BFC4D8"/>
+    <path d="M18 11.9414L13.8355 16.3075C12.4397 17.7666 10 16.7671 10 14.7334L10 4" fill="#BFC4D8"/>
+    <path d="M18 11.9414L13.8355 16.3075C12.4397 17.7666 10 16.7671 10 14.7334L10 4" stroke="white" strokeWidth="4" strokeMiterlimit="10"/>
+  </svg>
+);
+
+export default ClockIcon;
