@@ -1,0 +1,81 @@
+.dayBtn {
+    width: 138px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid var(--grayscale-Gray2, #EBEDF8);
+    background: var(--grayscale-White, #FFF);
+
+    color: var(--grayscale-Gray3, #BFC4D8);
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 170%; 
+    margin-top: 20px;
+    margin-left: 211px;
+  }
+
+  .Schedule {
+    width: 138px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--grayscale-Gray6, #484A64);
+    border: 1px solid var(--grayscale-Gray2, #ebedf8);
+
+    color: var(--grayscale-White, #FFF);
+    font-family: "SUIT Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 170%; 
+    margin-top: 21px;
+    margin-left: 211px;
+  }
+
+  .editBtn {
+    /* 현재 계획서 편집 완료하기 */
+    width: 180px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: none;
+    margin-top: 304px;
+    margin-left: 169px;
+
+    /* Primary color */
+    border-radius: 8px;
+    border: 1px solid var(--grayscale-Gray3, #BFC4D8);
+    background: var(--grayscale-White, #FFF);
+
+    color: var(--grayscale-Gray5, #626682);
+    font-family: "SUIT Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    }
+
+    .saveBtn {
+        /* 현재 계획서 저장하기 */
+        width: 180px;
+        height: 80px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        border: none;
+        margin-top: 16px;
+        margin-left: 169px;
+    
+        /* Primary color */
+        background: var(--grayscale-White, #8270FF);
+
+        color: var(--grayscale-White, #FFF);
+        font-family: "SUIT Variable";
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-align: center;
+      }

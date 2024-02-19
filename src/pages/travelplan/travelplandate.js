@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/travelplanpage.css";
+import "../../styles/travelplan/travelplanpage.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { ko } from "date-fns/locale";
+import { ko } from "date-fns/locale"; // 변경된 부분
+import { Link } from "react-router-dom";
 import Modal from "../../components/Modal";
 import { format } from "date-fns";
 
@@ -12,6 +13,12 @@ const TrvlPlan = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handlePre = () => {
+    navigate("/TravelPlandes", {
+      state: { destination: startDate, endDate },
+    });
+  };
 
   const handleStartDateChange = (date) => {
     setStartDate(date);
@@ -39,40 +46,88 @@ const TrvlPlan = () => {
 
   return (
     <div>
-      <div>
-        <h1>여행 기간</h1>
-        <p>기간을 선택해주세요</p>
+      <div style={{ marginTop: "150px" }}>
         <div>
-          <h2>여행 시작일:</h2>
-          <DatePicker
-            className="datepicker"
-            locale={ko}
-            dateFormat="yyyy년 MM월 dd일"
-            minDate={new Date()}
-            selected={startDate}
-            onChange={handleStartDateChange}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-          />
+          <span className="dateTitle">여행 기간을 선택해주세요.</span>
+          <span className="dateTitle1">
+            여행 기간은 최대 00일까지 선택 가능합니다.
+          </span>
         </div>
-        <div>
-          <h2>여행 종료일:</h2>
-          <DatePicker
-            className="datepicker"
-            locale={ko}
-            dateFormat="yyyy년 MM월 dd일"
-            selected={endDate}
-            onChange={handleEndDateChange}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-          />
+        <div style={{ marginTop: "50px" }}>
+          <span style={{ marginLeft: "500px", marginTop: "100px" }}>
+            {/* <h2>여행 시작일:</h2> */}
+            <DatePicker
+              className="custom-datepicker large-calendar1" // Add a custom class for styling
+              calendarClassName="custom-calendar1" // Add a custom class for the calendar
+              popperModifiers={{
+                offset: {
+                  enabled: true,
+                  offset: "50px, 0px", // Adjust the offset as needed
+                },
+                preventOverflow: {
+                  enabled: true,
+                  escapeWithReference: false,
+                  boundariesElement: "viewport",
+                },
+                flip: {
+                  enabled: true,
+                },
+              }}
+              locale={ko}
+              dateFormat="yyyy년 MM월 dd일"
+              minDate={new Date()}
+              selected={startDate}
+              onChange={handleStartDateChange}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              inline
+            />
+          </span>
+
+          <span style={{ marginLeft: "200px", marginTop: "100px" }}>
+            {/* <h2>여행 종료일:</h2> */}
+            <DatePicker
+              className="custom-datepicker large-calendar" // Add a custom class for styling
+              calendarClassName="custom-calendar" // Add a custom class for the calendar
+              popperModifiers={{
+                offset: {
+                  enabled: true,
+                  offset: "500px, 500px", // Adjust the offset as needed
+                },
+                preventOverflow: {
+                  enabled: true,
+                  escapeWithReference: false,
+                  boundariesElement: "viewport",
+                },
+                flip: {
+                  enabled: true,
+                },
+              }}
+              locale={ko}
+              dateFormat="yyyy년 MM월 dd일"
+              selected={endDate}
+              onChange={handleEndDateChange}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              inline
+            />
+          </span>
         </div>
       </div>
-      <button onClick={openModal}>계획 만들기</button>
+      {/* 이전 버튼 */}
+      <button onClick={handlePre} className="pre_button">
+        이전
+      </button>
+
+      {/* 다음 버튼 */}
+      <button type="submit" onClick={openModal} className="next_button">
+        선택완료
+      </button>
       <Modal
+        className="modalContent"
         open={modalOpen}
         close={closeModal}
         header="여행 계획"

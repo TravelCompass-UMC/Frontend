@@ -1,0 +1,72 @@
+/* plusModal.module.css */
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*4번째 숫자 커질수록 어두워짐*/
+    background: rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContent {
+    height: 358px;
+    left: calc(50% - 681px/2 + 0.5px);
+    top: 380px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+
+    /* grayscale/White */
+    background: var(--grayscale-White, #EBEDF8);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalHeader {
+    font-family: 'SUIT Variable';
+}
+
+.modalTitle {
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.closeImage {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    left: 580px;
+    top: -145px;
+    cursor: pointer; 
+}
+
+.placeCard{
+    width: 280px;
+    height: 120px;
+}
+
+.placeName{
+    margin-top: -25%;
+    font-family: 'SUIT Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #232323;
+}
+

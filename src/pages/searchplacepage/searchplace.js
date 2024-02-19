@@ -1,26 +1,30 @@
+// searchplace.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/Place.css";
+import "../../styles/searchplace/search.module.css";
 import SearchComponent from '../../components/Search.js';
-import GoogleMapComponent from '../../components/Map.js';
-
+import Map from '../../components/Map';
 
 const SrchPlace = () => {
   const navigate = useNavigate();
   const [searchedLocation, setSearchedLocation] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 추가
 
-  const handleSearch = (location) => {
+  const handleSearch = (location, query) => {
     // Save the searched location
     setSearchedLocation(location);
-    
-    // Navigate to placeinfo1 with the search query
-    navigate(`/placeinfo1?q=${location.lat},${location.lng}`);
+    setSearchQuery(query); // 검색어 저장
+
+    // Navigate to placeinfo with the search query
+    navigate(`/placeinfo?q=${location.lat},${location.lng},${encodeURIComponent(query)}`, {
+      state: { searchedLocation: query } // 검색된 지역명을 state에 저장하여 전달
+    });
   };
 
   return (
     <div>
       <SearchComponent onSearch={handleSearch} />
-      <GoogleMapComponent/>
+      <Map containerStyle={{ width: "100vw", height: "91vh" }} zoomLevel={7.5} />
     </div>
   );
 };

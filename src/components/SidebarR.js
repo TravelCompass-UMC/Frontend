@@ -1,56 +1,47 @@
-// SidebarR.js
+//SidebarR.js
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/sidebar.module.css";
-const SidebarR = ({ width = 280, children }) => {
-  const [isOpen, setOpen] = useState(false);
-  const [xPosition, setX] = useState(-width);
-  const side = useRef();
-  // button 클릭 시 토글
-  const toggleMenu = () => {
-    if (xPosition < 0) {
-      setX(0);
-      setOpen(true);
-    } else {
-      setX(-width);
-      setOpen(false);
-    }
-  };
 
-  // 사이드바 외부 클릭시 닫히는 함수
-  const handleClose = async (e) => {
-    let sideArea = side.current;
-    let sideCildren = side.current.contains(e.target);
-    if (isOpen && (!sideArea || !sideCildren)) {
-      await setX(-width);
-      await setOpen(false);
+const SidebarR = ({ width = 320, height = 980, children, isOpen: externalIsOpen,   toggleSidebar,
+}) => {
+  const [internalIsOpen, setInternalIsOpen] = useState(true);
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  const xPosition = isOpen ? 0 : -width+30;
+  const side = useRef();
+
+  // button 클릭 시 토글
+  const handleToggle = () => {
+    if (toggleSidebar) {
+      toggleSidebar();
+    } else {
+      setInternalIsOpen(!internalIsOpen);
     }
   };
 
   useEffect(() => {
-    window.addEventListener("click", handleClose);
-    return () => {
-      window.removeEventListener("click", handleClose);
-    };
-  });
+    if (externalIsOpen !== undefined && externalIsOpen !== internalIsOpen) {
+      setInternalIsOpen(externalIsOpen);
+    }
+  }, [externalIsOpen, internalIsOpen]);
 
   return (
-    <div className={styles.container}>
       <div
         ref={side}
         className={styles.sidebar}
         style={{
           width: `${width}px`,
-          height: "100%",
-          transform: `translatex(${-xPosition}px)`,
-        }}
+          height: `${height}px`,
+          transform: `translateX(${-xPosition}px)` }}
       >
-        <button onClick={() => toggleMenu()} className={styles.button}>
-          {isOpen ? <span>X</span> : <span>&#9776;</span>}
-        </button>
+        <div className={styles.buttonContainer}>
+          <button onClick={handleToggle} className={styles.button}>
+            {isOpen ? ">" : "<"}
+          </button>
+        </div>
         <div className={styles.content}>{children}</div>
       </div>
-    </div>
   );
 };
 
 export default SidebarR;
+
