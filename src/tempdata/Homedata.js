@@ -28,4 +28,6 @@ let homeplaces = [
         place: "런던베이글뮤지엄",
         category: 3,
     },
-]
+];
+
+export default homeplaces;

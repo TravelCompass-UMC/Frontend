@@ -14,21 +14,19 @@ import up from "../../assets/images/Home/up.svg";
 import right from "../../assets/images/Home/right.svg";
 import down from "../../assets/images/Home/down.svg";
 import left from "../../assets/images/Home/left.svg";
-import { InterestedPlaceThumbnail } from "../mapages/MyPage.js";
-import homeplacesData from "../../tempdata/Homedata.js";
 import homeplaces from "../../tempdata/Homedata.js";
 
 const Homeplace = {
   HomebigBox: {
     width: "200px",
-    height: "320px",
+    height: "300px",
     background: "#F3F5FF",
     borderRadius: 16,
     marginBottom: "20px",
   },
   HomeimageBox: {
     width: "100%",
-    height: "240px",
+    height: "225px",
     background: "#BFC4D8",
     borderRadius: 15,
     position: 'relative',
@@ -72,7 +70,7 @@ function Home() {
 
 
   const [others, setOthers] = useState(otherplans);
-  const [placesData,  setPlacesData] = useState(homeplacesData);
+  const [homes, setHomes] = useState(homeplaces);
 
 
   const navigate = useNavigate();
@@ -103,20 +101,6 @@ function Home() {
         state: { searchedLocation: query }, // 검색된 지역명을 state에 저장하여 전달
       }
     );
-  };
-
-    const containerStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    width: "100%",
-  };
-
-  const textStyle = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    width: "calc(100% - 50px)",
   };
 
   return (
@@ -159,20 +143,7 @@ function Home() {
             <p className="selectpopulartext">선택하신 도시의 가장 인기 많은 장소</p>
           </div>
           <div className="popularplacebox">
-            <div style={Homeplace.HomebigBox}>
-              <div style={Homeplace.HomeimageBox}>
-                <img className="Homeplaceimg"
-                  style={{}}
-                  alt="인기장소"
-                />
-              </div>
-              <div style={containerStyle}>
-                <div style={textStyle}>
-                  <a style={Homeplace.categoryText}>명소</a>
-                  <p style={Homeplace.placenameText}>창덕궁</p>
-                </div>
-              </div>
-            </div>
+              <HomeplaceThumbnail homes={homes}/>
           </div>
         </div>
       </SidebarR>
@@ -227,3 +198,41 @@ function Home() {
 };
 
 export default Home;
+
+
+export function HomeplaceThumbnail(props) {
+
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
+  };
+
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "calc(100% - 50px)",
+  };
+
+
+  return (
+    <div style={Homeplace.HomebigBox}>
+      <div style={Homeplace.HomeimageBox}>
+        <img className="Homeplaceimg"
+          style={{}}
+          alt="인기장소"
+        />
+      </div>
+      <div style={containerStyle}>
+        <div style={textStyle}>
+          <div style={Homeplace.categoryText}>
+            {props.homes.category === 1 ? "숙소" : props.homes.category === 2 ? "명소" : "식당/카페"}
+          </div>
+          <div style={Homeplace.placenameText}>{props.homes.place}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
