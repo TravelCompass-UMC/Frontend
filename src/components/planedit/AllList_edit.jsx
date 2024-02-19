@@ -1,11 +1,13 @@
+// AllList_edit.jsx
 import React, { useState } from "react";
 import styles from "../../styles/planedit/editAllList.module.css";
-import Modal from "./Modal_edit"; // 모달 컴포넌트를 임포트합니다.
-import PlusBtn from "./placePlus_edit"; // PlusBtn 컴포넌트를 임포트합니다.
-import plusIcon from "../../assets/images/edit/+.svg"; // 플러스 아이콘 이미지를 import
+import Modal from "./Modal_edit";
+import PlusBtn from "./placePlus_edit";
+import plusIcon from "../../assets/images/edit/+.svg";
 
-//전체일정
 const AllList = () => {
+    const [title, setTitle] = useState('여행 계획서의 제목');
+    const [isEditingTitle, setIsEditingTitle] = useState(false);
     //일차 수
     const [travelDays, setTravelDays] = useState(4);
     //1일차, 2일차.. 세부 일정 데이터 수
@@ -14,6 +16,14 @@ const AllList = () => {
     const [selectedBox, setSelectedBox] = useState(null);
     // PlusBtn 컴포넌트 표시 여부
     const [showPlusBtn, setShowPlusBtn] = useState(false);
+      
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+      };
+    
+    const toggleEditTitle = () => {
+        setIsEditingTitle(!isEditingTitle);
+      };
 
     const handleDetailBoxClick = (e, data) => {//클릭한 세부요소 데이터 저장
         if (e.target.closest('select[name="duration"]')) {
@@ -29,46 +39,21 @@ const AllList = () => {
         setShowPlusBtn(true); // PlusBtn 컴포넌트를 보이게 설정
     };
 
-    const generateDay = () => {
-        const day = [];
-        for (let i = 1; i <= travelDays; i++) {
-            day.push(   
-                <><div className={styles.dayContainer}>
-                    <div>
-                        <a className={styles.detailNum}>{`${i}일차`}</a>&nbsp;&nbsp;<a className={styles.detailCal}>2024.02.19(월)</a>
-                    </div>
-                    {Array.from({ length: travelnum[i - 1] }).map((_, index) => (
-                        <div
-                            className={styles.detailBox}
-                            key={index}
-                            onClick={(e) => handleDetailBoxClick(e, 1)}
-                        >
-                            <table>
-                                <div>
-                                <tr>
-                                    <div style={{ background: "#EBEDF8", borderRadius: "50%", width: "32px", height: "32px", display: "inline-block", marginTop: "14px", marginLeft: "14px" }}>
-                                        <div style={{ textAlign: "center", marginTop: "3px"}}>
-                                            <div style={{ fontSize: "16px", fontWeight: "700", color: "#626682" }}>{index + 1}</div>
-                                        </div>
-                                    </div>  
-                                        <td className={styles.detailTime}>
-                                            09:30~11:20
-                                        </td>  
-                                        <td className={styles.placeImage} rowSpan={4}></td>
-                                </tr>  
-                                <tr className={styles.detailPlace}>
-                                    <td className={styles.detailPlace} style={{ paddingLeft: "60px" }}>
-                                        명소
-                                    </td>
-                                </tr>  
-                                <tr className={styles.detailPlaceName}>
-                                    <td className={styles.detailPlaceName} style={{ paddingLeft: "60px" }}>
-                                        장소이름
-                                    </td>
-                                </tr>  
-                                <tr className={styles.placeTime}>
-                                    <td className={styles.placeTime} style={{ paddingLeft: "50px" }}>
-                                        <div className={styles.selectContainer}>
+  const generateDay = () => {
+    const dayElements = [];
+    for (let i = 1; i <= travelDays; i++) {
+      const dayPlans = Array.from({ length: travelnum[i - 1] }, (_, index) => (
+        <div key={index} className={styles.detailBox} onClick={(e) => handleDetailBoxClick(e, index + 1)}>
+                  <div className={styles.timeContainer}>
+                    <div className={styles.numberIndex}>{index + 1}</div>
+                    <div className={styles.detailTime}>09:30~11:20</div>
+                  </div>
+                  <div className={styles.placeContainer}>
+                    <div className={styles.detailPlace}>명소</div>
+                    <div className={styles.detailPlaceName}>장소이름</div>
+                    <div className={styles.placeImage}></div>
+                  </div>
+                  <div className={styles.durationSelectContainer}>
                                         <select
                                             name="duration"
                                             defaultValue="2"
@@ -79,31 +64,48 @@ const AllList = () => {
                                             ))}
                                         </select>
                                         <div className={styles.customArrow}></div>
-                                        </div>
-                                    </td>
-                                    </tr>
+                  </div>
+                  <button className={styles.placeAdd} onClick={handlePlusBtnClick}><div className={styles.plusFont}>
+                    <img src={plusIcon} alt="Plus Icon" /> 여기에 장소 추가</div>
+                  </button>
+        </div>
+      ));
 
-                                </div>        
-                                <button className={styles.placeAdd} onClick={handlePlusBtnClick}><div className={styles.plusFont}>
-                                    <img src={plusIcon} alt="Plus Icon" /> 여기에 장소 추가</div>
-                                </button>
-                            </table>
-                        </div >
-                    ))}
-                </div>
-                </>
-            );
-        }
-        return day;
-    };
-    return (    
-        <div style={{ marginLeft: "100px" }}>
-            <div className={styles.nickname}>여행 설계자의 닉네임</div>
-            <div className={styles.title}>여행 계획서의 제목
-            <button className={styles.editSmallBtn}><div className={styles.editFont}>수정</div></button>
-            </div>   
+      dayElements.push(
+        <div key={i} className={styles.dayContainer}>
+          <div className={styles.dayHeader}>
+            <span className={styles.detailNum}>{`${i}일차`}</span>
+            <span className={styles.detailCal}>2024.02.19(월)</span>
+          </div>
+          {dayPlans}
+        </div>
+      );
+    }
+    return dayElements;
+  };
+
+  return (
+    <div className={styles.pageContainer}>
+        <div className={styles.nickname}>여행 설계자의 닉네임</div>
+            <div className={styles.title}>
+                {isEditingTitle ? (
+                <input
+                    type="text"
+                    value={title}
+                    onChange={handleTitleChange}
+                    onBlur={() => setIsEditingTitle(false)}
+                    onKeyPress={(e) => e.key === 'Enter' && setIsEditingTitle(false)}
+                    autoFocus
+                />
+                ) : (
+                title
+                )}
+                <button className={styles.editSmallBtn} onClick={toggleEditTitle}>
+                <div className={styles.editFont}>수정</div>
+                </button>
+            </div>  
             <div className={styles.inform}>
-                <span>2023.11.11 ~ 2023.11.13 (3박 4일)</span>
+                <span>2024.02.09 ~ 2024.02.12 (3박 4일)</span>
                 <span> | </span>
                 <span>자가용</span>
                 <span> | </span>
@@ -113,12 +115,11 @@ const AllList = () => {
                 #힐링 #가족여행 #맛집탐방
             </div>
             <hr className={styles.line}></hr>
-            <div>
-                <div className={styles.divscroll}>
-                    {generateDay()}
-                </div>
-            </div>
-            {
+            <div></div>
+      <div className={styles.divscroll}>
+        {generateDay()}
+      </div>
+      {
                 selectedBox && (
                     <Modal
                         data={selectedBox}
@@ -131,9 +132,9 @@ const AllList = () => {
                     <PlusBtn onClose={() => setShowPlusBtn(false)} /> // PlusBtn 컴포넌트를 조건부로 렌더링하고, 닫기 핸들러를 추가합니다.
                 )
             }
-        </div >
-
-    );
+    </div>
+  );
 };
 
 export default AllList;
+
