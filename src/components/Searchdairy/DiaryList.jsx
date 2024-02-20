@@ -4,7 +4,7 @@ import VectorImage from "../../assets/images/Pages/Vector (1).png"; // 이미지
 import styles1 from "../../styles/searchdiary/diarylist.module.css";
 import { EndSection } from "../../pages/mapages/MyPage";
 import sort from "../../styles/searchdiary/sort.module.css";
-import contents from "../../tempdata/searchdiary.js";
+import contents from "../../tempdata/plandatas.js";
 
 // const contents = [
 //   // 데이터를 별도의 객체와 분리
@@ -133,8 +133,10 @@ function DiaryList(props) {
                     <td>
                       <Diary
                         key={index}
-                        place={place.place}
-                        hashtag={place.hashtag}
+                        // place={place.place}
+                        // hashtag={place.hashtag}
+                        // img={place.img}
+                        datas={place}
                       />
                     </td>
                   ))}

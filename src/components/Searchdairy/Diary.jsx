@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import style from "../../styles/searchdiary.css";
 import heart from "../../assets/images/Pages/Group 2236.png"; // 이미지를 import
 import heartFilled from "../../assets/images/Pages/Group 2236_filled.png"; // 채워진 하트 이미지를 import
+import allplans from "../../tempdata/plandatas";
 
 const styles = {
   bigBox: {
@@ -51,7 +52,7 @@ const styles = {
 };
 
 function Diary(props) {
-  const [heartState, setHeartState] = useState(0); // 0: 빈 하트, 1: 채워진 하트
+  const [heartState, setHeartState] = useState(props.datas.liked); // 0: 빈 하트, 1: 채워진 하트
 
   const handleHeartClick = () => {
     setHeartState(heartState === 0 ? 1 : 0); // 클릭할 때마다 상태 변경
@@ -63,11 +64,18 @@ function Diary(props) {
 
     <div style={styles.bigBox}>
       <NavLink to="/diarycontent" style={{ textDecoration: "none" }}>
-        <div style={styles.imageBox}></div>
+        <div style={styles.imageBox}>
+          <img
+            className="myplanimg"
+            style={{ width: "100%", height: "100%", borderRadius: "15px" }}
+            src={props.datas.img}
+            alt="장소 이미지"
+          />
+        </div>
 
         {/* <span style={styles.nameText}>{props.name}</span> */}
         {/* <div style={styles.textBox}> */}
-        <a style={styles.placeText}>{props.place}</a>
+        <a style={styles.placeText}>{props.datas.place}</a>
       </NavLink>
       {/* Heart 이미지 클릭 이벤트 처리 */}
       <img
@@ -79,7 +87,7 @@ function Diary(props) {
 
       <br></br>
       <div style={styles.textBox}>
-        {props.hashtag.map((tag, index) => (
+        {props.datas.hashtag.map((tag, index) => (
           <React.Fragment key={index}>
             {index > 0 && " "} {/* index가 0보다 큰 경우에만 공백 추가 */}
             <a style={styles.hashtagText}>#{tag}</a>

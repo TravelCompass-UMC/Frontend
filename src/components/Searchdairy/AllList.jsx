@@ -53,7 +53,7 @@ const AllList = () => {
                                         09:30~11:20
                                     </td>
                                     <td className={styles.detailimage} rowSpan={4}>
-
+                      
                                     </td>
                                 </tr>
                                 <tr className={styles.detailplace}>
