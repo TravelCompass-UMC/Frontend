@@ -25,6 +25,7 @@ const PlaceAddition = () => {
       const apiKey = 'AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU';
       const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(searchQuery)}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=${apiKey}`);
       
+      
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -36,9 +37,10 @@ const PlaceAddition = () => {
         name: place.name,
         lat: place.geometry.location.lat,
         lng: place.geometry.location.lng,
-        // Add any other details you want from the response
-      };
-      
+        photos: place.photos ? place.photos.map(photo => photo.photo_reference) : [],
+        vicinity: place.formatted_address || place.vicinity, // 주소 또는 위치 정보
+        };
+        
       // Update your state with the new place
       setPlaces([...places, newPlace]);
       setSelectedPlace(newPlace);
@@ -78,7 +80,7 @@ const PlaceAddition = () => {
           onRecommendationClick={(place) => {
             setSelectedPlace(place);
             setMapLocation({ lat: place.lat, lng: place.lng });
-            setZoomLevel(15); // Zoom in to the selected place
+            setZoomLevel(18); // Zoom in to the selected place
           }}
         />
         {selectedPlace && <PlaceDetail place={selectedPlace} />}

@@ -7,9 +7,10 @@ import Checkbox from '@mui/material/Checkbox';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 
-const PlusBtn = ({ onClose }) => {
+const PlusBtn = ({ onClose, onAddDetailBox }) => {
     const [placeInfo, setPlaceInfo] = useState(null);
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
 
     const handleSearch = (placeData) => {
         setPlaceInfo({
@@ -17,6 +18,12 @@ const PlusBtn = ({ onClose }) => {
             photoReference: placeData.photoReference,
             address: placeData.address,
         });
+    };
+
+    const handleCheckboxChange = (event) => {
+        if (event.target.checked) {
+            onAddDetailBox(placeInfo);
+        }
     };
 
     return (
@@ -27,10 +34,11 @@ const PlusBtn = ({ onClose }) => {
                 {placeInfo && (
                     <div className={styles.placeCard}>
                         <div className={styles.checkBox}>
-                        <Checkbox
+                            <Checkbox
                                 {...label}
                                 icon={<BookmarkBorderIcon />}
                                 checkedIcon={<BookmarkIcon />}
+                                onChange={(event) => handleCheckboxChange(event, placeInfo)}
                             />
                         </div>
                         <div className={styles.placeName}>{placeInfo.name}</div>

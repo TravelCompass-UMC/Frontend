@@ -6,11 +6,8 @@ const SearchRecommendations = ({ places, onRecommendationClick }) => {
 
   // Function to generate photo URL for a given photo reference
   const getPhotoUrl = (photoReference) => {
-    const apiKey = 'AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU'; // Replace with your actual API key
-    if (photoReference) {
-      return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${apiKey}`;
-    }
-    return 'path_to_default_image'; // Return a default image path if no photoReference
+    const apiKey = 'AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU'; // 실제 API 키 사용
+    return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=${photoReference}&key=${apiKey}`;
   };
 
   return (
@@ -23,8 +20,7 @@ const SearchRecommendations = ({ places, onRecommendationClick }) => {
           onClick={() => onRecommendationClick(place)}
         >
           <div className={styles.recommendationImage}>
-            {/* Use the first photo if available */}
-            <img src={place.photos ? getPhotoUrl(place.photos[0].photo_reference) : 'path_to_default_image'} alt={place.name} />
+            <img src={place.photos ? getPhotoUrl(place.photos[0]) : 'path_to_default_image'} alt={place.name} />
           </div>
           <div className={styles.recommendationInfo}>
             <h3 className={styles.recommendationTitle}>{place.name}</h3>
