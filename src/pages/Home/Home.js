@@ -88,12 +88,12 @@ function Home() {
   // 여행 계획 데이터에서 처음 6개의 항목만 선택
   const firstSixPlans = otherplans.slice(0, 6).map(others => ({ ...others, liked: 0 }));
 
-
-  const SeoulHomes = homeplaces.slice(0, 3).map(homes => ({ ...homes }));
-  const BusanHomes = homeplaces.slice(3, 6).map(homes => ({ ...homes }));
-  const JejuHomes = homeplaces.slice(6, 9).map(homes => ({ ...homes }));
-  const YeosuHomes = homeplaces.slice(9, 12).map(homes => ({ ...homes }));
-
+  
+  const SeoulHomes = homeplaces.slice(0,3).map(homes => ({...homes}));
+  const BusanHomes = homeplaces.slice(3,6).map(homes => ({...homes}));
+  const JejuHomes = homeplaces.slice(6,9).map(homes => ({...homes}));
+  const YeosuHomes = homeplaces.slice(9,12).map(homes => ({...homes}));
+  
   let displayedHomes;
   switch (selectedLocation) {
     case '서울':
@@ -168,7 +168,7 @@ function Home() {
           </div>
           <div className="popularplacebox">
             {displayedHomes.map((home, i) => (
-              <HomeThumbnail key={i} homes={home} /> // 여기서 SeoulThumbnail을 사용하거나, 더 일반적인 Thumbnail 컴포넌트를 사용할 수 있습니다.
+              <SeoulThumbnail key={i} homes={home} /> // 여기서 SeoulThumbnail을 사용하거나, 더 일반적인 Thumbnail 컴포넌트를 사용할 수 있습니다.
             ))}
           </div>
         </div>
@@ -239,7 +239,7 @@ function getCategoryDetails(category) {
 }
 
 
-export function HomeThumbnail(props) {
+export function SeoulThumbnail(props) {
 
   const { name, color } = getCategoryDetails(props.homes.category);
   const [homes, setHomes] = useState(homeplaces);
@@ -259,138 +259,136 @@ export function HomeThumbnail(props) {
   };
 
   return (
-    <a href={props.homes.link} style={{ textDecoration: "none" }} target="_blank" rel="noopener noreferrer">
-      <div style={Homeplace.HomebigBox}>
-        <div style={Homeplace.HomeimageBox}>
-          <img className="Homeplaceimg" src={props.homes.img} alt="인기장소" />
+    <div style={Homeplace.HomebigBox}>
+      <div style={Homeplace.HomeimageBox}>
+
+        <img className="Homeplaceimg"
+        src={props.homes.img}
+        alt="인기장소" />
+      </div>
+      <div style={{ ...Homeplace.HometextBox, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div style={{ ...Homeplace.categoryText, color: color }}>
+          {props.homes.info}
         </div>
-        <div style={{ ...Homeplace.HometextBox, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <div style={{ ...Homeplace.categoryText, color: color }}>
-            {props.homes.info}
+        <div style={Homeplace.placenameText}>{props.homes.place}</div>
+      </div>
+    </div>
+  );
+
+}
+
+export function JejuThumbnail(props) {
+
+  const [homes, setHomes] = useState(homeplaces);
+
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
+  };
+
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "calc(100% - 50px)",
+  };
+
+
+  return (
+    <div style={Homeplace.HomebigBox}>
+      <div style={Homeplace.HomeimageBox}>
+        <img className="Homeplaceimg"
+          src={props.homes.img}
+          alt="인기장소"
+        />
+      </div>
+      <div style={containerStyle}>
+        <div style={textStyle}>
+          <div style={Homeplace.categoryText}>
+            {props.homes.category}
           </div>
           <div style={Homeplace.placenameText}>{props.homes.place}</div>
         </div>
       </div>
-    </a>
-  );
+    </div>
+  )
 }
 
+export function BusanThumbnail(props) {
 
-// export function JejuThumbnail(props) {
+  const [homes, setHomes] = useState(homeplaces);
 
-//   const [homes, setHomes] = useState(homeplaces);
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
+  };
 
-//   const containerStyle = {
-//     display: "flex",
-//     justifyContent: "space-between",
-//     alignItems: "flex-start",
-//     width: "100%",
-//   };
-
-//   const textStyle = {
-//     display: "flex",
-//     flexDirection: "column",
-//     justifyContent: "center",
-//     width: "calc(100% - 50px)",
-//   };
-
-
-//   return (
-//     <div style={Homeplace.HomebigBox}>
-//       <div style={Homeplace.HomeimageBox}>
-//         <img className="Homeplaceimg"
-//           src={props.homes.img}
-//           alt="인기장소"
-//         />
-//       </div>
-//       <div style={containerStyle}>
-//         <div style={textStyle}>
-//           <div style={Homeplace.categoryText}>
-//             {props.homes.category}
-//           </div>
-//           <div style={Homeplace.placenameText}>{props.homes.place}</div>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export function BusanThumbnail(props) {
-
-//   const [homes, setHomes] = useState(homeplaces);
-
-//   const containerStyle = {
-//     display: "flex",
-//     justifyContent: "space-between",
-//     alignItems: "flex-start",
-//     width: "100%",
-//   };
-
-//   const textStyle = {
-//     display: "flex",
-//     flexDirection: "column",
-//     justifyContent: "center",
-//     width: "calc(100% - 50px)",
-//   };
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "calc(100% - 50px)",
+  };
 
 
-//   return (
-//     <div style={Homeplace.HomebigBox}>
-//       <div style={Homeplace.HomeimageBox}>
-//         <img className="Homeplaceimg"
-//           src={props.homes.img}
-//           alt="인기장소"
-//         />
-//       </div>
-//       <div style={containerStyle}>
-//         {/* NavLink 대신 a 태그를 사용하여 외부 링크로 연결 */}
-//         <a href={props.homes.link} style={{ textDecoration: "none", width: "100%" }} target="_blank" rel="noopener noreferrer">
-//           <div style={textStyle}>
-//             <div style={Homeplace.categoryText}>
-//               {props.homes.category}
-//             </div>
-//             <div style={Homeplace.placenameText}>{props.homes.place}</div>
-//           </div>
-//         </a>
-//       </div>
-//     </div>
-//   );
-// }
-// export function YeosuThumbnail(props) {
+  return (
+    <div style={Homeplace.HomebigBox}>
+      <div style={Homeplace.HomeimageBox}>
+        <img className="Homeplaceimg"
+          src={props.homes.img}
+          alt="인기장소"
+        />
+      </div>
+      <div style={containerStyle}>
+        <div style={textStyle}>
+          <div style={Homeplace.categoryText}>
+            {props.homes.category}
+          </div>
+          <div style={Homeplace.placenameText}>{props.homes.place}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+export function YeosuThumbnail(props) {
 
-//   const [homes, setHomes] = useState(homeplaces);
+  const [homes, setHomes] = useState(homeplaces);
 
-//   const containerStyle = {
-//     display: "flex",
-//     justifyContent: "space-between",
-//     alignItems: "flex-start",
-//     width: "100%",
-//   };
+  const containerStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: "100%",
+  };
 
-//   const textStyle = {
-//     display: "flex",
-//     flexDirection: "column",
-//     justifyContent: "center",
-//     width: "calc(100% - 50px)",
-//   };
+  const textStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    width: "calc(100% - 50px)",
+  };
 
 
-//   return (
-//     <div style={Homeplace.HomebigBox}>
-//       <div style={Homeplace.HomeimageBox}>
-//         <img className="Homeplaceimg"
-//           src={props.homes.img}
-//           alt="인기장소"
-//         />
-//       </div>
-//       <div style={containerStyle}>
-//         <div style={textStyle}>
-//           <div style={Homeplace.categoryText}>
-//             {props.homes.category}
-//           </div>
-//           <div style={Homeplace.placenameText}>{props.homes.place}</div>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
+  return (
+    <div style={Homeplace.HomebigBox}>
+      <div style={Homeplace.HomeimageBox}>
+        <img className="Homeplaceimg"
+          src={props.homes.img}
+          alt="인기장소"
+        />
+      </div>
+      <div style={containerStyle}>
+        <div style={textStyle}>
+          <div style={Homeplace.categoryText}>
+            {props.homes.category}
+          </div>
+          <div style={Homeplace.placenameText}>{props.homes.place}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
