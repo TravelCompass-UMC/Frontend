@@ -161,14 +161,12 @@ const Trvlpage = () => {
     );
   };
   const handlePlaceSelect = (place) => {
-    // 기존에 선택된 장소와 다른 장소를 클릭한 경우만 상태 업데이트
-    if (!selectedPlace || selectedPlace.id !== place.id) {
-      setSelectedPlace(place); // 선택된 장소 상태 업데이트
-      setMapLocation({ lat: place.lat, lng: place.lng }); // 지도 중심 이동
-      setZoomLevel(16); // 지도 확대
-    }
+    setSelectedPlace(place); // 선택된 장소 상태 업데이트
+    setShowPlaceSelection(false); // 숙소 선택을 완료하면 숙소 선택 UI를 숨깁니다.
+    setMapLocation({ lat: place.lat, lng: place.lng }); // 지도 중심 이동
+    setZoomLevel(16); // 지도 확대
+    // 선택된 장소의 상세 정보를 표시하는 로직이 필요한 경우 여기에 추가
   };
-
   const handlePlaceSelectionButtonClick = () => {
     setShowPlaceSelection(true); // 숙소 선택 UI를 보여줍니다.
   };
@@ -493,7 +491,6 @@ const Trvlpage = () => {
                 places={places}
                 onRecommendationClick={(place) => {
                   handlePlaceSelect(place);
-                  selectedPlace = { selectedPlace };
                 }}
                 selectedPlace={selectedPlace}
               />
