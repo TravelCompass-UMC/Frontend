@@ -267,7 +267,7 @@ export function SeoulThumbnail(props) {
       </div>
       <div style={{ ...Homeplace.HometextBox, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ ...Homeplace.categoryText, color: color }}>
-          {name}
+          {props.homes.info}
         </div>
         <div style={Homeplace.placenameText}>{props.homes.place}</div>
       </div>
