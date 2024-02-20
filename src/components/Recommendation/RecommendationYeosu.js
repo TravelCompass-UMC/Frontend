@@ -3,9 +3,9 @@ import { List, ListItem, ListItemText } from '@material-ui/core';
 
 const SearchRecommendations = ({ onRecommendationClick }) => {
   const recommendations = [
-    { name: "돌산공원", placeId: "ChIJQyXmJyHZbTURGEe3-6sbVFo", lat: 34.73058, lng: 127.73968 },
-        { name: "유월드 루지 테마파크", placeId: "ChIJ65i7yabfbTURq8ZB3CZ70gY", lat: 34.74800, lng: 127.64123 },
-        { name: "오동도", placeId: "ChIJ04TP1GHYbTURa17mljtqOMQ", lat: 34.74555, lng: 127.76693 },
+    { name: "오동도", placeId: "ChIJ04TP1GHYbTURa17mljtqOMQ", lat: 34.74555, lng: 127.76693 },
+    { name: "정우굴구이", placeId: "ChIJQ2-C5aHZbTURE4VitZ36Pcc", lat: 34.69602, lng: 127.77171 },
+    { name: "갓버터도나스", placeId: "ChIJm2Yg3k_ZbTURBRR0rN2fsFM", lat: 34.74108, lng: 127.73593 },
   ];
 
   const handleRecommendationClick = (place) => {

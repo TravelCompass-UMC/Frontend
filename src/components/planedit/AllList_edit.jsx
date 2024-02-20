@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/planedit/editAllList.module.css";
 import Modal from "./Modal_edit";
+import eclose from "../../assets/images/Pages/close.png";
 import PlusBtn from "./placePlus_edit";
 import plusIcon from "../../assets/images/edit/+.svg";
 
@@ -25,6 +26,17 @@ const AllList = () => {
         setShowPlusBtn(true);
     };
 
+    // 장소 카드를 삭제하는 함수
+    const removeDetailBox = (dayIndex, boxIndex) => {
+        setDetailBoxes(prev => prev.map((day, idx) => {
+            if (idx === dayIndex) {
+                // 특정 일자에서 선택된 장소 카드를 제거
+                return day.filter((_, index) => index !== boxIndex);
+            }
+            return day;
+        }));
+    };
+
     const generateDay = () => (
       Array.from({ length: travelDays }, (_, dayIndex) => (
           <div key={dayIndex} className={styles.dayContainer}>
@@ -38,6 +50,12 @@ const AllList = () => {
                           <div className={styles.numberIndex}>{index + 1}</div>
                           <div className={styles.detailTime}>09:30~11:20</div>
                       </div>
+                        <button
+                            className={styles.removeButton}
+                            onClick={() => removeDetailBox(dayIndex, index)}
+                        >
+                            <img src={eclose} alt="Close" />
+                        </button>
                       <div className={styles.placeContainer}>
                           <div className={styles.detailPlace}>명소</div>
                           <div className={styles.detailPlaceName}>장소이름</div>
@@ -50,10 +68,9 @@ const AllList = () => {
                               ))}
                           </select>
                       </div>
-                      <button className={styles.placeAdd} onClick={handlePlusBtnClick}>
-                          <img src={plusIcon} alt="Plus Icon" />
-                          여기에 장소 추가
-                      </button>
+                        <button className={styles.placeAdd} onClick={handlePlusBtnClick}><div className={styles.plusFont}>
+                            <img src={plusIcon} alt="Plus Icon" />    여기에 장소 추가</div>
+                        </button>
                   </div>
               ))}
               {detailBoxes.map((box, index) => (
@@ -76,10 +93,9 @@ const AllList = () => {
                           ))}
                       </select>
                   </div>
-                      <button className={styles.placeAdd} onClick={handlePlusBtnClick}>
-                          <img src={plusIcon} alt="Plus Icon" />
-                          여기에 장소 추가
-                      </button>
+                    <button className={styles.placeAdd} onClick={handlePlusBtnClick}><div className={styles.plusFont}>
+                        <img src={plusIcon} alt="Plus Icon" />    여기에 장소 추가</div>
+                    </button>
                   </div>
               ))}
           </div>
@@ -134,4 +150,3 @@ const AllList = () => {
 };
 
 export default AllList;
-

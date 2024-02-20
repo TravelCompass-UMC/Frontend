@@ -90,4 +90,3 @@ const DetailList = ({ num }) => {
 };
 
 export default DetailList;
-
