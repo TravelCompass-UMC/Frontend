@@ -451,6 +451,7 @@ export function InterestedPlaceThumbnail(props) {
   );
 }
 
+
 export function InterestedPlacesSection({ title, places, userName}) {
 
   const onToggleLike = (placeId) => {

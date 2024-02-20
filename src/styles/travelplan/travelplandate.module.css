@@ -97,7 +97,7 @@
 
 .container {
   width: 60vw;
-  margin-top: 150px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
 }
@@ -107,6 +107,7 @@
 }
 
 .calenderContainer {
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
 }

@@ -41,14 +41,15 @@ const MainHeader = () => {
   }, []);
   return (
     <>
-      <header className={classes.header}>
-        <h1 className={classes.logobox}>
-          <Link to="/" className={classes.logo}>
-            <img src={Mainlogo} alt="로고" />
-          </Link>
-        </h1>
+       <header className={classes.header}>
         <nav>
           <ul>
+            {/* 로고를 리스트의 첫 번째 아이템으로 포함 */}
+            <li className={classes.logoItem} >
+              <Link to="/">
+                <img src={Mainlogo} alt="로고" className={classes.homelogo} />
+              </Link>
+            </li>
             <li>
               <NavLink activeClassName={classes.active} to="/searchplace">
                 장소 검색
@@ -71,12 +72,9 @@ const MainHeader = () => {
             </li>
             <li>
               {isLoggedIn ? (
-                <div>
+                <div className={classes.loginSection}>
                   <span>환영합니다! </span>
-                  <button
-                    className={classes.loginout_btn}
-                    onClick={handleLogout}
-                  >
+                  <button className={classes.loginout_btn} onClick={handleLogout}>
                     로그아웃
                   </button>
                 </div>

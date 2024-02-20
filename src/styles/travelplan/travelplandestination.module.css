@@ -1,11 +1,17 @@
-.container {
+.mainContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh; /* 전체 뷰포트 높이를 사용하여 중앙 정렬 */
 }
-.informinputContainer {
-  position: absolute;
-  width: 600px;
-  margin-top: 200px;
+
+.formContainer {
+  width: 600px; /* 폼의 너비 지정 */
+  padding: 20px; /* 폼 내부의 패딩 */
+  margin-top: -100px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 폼에 그림자 효과 추가 */
+  border-radius: 10px; /* 폼의 모서리를 둥글게 */
+  background-color: white; /* 배경색 */
 }
 
 .textTitle {
@@ -56,7 +62,6 @@
 .search_title1 {
   /* Rectangle 34624545 */
   width: 90%;
-
   background: #f3f5ff;
   border: none;
   border-radius: 10px;
@@ -65,7 +70,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 170%;
-
+  margin-left: 30px;
   /* or 27px */
   outline: none;
   /* grayscale/Gray8 */
@@ -146,6 +151,13 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+.search_submit:hover, .search_submit:active {
+  background-color: #8270FF;
+  color: white;
+}
+
+
 .invitationCodeSection {
   display: flex;
   justify-content: space-between; /* input과 button 사이에 공간을 균등하게 배분 */
@@ -156,14 +168,4 @@
   display: flex;
   justify-content: space-between;
   margin-top: 90px; /* 버튼 간격을 조정하고 싶은 경우 */
-}
-
-/* 활성화된 버튼 스타일 */
-.buttonActive {
-  background-color: purple; /* 활성화된 버튼의 배경 색상 */
-  color: white; /* 활성화된 버튼의 텍스트 색상 */
-}
-
-.buttonActive:hover {
-  cursor: pointer; /* 마우스 오버 시 커서 변경 */
 }

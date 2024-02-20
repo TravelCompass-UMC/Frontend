@@ -6,7 +6,7 @@
 import LotteWorld from "../assets/images/장소/1 서울/명소/롯데월드 어드벤처.jpeg";
 import Mongtan from "../assets/images/장소/1 서울/식당/몽탄.jpeg";
 import RainReport from "../assets/images/장소/1 서울/카페/레인리포트.jpeg";
-
+ 
 import Gwangalli from "../assets/images/장소/2 부산/명소/광안리해수욕장.jpeg";
 import GGangttong from "../assets/images/장소/2 부산/식당/부평깡통시장.jpeg";
 import Pizza from "../assets/images/장소/2 부산/식당/이재모피자.jpeg";
@@ -33,7 +33,7 @@ let homeplaces = [
         category: 2,
         bookmark: 49873,
         star: 4.47,
-        img: LotteWorld,
+        img : LotteWorld,
     },
     {
         id: 2,

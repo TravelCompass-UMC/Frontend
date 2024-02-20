@@ -8,14 +8,14 @@ color: #BFC4D8; */
 }
 
 .Koreatitle{
-    margin-top: -20px;
-    font-size: 22px;
+    margin-top: -25px;
+    font-size: 20px;
     font-weight: 900;
     font-family: "SUIT Variable";
     letter-spacing: -0.5px;
 }
 .popluartext{
-    font-size: 18px;
+    font-size: 16px;
     margin-top: -10px;
     color: #7F85A3;
     font-weight: bold;
@@ -26,12 +26,12 @@ color: #BFC4D8; */
 .topbox {
     background-color: white;
     width:400px;
-    height: 55px;
+    height: 50px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     padding: 10px;
-    margin-bottom: 10px; /* 각 박스 사이의 여백 */
+    margin-bottom: 5px; /* 각 박스 사이의 여백 */
     border: 1px solid #ddd; /* 경계선 추가 */
   }
 
@@ -46,13 +46,13 @@ color: #BFC4D8; */
   }
   
   .top-number {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     margin-right: auto; /* TOP 번호와 지역명 사이에 여백을 최대로 하여 지역명을 오른쪽으로 밀어냄 */
   }
   
   .top-location-name {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     font-family: "SUIT Variable";
     padding-right: 20px;
@@ -60,15 +60,15 @@ color: #BFC4D8; */
   }
 
   .popluarplacetext{
-    margin-top: 25px;
-    font-size: 23px;
+    margin-top: 10px;
+    font-size: 21px;
     font-weight: 900;
     font-family: "SUIT Variable";
   }
 
   .selectpopulartext{
-    font-size: 18px;
-    margin-top: -10px;
+    font-size: 16px;
+    margin-top: -15px;
     color: #7F85A3;
     font-weight: bold;
     font-family: "SUIT Variable";
@@ -76,13 +76,14 @@ color: #BFC4D8; */
   }
 
   .popularplacebox {
+    margin-top: -10px;
     width: 500px;
     display: flex; /* 내부 항목들을 \가로로 나열 */
     overflow-x: auto; /* 가로 스크롤만 허용 */
     gap: 10px; /* 항목 사이의 간격 */
-    padding: 10px; /* 내부 여백 */
+    padding: 5px; /* 내부 여백 */
     background-color: #F3F5FF ; ; /* 배경색 */
-    height: 340px; /* 최대 높이 설정 */
+    height: 310px; /* 최대 높이 설정 */
   }
   
   .popularplacebox > div {

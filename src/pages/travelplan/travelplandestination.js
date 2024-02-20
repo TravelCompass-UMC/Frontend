@@ -138,11 +138,11 @@ class TrvlPlan extends Component {
 
     // 버튼 클래스를 조건부로 설정
     const buttonClass = isFormFilled ? styles.buttonActive : ""; // 활성화 상태에 따라 클래스 변경
-    
+
     return (
-      <div>
-      <div className={styles.container}>
-        <div className={styles.informinputContainer}>
+      <>
+      <div className={styles.mainContainer}> {/* 전체 컨테이너 */}
+        <div className={styles.formContainer}> {/* 폼을 가운데 정렬하기 위한 컨테이너 */}
           <form onSubmit={this.handleSubmit}>
             <div className={styles.textTitle}> 여행의 제목을 작성해주세요.</div>
             <div className={styles.search_title}>
@@ -201,17 +201,18 @@ class TrvlPlan extends Component {
                 onClick={this.handlePre}
               />
 
-                <Button
-                  className={`${styles.nextBtn} ${buttonClass}`} // 조건부 클래스 적용
-                  text="선택 완료"
-                  type="submit"
-                  disabled={!isFormFilled} // 폼이 완전히 채워지지 않으면 버튼 비활성화
-                />
-              </div>
-            </form>
-          </div>
+              <Button
+                className={`${styles.nextBtn} ${buttonClass}`} // 조건부 클래스 적용
+                text="선택 완료"
+                type="submit"
+                disabled={!isFormFilled} // 폼이 완전히 채워지지 않으면 버튼 비활성화
+              />
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+      <EndSection/>
+    </>
     );
   }
 }

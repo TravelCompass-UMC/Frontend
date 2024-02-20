@@ -17,6 +17,7 @@
 .blankbox {
   height: 9vh;
 }
+
 .header {
   height: 9vh;
   width: 100%;
@@ -24,25 +25,22 @@
   background-color: #191b24;
   padding: 10px 3px 3px 3px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   z-index: 9999; /* 다른 요소 위에 모달을 렌더링하도록 z-index 설정 */
 }
 
-.logobox {
-  width: 30%;
-  height: 155%;
-}
-.logo img {
+.logoItem {
   margin-left: 8vw;
-  margin-top: 40px;
   text-decoration: none;
-  object-fit: cover;
   display: block;
-  width: 240px;
-  height: 50%;
-  width: 50%;
-  height: auto;
+}
+
+.homelogo {
+  margin-right: 80px;
+  width: auto; /* 너비를 자동으로 조정하여 비율을 유지 */
+  height: 50px; /* 높이를 50px로 설정하여 이미지의 크기 조절 */
+  /* 필요한 경우 추가적인 스타일링을 적용 */
 }
 
 nav {

@@ -16,17 +16,18 @@ import down from "../../assets/images/Home/down.svg";
 import left from "../../assets/images/Home/left.svg";
 import homeplaces from "../../tempdata/Homedata.js";
 
+
 const Homeplace = {
   HomebigBox: {
     width: "200px",
-    height: "300px",
+    height: "250px",
     background: "#F3F5FF",
     borderRadius: 16,
     marginBottom: "20px",
   },
   HomeimageBox: {
     width: "100%",
-    height: "225px",
+    height: "215px",
     background: "#BFC4D8",
     borderRadius: 15,
     position: 'relative',
@@ -34,12 +35,12 @@ const Homeplace = {
   },
   HometextBox: {
     width: "100%",
-    height: "92px",
+    height: "40px",
     background: "#F3F5FF",
     borderRadius: 15,
   },
   categoryText: {
-    marginTop: 10,
+    marginTop: 25,
     color: "#7F85A3",
     marginLeft: 10,
     fontSize: 15,
@@ -49,7 +50,7 @@ const Homeplace = {
     wordWrap: "break-word",
   },
   placenameText: {
-    marginTop: 5,
+    marginTop: 0,
     marginLeft: 10,
     color: "#191B24",
     fontSize: 19,
@@ -70,7 +71,6 @@ function Home() {
 
   const [homes, setHomes] = useState(homeplaces);
   const [others, setOthers] = useState(otherplans);
-
 
   const navigate = useNavigate();
   const [searchedLocation, setSearchedLocation] = useState(null);

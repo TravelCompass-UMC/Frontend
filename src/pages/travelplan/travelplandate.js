@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Modal from "../../components/Modal";
 import { format } from "date-fns";
 import Button from "../../components/common_components/common_button";
+import { EndSection } from "../mapages/MyPage";
 
 const TrvlPlan = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -49,6 +50,7 @@ const TrvlPlan = () => {
   const formattedEndDate = format(endDate, "yyyy년 MM월 dd일");
 
   return (
+    <>
     <div className={styles.totalcontainer}>
       <div className={styles.container}>
         <div className={styles.textContainer}>
@@ -140,6 +142,8 @@ const TrvlPlan = () => {
         <div>여행 종료일: {formattedEndDate}</div>
       </Modal>
     </div>
+    <EndSection/>
+    </>
   );
 };
 
