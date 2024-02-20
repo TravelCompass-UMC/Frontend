@@ -90,8 +90,8 @@ function Home() {
 
   
   const SeoulHomes = homeplaces.slice(0,3).map(homes => ({...homes}));
-  const JejuHomes  = homeplaces.slice(3,6).map(homes => ({...homes}));
-  const BusanHomes = homeplaces.slice(6,9).map(homes => ({...homes}));
+  const BusanHomes = homeplaces.slice(3,6).map(homes => ({...homes}));
+  const JejuHomes = homeplaces.slice(6,9).map(homes => ({...homes}));
   const YeosuHomes = homeplaces.slice(9,12).map(homes => ({...homes}));
   
   let displayedHomes;

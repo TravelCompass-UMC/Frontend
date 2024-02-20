@@ -11,7 +11,7 @@ let myplans = [
     //데이터를 별도의 객체와 분리
     {
       id:1,
-      place: "속초",
+      place: "재영이의 양양서핑",
       hashtag: ["가족 여행"],
       liked: 1,
       img: SokchoImage,
@@ -19,7 +19,7 @@ let myplans = [
     },
     {
       id:2,
-      place: "경주",
+      place: "찬영이의 경주탐방",
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: GyeonjuImage,
@@ -27,7 +27,7 @@ let myplans = [
     },
     {
       id:3,
-      place: "여수",
+      place: "정한이의 낭만포차",
       hashtag: ["가족 여행"],
       liked: 1,
       img: YeosuImage,
@@ -35,7 +35,7 @@ let myplans = [
     },
     {
       id:4,
-      place: "부산",
+      place: "현우의 자갈치여행",
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: BusanImage,
@@ -43,7 +43,7 @@ let myplans = [
     },
     {
       id:5,
-      place: "제주도",
+      place: "지원이의 제주맛집탐방기",
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
@@ -51,7 +51,7 @@ let myplans = [
     },
     {
       id:6,
-      place: "속초",
+      place: "채연이의 속초여행기",
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: SokchoImage,
@@ -59,7 +59,7 @@ let myplans = [
     },
     {
       id:7,
-      place: "제주도",
+      place: "민정이의 제주가족여행",
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
@@ -67,7 +67,7 @@ let myplans = [
     },
     {
       id:8,
-      place: "부산",
+      place: "다현이의 우정여행",
       hashtag: ["추억 여행", "가족 여행"],
       liked: 1,
       img: BusanImage,
@@ -75,7 +75,7 @@ let myplans = [
     },
     {
       id:9,
-      place: "제주도",
+      place: "상현이의 해녀체험기",
       hashtag: ["가족 여행"],
       liked: 1,
       img: JejuImage,
