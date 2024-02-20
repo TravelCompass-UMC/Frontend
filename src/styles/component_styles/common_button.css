@@ -1,0 +1,15 @@
+/* Button.module.css */
+.Button {
+  width: 180px;
+  height: 80px;
+  background: #f3f5ff;
+  border-radius: 8px;
+  border: none;
+  font-family: "SUIT Variable", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  color: #bfc4d8;
+  cursor: pointer;
+}

@@ -1,18 +1,58 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import DiaryList from "../../components/Searchdairy/DiaryList";
+import Search from "../../components/Searchdairy/Search";
+import VectorImage from "../../assets/images/Pages/Vector.png"; // 이미지를 import
+
+// const styles = {
+//   searchText: {
+//     color: "#191B24",
+//     fontSize: 22,
+//     fontFamily: "SUIT Variable",
+//     fontWeight: "700",
+//     wordWrap: "break-word",
+//   },
+// };
 
 class srchdiary extends Component {
   render() {
     return (
       <div>
-        <h3> 여행 일지 찾기 페이지입니다.</h3>
-        <h3> 최적 여행계획서 찾기 필터: 일정/여행지/교통수단/해시태그 검색</h3>
-        <h3> 정렬 필터: 추천순 조회 많은 순 최신순</h3>
-        <h3> 페이지네이션 기능 구현</h3>
-        <h3> 클릭시 여행계획서로 이동</h3>
-        <h3> 내 여행 계획서로 가져오기</h3>
+        {/* <div style={{ marginTop: "50px" }}>
+          <img
+            src={VectorImage}
+            style={{
+              position: "relative",
+            }}
+          />
+
+          <h3
+            style={{
+              ...styles.searchText,
+              marginLeft: "25px",
+              marginTop: "-15px",
+              position: "relative",
+            }}
+          >
+            {" "}
+            원하는 조건의 계획 찾기{" "}
+          </h3>
+        </div> */}
+
+        <Search />
+        <DiaryList />
+        {/* oneday와 twoplus에 대한 유사한 버튼들 */}
       </div>
     );
   }
 }
+
+ReactDOM.render(
+  <React.StrictMode>
+    {/* <srchdiary /> Use the component name with PascalCase */}
+    <srchdiary />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
 export default srchdiary;

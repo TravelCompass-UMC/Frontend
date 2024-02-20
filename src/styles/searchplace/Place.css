@@ -1,0 +1,58 @@
+.search-container {
+  position: absolute;
+  top: 29px;
+  left: 390px;
+  right: 200px;
+  bottom: 887px;
+  z-index: 1;
+}
+
+.search-container form {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type="text"] {
+  width: 304px; /* 원하는 너비로 조절 */
+  height: 44px; /* 원하는 높이로 조절 */
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-container input[type="text"] {
+  background-color: white;
+  border: none;
+  outline: none;
+  cursor: text;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.search-container button[type="submit"] {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: default;
+}
+
+/* 수정된 부분 */
+.search-container button[type="submit"]:hover {
+  background-color: #FFD465; /* 버튼에 마우스 호버시 배경색 변경 */
+}
+
+.suggestion-list {
+  list-style: none;
+  padding-left: 17px;
+  position: flex;
+  width: 440px;
+  background-color: #ffffff; /* 흰색 배경 */
+  border: 1px solid #cccccc; /* 테두리 추가 */
+  border-top: 2px solid #454444;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  border-radius: 4px; /* 모서리 둥글게 */
+  cursor: default;
+}

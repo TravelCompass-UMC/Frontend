@@ -1,0 +1,8 @@
+svg {
+  stroke-width: 6px;
+  stroke: var(--Primary-color, #8270ff);
+  opacity: 0.6;
+  width: 98px;
+  height: 27px;
+  flex-shrink: 0;
+}
