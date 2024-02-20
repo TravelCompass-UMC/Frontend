@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/diaryContent.module.css";
+import { NavLink, Link } from "react-router-dom";
 
 function LeftBar({ onCustomChange }) {
   const [custom, setCustom] = useState(0);
@@ -13,8 +14,7 @@ function LeftBar({ onCustomChange }) {
     onCustomChange(e); // 부모 컴포넌트로 customDuration 전달
     if (e === 0) {
       console.log("전체 일정을 보여줍니다.");
-    }
-    else if (e > 0) {
+    } else if (e > 0) {
       console.log("디테일 일정을 보여줍니다.");
     }
   };
@@ -59,11 +59,14 @@ function LeftBar({ onCustomChange }) {
   return (
     <div>
       {/* LeftBarjsx 내용 */}
-      <button className={styles.buttonFalse}
+      <button
+        className={styles.buttonFalse}
         style={{
           background: custom === 0 ? "#484a64" : "#ebedf8",
         }}
-        value={0} onClick={() => handleAllScheduleClick(0)}>
+        value={0}
+        onClick={() => handleAllScheduleClick(0)}
+      >
         전체일정
       </button>
       {/* 여행 기간 설정을 위한 예시 입력 */}
@@ -74,12 +77,23 @@ function LeftBar({ onCustomChange }) {
       /> */}
       {/* 여행 기간에 따른 일차 버튼들 */}
       {generateDayButtons()}
+
+      {/*편집하기*/}
+      {/* 편집 완료 및 저장 버튼 */}
+      <NavLink to="/travelplanedit" style={{ textDecoration: "none" }}>
+        <button className={styles.buttonEdit}>
+          <div>편집 하기</div>
+        </button>
+      </NavLink>
       {/*현재 계획서 적용하기*/}
-      <button className={styles.buttonUse}
+      <button
+        className={styles.buttonUse}
         // style={{
         //   background: custom === 0 ? "#484a64" : "#ebedf8",
         // }}
-        value={-1} onClick={() => handleAllScheduleClick(-1)}>
+        value={-1}
+        onClick={() => handleAllScheduleClick(-1)}
+      >
         <div>현재 계획서</div>
         적용하기
       </button>
