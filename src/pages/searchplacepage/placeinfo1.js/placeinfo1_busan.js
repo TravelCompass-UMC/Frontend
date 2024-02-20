@@ -32,9 +32,9 @@ const PlaceInfoBusan = () => {
   useEffect(() => {
     const fetchRecommendations = async () => {
       const data = [
-        { name: "해운대해수욕장", placeId: "ChIJXwf-DlyNaDURmKxjwdWxY5k", lat: 35.15955, lng: 129.16003 },
-        { name: "국립해양박물관", placeId: "ChIJG53_8sjuaDURR7ggeXzOSis", lat: 35.07847, lng: 129.07987 },
-        { name: "태종대유원지", placeId: "ChIJOfX1e0zpaDURWq5Hp5x4-SM", lat: 35.05417, lng: 129.08750 },
+        { name: "광안리해수욕장", placeId: "ChIJxw7HJy_taDUR-xaSTeHwbf8", lat: 35.15398, lng: 129.11867 },
+        { name: "부평깡통시장", placeId: "ChIJ21pR1aHpaDUR_usy_ELBCvk", lat: 35.10199, lng: 129.02588 },
+        { name: "이재모피자", placeId: "ChIJ8VYk1e74IBURIIVPcKTynRI", lat: 35.10768, lng: 129.02900 },
       ];
       setRecommendations(data);
     };
@@ -45,7 +45,7 @@ const PlaceInfoBusan = () => {
   const handlePinClick = (place) => {
     setSelectedPlace(place);
     setMapLocation({ lat: place.lat, lng: place.lng });
-    setZoomLevel(12.6); // 확대 레벨 조정
+    setZoomLevel(16); // 확대 레벨 조정
   };
 
   const handleSearch = () => {

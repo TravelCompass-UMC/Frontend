@@ -2,7 +2,7 @@
 const API_KEY = 'AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU';
 
 // 장소명
-const placeName = '설해원';
+const placeName = '골목카페옥수';
 
 // Google Places API 호출 URL
 const apiUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(placeName)}&inputtype=textquery&fields=place_id&key=${API_KEY}`;

@@ -9,6 +9,15 @@
   flex-shrink: 0;
 }
 
+.removeButton {
+  position: relative;
+  background: var(--grayscale-White, #FFF);
+  left: 90%;
+  top: -17%;
+  cursor: pointer; 
+  border: none;
+}
+
 .timeContainer {
   display: flex;
   align-items: center;
@@ -43,7 +52,7 @@
 
 .placeImage {
   margin-left: 210px;
-  margin-top: -90px;
+  margin-top: -70px;
   width: 140px;
   height: 140px;
   border-radius: 10px;
@@ -52,7 +61,6 @@
 
 .placeContainer {
   padding-left: 60px;
-  padding-top: 20px;
 }
 
 .detailPlace {
@@ -78,7 +86,7 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 50%;
-  margin-top: -20px;
+  margin-top: -40px;
   color: var(--grayscale-Gray5, #626682);
   font-family: "SUIT Variable";
   font-size: 15px;
