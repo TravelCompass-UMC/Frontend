@@ -9,14 +9,14 @@ import RainReport from "../assets/images/장소/1 서울/카페/레인리포트.
 
 import Gwangalli from "../assets/images/장소/2 부산/명소/광안리해수욕장.jpeg";
 import GGangttong from "../assets/images/장소/2 부산/식당/부평깡통시장.jpeg";
-import Rlook from "../assets/images/장소/2 부산/카페/얼룩.jpeg";
+import Pizza from "../assets/images/장소/2 부산/식당/이재모피자.jpeg";
 
 import Dongbaek from "../assets/images/장소/3 제주/명소/동백포레스트.jpeg";
 import JaraeMarket from "../assets/images/장소/3 제주/식당/동문재래시장.jpeg";
 import CafeOkssu from "../assets/images/장소/3 제주/카페/골목카페옥수.jpeg";
 
 import Odongdo from "../assets/images/장소/4 여수/명소/오동도.jpeg";
-import JungFood from "../assets/images/장소/4 여수/식당/정다운식당.jpeg";
+import Jungwoo from "../assets/images/장소/4 여수/식당/정우굴구이.jpeg";
 import GodButter from "../assets/images/장소/4 여수/카페/갓버터도나스.jpeg";
 
 
@@ -84,14 +84,14 @@ let homeplaces = [
     },
     {
         id: 6, 
-        place: "얼룩",
+        place: "이재모피자",
         info: "카페",
         where: "부산 부산진구 전포대로210번길48",
         liked: 1,
         category: 3,
         bookmark: 820,
         star: 4.64,
-        img: Rlook,
+        img: Pizza,
 
     },
     {
@@ -140,14 +140,14 @@ let homeplaces = [
     },
     {
         id: 11,
-        place: "정다운식당",
+        place: "정우굴구이",
         info: "식당",
-        where: "전남 여수시 돌산읍 마상포길 12",
+        where: "전남 여수시 돌산읍 안굴전길 57",
         liked: 1,
         category: 3,
-        bookmark: 10684,
-        star: 4.46,
-        img: JungFood,
+        bookmark: 479,
+        star: 4.41,
+        img: Jungwoo,
     },
     {
         id: 12,

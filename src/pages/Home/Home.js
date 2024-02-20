@@ -90,8 +90,8 @@ function Home() {
 
   
   const SeoulHomes = homeplaces.slice(0,3).map(homes => ({...homes}));
-  const JejuHomes  = homeplaces.slice(3,6).map(homes => ({...homes}));
-  const BusanHomes = homeplaces.slice(6,9).map(homes => ({...homes}));
+  const BusanHomes = homeplaces.slice(3,6).map(homes => ({...homes}));
+  const JejuHomes = homeplaces.slice(6,9).map(homes => ({...homes}));
   const YeosuHomes = homeplaces.slice(9,12).map(homes => ({...homes}));
   
   let displayedHomes;
@@ -261,13 +261,14 @@ export function SeoulThumbnail(props) {
   return (
     <div style={Homeplace.HomebigBox}>
       <div style={Homeplace.HomeimageBox}>
-        <img className="Homeplaceimg" 
+
+        <img className="Homeplaceimg"
         src={props.homes.img}
         alt="인기장소" />
       </div>
       <div style={{ ...Homeplace.HometextBox, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ ...Homeplace.categoryText, color: color }}>
-          {name}
+          {props.homes.info}
         </div>
         <div style={Homeplace.placenameText}>{props.homes.place}</div>
       </div>
