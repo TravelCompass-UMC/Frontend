@@ -133,9 +133,10 @@ function DiaryList(props) {
                     <td>
                       <Diary
                         key={index}
-                        place={place.place}
-                        hashtag={place.hashtag}
-                        img={place.img}
+                        // place={place.place}
+                        // hashtag={place.hashtag}
+                        // img={place.img}
+                        datas={place}
                       />
                     </td>
                   ))}
