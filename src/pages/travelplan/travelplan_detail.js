@@ -14,8 +14,11 @@ import PlaceComponent from "./placecomponent";
 import PlaceDateComponent from "./date_place_component";
 import { subDays } from "date-fns";
 import ClockIcon from "../../assets/images/clock.svg";
-
+import Googlesearch from "./googlesearch_component";
 import Button from "../../components/common_components/common_button";
+
+import PlaceDetail from "../../components/searchPlace/PlaceDetail"; // A component for place details
+import PlaceSelection from "../../components/planedit/SearchRecommendations";
 
 const sidebarOptions = ["일정", "숙소", "장소"];
 
@@ -38,10 +41,23 @@ const Trvlpage = () => {
   const [childrenCount, setChildrenCount] = useState(0);
   const [selectedAccommodation, setSelectedAccommodation] = useState(null);
   const [selectedAccommodations, setSelectedAccommodations] = useState({});
-  const [selectedPlace, setSelectedPlace] = useState(null);
   const [activeDate, setActiveDate] = useState("");
-  const [selectedPlaces, setSelectedPlaces] = useState({});
+  const [placeInfos, setPlaceInfos] = useState([]); // 추가된 상태
   const sidebarWidth = sidebarContent === "일정" ? 900 : 1100;
+
+  const [searchQuery, setSearchQuery] = useState(""); // Search query state
+  const [places, setPlaces] = useState([]); // State to store search results and recommendations
+  const [selectedPlace, setSelectedPlace] = useState(null); // 선택된 장소 상태를 관리합니다.
+  const [showPlaceSelection, setShowPlaceSelection] = useState(false); // 숙소 선택 상태를 관리합니다
+  const [showPlaceSelectionForDate, setShowPlaceSelectionForDate] = useState(
+    {}
+  );
+
+  const [mapLocation, setMapLocation] = useState({
+    lat: 36.332586,
+    lng: 128.105835,
+  }); // Map center state
+  const [zoomLevel, setZoomLevel] = useState(7.4); // Map zoom level state
 
   const [tempSelectedAccommodation, setTempSelectedAccommodation] =
     useState(null);
@@ -54,18 +70,20 @@ const Trvlpage = () => {
     : "";
 
   useEffect(() => {
-    if (startDate && endDate) {
-      const dates = eachDayOfInterval({ start: startDate, end: endDate });
-      const newTimes = {};
-      dates.forEach((date) => {
-        const formattedDate = format(date, "yyyy-MM-dd");
-        newTimes[formattedDate] = {
-          startTime: new Date(date.setHours(9, 0, 0, 0)),
-          endTime: new Date(date.setHours(18, 0, 0, 0)),
-        };
-      });
-      setTimes(newTimes);
-    }
+    const dates = eachDayOfInterval({ start: startDate, end: endDate });
+    const newTimes = {};
+    const initialShowPlaceSelectionForDate = {};
+    dates.forEach((date) => {
+      const formattedDate = format(date, "yyyy-MM-dd");
+      initialShowPlaceSelectionForDate[formattedDate] = false;
+
+      newTimes[formattedDate] = {
+        startTime: new Date(date.setHours(9, 0, 0, 0)),
+        endTime: new Date(date.setHours(18, 0, 0, 0)),
+      };
+    });
+    setTimes(newTimes);
+    setShowPlaceSelectionForDate(initialShowPlaceSelectionForDate);
   }, [startDate, endDate]);
 
   useEffect(() => {
@@ -80,22 +98,6 @@ const Trvlpage = () => {
       setFilteredPlaces(filtered);
     }
   }, [searchTerm]);
-
-  // Place 컴포넌트 예시
-  // const Place = ({ name, address, imageUrl, onSelect, selected }) => {
-  //   const selectedClass = selected ? "selected" : "";
-
-  //   return (
-  //     <div className={`place-container ${selectedClass}`} onClick={onSelect}>
-  //       <img src={imageUrl} alt={name} className={styles.place_image} />
-  //       <div className="place-info">
-  //         <h3>{name}</h3>
-  //         <p>{address}</p>
-  //       </div>
-  //       {selected && <button className="select-button">선택됨</button>}
-  //     </div>
-  //   );
-  // };
 
   const renderPlaceSearch = () => {
     const handleSelectPlace = (id) => {
@@ -158,6 +160,17 @@ const Trvlpage = () => {
       </div>
     );
   };
+  const handlePlaceSelect = (place) => {
+    setSelectedPlace(place); // 선택된 장소 상태 업데이트
+    setShowPlaceSelection(false); // 숙소 선택을 완료하면 숙소 선택 UI를 숨깁니다.
+    setMapLocation({ lat: place.lat, lng: place.lng }); // 지도 중심 이동
+    setZoomLevel(16); // 지도 확대
+    // 선택된 장소의 상세 정보를 표시하는 로직이 필요한 경우 여기에 추가
+  };
+  const handlePlaceSelectionButtonClick = () => {
+    setShowPlaceSelection(true); // 숙소 선택 UI를 보여줍니다.
+  };
+
   // 날짜별로 선택된 숙소와 장소 정보를 렌더링하는 함수
   const renderSelectedInfoForDate = () => {
     if (!activeDate) return null; // activeDate가 유효하지 않으면 여기서 처리
@@ -284,6 +297,56 @@ const Trvlpage = () => {
     }
   };
 
+  const handleSearch = (placeData) => {
+    setPlaceInfos({
+      name: placeData.name,
+      photoReference: placeData.photoReference,
+      address: placeData.address,
+    });
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      // Call the Google Places API
+      const apiKey = "AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU";
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(
+          searchQuery
+        )}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=${apiKey}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const results = await response.json();
+      // Assume we're just interested in the first result
+      const place = results.candidates[0];
+      const newPlace = {
+        name: place.name,
+        lat: place.geometry.location.lat,
+        lng: place.geometry.location.lng,
+        photos: place.photos
+          ? place.photos.map((photo) => photo.photo_reference)
+          : [],
+        vicinity: place.formatted_address || place.vicinity, // 주소 또는 위치 정보
+      };
+
+      // Update your state with the new place
+      setPlaces([...places, newPlace]);
+      setSelectedPlace(newPlace);
+      setMapLocation({ lat: newPlace.lat, lng: newPlace.lng });
+      setZoomLevel(16); // Zoom in to the selected place
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const renderPeopleCount = () => {
     return (
       <div className="people-count">
@@ -361,18 +424,15 @@ const Trvlpage = () => {
   };
 
   const handleSelectAccommodationForDate = (formattedDate) => {
-    if (tempSelectedAccommodation) {
-      setSelectedAccommodations((prev) => ({
-        ...prev,
-        [formattedDate]: tempSelectedAccommodation,
-      }));
-      setTempSelectedAccommodation(null); // 임시 선택 초기화
-      // 여기서는 setSidebarContent("숙소")를 호출하지 않습니다.
-    }
+    setShowPlaceSelectionForDate((prevState) => ({
+      ...prevState,
+      [formattedDate]: true,
+    }));
   };
 
   // 숙소 선택 및 "+숙소 선택(날짜)" 버튼을 렌더링하는 로직을 수정하여,
   // 숙소 리스트와 선택된 숙소 정보를 동시에 표시합니다.
+
   const renderAccommodationSelection = () => {
     const intervalDates = eachDayOfInterval({
       start: new Date(startDate),
@@ -385,43 +445,60 @@ const Trvlpage = () => {
     return (
       <>
         <div>
-          {AccommodationsData.map((accommodation) => (
-            <Accommodation
-              key={accommodation.id}
-              name={accommodation.name}
-              imageUrl={accommodation.imageUrl}
-              onSelect={() => onSelectAccommodation(accommodation.id)}
-              selected={tempSelectedAccommodation === accommodation.id}
+          <div className={styles.searchBar}>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="검색할 장소를 입력하세요"
+              className={styles.searchInput}
+              style={{ width: "30%", height: "100%", border: "none" }}
             />
-          ))}
+            <button
+              onClick={handleSearchSubmit}
+              className={styles.searchButton}
+            ></button>
+          </div>
+
+          <PlaceSelection
+            places={places}
+            onRecommendationClick={(place) => {
+              setSelectedPlace(place);
+              setMapLocation({ lat: place.lat, lng: place.lng });
+              setZoomLevel(18); // Zoom in to the selected place
+              handlePlaceSelect(place);
+            }}
+            selectedPlace={selectedPlace}
+          />
+          {selectedPlace && <PlaceDetail place={selectedPlace} />}
         </div>
+        {showPlaceSelection && (
+          <PlaceSelection
+            places={places}
+            onRecommendationClick={(place) => {
+              handlePlaceSelect(place);
+            }}
+            selectedPlace={selectedPlace}
+          />
+        )}
 
         {formattedDates.map((formattedDate, index) => (
           <div key={index} className="daily-accommodation-selection">
             <h3>{formattedDate}</h3>
-            {selectedAccommodations[formattedDate] ? (
-              // 선택된 숙소 정보를 렌더링
-              <div className="selected-accommodation-info">
-                <p>
-                  선택된 숙소:{" "}
-                  {
-                    AccommodationsData.find(
-                      (acc) => acc.id === selectedAccommodations[formattedDate]
-                    )?.name
-                  }
-                </p>
-                <button
-                  onClick={() => handleSelectAccommodation(null, formattedDate)}
-                >
-                  숙소 변경
-                </button>
-              </div>
+
+            {showPlaceSelectionForDate[formattedDate] ? (
+              <PlaceSelection
+                places={places}
+                onRecommendationClick={(place) => {
+                  handlePlaceSelect(place);
+                }}
+                selectedPlace={selectedPlace}
+              />
             ) : (
-              // 숙소가 선택되지 않았을 때 숙소 선택 버튼을 렌더링
               <button
                 onClick={() => handleSelectAccommodationForDate(formattedDate)}
               >
-                + 숙소 선택 ({formattedDate})
+                숙소 선택 ({formattedDate})
               </button>
             )}
           </div>
@@ -503,7 +580,29 @@ const Trvlpage = () => {
         );
 
       case "숙소":
-        return <div>{renderAccommodationSelection()}</div>;
+        return (
+          <div>
+            {/* <div>
+              <Googlesearch onSearch={handleSearch} />
+              {placeInfos && (
+                <div className={styles.placeCard}>
+                  <div className={styles.placeName}>{placeInfos.name}</div>
+                  {placeInfos.photoReference && (
+                    <img
+                      src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=${placeInfos.photoReference}&key=AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU`}
+                      alt={placeInfos.name}
+                      className={styles.placeImage}
+                    />
+                  )}
+                  <p className={styles.placeLocation}>
+                    위치: {placeInfos.address || "제공되지 않는 정보입니다."}
+                  </p>
+                </div>
+              )}
+            </div> */}
+            {renderAccommodationSelection()}
+          </div>
+        );
 
       case "장소":
         return (
@@ -606,7 +705,9 @@ const Trvlpage = () => {
       </SidebarL>
       <Map
         containerStyle={{ width: "100vw", height: "91vh" }}
-        zoomLevel={11.2}
+        location={mapLocation}
+        zoomLevel={zoomLevel}
+        places={places} // Pass the places to the Map component
       />
     </div>
   );

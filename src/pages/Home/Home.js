@@ -90,27 +90,28 @@ function Home() {
 
   
   const SeoulHomes = homeplaces.slice(0,3).map(homes => ({...homes}));
-  const JejuHomes  = homeplaces.slice(3,6).map(homes => ({...homes}));
-  const BusanHomes = homeplaces.slice(6,9).map(homes => ({...homes}));
-  const GyeongjuHomes = homeplaces.slice(9,12).map(homes => ({...homes}));
+  const BusanHomes = homeplaces.slice(3,6).map(homes => ({...homes}));
+  const JejuHomes = homeplaces.slice(6,9).map(homes => ({...homes}));
+  const YeosuHomes = homeplaces.slice(9,12).map(homes => ({...homes}));
   
   let displayedHomes;
-switch (selectedLocation) {
+  switch (selectedLocation) {
     case '서울':
-        displayedHomes = SeoulHomes;
-        break;
-    case '제주도':
-        displayedHomes = JejuHomes;
-        break;
+      displayedHomes = SeoulHomes;
+      break;
     case '부산':
-        displayedHomes = BusanHomes;
-        break;
-    case '경주':
-        displayedHomes = GyeongjuHomes;
-        break;
+      displayedHomes = BusanHomes;
+      break;
+    case '제주도':
+      displayedHomes = JejuHomes;
+      break;
+
+    case '여수':
+      displayedHomes = YeosuHomes;
+      break;
     default:
-        displayedHomes = [];
-}
+      displayedHomes = [];
+  }
 
   const handleSearch = (location, query) => {
     setSearchedLocation(location);
@@ -145,20 +146,20 @@ switch (selectedLocation) {
             <div className="top-number">TOP.1</div>
             <div className="top-location-name">서울</div>
           </button>
-          <button className="topbox" onClick={() => handleLocationChange('제주도')}>
+          <button className="topbox" onClick={() => handleLocationChange('부산')}>
             <img src={right} className="arrow-image" />
             <div className="top-number">TOP.2</div>
-            <div className="top-location-name">제주도</div>
-          </button>
-          <button className="topbox" onClick={() => handleLocationChange('부산')}>
-            <img src={down} className="arrow-image" />
-            <div className="top-number">TOP.3</div>
             <div className="top-location-name">부산</div>
           </button>
-          <button className="topbox" onClick={() => handleLocationChange('경주')}>
+          <button className="topbox" onClick={() => handleLocationChange('제주도')}>
+            <img src={down} className="arrow-image" />
+            <div className="top-number">TOP.3</div>
+            <div className="top-location-name">제주도</div>
+          </button>
+          <button className="topbox" onClick={() => handleLocationChange('여수')}>
             <img src={left} className="arrow-image" />
             <div className="top-number">TOP.4</div>
-            <div className="top-location-name">경주</div>
+            <div className="top-location-name">여수</div>
           </button>
           <div>
             {/* 선택된 지역을 표시 */}
@@ -260,34 +261,20 @@ export function SeoulThumbnail(props) {
   return (
     <div style={Homeplace.HomebigBox}>
       <div style={Homeplace.HomeimageBox}>
-        <img className="Homeplaceimg" alt="인기장소" />
+
+        <img className="Homeplaceimg"
+        src={props.homes.img}
+        alt="인기장소" />
       </div>
       <div style={{ ...Homeplace.HometextBox, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ ...Homeplace.categoryText, color: color }}>
-          {name}
+          {props.homes.info}
         </div>
         <div style={Homeplace.placenameText}>{props.homes.place}</div>
       </div>
     </div>
   );
-  // return (
-  //   <div style={Homeplace.HomebigBox}>
-  //     <div style={Homeplace.HomeimageBox}>
-  //       <img className="Homeplaceimg"
-  //         style={{}}
-  //         alt="인기장소"
-  //       />
-  //     </div>
-  //     <div style={containerStyle}>
-  //       <div style={textStyle}>
-  //         <div style={Homeplace.categoryText}>
-  //           {props.homes.category}
-  //         </div>
-  //         <div style={Homeplace.placenameText}>{props.homes.place}</div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // )
+
 }
 
 export function JejuThumbnail(props) {
@@ -313,7 +300,7 @@ export function JejuThumbnail(props) {
     <div style={Homeplace.HomebigBox}>
       <div style={Homeplace.HomeimageBox}>
         <img className="Homeplaceimg"
-          style={{}}
+          src={props.homes.img}
           alt="인기장소"
         />
       </div>
@@ -352,7 +339,7 @@ export function BusanThumbnail(props) {
     <div style={Homeplace.HomebigBox}>
       <div style={Homeplace.HomeimageBox}>
         <img className="Homeplaceimg"
-          style={{}}
+          src={props.homes.img}
           alt="인기장소"
         />
       </div>
@@ -367,7 +354,7 @@ export function BusanThumbnail(props) {
     </div>
   )
 }
-export function GyeongjuThumbnail(props) {
+export function YeosuThumbnail(props) {
 
   const [homes, setHomes] = useState(homeplaces);
 
@@ -390,7 +377,7 @@ export function GyeongjuThumbnail(props) {
     <div style={Homeplace.HomebigBox}>
       <div style={Homeplace.HomeimageBox}>
         <img className="Homeplaceimg"
-          style={{}}
+          src={props.homes.img}
           alt="인기장소"
         />
       </div>

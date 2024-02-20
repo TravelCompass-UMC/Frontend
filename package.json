@@ -12,6 +12,8 @@
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
+    "@mui/utils": "^5.15.9",
+    "@popperjs/core": "^2.11.8",
     "@react-google-maps/api": "^2.19.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",

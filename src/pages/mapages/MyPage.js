@@ -100,7 +100,7 @@ const Placethumbnail = {
   },
   placeName: { // 장소 이름 스타일
     marginLeft: 5,
-    fontSize: "20px", // 예시 글자 크기
+    fontSize: "18px", // 예시 글자 크기
     fontWeight: "bold", // 굵은 글씨체
   },
   placeType: { // 분류(명소, 식당 등) 스타일
@@ -112,6 +112,7 @@ const Placethumbnail = {
   placeWhere: {
     marginLeft: 5,
     fontSize: "14px",
+    marginTop: "-7px",
   },
   detailimage: {
     width: "125px",
@@ -214,6 +215,7 @@ export function MyplanThumbnail(props, onToggleLike) {
         <div style={Thumbnail.dateBox}>D-{props.plans.left}</div>
       </div>
       <div style={containerStyle}>
+        <NavLink to="/travelplanedit" style={{ textDecoration: "none", width: "100%" }}>
         <div style={textStyle}>
           <a style={Thumbnail.placeText}>{props.plans.place}</a>
           <p style={Thumbnail.hashtagText}>
@@ -222,6 +224,7 @@ export function MyplanThumbnail(props, onToggleLike) {
             ))}
           </p>
         </div>
+        </NavLink>
         <img
           style={Thumbnail.heartImage}
           src={planHeart === 1 ? heartFilled : heart}
@@ -264,7 +267,6 @@ export function MyTravelPlanSection({ title, plans, userName}) {
         }}
       >
         <p>{title}</p>
-        {/* <Link to="/myplan"> */}
         <button
           className={`morebutton ${!isMoreThanThree ? 'disabled' : ''}`}
           onClick={handleMoreClick}
@@ -442,7 +444,7 @@ export function InterestedPlaceThumbnail(props) {
       </div>
       <img className="placeimg"
         style={Placethumbnail.detailimage}
-        src={""}
+        src={props.places.img}
         alt="장소 이미지"
       />
     </div>
