@@ -196,4 +196,4 @@ let allplans = [
     // 추가적인 데이터는 여기에 계속 추가
 ];
 
-export default plandata;
+export default allplans;

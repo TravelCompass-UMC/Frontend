@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import style from "../../styles/searchdiary.css";
 import heart from "../../assets/images/Pages/Group 2236.png"; // 이미지를 import
 import heartFilled from "../../assets/images/Pages/Group 2236_filled.png"; // 채워진 하트 이미지를 import
+import allplans from "../../tempdata/plandatas";
 
 const styles = {
   bigBox: {
@@ -63,7 +64,14 @@ function Diary(props) {
 
     <div style={styles.bigBox}>
       <NavLink to="/diarycontent" style={{ textDecoration: "none" }}>
-        <div style={styles.imageBox}></div>
+        <div style={styles.imageBox}>
+          <img
+            className="myplanimg"
+            style={{ width: "100%", height: "100%", borderRadius: "15px" }}
+            src={props.img}
+            alt="장소 이미지"
+          />
+        </div>
 
         {/* <span style={styles.nameText}>{props.name}</span> */}
         {/* <div style={styles.textBox}> */}
