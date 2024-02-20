@@ -9,6 +9,7 @@ const MainHeader = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태
   const [username, setUsername] = useState(""); // 사용자 이름
   const [nickname, setNickname] = useState(""); // 닉네임 상태를 관리하기 위한 상태 추가
+  const [accessToken, setAccessToken] = useState(""); // accessToken 상태를 관리하기 위한 상태 추가
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -21,18 +22,21 @@ const MainHeader = () => {
   // 로그인 및 로그아웃 핸들러 (임시)
   const handleLogin = () => {
     setIsLoggedIn(true);
-    setUsername("네이버아이디"); // 임시 사용자 이름 설정
+    setAccessToken("임시_액세스_토큰"); // 임시 accessToken 설정
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setUsername("");
+    setAccessToken("");
   };
   useEffect(() => {
-    // sessionStorage에서 닉네임 가져오기
-    const storedNickname = sessionStorage.getItem("nickname");
-    if (storedNickname) {
-      setNickname(storedNickname); // 가져온 닉네임을 상태에 저장
+    // sessionStorage에서 accessToken 가져오기
+    const storedAccessToken = sessionStorage.getItem("accessToken");
+    if (storedAccessToken) {
+      setIsLoggedIn(true);
+      setAccessToken(storedAccessToken); // 가져온 accessToken을 상태에 저장
+    } else {
+      setIsLoggedIn(false);
     }
   }, []);
   return (
@@ -68,7 +72,7 @@ const MainHeader = () => {
             <li>
               {isLoggedIn ? (
                 <div>
-                  <span>{username}님 환영합니다! </span>
+                  <span>환영합니다! </span>
                   <button
                     className={classes.loginout_btn}
                     onClick={handleLogout}
@@ -83,8 +87,8 @@ const MainHeader = () => {
               )}
             </li>
             <div className="loginMessage">
-              {nickname ? (
-                <div>환영합니다, {nickname}님!</div>
+              {isLoggedIn ? (
+                <div>환영합니다!</div>
               ) : (
                 <div>로그인이 필요합니다.</div>
               )}

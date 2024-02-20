@@ -287,3 +287,42 @@
 .info {
   padding-bottom: 30px;
 }
+
+/* styles/travelplan/travelplan_detail.module.css에 추가 */
+.selectedPlace {
+  background-color: #f0f0f0; /* 선택된 항목의 배경색 */
+  border-left: 5px solid #007bff; /* 선택 표시를 위한 왼쪽 테두리 */
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.placeItem {
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.placeItem:hover {
+  background-color: #f8f8f8; /* 호버 시 배경색 변경 */
+}
+
+.selectedAccommodation {
+  background-color: #e9ecef; /* 또는 프로젝트의 디자인 가이드에 맞는 색상 */
+  border: 2px solid #007bff; /* 선택된 숙소를 강조하는 테두리 색상 */
+  margin: 5px 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accommodationItem {
+  margin: 5px 0;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accommodationItem:hover {
+  background-color: #f8f8f8; /* 호버 시 배경색 변경 */
+}

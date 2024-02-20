@@ -1,41 +1,43 @@
 .recommendationsContainer {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .recommendationItem {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .recommendationImage {
-    width: 80px;
-    height: 80px;
-    margin-right: 10px;
-  }
-  
-  .recommendationImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  
-  .recommendationInfo {
-    flex-grow: 1;
-  }
-  
-  .recommendationTitle {
-    margin: 0;
-    font-size: 1.1em;
-  }
-  
-  .recommendationDescription {
-    font-size: 0.9em;
-  }
-  
+  display: flex;
+  flex-direction: column;
+}
+
+.recommendationItem {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.recommendationImage {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.recommendationImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.recommendationInfo {
+  flex-grow: 1;
+}
+
+.recommendationTitle {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.recommendationDescription {
+  font-size: 0.9em;
+}
+.selectedRecommendationItem {
+  background-color: blue; /* 예시: 선택된 항목의 배경색 변경 */
+}
