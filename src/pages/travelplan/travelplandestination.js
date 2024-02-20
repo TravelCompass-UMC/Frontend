@@ -6,6 +6,7 @@ import image1 from "../../assets/images/Pages/Vector (2).png";
 import { format } from "date-fns";
 import { autocompleteClasses } from "@mui/material";
 import Button from "../../components/common_components/common_button";
+import { EndSection } from "../../pages/mapages/MyPage";
 
 class TrvlPlan extends Component {
   constructor(props) {
@@ -137,33 +138,34 @@ class TrvlPlan extends Component {
 
     // 버튼 클래스를 조건부로 설정
     const buttonClass = isFormFilled ? styles.buttonActive : ""; // 활성화 상태에 따라 클래스 변경
-
+    
     return (
+      <div>
       <div className={styles.container}>
         <div className={styles.informinputContainer}>
           <form onSubmit={this.handleSubmit}>
-            <div className={styles.textTitle}>여행의 제목을 작성해주세요.</div>
+            <div className={styles.textTitle}> 여행의 제목을 작성해주세요.</div>
             <div className={styles.search_title}>
               <input
                 type="text"
                 maxLength="20"
                 className={styles.search_title1}
                 name="tripTitle"
-                placeholder="   여행 제목을 입력해주세요."
+                placeholder=" 여행 제목을 입력해주세요."
                 value={this.state.tripTitle}
                 onChange={this.handleTripTitleChange}
               />
             </div>
             {/* 목적지 검색 필드 */}
             <div>
-              <div className={styles.textTitle}>어디로 가시나요?</div>
+              <div className={styles.textTitle}> 어디로 가시나요?</div>
               <div className={styles.search_title}>
                 <input
                   type="text"
                   maxLength="20"
                   className={styles.search_title1}
                   name="searchInput"
-                  placeholder="   어디로 가고싶나요?"
+                  placeholder=" 어디로 가고싶나요?"
                   value={this.state.searchInput}
                   onChange={this.handleSearchInput}
                 />
@@ -199,16 +201,17 @@ class TrvlPlan extends Component {
                 onClick={this.handlePre}
               />
 
-              <Button
-                className={`${styles.nextBtn} ${buttonClass}`} // 조건부 클래스 적용
-                text="선택 완료"
-                type="submit"
-                disabled={!isFormFilled} // 폼이 완전히 채워지지 않으면 버튼 비활성화
-              />
-            </div>
-          </form>
-        </div>
+                <Button
+                  className={`${styles.nextBtn} ${buttonClass}`} // 조건부 클래스 적용
+                  text="선택 완료"
+                  type="submit"
+                  disabled={!isFormFilled} // 폼이 완전히 채워지지 않으면 버튼 비활성화
+                />
+              </div>
+            </form>
+          </div>
       </div>
+    </div>
     );
   }
 }

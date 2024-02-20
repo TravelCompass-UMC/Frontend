@@ -11,8 +11,8 @@ const containerStyle = {
 };
 
 const defaultCenter = {
-  lat: 35.82621,
-  lng: 127.64527,
+  lat: 36.32800,
+  lng: 128.02379,
 };
 
 const Map = ({ location, recommendations, onPinClick, zoomLevel = 7.2, containerStyle }) => {
