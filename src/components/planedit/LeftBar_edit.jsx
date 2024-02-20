@@ -88,7 +88,7 @@ function LeftBar({ onCustomChange }) {
         }}
         onClick={handleSaveClick}
       >
-        저장하기
+        계획 저장하기
       </button>
     </div>
   );

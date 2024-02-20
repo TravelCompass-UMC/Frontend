@@ -1,3 +1,45 @@
+.dayContainer {
+  width: 434px;
+  height: 199px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+  display: inline-block;
+  flex-direction: column;
+}
+
+.dayHeader {
+display: flex;
+justify-content: start;
+align-items: center;
+margin-left: 20px;
+}
+
+.detailNum {
+width: 57px;
+height: 30px;
+margin-bottom: 10px;
+color: var(--grayscale-Gray8, #191B24);
+font-family: "SUIT Variable";
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+}
+
+.detailCal {
+width: 113px;
+height: 20px;
+margin-left: -55px;
+color: var(--grayscale-Gray3, #BFC4D8);
+font-family: "SUIT Variable";
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-decoration: none;
+}
+
 .detailBox {
   border-radius: 8px;
   margin-bottom: 100px;
@@ -7,15 +49,6 @@
   width: 434px;
   height: 199px;
   flex-shrink: 0;
-}
-
-.removeButton {
-  position: relative;
-  background: var(--grayscale-White, #FFF);
-  left: 90%;
-  top: -17%;
-  cursor: pointer; 
-  border: none;
 }
 
 .timeContainer {
@@ -50,9 +83,18 @@
   line-height: 170%;
 }
 
+.removeButton {
+  position: relative;
+  background: var(--grayscale-White, #FFF);
+  left: 90%;
+  top: -17%;
+  cursor: pointer; 
+  border: none;
+}
+
 .placeImage {
-  margin-left: 210px;
-  margin-top: -70px;
+  margin-left: 190px;
+  margin-top: -80px;
   width: 140px;
   height: 140px;
   border-radius: 10px;
@@ -66,7 +108,7 @@
 .detailPlace {
   color: var(--Sub-color, #78CF9F);
   font-family: "SUIT Variable";
-  font-size: 14px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 700;
 }
@@ -85,7 +127,6 @@
   flex-shrink: 0;
   display: flex;
   justify-content: flex-end;
-  margin-right: 50%;
   margin-top: -40px;
   color: var(--grayscale-Gray5, #626682);
   font-family: "SUIT Variable";
@@ -96,6 +137,7 @@
 
 .durationSelectContainer select {
   padding: 4px 8px;
+  margin-right: 5%;
   border: 1px solid #ebedf8;
   border-radius: 4px;
   font-family: "SUIT Variable";
@@ -106,7 +148,8 @@
 }
 
 .placeAdd{
-  margin-top: 50px;
+  margin-top: 12%;
+  margin-left: 32%;
   width: 160px;
   height: 40px;
   flex-shrink: 0;
@@ -123,48 +166,6 @@
   font-weight: 600;
   text-align: center;
 }
-
-  .dayContainer {
-      width: 434px;
-      height: 199px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      margin-right: 100px;
-      display: inline-block;
-      flex-direction: column;
-  }
-
-  .dayHeader {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    margin-left: 20px;
-  }
-
-  .detailNum {
-    width: 57px;
-    height: 30px;
-    margin-bottom: 10px;
-    color: var(--grayscale-Gray8, #191B24);
-    font-family: "SUIT Variable";
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-  }
-
-  .detailCal {
-    width: 113px;
-    height: 20px;
-    margin-left: -55px;
-    color: var(--grayscale-Gray3, #BFC4D8);
-    font-family: "SUIT Variable";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    text-decoration: none;
-  }
 
   .pageContainer {
     padding-left: 100px;
