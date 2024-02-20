@@ -100,7 +100,7 @@ const Placethumbnail = {
   },
   placeName: { // 장소 이름 스타일
     marginLeft: 5,
-    fontSize: "20px", // 예시 글자 크기
+    fontSize: "18px", // 예시 글자 크기
     fontWeight: "bold", // 굵은 글씨체
   },
   placeType: { // 분류(명소, 식당 등) 스타일
@@ -442,7 +442,7 @@ export function InterestedPlaceThumbnail(props) {
       </div>
       <img className="placeimg"
         style={Placethumbnail.detailimage}
-        src={""}
+        src={props.places.img}
         alt="장소 이미지"
       />
     </div>
