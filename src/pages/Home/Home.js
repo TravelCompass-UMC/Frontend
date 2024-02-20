@@ -261,7 +261,9 @@ export function SeoulThumbnail(props) {
   return (
     <div style={Homeplace.HomebigBox}>
       <div style={Homeplace.HomeimageBox}>
-        <img className="Homeplaceimg" alt="인기장소" />
+        <img className="Homeplaceimg" 
+        src={props.homes.img}
+        alt="인기장소" />
       </div>
       <div style={{ ...Homeplace.HometextBox, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ ...Homeplace.categoryText, color: color }}>
@@ -271,24 +273,7 @@ export function SeoulThumbnail(props) {
       </div>
     </div>
   );
-  // return (
-  //   <div style={Homeplace.HomebigBox}>
-  //     <div style={Homeplace.HomeimageBox}>
-  //       <img className="Homeplaceimg"
-  //         style={{}}
-  //         alt="인기장소"
-  //       />
-  //     </div>
-  //     <div style={containerStyle}>
-  //       <div style={textStyle}>
-  //         <div style={Homeplace.categoryText}>
-  //           {props.homes.category}
-  //         </div>
-  //         <div style={Homeplace.placenameText}>{props.homes.place}</div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // )
+
 }
 
 export function JejuThumbnail(props) {
@@ -314,7 +299,7 @@ export function JejuThumbnail(props) {
     <div style={Homeplace.HomebigBox}>
       <div style={Homeplace.HomeimageBox}>
         <img className="Homeplaceimg"
-          style={{}}
+          src={props.homes.img}
           alt="인기장소"
         />
       </div>
@@ -353,7 +338,7 @@ export function BusanThumbnail(props) {
     <div style={Homeplace.HomebigBox}>
       <div style={Homeplace.HomeimageBox}>
         <img className="Homeplaceimg"
-          style={{}}
+          src={props.homes.img}
           alt="인기장소"
         />
       </div>
@@ -391,7 +376,7 @@ export function YeosuThumbnail(props) {
     <div style={Homeplace.HomebigBox}>
       <div style={Homeplace.HomeimageBox}>
         <img className="Homeplaceimg"
-          style={{}}
+          src={props.homes.img}
           alt="인기장소"
         />
       </div>
