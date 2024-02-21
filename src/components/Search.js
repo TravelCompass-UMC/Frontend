@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "../styles/searchplace/search.module.css";
 import { Search } from "../styles/styles.jsx";
+import Moving from "../assets/images/Place/Vector.svg";
+
 
 const SearchComponent = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -100,7 +102,9 @@ const SearchComponent = ({ onSearch }) => {
           <ul className={styles.suggestionList}>
             {suggestions.map((suggestion, index) => (
               <li key={index} onClick={() => selectSuggestion(suggestion)}>
-                <span style={{ borderBottom: "1px solid gray", paddingBottom: "1px" }}>{suggestion}</span>
+                <div style={{ borderBottom: "1px solid gray", paddingTop: "4%" }}>{suggestion}
+                  <img src={Moving} alt="moving-button" className={styles.movingImg}/>
+                </div>
               </li>
             ))}
           </ul>
