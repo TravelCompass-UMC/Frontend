@@ -1,97 +1,47 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "../styles/sidebarL.css";
 
-const SidebarL = ({ width = 280, isOpen: externalIsOpen, children }) => {
-  const [isOpen, setOpen] = useState(externalIsOpen);
-  const [xPosition, setX] = useState(isOpen ? 0 : width);
-  const [scrollPosition, setScrollPosition] = useState(0);
+const SidebarL = ({
+  width = 280,
+  children,
+  isOpen: externalIsOpen,
+  toggleSidebar,
+}) => {
+  const [internalIsOpen, setInternalIsOpen] = useState(true);
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  const xPosition = isOpen ? 0 : -width;
   const side = useRef();
 
-  const toggleMenu = () => {
-    if (xPosition > 0) {
-      setX(0);
-      setOpen(true);
+  // External toggle function is not provided, use internal state
+  const handleToggle = () => {
+    if (toggleSidebar) {
+      toggleSidebar();
     } else {
-      setX(width);
-      setOpen(false);
+      setInternalIsOpen(!internalIsOpen);
     }
   };
 
-  const handleClose = (e) => {
-    let sideArea = side.current;
-    let sideChildren = side.current.contains(e.target);
-    if (isOpen && (!sideArea || !sideChildren)) {
-      setX(width);
-      setOpen(false);
+  useEffect(() => {
+    if (externalIsOpen !== undefined && externalIsOpen !== internalIsOpen) {
+      setInternalIsOpen(externalIsOpen);
     }
-  };
-
-  const handleScroll = () => {
-    setScrollPosition(window.scrollY);
-  };
-
-  useEffect(() => {
-    setOpen(externalIsOpen);
-    setX(externalIsOpen ? 0 : width);
-  }, [externalIsOpen]);
-
-  useEffect(() => {
-    window.addEventListener("click", handleClose);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("click", handleClose);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isOpen]);
+  }, [externalIsOpen, internalIsOpen]);
 
   return (
-    <div className={"container"}>
       <div
         ref={side}
-        className={"sidebar"}
-        style={{
-          width: `${width}px`,
-          height: "100%",
-          transform: `translateX(${-xPosition}px) translateY(${-scrollPosition}px)`, // Adjust the transform property
-        }}
+        className="sidebar"
+        style={{ transform: `translateX(${xPosition}px)`, width: `${width}px` }}
       >
         <button
-          onClick={() => toggleMenu()}
-          className={"sidebarLbutton"}
-          style={{ left: `${width}px` }}
+          onClick={handleToggle}
+          className="toggle-button"
+          style={{ transform: `translate(${width}px, 20px)` }}
         >
-          {isOpen ? <span>X</span> : <span>&#9776;</span>}
+          {isOpen ? "<" : ">"}
         </button>
-
-        <div className={"content"}>{children}</div>
-
-        {/* Scrollbar */}
-        <div
-          className={"scrollbar"}
-          style={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            width: "12px",
-            height: "10%",
-            backgroundColor: "#f1f1f1",
-            borderRadius: "5px",
-            overflow: "hidden",
-          }}
-        >
-          <div
-            style={{
-              width: "12px",
-              height: "100%",
-              backgroundColor: "#2196F3",
-              borderRadius: "5px",
-              transform: `translateY(${(scrollPosition * 100) / 1000}%)`, // Adjust the scrollbar position based on scroll
-            }}
-          ></div>
-        </div>
+        <div className="content">{children}</div>
       </div>
-    </div>
   );
 };
 

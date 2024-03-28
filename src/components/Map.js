@@ -1,43 +1,67 @@
-// Map.js
 import React, { useState, useEffect } from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
   position: "absolute",
   top: 0,
   left: 0,
   width: "100vw",
-  height: "100vh",
+  height: "91vh",
+  zIndex: 0,
 };
 
-const Center = {
-  lat: 35.8714,
-  lng: 128.6014,
+const defaultCenter = {
+  lat: 36.32800,
+  lng: 128.02379,
 };
 
-const GoogleMapComponent = ({ location }) => {
-  const [mapCenter, setMapCenter] = useState(Center);
-  const [zoomLevel, setZoomLevel] = useState(7);
+const Map = ({ location, recommendations, onPinClick, zoomLevel = 7.2, containerStyle }) => {
+  const [map, setMap] = useState(null);
+  const [markers, setMarkers] = useState([]);
 
-  // Update map center and zoom when location changes
+  const onLoad = (map) => {
+    setMap(map);
+  };
+
   useEffect(() => {
-    if (location) {
-      setMapCenter(location);
-      setZoomLevel(12); // Set a specific zoom level when location is available
+    let newMarkers = [];
+    if (recommendations && recommendations.length > 0) {
+      newMarkers = recommendations.map((place, index) => ({
+        position: { lat: place.lat, lng: place.lng },
+        label: `${index + 1}`,
+        name: place.name // Add name property to each marker
+      }));
+    } else if (location && location.lat !== null && location.lng !== null) {
+      newMarkers = [{ position: location, label: "1" }];
     }
-  }, [location]);
+    setMarkers(newMarkers);
+  }, [location, recommendations]);
+
+  const handleMarkerClick = (marker) => {
+    onPinClick(marker.name); // Call onPinClick callback with marker name
+  };
 
   return (
     <div style={{ position: "relative" }}>
-      <LoadScript googleMapsApiKey="AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U">
+      <LoadScript googleMapsApiKey="AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU">
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={location || mapCenter}
-          zoom={location ? 12 : zoomLevel}
-        />
+          onLoad={onLoad}
+          center={location || defaultCenter}
+          zoom={zoomLevel}
+        >
+          {markers.map((marker, index) => (
+            <Marker
+              key={index}
+              position={marker.position}
+              label={marker.label}
+              onClick={() => handleMarkerClick(marker)} // Pass marker to handleMarkerClick
+            />
+          ))}
+        </GoogleMap>
       </LoadScript>
     </div>
   );
 };
 
-export default GoogleMapComponent;
+export default Map;

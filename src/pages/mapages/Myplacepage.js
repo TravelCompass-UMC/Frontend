@@ -1,17 +1,106 @@
-import React, { Component } from "react";
-import { Link } from 'react-router-dom';
-import styles from "../../styles/Mypages.css"; 
+//Myplacepage.js
+import React, { useState, useMemo } from "react";
+import styles from "../../styles/Mypages.css";
+import myplaces from "../../tempdata/myplacedata";
+import { EndSection, InterestedPlaceThumbnail } from "./MyPage";
+import otherplans from "../../tempdata/otherplandata";
 
-class Myplacepage extends Component {
-    render() {
-      return (
-        <div>
-            마이플레이스페이지
-        </div>
-  
-      );
+function Myplacepage() {
+
+ const [currentCategory, setCurrentCategory] = useState('전체');
+  const [places, setPlaces] = useState(myplaces);
+  const [currentPage, setCurrentPage] = useState(1);
+  const placesPerPage = 12;
+
+
+  const [sortOrder, setSortOrder] = useState('likes'); // 초기 정렬 상태를 '좋아요순'으로 설정
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  // 정렬 방식에 따른 제목 결정
+  const dropdownTitle = sortOrder === 'likes' ? '좋아요순' : '별점순';
+
+  const filteredPlaces = places.filter(place => {
+    if (currentCategory === '전체') return true;
+    if (currentCategory === '숙소' && place.category === 1) return true;
+    if (currentCategory === '명소' && place.category === 2) return true;
+    return currentCategory === '카페/식당' && place.category === 3;
+  });
+
+  const sortedPlaces = useMemo(() => {
+    const sortPlaces = [...filteredPlaces];
+    if (sortOrder === 'likes') {
+      return sortPlaces.sort((a, b) => b.bookmark - a.bookmark);
+    } else if (sortOrder === 'rating') {
+      return sortPlaces.sort((a, b) => b.star - a.star);
     }
+    return sortPlaces;
+  }, [filteredPlaces, sortOrder]);
+
+  const indexOfLastPlace = currentPage * placesPerPage;
+  const indexOfFirstPlace = indexOfLastPlace - placesPerPage;
+  const currentPlaces = sortedPlaces.slice(indexOfFirstPlace, indexOfLastPlace);
+
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const goToPrevPage = () => currentPage > 1 && setCurrentPage(currentPage - 1);
+  const goToNextPage = () => currentPage < Math.ceil(sortedPlaces.length / placesPerPage) && setCurrentPage(currentPage + 1);
+  const toggleDropdown = () => setShowDropdown(!showDropdown);
+
+  const toggleLike = (placeId) => {
+    const updatePlaces = places.map(place => {
+      if(place.id === placeId){
+        return {...place, liked: place.liked === 1 ? 0 : 1};
+      }
+      return place;
+    }).filter(place => place.liked !== 0);
+    setPlaces(updatePlaces);
+
   }
-  
-  export default Myplacepage;
-  
+
+  return (
+    <>
+    <div className="container">
+      <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <p className="place-title">관심있는 장소</p>
+        <div className="sort-dropdown">
+          <button onClick={toggleDropdown} className="mypagesort-button">{dropdownTitle}</button>
+          {showDropdown && (
+            <div className="sort-options">
+              <button onClick={() => { setSortOrder('rating'); setShowDropdown(false); }} className="sort-option1">별점순</button>
+              <button onClick={() => { setSortOrder('likes'); setShowDropdown(false); }} className="sort-option2">좋아요순</button>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="category-buttons">
+        {['전체', '숙소', '명소', '카페/식당'].map((category) => (
+          <button
+            key={category}
+            onClick={() => { setCurrentCategory(category); setCurrentPage(1); }}
+            className={`category-button ${currentCategory === category ? 'active' : ''}`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      <div className="row">
+        {currentPlaces.map((place, i) => (
+          <div key={i} className="col-md-4 place-thumbnail-container">
+            <InterestedPlaceThumbnail places={place} i={i+1} onToggleLike = {toggleLike}></InterestedPlaceThumbnail>
+          </div>
+        ))}
+      </div>
+      <div className="pagination">
+        <button onClick={goToPrevPage} className={`prebutton ${currentPage === 1 ? "disabled" : ""}`}>이전페이지</button>
+        {Array.from({ length: Math.ceil(sortedPlaces.length / placesPerPage) }, (_, index) => (
+          <button key={index} onClick={() => paginate(index + 1)} className={`pagenum ${currentPage === index + 1 ? "active" : ""}`}>{index + 1}</button>
+        ))}
+        <button onClick={goToNextPage} className={`nextbutton ${currentPage === Math.ceil(sortedPlaces.length / placesPerPage) ? "disabled" : ""}`}>다음페이지</button>
+      </div>
+    </div>
+    <EndSection/>
+    </>
+  );
+}
+
+export default Myplacepage;

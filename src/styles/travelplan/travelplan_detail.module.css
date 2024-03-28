@@ -1,0 +1,328 @@
+/* .show-menu {
+  width: 376px;
+  height: 500px;
+  position: absolute;
+  left: 0px;
+  transition: 1s;
+}
+
+.hide-menu {
+  width: 376px;
+  height: 500px;
+  position: absolute;
+  left: -376px;
+  transition: 1s;
+} */
+
+/* .selected-accommodation {
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid blue; 
+  background-color: #f0f8ff; 
+  cursor: pointer;
+} */
+
+.selected {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+/* .transportation-buttons button {
+  margin-right: 10px;
+  padding: 5px 10px;
+}
+
+.transportation-buttons .selected {
+  background-color: #28a745;
+} */
+
+.HashWrap {
+  margin-top: 24px;
+  /* color: rgb(52, 58, 64); - 제거되거나 수정됨 */
+  color: #444241; /* 원하는 색상 값으로 유지 */
+  font-size: 1.125rem;
+  display: flex;
+  flex-wrap: wrap;
+  letter-spacing: -0.6px;
+  border-bottom: 1.6px solid #cccccc;
+  padding: 2px 2px 8px 2px;
+}
+.HashWrapOuter {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.HashWrapInner {
+  margin-top: 5px;
+  background: #ffeee7;
+  border-radius: 56px;
+  padding: 8px 12px;
+  color: #ff6e35;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 20px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.HashInput {
+  width: auto;
+  margin: 10px;
+  display: inline-flex;
+  outline: none;
+  cursor: text;
+  line-height: 2rem;
+  margin-bottom: 0.75rem;
+  min-width: 8rem;
+  border: none;
+}
+
+/* Minus 버튼 스타일 */
+.minus {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(#000, #000), linear-gradient(#000, #000);
+  background-position: center;
+  background-size: 40% 2px;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 클릭할 수 없는 Minus 버튼 스타일 */
+/* .minus-no-click {
+  opacity: 0.15;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  cursor: default;
+} */
+
+/* Plus 버튼 스타일 */
+.plus {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(#000, #000), linear-gradient(#000, #000);
+  background-position: center;
+  background-size: 40% 2px, 2px 40%;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* .button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+/* 
+.search-component {
+  margin-left: -400px;
+  margin-bottom: 120px;
+}
+.travelplan-detail-container {
+  display: flex;
+}
+
+.sidebar-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.sidebar-buttons {
+  grid-column: 1 / 2;
+}
+
+.sidebar-search {
+  grid-column: 2 / 3;
+}
+
+.sidebar-info {
+  grid-column: 2 / 3;
+}
+
+.sidebar-empty {
+  grid-column: 3 / 4;
+} */
+/*component*/
+.totalComponent {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebarTop {
+  /* 상단 정보 섹션 스타일 */
+}
+
+.sidebarLayout {
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 60px); /* 상단 정보 섹션 높이를 제외한 나머지 높이 */
+}
+
+.sidebarButtons {
+  width: 40px;
+  flex: 1;
+  flex-direction: column;
+  width: 100%; /* 또는 적절한 너비 설정 */
+  height: 100%;
+  justify-content: space-between;
+  margin-right: 40px;
+  margin-left: 80px;
+  position: relative;
+}
+
+.controlButtons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+}
+.prevBtn {
+  background-color: white;
+  width: 200px;
+  height: 80px;
+  border-radius: 8px;
+  border: none;
+  font-family: "SUIT Variable", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  color: #bfc4d8;
+  cursor: pointer;
+  margin: 10px;
+}
+.nextBtn {
+  background-color: white;
+  width: 200px;
+  height: 80px;
+  border-radius: 8px;
+  border: none;
+  font-family: "SUIT Variable", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  color: #bfc4d8;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.sidebarContent {
+  flex: 2;
+  overflow: auto; /* 내용이 길어질 경우 스크롤 */
+}
+
+.selectedBtn {
+  /* 선택된 버튼의 스타일 */
+  background-color: #484a64;
+  width: 160px;
+  height: 80px;
+  border-radius: 8px;
+  border: none;
+  font-family: "SUIT Variable", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  color: #bfc4d8;
+  cursor: pointer;
+  margin: 10px;
+}
+.commonBtn {
+  background-color: white;
+  width: 160px;
+  height: 80px;
+  border-radius: 8px;
+  border: none;
+  font-family: "SUIT Variable", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 25px;
+  color: #bfc4d8;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.des {
+  color: var(--grayscale-Gray8, #191b24);
+
+  /* head/head_bold_24 */
+  font-family: "SUIT Variable";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.date {
+  color: var(--grayscale-Gray4, #7f85a3);
+  /* detail/detail_regular_14 */
+  font-family: "SUIT Variable";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%; /* 23.8px */
+}
+
+.informBox {
+  border-radius: 8px;
+  background: var(--grayscale-White, #fff);
+  padding: 17px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.info {
+  padding-bottom: 30px;
+}
+
+/* styles/travelplan/travelplan_detail.module.css에 추가 */
+.selectedPlace {
+  background-color: #f0f0f0; /* 선택된 항목의 배경색 */
+  border-left: 5px solid #007bff; /* 선택 표시를 위한 왼쪽 테두리 */
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.placeItem {
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.placeItem:hover {
+  background-color: #f8f8f8; /* 호버 시 배경색 변경 */
+}
+
+.selectedAccommodation {
+  background-color: #e9ecef; /* 또는 프로젝트의 디자인 가이드에 맞는 색상 */
+  border: 2px solid #007bff; /* 선택된 숙소를 강조하는 테두리 색상 */
+  margin: 5px 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accommodationItem {
+  margin: 5px 0;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accommodationItem:hover {
+  background-color: #f8f8f8; /* 호버 시 배경색 변경 */
+}

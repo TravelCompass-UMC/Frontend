@@ -1,0 +1,22 @@
+.edit-btn1 {
+    width: 100px;
+    height: 60px;
+    flex-shrink: 0;
+    margin: 30px 0px 0px 50px;
+    padding: 1px 6px;
+    border-radius: 8px;
+    border: 1px solid var(--grayscale-Gray3, #BFC4D8);
+    background: var(--grayscale-White, #FFF);
+    font-size: 16px;
+}
+
+.edit-btn2 {
+    width: 90px;
+    height: 60px;
+    flex-shrink: 0;
+    margin: 30px 0px 0px 50px;
+    padding: 1px 6px;
+    border-radius: 8px;
+    background: var(--Primary-color, #8270FF);
+    font-size: 16px;
+}

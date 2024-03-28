@@ -1,0 +1,96 @@
+/* color: #7F85A3;
+color: #8270FF; 
+color: #BFC4D8; */
+
+/* Home.css */ 
+.sidebar-content  {
+    margin-left: 22px;
+}
+
+.Koreatitle{
+    margin-top: -20px;
+    font-size: 22px;
+    font-weight: 900;
+    font-family: "SUIT Variable";
+    letter-spacing: -0.5px;
+}
+.popluartext{
+    font-size: 18px;
+    margin-top: -10px;
+    color: #7F85A3;
+    font-weight: bold;
+    font-family: "SUIT Variable";
+    letter-spacing: -0.5px;
+}
+
+.topbox {
+    background-color: white;
+    width:400px;
+    height: 55px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px; /* 각 박스 사이의 여백 */
+    border: 1px solid #ddd; /* 경계선 추가 */
+  }
+
+  .topxbox:hover, .topbox:active {
+    background-color: #8270FF; ;
+    color: white;
+  }
+
+  .arrow-image {
+    width: 40px; /* 로고 이미지 크기, 필요에 따라 조절 */
+    margin-right: 10px; /* 로고와 텍스트 사이의 여백 */
+  }
+  
+  .top-number {
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: auto; /* TOP 번호와 지역명 사이에 여백을 최대로 하여 지역명을 오른쪽으로 밀어냄 */
+  }
+  
+  .top-location-name {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "SUIT Variable";
+    padding-right: 20px;
+
+  }
+
+  .popluarplacetext{
+    margin-top: 25px;
+    font-size: 23px;
+    font-weight: 900;
+    font-family: "SUIT Variable";
+  }
+
+  .selectpopulartext{
+    font-size: 18px;
+    margin-top: -10px;
+    color: #7F85A3;
+    font-weight: bold;
+    font-family: "SUIT Variable";
+    letter-spacing: -0.5px;
+  }
+
+  .popularplacebox {
+    width: 500px;
+    display: flex; /* 내부 항목들을 \가로로 나열 */
+    overflow-x: auto; /* 가로 스크롤만 허용 */
+    gap: 10px; /* 항목 사이의 간격 */
+    padding: 10px; /* 내부 여백 */
+    background-color: #F3F5FF ; ; /* 배경색 */
+    height: 320px; /* 최대 높이 설정 */
+  }
+  
+  .popularplacebox > div {
+    flex: 0 0 auto; /* 썸네일들이 flex 컨테이너 내에서 크기가 줄어들지 않도록 설정 */
+  }
+
+  .Homeplaceimg {
+    width: 100%; /* 부모 요소의 너비에 맞게 이미지를 확장합니다 */
+    height: 100%; /* 부모 요소의 높이에 맞게 이미지를 확장합니다 */
+    object-fit: cover; /* 이미지 비율을 유지하면서 컨테이너를 채웁니다 */
+  }

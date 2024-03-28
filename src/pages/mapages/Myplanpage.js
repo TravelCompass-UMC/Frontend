@@ -1,32 +1,99 @@
+// Myplanpage.js
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import styles from "../../styles/Mypages.css";
+import myplans from "../../tempdata/myplandata";
+import { EndSection, MyTravelPlanSection } from "./MyPage";
+import { useState } from "react";
+import { MyplanThumbnail } from "./MyPage";
 
-class Myplanpage extends Component {
-    render() {
-      return (
-        <div className="myplanpage-container">
-        <div className="mypage_navbar">
-          <div>나의 여행계획</div>
-          <div style={{ flexGrow: "1" }}></div>
-        </div>
-  
-        <div className="myplan_images">
-          <div className="myplan_img">
-            썸네일 1
-          </div>
-          <div className="myplan_img">
-            썸네일 2
-          </div>
-          <div className="myplan_img">
-            썸네일 3
-          </div>
-        
-        </div>
-      </div>
-      );
+
+function Myplanpage() {
+  const [plans, setPlans] = useState(myplans);
+  const [currentPage, setCurrentPage] = useState(1);
+  const plansPerPage = 9;
+
+  // 현재 페이지의 첫 번째와 마지막 묶음의 인덱스를 계산
+  const indexOfLastPlan = currentPage * plansPerPage;
+  const indexOfFirstPlan = indexOfLastPlan - plansPerPage;
+  const currentPlans = plans.slice(indexOfFirstPlan, indexOfLastPlan);
+
+  // 페이지 변경을 처리할 함수
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // 이전 페이지와 다음 페이지로 이동하는 함수
+  const goToPrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
     }
-  }
-  
-  export default Myplanpage;
-  
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < Math.ceil(plans.length / plansPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const toggleLike = (planId) => {
+    const updatedPlans = plans.map(plan => {
+      if (plan.id === planId) {
+        return { ...plan, liked: plan.liked === 1 ? 0 : 1 };
+      }
+      return plan;
+    }).filter(plan => plan.liked !== 0);
+    setPlans(updatedPlans);
+  };
+  return (
+    <>
+      <div className="container">
+        <p className="page-title">나의 여행계획</p>
+        {/* 3개씩 묶어서 표시 */}
+        {currentPlans.length > 0 && (
+          <div>
+            <div className="row">
+              {currentPlans.map((plan, i) => {
+                return (
+                  <div key={i} className="col-md-4 thumbnail-container">
+                    <MyplanThumbnail plans={plan} i={i + 1} onToggleLike={toggleLike}></MyplanThumbnail>
+                  </div>
+                );
+              })}
+            </div>
+            {/* 페이지네이션 버튼들 */}
+            <div className="pagination">
+              <button
+                onClick={goToPrevPage}
+                className={`prebutton ${currentPage === 1 ? "disabled" : ""}`}
+              >
+                이전페이지
+              </button>
+              {Array.from({ length: Math.ceil(plans.length / plansPerPage) }).map(
+                (item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => paginate(index + 1)}
+                    className={`${currentPage === index + 1 ? "active" : ""
+                      } pagenum`}
+                  >
+                    {index + 1}
+                  </button>
+                )
+              )}
+              <button
+                onClick={goToNextPage}
+                className={`nextbutton ${currentPage === Math.ceil(plans.length / plansPerPage)
+                  ? "disabled"
+                  : ""
+                  }`}
+              >
+                다음페이지
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+      <EndSection />
+    </>
+  );
+}
+
+export default Myplanpage;
