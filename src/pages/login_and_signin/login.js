@@ -23,7 +23,7 @@ class Login extends Component {
             <input type="password" placeholder="비밀번호 입력" />
           </div>
           <button className="login-button">로그인</button>
-          {/* 네이버 소셜 로그인 버튼 */}
+          {/* 네이버 소셜 로그인 버 */}
           <button
             className="naver-login-button"
             onClick={this.handleNaverLogin}
