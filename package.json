@@ -10,19 +10,23 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.61",
-    "@mui/material": "^5.15.5",
+    "@mui/icons-material": "^5.15.10",
+    "@mui/material": "^5.15.10",
+    "@mui/utils": "^5.15.9",
+    "@popperjs/core": "^2.11.8",
     "@react-google-maps/api": "^2.19.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
-    "axios": "^1.6.5",
+    "axios": "^1.6.7",
     "date-fns": "^3.2.0",
     "google-map-react": "^2.2.1",
     "google-maps-react": "^2.0.6",
+    "path-browserify": "^1.0.1",
     "react": "^17.0.0 || ^18.0.0",
     "react-bootstrap": "^2.10.0",
     "react-datepicker": "^4.25.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-dom": "^18.2.0",
     "react-google-maps": "^9.4.5",
     "react-hook-geolocation": "^1.1.0",
     "react-hook-google-maps": "^0.0.3",
@@ -39,9 +43,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "http://dev.enble.site:8080"
   },
   "eslintConfig": {
     "extends": [
@@ -67,6 +72,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/googlemaps": "^3.43.3"
+    "@babel/plugin-proposal-private-property-in-object": "^7.x",
+    "@types/googlemaps": "^3.43.3",
+    "webpack-cli": "^5.1.4"
   }
 }

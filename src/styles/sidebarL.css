@@ -1,42 +1,50 @@
 /* sidebarL.css code */
-
+/* 
 .container {
-  background-color: #E3ECF1;
-}
+  background: var(--grayscale-Gray1, #F3F5FF);
+} */
 
 .sidebar {
-  background-color: #E3ECF1;
-  border-right: 4px solid #202020;
   position: fixed;
-  top: 0;
+  background: var(--grayscale-Gray1, #F3F5FF);
+  top: 9%;
   bottom: 0;
   left: 0;
   transition: 0.4s ease;
   color: #202020;
-  height: 100%;
   z-index: 99;
+  border: none; /* 테두리 제거 */
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); /* 사이드바에 그림자 추가 */
 }
 
-.sidebarLbutton {
-  position: relative;
-  left: 330px; 
-  top: 321px;
-  width: 40px;
-  height: 40px;
-  z-index: 99;
-  transition: 0.8s ease;
-  border: 2px solid #202020;
-  border-radius: 40px;
-  overflow: hidden;
+.toggle-button {
+  position: fixed;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 버튼에 그림자 추가 */
+  top: 40vh;
+  left: 0px; /* 사이드바와의 간격 조정 */
+  width: 32px; /* 버튼의 너비 */
+  height: 55px; /* 버튼의 높이 */
+  z-index: 1;
+  background-color: white; /* 사다리꼴의 배경색 */
+  cursor: pointer;
+  border: none; /* 테두리 제거 */
+  padding: 6px 6px;
+  border-radius: 0px 8px 8px 0px;
+}
+
+.toggle-button-shadow {
+  position: fixed;
+  top: 40vh; /* 버튼과 동일한 위치 */
+  left: 0px; /* 조정 필요 */
+  width: 15px; /* 버튼과 동일한 너비 */
+  height: 40px; /* 버튼과 동일한 높이 */
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 그림자 적용 */
+  transform: translateX(5px); /* 필요에 따라 조정 */
+  z-index: 90; /* 버튼 뒤에 위치하도록 z-index 조정 */
 }
 
 .content {
   padding: 40px 40px 0 20px;
-  position: relative;
-  width: 100%;
-}
-
-.icon {
-  margin: 0;
-  color: #202020;
+  overflow-y: auto; /* 내용이 많을 경우 스크롤바 표시 */
+  height: 100%; /* 전체 높이 */
 }

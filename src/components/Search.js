@@ -1,7 +1,8 @@
-// Search.js
-
 import React, { useState } from "react";
-import "../styles/Place.css";
+import styles from "../styles/searchplace/search.module.css";
+import { Search } from "../styles/styles.jsx";
+import Moving from "../assets/images/Place/Vector.svg";
+
 
 const SearchComponent = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -39,21 +40,21 @@ const SearchComponent = ({ onSearch }) => {
 
   const handleSearch = async (event) => {
     event.preventDefault();
-
+  
     try {
       // Geocoding API 호출을 위한 URL
-      const geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchQuery}&key=AIzaSyAxcBF_X0UjuYxGNAxZ2pNrQSDyL4AyS4U`;
-
+      const geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchQuery}&key=AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU`;
+  
       // Geocoding API 호출
       const response = await fetch(geocodingApiUrl);
       const data = await response.json();
-
+  
       // 검색어로부터 위치 좌표 가져오기
       const location = data.results[0]?.geometry?.location;
-
+  
       if (location) {
-        // 검색된 위치를 부모 컴포넌트로 전달하여 지도를 업데이트
-        onSearch(location);
+        // 검색된 위치와 검색어를 부모 컴포넌트로 전달하여 지도를 업데이트
+        onSearch(location, searchQuery);
       } else {
         console.error("Location not found");
       }
@@ -69,24 +70,41 @@ const SearchComponent = ({ onSearch }) => {
 
   return (
     <div style={{ position: "relative" }}>
-      <div className="search-container">
+      <div className={styles.searchContainer}>
         <form onSubmit={handleSearch}>
-          <input
-            type="text"
-            maxLength="20"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            placeholder="궁금한 지역을 검색해보세요."
-          />
-          <button type="submit">검색</button>
+          <div style={{ display: "flex" }}>
+            <input
+              type="text"
+              maxLength="20"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="궁금한 지역을 검색해보세요."
+              style={{
+                width: "436px",
+                height: "54px",
+                padding: "5px",
+                fontSize: "15px",
+                border: "none",
+                borderRadius: "5px",
+                outline: "none",
+                paddingLeft: "17px", // 텍스트 왼쪽 여백 조절
+                marginRight: "-45px", // 버튼과 간격 조절
+              }}
+            />
+            <button type="submit" onClick={handleSearch}>
+              <Search />
+            </button>
+          </div>
         </form>
 
         {/* 추천 단어 목록 렌더링 */}
         {showSuggestions && (
-          <ul className="suggestion-list">
+          <ul className={styles.suggestionList}>
             {suggestions.map((suggestion, index) => (
               <li key={index} onClick={() => selectSuggestion(suggestion)}>
-                {suggestion}
+                <div style={{ borderBottom: "1px solid gray", paddingTop: "4%" }}>{suggestion}
+                  <img src={Moving} alt="moving-button" className={styles.movingImg}/>
+                </div>
               </li>
             ))}
           </ul>
