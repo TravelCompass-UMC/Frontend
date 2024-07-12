@@ -29,7 +29,7 @@ const Map = ({ location, recommendations, onPinClick, zoomLevel = 7.2, container
       newMarkers = recommendations.map((place, index) => ({
         position: { lat: place.lat, lng: place.lng },
         label: `${index + 1}`,
-        name: place.name // Add name property to each marker
+        name: place.name 
       }));
     } else if (location && location.lat !== null && location.lng !== null) {
       newMarkers = [{ position: location, label: "1" }];
@@ -38,12 +38,12 @@ const Map = ({ location, recommendations, onPinClick, zoomLevel = 7.2, container
   }, [location, recommendations]);
 
   const handleMarkerClick = (marker) => {
-    onPinClick(marker.name); // Call onPinClick callback with marker name
+    onPinClick(marker.name); 
   };
 
   return (
     <div style={{ position: "relative" }}>
-      <LoadScript googleMapsApiKey="AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU">
+      <LoadScript googleMapsApiKey="AIzaSyBtvVmyyvzbg4OILHqlzB8eGJcP03-lSVk">
         <GoogleMap
           mapContainerStyle={containerStyle}
           onLoad={onLoad}
