@@ -82,13 +82,46 @@ class TrvlPlan extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { tripTitle, searchInput, startDate, endDate } = this.state;
-    if (tripTitle && searchInput) {
-      this.props.navigate("/travelplandate", {
-        state: { destination: searchInput, startDate, endDate },
-      });
-    } else {
+
+    if (!tripTitle || !searchInput) {
       alert("모든 필드를 입력해주세요.");
+      return;
     }
+
+    const planReqDto = {
+      title: tripTitle,
+      vehicle: "PUBLIC", // 예시로 고정값 사용, 필요에 따라 수정하세요
+      startDate: format(startDate, "yyyy-MM-dd"),
+      endDate: format(endDate, "yyyy-MM-dd"),
+      region: searchInput,
+      adultCount: 0, // 예시로 0을 사용, 실제 값으로 변경 필요
+      childCount: 0, // 예시로 0을 사용, 실제 값으로 변경 필요
+      hashtags: [], // 필요에 따라 해시태그 추가
+    };
+
+    const planLocationListDto = {
+      planLocationDtos: [], // 위치 및 일정에 따라 배열 요소 추가
+    };
+
+    fetch("https://travel-compass.persi0815.site/plans", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ planReqDto, planLocationListDto }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isSuccess) {
+          alert("여행 계획이 성공적으로 등록되었습니다.");
+          this.props.navigate("/summary", { state: { planId: data.planId } }); // 성공 시 요약 페이지로 이동, 실제 경로는 확인 필요
+        } else {
+          throw new Error(data.message || "등록에 실패했습니다.");
+        }
+      })
+      .catch((error) => {
+        alert("에러가 발생했습니다: " + error.message);
+      });
   };
 
   renderSuggestions = () => {
@@ -138,68 +171,71 @@ class TrvlPlan extends Component {
 
     // 버튼 클래스를 조건부로 설정
     const buttonClass = isFormFilled ? styles.buttonActive : ""; // 활성화 상태에 따라 클래스 변경
-    
+
     return (
       <div>
-      <div className={styles.container}>
-        <div className={styles.informinputContainer}>
-          <form onSubmit={this.handleSubmit}>
-            <div className={styles.textTitle}> 여행의 제목을 작성해주세요.</div>
-            <div className={styles.search_title}>
-              <input
-                type="text"
-                maxLength="20"
-                className={styles.search_title1}
-                name="tripTitle"
-                placeholder=" 여행 제목을 입력해주세요."
-                value={this.state.tripTitle}
-                onChange={this.handleTripTitleChange}
-              />
-            </div>
-            {/* 목적지 검색 필드 */}
-            <div>
-              <div className={styles.textTitle}> 어디로 가시나요?</div>
+        <div className={styles.container}>
+          <div className={styles.informinputContainer}>
+            <form onSubmit={this.handleSubmit}>
+              <div className={styles.textTitle}>
+                {" "}
+                여행의 제목을 작성해주세요.
+              </div>
               <div className={styles.search_title}>
                 <input
                   type="text"
                   maxLength="20"
                   className={styles.search_title1}
-                  name="searchInput"
-                  placeholder=" 어디로 가고싶나요?"
-                  value={this.state.searchInput}
-                  onChange={this.handleSearchInput}
+                  name="tripTitle"
+                  placeholder=" 여행 제목을 입력해주세요."
+                  value={this.state.tripTitle}
+                  onChange={this.handleTripTitleChange}
                 />
               </div>
-              {this.renderSuggestions()}
-            </div>
-
-            {/* 초대 코드 입력 섹션 */}
-            <div className={styles.textTitle}>친구에게 초대받으셨나요?</div>
-            <div className={styles.search_title}>
-              <div className={styles.invitationCodeSection}>
-                <input
-                  type="text"
-                  maxLength="20"
-                  className={styles.search_title1}
-                  name="invitationCode"
-                  placeholder="   초대코드를 입력해주세요."
-                  value={this.state.invitationCode}
-                  onChange={this.handleInvitationCodeChange}
-                ></input>
-                <button
-                  onClick={this.handleInvitationCodeSubmit}
-                  className={styles.search_submit}
-                >
-                  제출
-                </button>
+              {/* 목적지 검색 필드 */}
+              <div>
+                <div className={styles.textTitle}> 어디로 가시나요?</div>
+                <div className={styles.search_title}>
+                  <input
+                    type="text"
+                    maxLength="20"
+                    className={styles.search_title1}
+                    name="searchInput"
+                    placeholder=" 어디로 가고싶나요?"
+                    value={this.state.searchInput}
+                    onChange={this.handleSearchInput}
+                  />
+                </div>
+                {this.renderSuggestions()}
               </div>
-            </div>
-            <div className={styles.btnContainer}>
-              <Button
-                className={`${styles.pre_btn}`} // 이전 버튼 스타일
-                text="이전"
-                onClick={this.handlePre}
-              />
+
+              {/* 초대 코드 입력 섹션 */}
+              <div className={styles.textTitle}>친구에게 초대받으셨나요?</div>
+              <div className={styles.search_title}>
+                <div className={styles.invitationCodeSection}>
+                  <input
+                    type="text"
+                    maxLength="20"
+                    className={styles.search_title1}
+                    name="invitationCode"
+                    placeholder="   초대코드를 입력해주세요."
+                    value={this.state.invitationCode}
+                    onChange={this.handleInvitationCodeChange}
+                  ></input>
+                  <button
+                    onClick={this.handleInvitationCodeSubmit}
+                    className={styles.search_submit}
+                  >
+                    제출
+                  </button>
+                </div>
+              </div>
+              <div className={styles.btnContainer}>
+                <Button
+                  className={`${styles.pre_btn}`} // 이전 버튼 스타일
+                  text="이전"
+                  onClick={this.handlePre}
+                />
 
                 <Button
                   className={`${styles.nextBtn} ${buttonClass}`} // 조건부 클래스 적용
@@ -210,8 +246,8 @@ class TrvlPlan extends Component {
               </div>
             </form>
           </div>
+        </div>
       </div>
-    </div>
     );
   }
 }
