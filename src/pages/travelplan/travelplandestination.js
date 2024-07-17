@@ -29,7 +29,7 @@ class TrvlPlan extends Component {
   }
 
   fetchDestinations = () => {
-    fetch("http://dev.enble.site:8080/regions")
+    fetch("https://travel-compass.persi0815.site/regions")
       .then((response) => response.json())
       .then((data) => {
         if (data.isSuccess && data.result) {
