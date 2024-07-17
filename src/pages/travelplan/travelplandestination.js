@@ -17,7 +17,7 @@ class TrvlPlan extends Component {
       modalOpen: false,
       searchInput: "",
       tripTitle: "",
-      invitationCode: "",
+      "invite-code": "",
       showSuggestions: false,
       destinations: [],
       filteredDestinations: [],
@@ -76,7 +76,7 @@ class TrvlPlan extends Component {
   };
 
   handleInvitationCodeChange = (e) => {
-    this.setState({ invitationCode: e.target.value });
+    this.setState({ ["invite-code"]: e.target.value }); // 접근 방식 변경
   };
 
   handleSubmit = (e) => {
@@ -168,47 +168,36 @@ class TrvlPlan extends Component {
 
     return null;
   };
+
   handleInvitationCodeSubmit = (e) => {
     e.preventDefault();
-
-    const { invitationCode } = this.state;
-    if (!invitationCode) {
+    const inviteCode = this.state["invite-code"]; // 접근 방식 변경
+    if (!inviteCode) {
       alert("초대 코드를 입력해주세요.");
       return;
     }
 
-    // sessionStorage에서 액세스 토큰 가져오기
+    // API 요청
     const accessToken = sessionStorage.getItem("accessToken");
-    if (!accessToken) {
-      alert("로그인이 필요합니다.");
-      this.props.navigate("/login"); // 사용자를 로그인 페이지로 리디렉션
-      return;
-    }
-
-    // API 요청 보내기
-    fetch(`https://travel-compass.persi0815.site/plans/${invitationCode}`, {
+    fetch(`https://travel-compass.persi0815.site/plans/${inviteCode}`, {
+      // 접근 방식 변경
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`, // 헤더에 액세스 토큰 추가
+        Authorization: `Bearer ${accessToken}`,
       },
-      body: JSON.stringify({ code: invitationCode }),
+      body: JSON.stringify({ code: inviteCode }), // 접근 방식 변경
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("서버 응답이 올바르지 않습니다."); // 에러 메시지 명확화
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
         if (data.isSuccess) {
           alert("초대 코드가 성공적으로 등록되었습니다.");
         } else {
-          throw new Error(data.message || "초대 코드 등록에 실패했습니다."); // 백엔드에서 제공하는 에러 메시지 사용
+          throw new Error(data.message || "초대 코드 등록에 실패했습니다.");
         }
       })
       .catch((error) => {
-        alert("에러가 발생했습니다: " + error.message); // 모든 에러 캐치와 표시
+        alert("에러가 발생했습니다: " + error.message);
       });
   };
 
