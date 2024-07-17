@@ -29,7 +29,7 @@ class TrvlPlan extends Component {
   }
 
   fetchDestinations = () => {
-    fetch("http://dev.enble.site:8080/regions")
+    fetch("https://travel-compass.persi0815.site/regions")
       .then((response) => response.json())
       .then((data) => {
         if (data.isSuccess && data.result) {
@@ -161,8 +161,36 @@ class TrvlPlan extends Component {
 
   handleInvitationCodeSubmit = (e) => {
     e.preventDefault();
-    // 초대 코드 제출 로직을 여기에 구현
-    alert("초대 코드가 제출되었습니다: " + this.state.invitationCode);
+
+    const { invitationCode } = this.state;
+    if (!invitationCode) {
+      alert("초대 코드를 입력해주세요.");
+      return;
+    }
+
+    fetch(`https://travel-compass.persi0815.site/plans/${invitationCode}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ code: invitationCode }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.isSuccess) {
+          alert("초대 코드가 성공적으로 등록되었습니다.");
+        } else {
+          throw new Error(data.message || "초대 코드 등록에 실패했습니다.");
+        }
+      })
+      .catch((error) => {
+        alert("에러가 발생했습니다: " + error.message);
+      });
   };
 
   render() {
