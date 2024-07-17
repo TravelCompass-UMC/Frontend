@@ -12,7 +12,7 @@ const Modal = ({ open, close }) => {
   const handleNaverLogin = () => {
     // 네이버 로그인 페이지로 리다이렉션하는 URL
     window.location.href =
-      "http://dev.enble.site:8080/oauth2/authorization/naver";
+      "http://travel-compass.persi0815.site:8080/oauth2/authorization/naver";
   };
 
   if (!open) return null;
