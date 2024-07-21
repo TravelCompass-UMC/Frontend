@@ -60,10 +60,11 @@ class TrvlPlan extends Component {
 
     this.setState({
       searchInput: input,
-      showSuggestions: true,
+      showSuggestions: input.length > 0 && filteredDestinations.length > 0, // 사용자 입력이 있고, 결과가 있을 때만 제안 표시
       filteredDestinations,
     });
   };
+
   selectDestination = (destination) => {
     this.setState({
       searchInput: destination,
@@ -78,7 +79,6 @@ class TrvlPlan extends Component {
   handleInvitationCodeChange = (e) => {
     this.setState({ invitationCode: e.target.value });
   };
-
   handleSubmit = (e) => {
     e.preventDefault();
     const { tripTitle, searchInput, startDate, endDate } = this.state;
@@ -88,25 +88,34 @@ class TrvlPlan extends Component {
       return;
     }
 
+    const accessToken = sessionStorage.getItem("accessToken");
+
+    if (!accessToken) {
+      alert("로그인 상태가 유효하지 않습니다. 다시 로그인해주세요.");
+      this.props.navigate("/login");
+      return;
+    }
+
     const planReqDto = {
       title: tripTitle,
-      vehicle: "PUBLIC", // 예시로 고정값 사용, 필요에 따라 수정하세요
+      vehicle: "PUBLIC",
       startDate: format(startDate, "yyyy-MM-dd"),
       endDate: format(endDate, "yyyy-MM-dd"),
       region: searchInput,
-      adultCount: 0, // 예시로 0을 사용, 실제 값으로 변경 필요
-      childCount: 0, // 예시로 0을 사용, 실제 값으로 변경 필요
-      hashtags: [], // 필요에 따라 해시태그 추가
+      adultCount: 0,
+      childCount: 0,
+      hashtags: [],
     };
 
     const planLocationListDto = {
-      planLocationDtos: [], // 위치 및 일정에 따라 배열 요소 추가
+      planLocationDtos: [],
     };
 
     fetch("https://travel-compass.persi0815.site/plans", {
-      method: "POST",
+      method: "options",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`, // Bearer 토큰을 헤더에 추가
       },
       body: JSON.stringify({ planReqDto, planLocationListDto }),
     })
@@ -114,7 +123,7 @@ class TrvlPlan extends Component {
       .then((data) => {
         if (data.isSuccess) {
           alert("여행 계획이 성공적으로 등록되었습니다.");
-          this.props.navigate("/summary", { state: { planId: data.planId } }); // 성공 시 요약 페이지로 이동, 실제 경로는 확인 필요
+          this.props.navigate("/summary", { state: { planId: data.planId } });
         } else {
           throw new Error(data.message || "등록에 실패했습니다.");
         }
@@ -158,7 +167,6 @@ class TrvlPlan extends Component {
 
     return null;
   };
-
   handleInvitationCodeSubmit = (e) => {
     e.preventDefault();
 
@@ -168,16 +176,26 @@ class TrvlPlan extends Component {
       return;
     }
 
+    // sessionStorage에서 액세스 토큰 가져오기
+    const accessToken = sessionStorage.getItem("accessToken");
+    if (!accessToken) {
+      alert("로그인이 필요합니다.");
+      this.props.navigate("/login"); // 사용자를 로그인 페이지로 리디렉션
+      return;
+    }
+
+    // API 요청 보내기
     fetch(`https://travel-compass.persi0815.site/plans/${invitationCode}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`, // 헤더에 액세스 토큰 추가
       },
       body: JSON.stringify({ code: invitationCode }),
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("서버 응답이 올바르지 않습니다."); // 에러 메시지 명확화
         }
         return response.json();
       })
@@ -185,11 +203,11 @@ class TrvlPlan extends Component {
         if (data.isSuccess) {
           alert("초대 코드가 성공적으로 등록되었습니다.");
         } else {
-          throw new Error(data.message || "초대 코드 등록에 실패했습니다.");
+          throw new Error(data.message || "초대 코드 등록에 실패했습니다."); // 백엔드에서 제공하는 에러 메시지 사용
         }
       })
       .catch((error) => {
-        alert("에러가 발생했습니다: " + error.message);
+        alert("에러가 발생했습니다: " + error.message); // 모든 에러 캐치와 표시
       });
   };
 
