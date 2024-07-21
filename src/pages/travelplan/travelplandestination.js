@@ -60,10 +60,11 @@ class TrvlPlan extends Component {
 
     this.setState({
       searchInput: input,
-      showSuggestions: true,
+      showSuggestions: input.length > 0 && filteredDestinations.length > 0, // 사용자 입력이 있고, 결과가 있을 때만 제안 표시
       filteredDestinations,
     });
   };
+
   selectDestination = (destination) => {
     this.setState({
       searchInput: destination,
@@ -78,7 +79,6 @@ class TrvlPlan extends Component {
   handleInvitationCodeChange = (e) => {
     this.setState({ invitationCode: e.target.value });
   };
-
   handleSubmit = (e) => {
     e.preventDefault();
     const { tripTitle, searchInput, startDate, endDate } = this.state;
@@ -88,7 +88,6 @@ class TrvlPlan extends Component {
       return;
     }
 
-    // sessionStorage에서 토큰 읽어오기
     const accessToken = sessionStorage.getItem("accessToken");
 
     if (!accessToken) {
@@ -113,7 +112,7 @@ class TrvlPlan extends Component {
     };
 
     fetch("https://travel-compass.persi0815.site/plans", {
-      method: "POST",
+      method: "options",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`, // Bearer 토큰을 헤더에 추가
