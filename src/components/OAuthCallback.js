@@ -13,12 +13,15 @@ const OAuthCallback = () => {
     const fetchUserProfile = async () => {
       if (accessToken) {
         try {
-          const response = await fetch("http://dev.enble.site/me/info", {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          });
+          const response = await fetch(
+            "https://travel-compass.persi0815.site",
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          );
           const data = await response.json();
 
           if (data.isSuccess) {
