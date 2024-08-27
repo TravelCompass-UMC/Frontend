@@ -1,7 +1,7 @@
 // MapDetail.js
 
 export const getPlaceDetails = async ({ placeId }) => {
-  const apiKey = "AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU"; // 여기에 자신의 Google Maps API 키를 입력하세요.
+  const apiKey = "AIzaSyBtvVmyyvzbg4OILHqlzB8eGJcP03-lSVk"; // 여기에 자신의 Google Maps API 키를 입력하세요.
   const url = `https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&key=${apiKey}`;
 
   try {

@@ -3,7 +3,6 @@ import styles from "../styles/searchplace/search.module.css";
 import { Search } from "../styles/styles.jsx";
 import Moving from "../assets/images/Place/Vector.svg";
 
-
 const SearchComponent = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -40,18 +39,18 @@ const SearchComponent = ({ onSearch }) => {
 
   const handleSearch = async (event) => {
     event.preventDefault();
-  
+
     try {
       // Geocoding API 호출을 위한 URL
-      const geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchQuery}&key=AIzaSyBPG58Nk2zPjucy4apqdFTrUxZl0bGpddU`;
-  
+      const geocodingApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${searchQuery}&key=AIzaSyBtvVmyyvzbg4OILHqlzB8eGJcP03-lSVk`;
+
       // Geocoding API 호출
       const response = await fetch(geocodingApiUrl);
       const data = await response.json();
-  
+
       // 검색어로부터 위치 좌표 가져오기
       const location = data.results[0]?.geometry?.location;
-  
+
       if (location) {
         // 검색된 위치와 검색어를 부모 컴포넌트로 전달하여 지도를 업데이트
         onSearch(location, searchQuery);
@@ -87,8 +86,8 @@ const SearchComponent = ({ onSearch }) => {
                 border: "none",
                 borderRadius: "5px",
                 outline: "none",
-                paddingLeft: "17px", // 텍스트 왼쪽 여백 조절
-                marginRight: "-45px", // 버튼과 간격 조절
+                paddingLeft: "17px", 
+                marginRight: "-45px", 
               }}
             />
             <button type="submit" onClick={handleSearch}>
@@ -102,8 +101,15 @@ const SearchComponent = ({ onSearch }) => {
           <ul className={styles.suggestionList}>
             {suggestions.map((suggestion, index) => (
               <li key={index} onClick={() => selectSuggestion(suggestion)}>
-                <div style={{ borderBottom: "1px solid gray", paddingTop: "4%" }}>{suggestion}
-                  <img src={Moving} alt="moving-button" className={styles.movingImg}/>
+                <div
+                  style={{ borderBottom: "1px solid gray", paddingTop: "4%" }}
+                >
+                  {suggestion}
+                  <img
+                    src={Moving}
+                    alt="moving-button"
+                    className={styles.movingImg}
+                  />
                 </div>
               </li>
             ))}

@@ -31,7 +31,7 @@ const PlaceInfoJeju = () => {
   useEffect(() => {
       const fetchRecommendations = async () => {
         const data = [
-          { name: '동백포레스트', placeId: "ChIJ7Xc7U45RezURGd_To-JsF5o", lat: 33.30049, lng: 126.63630 },
+          { name: '휴애리 자연생활공원', placeId: "ChIJtZ6jupmqDTURppQwD7fxFKU", lat: 33.31656, lng: 126.63458 },
           { name: '동문재래시장', placeId: "ChIJBdEw_1PjDDUR9XxfgFpYmjw", lat: 33.51324, lng: 126.52802 },
           { name: '골목카페옥수', placeId: "ChIJ51k8cVAbDTURJkJ4eCpMv1E", lat: 33.44007, lng: 126.38002 },
         ];
